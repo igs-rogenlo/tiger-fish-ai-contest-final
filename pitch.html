@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>虎機 AI 競賽 — 2 分鐘快講版</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--void:#06060e;--slab:#0c0c1a;--raised:#111128;--stroke:rgba(255,255,255,.08);--dim:rgba(255,255,255,.45);--txt:#e8e8f0;--purple:#b07aff;--cyan:#22d3ee;--lime:#4ade80;--amber:#fbbf24;--rose:#fb7185;--orange:#fb923c;--blue:#60a5fa;--mono:'JetBrains Mono',monospace;--sans:'Noto Sans TC',system-ui,sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:24px}
+body{font-family:var(--sans);background:var(--void);color:var(--txt);height:100vh;width:100vw;overflow:hidden}
+body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 12% 25%,rgba(251,146,60,.06),transparent),radial-gradient(ellipse 70% 50% at 88% 75%,rgba(34,211,238,.05),transparent);pointer-events:none;z-index:0}
+#progress{position:fixed;top:0;left:0;height:3px;z-index:200;background:linear-gradient(90deg,var(--orange),var(--amber),var(--cyan));transition:width .35s}
+.deck{position:relative;width:100vw;height:100vh;z-index:1}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 6vw;opacity:0;pointer-events:none;transition:opacity .45s;gap:1.6rem}
+.slide.active{opacity:1;pointer-events:auto}
+.eyebrow{font-family:var(--mono);font-size:1rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+.big{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:900;line-height:1.12;letter-spacing:-.02em}
+.grad{background:linear-gradient(135deg,var(--orange),var(--amber) 50%,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{font-size:clamp(1.1rem,2.2vw,1.6rem);color:var(--dim);line-height:1.6;max-width:30ch}
+.accent-o{color:var(--orange)}.accent-c{color:var(--cyan)}.accent-l{color:var(--lime)}.accent-a{color:var(--amber)}.accent-r{color:var(--rose)}.accent-p{color:var(--purple)}
+.row{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;align-items:center}
+.chip{border:1.5px solid var(--stroke);background:var(--raised);border-radius:99px;padding:.6rem 1.3rem;font-size:clamp(1rem,2vw,1.4rem);font-weight:700}
+.arrow{color:var(--orange);opacity:.6;font-size:2rem}
+.two{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;width:100%;max-width:60rem}
+.card{background:var(--slab);border:1px solid var(--stroke);border-radius:14px;padding:1.4rem 1.6rem;border-top-width:3px}
+.card h3{font-size:clamp(1.1rem,2.2vw,1.5rem);margin-bottom:.5rem}
+.card p{font-size:clamp(.95rem,1.7vw,1.2rem);color:var(--dim);line-height:1.55}
+.shot{border:1px solid var(--stroke);border-radius:12px;overflow:hidden;background:#000;display:block;width:100%}
+.shot img{display:block;width:100%;height:auto}
+.shot-slot{border:2px dashed rgba(34,211,238,.4);background:rgba(34,211,238,.04);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.6rem;width:100%;height:100%;min-height:200px}
+.shot-slot .i{font-size:2.4rem;opacity:.7}.shot-slot .t{font-weight:800;color:var(--cyan);margin-top:.5rem;font-size:1.2rem}.shot-slot .s{font-family:var(--mono);font-size:.78rem;color:var(--amber);margin-top:.6rem}
+.gshot{display:grid;grid-template-columns:1.4fr 1fr;gap:1rem;width:100%;max-width:64rem}
+.gshot .col{display:flex;flex-direction:column;gap:1rem}
+.pill{display:inline-block;border:1px solid rgba(251,146,60,.35);background:rgba(251,146,60,.08);color:var(--orange);border-radius:99px;padding:.5rem 1.4rem;font-size:clamp(1rem,2vw,1.35rem);font-weight:800}
+.hint{position:fixed;bottom:1.3rem;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.75rem;color:var(--dim);z-index:99}
+.pg{position:fixed;bottom:1.1rem;right:1.6rem;font-family:var(--mono);font-size:.8rem;color:var(--dim);z-index:99}
+.nav{position:fixed;top:50%;transform:translateY(-50%);font-size:1.8rem;color:rgba(255,255,255,.18);background:none;border:none;cursor:pointer;padding:1.2rem;z-index:99}
+.nav:hover{color:var(--orange)}.np{left:.3rem}.nn{right:.3rem}
+.slide.active .a{animation:rise .5s ease both}
+.slide.active .a:nth-child(2){animation-delay:.08s}.slide.active .a:nth-child(3){animation-delay:.16s}.slide.active .a:nth-child(4){animation-delay:.24s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:820px){.two{grid-template-columns:1fr}.two .arrow{transform:rotate(90deg)}.gshot{grid-template-columns:1fr}.nav{display:none}}
+@media print{body{height:auto;overflow:visible}.slide{position:relative;opacity:1!important;page-break-after:always;height:100vh}.nav,.hint,.pg,#progress{display:none}}
+</style>
+</head>
+<body>
+<div id="progress" style="width:0"></div>
+<div class="deck">
+
+<!-- 1 · HOOK -->
+<section class="slide active">
+  <div class="a eyebrow">🎰 老虎機 AI 開發競賽</div>
+  <h1 class="a big grad">6 個 AI Agent<br>做出一台老虎機</h1>
+  <p class="a sub">主題：新一代福星高照（翻新既有機台）<br><strong class="accent-c">AI 跑流程，人工審核把關</strong></p>
+</section>
+
+<!-- 2 · 痛點 → 解法 -->
+<section class="slide">
+  <div class="a eyebrow">痛點 → 解法</div>
+  <div class="a two">
+    <div class="card" style="border-top-color:var(--rose)">
+      <h3 class="accent-r">以前的痛</h3>
+      <p>每台機台重做、知識散落、迭代慢</p>
+    </div>
+    <div class="arrow">➜</div>
+    <div class="card" style="border-top-color:var(--lime)">
+      <h3 class="accent-l">現在的做法</h3>
+      <p>6 職能 Agent <strong>平行跑</strong>製程，人只做<strong>品質審核</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · 6 Agent 製程 -->
+<section class="slide">
+  <div class="a eyebrow">怎麼做的</div>
+  <h2 class="a big" style="font-size:clamp(1.8rem,4vw,3rem)">6 Agent 接力，每關人工把關</h2>
+  <div class="a row">
+    <span class="chip accent-l">🎰 企劃</span>
+    <span class="chip accent-c">🎨 美術</span>
+    <span class="chip accent-r">🎵 音效</span>
+    <span class="chip accent-p">💻 Client</span>
+    <span class="chip accent-b" style="color:var(--blue)">🖥️ Server</span>
+    <span class="chip accent-o">🎲 機率</span>
+  </div>
+  <p class="a sub" style="max-width:40ch">企劃出規格 → 美術/音效/機率平行 → 程式整合 → 交付，<strong class="accent-a">每一關產出都要人工審核</strong>通過才往下。</p>
+</section>
+
+<!-- 4 · 實證 -->
+<section class="slide">
+  <div class="a eyebrow" style="color:var(--lime)">實證</div>
+  <h2 class="a big" style="font-size:clamp(1.8rem,4vw,3rem)">真的做出來，而且在運作</h2>
+  <div class="a gshot">
+    <a class="shot" href="assets/demo-fuxing.png" target="_blank">
+      <img src="assets/demo-fuxing.png" alt="福星高照 Demo" style="display:none" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
+      <div class="shot-slot"><div class="i">🎰</div><div class="t">福星高照 Demo 實機畫面</div><div class="s">assets/demo-fuxing.png</div></div>
+    </a>
+    <div class="col">
+      <a class="shot" href="assets/dash-audit.png" target="_blank" style="flex:1">
+        <img src="assets/dash-audit.png" alt="職責審計" style="display:none" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
+        <div class="shot-slot" style="min-height:120px"><div class="t" style="font-size:1rem">📊 職責審計儀表板</div><div class="s">3081 · 遮罩 → dash-audit.png</div></div>
+      </a>
+      <a class="shot" href="assets/dash-health.png" target="_blank" style="flex:1">
+        <img src="assets/dash-health.png" alt="健康度" style="display:none" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
+        <div class="shot-slot" style="min-height:120px;border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.04)"><div class="t" style="font-size:1rem;color:var(--lime)">💓 健康度監控</div><div class="s">3080 → dash-health.png</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · 收尾 -->
+<section class="slide">
+  <div class="a eyebrow" style="color:var(--orange)">下一步</div>
+  <h2 class="a big grad" style="font-size:clamp(2rem,4.5vw,3.4rem)">為複製而設計</h2>
+  <p class="a sub" style="max-width:34ch">本次驗證一台；下一步用第二台證明複製效益，並讓 <strong class="accent-c">PM 主 Agent ＋ 品檢 Agent</strong> 自動調度子 Agent 開發。</p>
+  <div class="a pill">為複製而設計 · Agent 持續累積 · 效率驗證中</div>
+</section>
+
+</div>
+<button class="nav np" id="p">&#10094;</button>
+<button class="nav nn" id="n">&#10095;</button>
+<div class="hint">→ 翻頁　·　約 2 分鐘</div>
+<div class="pg" id="pg"></div>
+<script>
+(function(){
+  const S=document.querySelectorAll('.slide'),N=S.length,bar=document.getElementById('progress'),pg=document.getElementById('pg');let c=0;
+  function go(n){if(n<0||n>=N)return;S[c].classList.remove('active');c=n;S[c].classList.add('active');bar.style.width=(c/(N-1)*100)+'%';pg.textContent=(c+1)+' / '+N}
+  document.getElementById('n').onclick=()=>go(c+1);document.getElementById('p').onclick=()=>go(c-1);
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();go(c+1)}else if(e.key==='ArrowLeft'){e.preventDefault();go(c-1)}else if(e.key==='Home')go(0);else if(e.key==='End')go(N-1)});
+  let tx=0;document.addEventListener('touchstart',e=>tx=e.touches[0].clientX);document.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>50)d>0?go(c+1):go(c-1)});
+  go(0);
+})();
+</script>
+</body>
+</html>
