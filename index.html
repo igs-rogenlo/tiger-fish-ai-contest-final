@@ -223,45 +223,6 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </div>
 </section>
 
-<!-- 4 · 製程流程圖 -->
-<section class="slide" data-slide="4">
-<div class="inner" style="gap:.9rem">
-  <div><span class="a eyebrow" style="color:var(--cyan)">Process Flow</span><h2 class="a">製程流程圖：一台機台怎麼被做出來</h2></div>
-
-  <div class="a flow">
-    <div class="stage" style="border-top-color:var(--lime)">
-      <div class="st-no">STAGE ①</div><div class="st-t accent-l">&#127920; 企劃 Agent</div>
-      <div class="st-d">競品分析 · 撰寫規格書 · 美術/音效需求定義</div>
-    </div>
-    <div class="gate"><span class="g-ico">&#128064;</span>審核</div>
-    <div class="stage" style="border-top-color:var(--cyan)">
-      <div class="st-no">STAGE ② · 平行</div><div class="st-t accent-c">&#127912;&#127925;&#127922; 美術／音效／機率</div>
-      <div class="st-d">同時開跑：素材生成 · 配樂音效 · RTP/機率驗證</div>
-    </div>
-    <div class="gate"><span class="g-ico">&#128064;</span>審核</div>
-    <div class="stage" style="border-top-color:var(--purple)">
-      <div class="st-no">STAGE ③</div><div class="st-t accent-p">&#128187; Client／Server</div>
-      <div class="st-d">遊戲模組建置 · 前後端協議 · 整合素材/機率</div>
-    </div>
-    <div class="gate"><span class="g-ico">&#128064;</span>審核</div>
-    <div class="stage" style="border-top-color:var(--orange)">
-      <div class="st-no">STAGE ④</div><div class="st-t accent-o">&#9989; 整合交付</div>
-      <div class="st-d">組裝為可運行 Demo<br>（新一代福星高照）</div>
-    </div>
-  </div>
-
-  <div class="a loopbar loop-rework">
-    <span class="loop-ico">&#128260;</span>
-    <div><strong class="accent-r">審核退回迴路</strong> &mdash; 審核未過 → Agent 依意見<strong>自動修正</strong> → 再次審核，直到通過才進入下一關（不怕重工，所以前面各關平行跑）</div>
-  </div>
-  <div class="a loopbar loop-knowledge">
-    <span class="loop-ico">&#129504;</span>
-    <div><strong class="accent-l">知識學習迴路</strong> &mdash; 對話內容＋每次退回案例 → <strong>自動萃取更新知識庫 / 生成 Skill</strong> → Agent 下次更準（越用越強，零額外維護）</div>
-  </div>
-  <div class="a" style="font-size:.75rem;color:var(--dim);text-align:center">&#128064; = 人工品質審核把關，每個環節產出後皆須通過審核</div>
-</div>
-</section>
-
 <!-- 5 · 實證截圖 -->
 <section class="slide" data-slide="5">
 <div class="inner" style="gap:.8rem">
@@ -431,11 +392,6 @@ function buildPptx(){
    ['工具層 Tooling','MCP：Cocos/Spine ｜ CLI：codex-imagegen/ElevenLabs/Suno ｜ API ｜ 瀏覽器自動化','fbbf24'],
    ['治理層 Governance','權限分級 · 資安/操作日誌 · 📊 職責審計儀表板 · 💓 健康度監控儀表板','fb7185'],
   ].forEach((L,i)=>{const y=1.55+i*0.92;s.addShape(P.ShapeType.rect,{x:.5,y,w:12.3,h:.8,fill:{color:'0c0c1a'},line:{color:L[2],width:1}});s.addText(L[0],{x:.65,y,w:2.7,h:.8,fontSize:11,bold:true,color:L[2],fontFace:F,valign:'middle'});s.addText(L[1],{x:3.4,y,w:9.2,h:.8,fontSize:10.5,color:'e8e8f0',fontFace:F,valign:'middle'});});
-  s=P.addSlide();head(s,'PROCESS FLOW','製程流程圖：一台機台怎麼被做出來','22d3ee');
-  s.addText('① 企劃 Agent →〔審核〕→ ② 美術/音效/機率（平行）→〔審核〕→ ③ Client/Server →〔審核〕→ ④ 整合 → ✅ Demo',{x:.5,y:1.9,w:12.3,fontSize:14,color:'e8e8f0',fontFace:F,align:'center'});
-  s.addText('🔁 審核退回迴路：未過 → Agent 自動修正 → 再審核（不怕重工，各關平行跑）',{x:.6,y:3,w:12,fontSize:13,color:'fb7185',fontFace:F});
-  s.addText('🧠 知識學習迴路：對話＋退回案例 → 自動更新知識庫/生成 Skill → Agent 越用越強',{x:.6,y:3.7,w:12,fontSize:13,color:'4ade80',fontFace:F});
-  s.addText('👁 = 人工品質審核把關，每環節產出後皆須通過',{x:.6,y:4.6,w:12,fontSize:11,color:DIM,fontFace:F});
   s=P.addSlide();head(s,'EVIDENCE','實證：Agent 真的在運作','4ade80');
   try{s.addImage({path:'assets/audit-dashboard.png',x:.6,y:1.6,w:7.6,h:5.4});}catch(e){}
   s.addText('▲ 職責審計儀表板',{x:.6,y:7.0,w:7.6,fontSize:10,color:DIM,fontFace:F});
