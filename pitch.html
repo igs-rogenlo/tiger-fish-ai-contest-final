@@ -19,7 +19,13 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 .eyebrow{font-family:var(--mono);font-size:1rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
 .big{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:900;line-height:1.12;letter-spacing:-.02em}
 .grad{background:linear-gradient(135deg,var(--orange),var(--amber) 50%,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.sub{font-size:clamp(1.1rem,2.2vw,1.6rem);color:var(--dim);line-height:1.6;max-width:30ch}
+.sub{font-size:clamp(1.1rem,2.2vw,1.6rem);color:var(--dim);line-height:1.6;max-width:34ch}
+.points{text-align:left;max-width:46ch;display:flex;flex-direction:column;gap:.7rem;font-size:clamp(1.05rem,2vw,1.5rem);line-height:1.45}
+.points .pt{display:flex;gap:.7rem;align-items:flex-start}
+.points .pt b{color:var(--cyan);font-weight:800;flex-shrink:0}
+.points .pt span{color:var(--txt)}
+.points .pt .d{color:var(--dim);font-size:.9em}
+.core{border:1px solid rgba(251,146,60,.35);background:rgba(251,146,60,.07);border-radius:12px;padding:.9rem 1.4rem;font-size:clamp(1.05rem,2vw,1.45rem);font-weight:700;color:var(--amber);max-width:48ch;line-height:1.5}
 .accent-o{color:var(--orange)}.accent-c{color:var(--cyan)}.accent-l{color:var(--lime)}.accent-a{color:var(--amber)}.accent-r{color:var(--rose)}.accent-p{color:var(--purple)}
 .row{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;align-items:center}
 .chip{border:1.5px solid var(--stroke);background:var(--raised);border-radius:99px;padding:.6rem 1.3rem;font-size:clamp(1rem,2vw,1.4rem);font-weight:700}
@@ -53,46 +59,48 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 
 <!-- 1 · HOOK -->
 <section class="slide active">
-  <div class="a eyebrow">🎰 老虎機 AI 開發競賽</div>
+  <div class="a eyebrow">🎰 老虎機 AI 開發競賽 · 最終成果</div>
   <h1 class="a big grad">6 個 AI Agent<br>做出一台老虎機</h1>
-  <p class="a sub">主題：新一代福星高照（翻新既有機台）<br><strong class="accent-c">AI 跑流程，人工審核把關</strong></p>
+  <p class="a sub">主題：新一代福星高照（翻新既有機台）</p>
+  <div class="a core">把企劃→美術→音效→程式→機率→測試，交給 6 個 AI Agent 做，人只做品質審核</div>
 </section>
 
 <!-- 2 · 痛點 → 解法 -->
 <section class="slide">
-  <div class="a eyebrow">痛點 → 解法</div>
+  <div class="a eyebrow">為什麼做</div>
   <div class="a two">
     <div class="card" style="border-top-color:var(--rose)">
       <h3 class="accent-r">以前的痛</h3>
-      <p>每台機台重做、知識散落、迭代慢</p>
+      <p>每台機台重複做規格/素材/數值；經驗散在各人腦袋；改一輪要等很久。</p>
     </div>
     <div class="arrow">➜</div>
     <div class="card" style="border-top-color:var(--lime)">
       <h3 class="accent-l">現在的做法</h3>
-      <p>6 職能 Agent <strong>平行跑</strong>製程，人只做<strong>品質審核</strong></p>
+      <p>6 職能各一個 AI Agent，<strong>同時平行</strong>產出；不怕重工，人專心<strong>把關品質</strong>。</p>
     </div>
   </div>
+  <div class="a core">核心策略：AI 跑流程、人工審核把關</div>
 </section>
 
 <!-- 3 · 6 Agent 製程 -->
 <section class="slide">
   <div class="a eyebrow">怎麼做的</div>
-  <h2 class="a big" style="font-size:clamp(1.8rem,4vw,3rem)">6 Agent 接力，每關人工把關</h2>
+  <h2 class="a big" style="font-size:clamp(1.7rem,3.8vw,2.8rem)">6 個 Agent 接力，每一關人工把關</h2>
   <div class="a row">
-    <span class="chip accent-l">🎰 企劃</span>
-    <span class="chip accent-c">🎨 美術</span>
-    <span class="chip accent-r">🎵 音效</span>
-    <span class="chip accent-p">💻 Client</span>
-    <span class="chip accent-b" style="color:var(--blue)">🖥️ Server</span>
-    <span class="chip accent-o">🎲 機率</span>
+    <span class="chip accent-l">🎰 企劃</span><span class="chip accent-c">🎨 美術</span><span class="chip accent-r">🎵 音效</span>
+    <span class="chip accent-p">💻 Client</span><span class="chip" style="color:var(--blue)">🖥️ Server</span><span class="chip accent-o">🎲 機率</span>
   </div>
-  <p class="a sub" style="max-width:40ch">企劃出規格 → 美術/音效/機率平行 → 程式整合 → 交付，<strong class="accent-a">每一關產出都要人工審核</strong>通過才往下。</p>
+  <div class="a points">
+    <div class="pt"><b>流程</b><span>企劃出規格 → 美術／音效／機率<strong>同時</strong>開跑 → 程式整合 → 交付</span></div>
+    <div class="pt"><b>把關</b><span>每一關產出，<strong>人工審核</strong>通過才往下，退回就讓 Agent 修</span></div>
+    <div class="pt"><b>會學</b><span>Agent 有記憶、自動累積經驗 —— <strong>越用越準</strong></span></div>
+  </div>
 </section>
 
 <!-- 4 · 實證 -->
 <section class="slide">
   <div class="a eyebrow" style="color:var(--lime)">實證</div>
-  <h2 class="a big" style="font-size:clamp(1.8rem,4vw,3rem)">真的做出來，而且在運作</h2>
+  <h2 class="a big" style="font-size:clamp(1.7rem,3.8vw,2.8rem)">真的做出來，而且在運作</h2>
   <div class="a gshot">
     <a class="shot" href="assets/demo-fuxing.png" target="_blank">
       <img src="assets/demo-fuxing.png" alt="福星高照 Demo" style="display:none" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
@@ -109,20 +117,25 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
       </a>
     </div>
   </div>
+  <div class="a core" style="color:var(--lime);border-color:rgba(74,222,128,.35);background:rgba(74,222,128,.06)">不是 PPT 概念 —— 一台可玩的 Demo 做出來了；儀表板還能即時看每個 Agent 在做什麼、系統健不健康</div>
 </section>
 
 <!-- 5 · 收尾 -->
 <section class="slide">
   <div class="a eyebrow" style="color:var(--orange)">下一步</div>
   <h2 class="a big grad" style="font-size:clamp(2rem,4.5vw,3.4rem)">為複製而設計</h2>
-  <p class="a sub" style="max-width:34ch">本次驗證一台；下一步用第二台證明複製效益，並讓 <strong class="accent-c">PM 主 Agent ＋ 品檢 Agent</strong> 自動調度子 Agent 開發。</p>
+  <div class="a points">
+    <div class="pt"><b>可複製</b><span>模組化、知識驅動 —— 下一台<strong>換規格就能跑</strong></span></div>
+    <div class="pt"><b>更自動</b><span>未來 <strong>PM 主 Agent ＋ 品檢 Agent</strong> 自動調度子 Agent 開發</span></div>
+    <div class="pt"><b>務實</b><span class="d">框架仍在優化；複製效益與效率提升，待第二台驗證量化</span></div>
+  </div>
   <div class="a pill">為複製而設計 · Agent 持續累積 · 效率驗證中</div>
 </section>
 
 </div>
 <button class="nav np" id="p">&#10094;</button>
 <button class="nav nn" id="n">&#10095;</button>
-<div class="hint">→ 翻頁　·　約 2 分鐘</div>
+<div class="hint">→ 翻頁</div>
 <div class="pg" id="pg"></div>
 <script>
 (function(){
