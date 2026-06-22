@@ -155,12 +155,12 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="panel panel-c" style="padding:1rem;text-align:center"><div class="metric accent-c">6</div><div class="metric-label">職能 Agent 全數上線運作</div></div>
     <div class="panel panel-l" style="padding:1rem;text-align:center"><div class="metric accent-l">1</div><div class="metric-label">完整老虎機 Demo（福星高照）</div></div>
     <div class="panel panel-a" style="padding:1rem;text-align:center"><div class="metric accent-a">3 階段</div><div class="metric-label">知識收集→建置→實戰，全完成</div></div>
-    <div class="panel panel-o" style="padding:1rem;text-align:center"><div class="metric accent-o">可複製</div><div class="metric-label">框架可套用到下一台機台</div></div>
+    <div class="panel panel-o" style="padding:1rem;text-align:center"><div class="metric accent-o">1 → N</div><div class="metric-label">為複製而設計（下一台驗證）</div></div>
   </div>
   <div class="a g3">
     <div class="panel panel-r" style="padding:1.1rem"><div class="panel-title" style="color:var(--rose);font-size:1.05rem">做了什麼</div><div class="panel-body" style="font-size:.9rem">為 6 個職能各建一個 AI Agent，以一台既有機台翻新為場景，跑通完整開發製程。</div></div>
     <div class="panel panel-c" style="padding:1.1rem"><div class="panel-title" style="color:var(--cyan);font-size:1.05rem">怎麼做</div><div class="panel-body" style="font-size:.9rem"><strong class="accent-c">AI 跑流程、人工審核把關</strong>；串行流程改為多職能平行，搭配記憶與自動學習迴路。</div></div>
-    <div class="panel panel-l" style="padding:1.1rem"><div class="panel-title" style="color:var(--lime);font-size:1.05rem">價值</div><div class="panel-body" style="font-size:.9rem">不只一台 Demo，而是<strong class="accent-l">可複製、可累積、效率可量化</strong>的 Agent 製程框架。</div></div>
+    <div class="panel panel-l" style="padding:1.1rem"><div class="panel-title" style="color:var(--lime);font-size:1.05rem">價值</div><div class="panel-body" style="font-size:.9rem">不只一台 Demo，而是<strong class="accent-l">為複製而設計、Agent 持續累積</strong>的 Agent 製程框架（複製效益與效率量化待第二台驗證）。</div></div>
   </div>
 </div>
 </section>
@@ -342,10 +342,10 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <section class="slide" data-slide="10">
 <div class="inner" style="align-items:center;justify-content:center;text-align:center">
   <div class="a panel" style="padding:2rem 3rem;border-color:rgba(251,146,60,.2);background:linear-gradient(135deg,rgba(251,146,60,.05),rgba(34,211,238,.04))">
-    <h2 class="a" style="background:linear-gradient(135deg,var(--orange),var(--amber),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:clamp(1.6rem,3vw,2.4rem)">建立可複製的 AI 製程框架</h2>
-    <p class="a lead" style="text-align:center;margin:.6rem auto 0;max-width:55ch">不只是做一台 Demo &mdash; 而是打造一套<strong class="accent-o">任何機台都能套用</strong>的 Agent 製程</p>
+    <h2 class="a" style="background:linear-gradient(135deg,var(--orange),var(--amber),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:clamp(1.6rem,3vw,2.4rem)">打造一套為複製而設計的 AI 製程框架</h2>
+    <p class="a lead" style="text-align:center;margin:.6rem auto 0;max-width:58ch">本次以一台機台<strong class="accent-o">跑通並驗證</strong>製程；下一步用第二台證明複製效益 &mdash; 框架仍在持續優化中</p>
   </div>
-  <div class="a" style="margin-top:.4rem"><span class="pill pill-o" style="font-size:1.05rem">框架可複製 &bull; Agent 可累積 &bull; 效率可量化</span></div>
+  <div class="a" style="margin-top:.4rem"><span class="pill pill-o" style="font-size:1.05rem">為複製而設計 &bull; Agent 持續累積 &bull; 效率驗證中</span></div>
   <div class="a hero-hint" style="margin-top:1rem">&#127920; 老虎機 AI 開發競賽 &mdash; 最終成果報告</div>
 </div>
 </section>
@@ -403,8 +403,8 @@ function buildPptx(){
   s.addText('6 Agent：從藍圖到成果',{x:.6,y:2.3,w:12,fontSize:40,bold:true,color:TI,fontFace:F,align:'center'});
   s.addText('主題：新一代福星高照（翻新既有機台）\n核心策略：AI 跑流程、人工審核把關',{x:.6,y:4,w:12,fontSize:15,color:DIM,fontFace:F,align:'center',lineSpacing:26});
   s=P.addSlide();head(s,'EXECUTIVE SUMMARY','一頁看懂這次競賽成果','22d3ee');
-  s.addText('6 職能 Agent 全數上線 ｜ 1 台完整 Demo（福星高照）｜ 3 階段全完成 ｜ 框架可複製',{x:.6,y:1.8,w:12,fontSize:16,color:'e8e8f0',fontFace:F});
-  s.addText('做了什麼：為 6 職能各建一個 AI Agent，以一台機台翻新跑通製程。\n怎麼做：AI 跑流程、人工審核把關；串行改多職能平行 + 記憶/自動學習迴路。\n價值：可複製、可累積、效率可量化的 Agent 製程框架。',{x:.6,y:2.7,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s.addText('6 職能 Agent 全數上線 ｜ 1 台完整 Demo（福星高照）｜ 3 階段全完成 ｜ 框架為複製而設計',{x:.6,y:1.8,w:12,fontSize:16,color:'e8e8f0',fontFace:F});
+  s.addText('做了什麼：為 6 職能各建一個 AI Agent，以一台機台翻新跑通製程。\n怎麼做：AI 跑流程、人工審核把關；串行改多職能平行 + 記憶/自動學習迴路。\n價值：為複製而設計、Agent 持續累積的製程框架（複製效益與效率量化待第二台驗證）。',{x:.6,y:2.7,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'PROBLEM & GOAL','為什麼做：痛點與目標','fb7185');
   s.addText('痛點：重複性高、知識散落、迭代效率低。\n目標：6 職能各建 Agent、完整知識庫、可複製框架。\n核心策略：AI 跑流程、人工審核把關。',{x:.6,y:1.9,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'SYSTEM ARCHITECTURE','系統架構：完整技術架構','b07aff');
@@ -434,8 +434,9 @@ function buildPptx(){
   s=P.addSlide();head(s,"WHAT'S NEXT",'未來展望','fb923c');
   s.addText('本次競賽：翻新一台驗證製程\n短期：複製第二台；導入 PM 主 Agent ＋ 品檢 Agent，由 PM 自動調用各職能子 Agent 開發\n長期：套用到捕魚機 / 平台活動',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();s.background=BG;
-  s.addText('建立可複製的 AI 製程框架',{x:.6,y:2.6,w:12,fontSize:32,bold:true,color:'fb923c',fontFace:F,align:'center'});
-  s.addText('框架可複製 • Agent 可累積 • 效率可量化',{x:.6,y:3.8,w:12,fontSize:18,color:'22d3ee',fontFace:F,align:'center'});
+  s.addText('打造一套為複製而設計的 AI 製程框架',{x:.6,y:2.6,w:12,fontSize:30,bold:true,color:'fb923c',fontFace:F,align:'center'});
+  s.addText('為複製而設計 • Agent 持續累積 • 效率驗證中',{x:.6,y:3.8,w:12,fontSize:18,color:'22d3ee',fontFace:F,align:'center'});
+  s.addText('本次以一台機台跑通並驗證；下一步用第二台證明複製效益（框架持續優化中）',{x:.6,y:4.6,w:12,fontSize:13,color:'a0a0b0',fontFace:F,align:'center'});
   P.writeFile({fileName:'虎機AI開發競賽_最終成果報告.pptx'});
 }
 </script>
