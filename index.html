@@ -234,14 +234,13 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     </div>
     <div style="display:flex;flex-direction:column;gap:.6rem">
       <div class="panel panel-l" style="padding:.9rem">
-        <div class="panel-title" style="color:var(--lime);font-size:1rem">這張圖證明了什麼</div>
+        <div class="panel-title" style="color:var(--lime);font-size:1rem">&#128221; 重點解讀</div>
         <div class="panel-body" style="font-size:.85rem">
-          &bull; 6 職能 Agent <strong class="accent-l">真實在跑</strong>，非概念展示<br>
-          &bull; 每個動作<strong>可追溯</strong>（誰、用哪個 Agent、呼叫什麼工具、哪個模型）<br>
-          &bull; 治理層的<strong class="accent-l">職責審計</strong>實際落地
+          儀表板<strong class="accent-l">即時記錄</strong>每個 Agent 的每一次操作 &mdash; 由誰觸發、用哪個 Agent、呼叫什麼工具、哪個模型，全程<strong>可追溯</strong>。<br><br>
+          這證明 6 職能 Agent 是<strong class="accent-l">真實運作中的系統</strong>，治理層的職責審計已實際落地。
         </div>
       </div>
-      <div class="fill">本頁可再加：① 健康度監控儀表板 ② 福星高照 Demo 實機畫面 ③ 各 Agent 對話/產出截圖（見最後一頁建議清單）</div>
+      <div class="fill">可再搭配：健康度監控儀表板、福星高照 Demo 實機畫面、Agent 對話/產出截圖</div>
     </div>
   </div>
 </div>
@@ -300,7 +299,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
   <div><span class="a eyebrow" style="color:var(--orange)">What's Next</span><h2 class="a">未來展望</h2></div>
   <div class="a g3">
     <div class="panel panel-o a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#127920;</div><div style="font-weight:800;font-size:1rem;color:var(--orange)">本次競賽</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">翻新既有老虎機一台，跑通並驗證製程</div></div>
-    <div class="panel panel-c a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#128640;</div><div style="font-weight:800;font-size:1rem;color:var(--cyan)">短期延伸</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">複製到第二台機台、規劃營運 Agent</div></div>
+    <div class="panel panel-c a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#128640;</div><div style="font-weight:800;font-size:1rem;color:var(--cyan)">短期延伸</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">複製到第二台機台；導入 <strong class="accent-c">PM 主 Agent ＋ 品檢 Agent</strong>，由 PM 自動調用各職能<strong>子 Agent</strong> 進行開發（人從逐關觸發 → PM 編排）</div></div>
     <div class="panel panel-l a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#127907;</div><div style="font-weight:800;font-size:1rem;color:var(--lime)">長期願景</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">套用到捕魚機 / 平台活動</div></div>
   </div>
   <div class="a panel" style="border:2px solid rgba(251,146,60,.3);padding:.9rem">
@@ -403,7 +402,7 @@ function buildPptx(){
   s=P.addSlide();head(s,'RESULTS BY FUNCTION','各職能實戰成果','fb923c');
   s.addText(FUNCS.map(f=>f.emoji+' '+f.name+'：'+f.caps+'（連結待補）').join('\n'),{x:.6,y:1.8,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
   s=P.addSlide();head(s,"WHAT'S NEXT",'未來展望','fb923c');
-  s.addText('本次競賽：翻新一台驗證製程\n短期：複製第二台 + 營運 Agent\n長期：套用到捕魚機 / 平台活動',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s.addText('本次競賽：翻新一台驗證製程\n短期：複製第二台；導入 PM 主 Agent ＋ 品檢 Agent，由 PM 自動調用各職能子 Agent 開發\n長期：套用到捕魚機 / 平台活動',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();s.background=BG;
   s.addText('建立可複製的 AI 製程框架',{x:.6,y:2.6,w:12,fontSize:32,bold:true,color:'fb923c',fontFace:F,align:'center'});
   s.addText('框架可複製 • Agent 可累積 • 效率可量化',{x:.6,y:3.8,w:12,fontSize:18,color:'22d3ee',fontFace:F,align:'center'});
