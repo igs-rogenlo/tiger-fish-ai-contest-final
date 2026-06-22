@@ -22,24 +22,24 @@ body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse
 .deck{position:relative;width:100vw;height:100vh;z-index:1}
 .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:1.5rem 4vw;opacity:0;pointer-events:none;transition:opacity .45s ease;overflow:hidden}
 .slide.active{opacity:1;pointer-events:auto}
-.inner{width:100%;max-width:none;display:flex;flex-direction:column;justify-content:center;gap:1.2rem}
+.inner{width:100%;max-width:none;display:flex;flex-direction:column;justify-content:center;gap:1.1rem}
 .eyebrow{font-family:var(--mono);font-size:.85rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
-h2{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;line-height:1.2;letter-spacing:-.02em}
-.lead{font-size:1.15rem;color:var(--dim);line-height:1.7;max-width:60ch}
+h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spacing:-.02em}
+.lead{font-size:1.12rem;color:var(--dim);line-height:1.65;max-width:62ch}
 .accent-p{color:var(--purple);font-weight:700} .accent-c{color:var(--cyan);font-weight:700}
 .accent-l{color:var(--lime);font-weight:700} .accent-a{color:var(--amber);font-weight:700}
 .accent-r{color:var(--rose);font-weight:700} .accent-o{color:var(--orange);font-weight:700}
 .accent-b{color:var(--blue);font-weight:700}
-.panel{background:var(--slab);border:1px solid var(--stroke);border-radius:10px;padding:1.5rem 1.6rem;position:relative;overflow:hidden}
+.panel{background:var(--slab);border:1px solid var(--stroke);border-radius:10px;padding:1.4rem 1.5rem;position:relative;overflow:hidden}
 .panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
 .panel-p::before{background:var(--purple)} .panel-c::before{background:var(--cyan)}
 .panel-l::before{background:var(--lime)} .panel-a::before{background:var(--amber)}
 .panel-r::before{background:var(--rose)} .panel-o::before{background:var(--orange)}
 .panel-b::before{background:var(--blue)}
 .panel-title{font-size:1.2rem;font-weight:700;margin-bottom:.4rem}
-.panel-body{font-size:1.05rem;color:var(--dim);line-height:1.65}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.panel-body{font-size:1.05rem;color:var(--dim);line-height:1.6}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
 .pill{display:inline-flex;align-items:center;gap:.35rem;border-radius:99px;padding:.3rem .9rem;font-size:.95rem;font-weight:600;border:1px solid}
 .pill-o{background:rgba(251,146,60,.1);border-color:rgba(251,146,60,.3);color:var(--orange)}
@@ -51,24 +51,45 @@ h2{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;line-height:1.2;letter-spa
 .pill-b{background:rgba(96,165,250,.1);border-color:rgba(96,165,250,.3);color:var(--blue)}
 .pipe{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;justify-content:center}
 .node{background:var(--raised);border:1.5px solid var(--stroke);border-radius:8px;padding:.6rem 1rem;font-weight:600;font-size:1.05rem;text-align:center;white-space:nowrap}
-.arrow{color:var(--orange);opacity:.5;font-size:1.4rem;flex-shrink:0}
+.arrow{color:var(--orange);opacity:.55;font-size:1.4rem;flex-shrink:0}
 .hero-title{font-size:clamp(3.5rem,8vw,6rem);font-weight:900;line-height:1.08;letter-spacing:-.03em;background:linear-gradient(135deg,var(--orange),var(--amber) 50%,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-badge{font-family:var(--mono);font-size:.95rem;font-weight:600;color:var(--orange);border:1px solid rgba(251,146,60,.25);background:rgba(251,146,60,.06);padding:.4rem 1.1rem;border-radius:99px;display:inline-block}
-.hero-hint{font-family:var(--mono);font-size:.8rem;color:var(--dim);animation:blink 2.5s ease-in-out infinite}
-/* metric big number */
+.hero-hint{font-family:var(--mono);font-size:.8rem;color:var(--dim)}
 .metric{font-family:var(--mono);font-weight:700;line-height:1;font-size:clamp(1.8rem,4vw,3rem)}
 .metric-label{font-size:.8rem;color:var(--dim);margin-top:.3rem}
-/* fill-in placeholder slot for each function owner */
 .fill{border:1.5px dashed rgba(251,191,36,.45);background:rgba(251,191,36,.04);border-radius:8px;padding:.7rem .9rem;color:var(--amber);font-size:.85rem;line-height:1.6}
-.fill::before{content:'✎ 由各職能填入　';font-family:var(--mono);font-weight:600;font-size:.72rem;letter-spacing:.05em;opacity:.85}
-.fa{font-size:1.05rem;font-weight:800}
-.tag{display:inline-block;font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.05em;padding:.08rem .4rem;border-radius:4px;margin-left:.35rem;vertical-align:middle;border:1px solid}
-.tag-cli{color:var(--cyan);border-color:rgba(34,211,238,.4);background:rgba(34,211,238,.07)}
-.tag-mcp{color:var(--purple);border-color:rgba(176,122,255,.4);background:rgba(176,122,255,.07)}
-.tag-api{color:var(--lime);border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.07)}
-.tag-web{color:var(--orange);border-color:rgba(251,146,60,.4);background:rgba(251,146,60,.07)}
-.cap-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.32rem 0;border-bottom:1px dashed rgba(255,255,255,.06);font-size:.92rem}
-.cap-row:last-child{border-bottom:none}
+.fill::before{content:'✎ 待補　';font-family:var(--mono);font-weight:600;font-size:.72rem;letter-spacing:.05em;opacity:.85}
+/* architecture layers */
+.layers{display:flex;flex-direction:column;gap:.45rem}
+.layer{display:grid;grid-template-columns:9rem 1fr;gap:.8rem;align-items:center;background:var(--slab);border:1px solid var(--stroke);border-left-width:3px;border-radius:9px;padding:.5rem .85rem}
+.ly-name{font-weight:800;font-size:.9rem;line-height:1.15}
+.ly-en{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;display:block;margin-top:.1rem}
+.ly-body{display:flex;flex-wrap:wrap;gap:.35rem}
+.chip{display:inline-flex;align-items:center;gap:.25rem;border:1px solid var(--stroke);background:var(--raised);border-radius:6px;padding:.22rem .55rem;font-size:.74rem;font-weight:600;white-space:nowrap;color:var(--txt)}
+.chip b{font-weight:800}
+.chip .k{font-family:var(--mono);font-size:.6rem;color:var(--dim);margin-right:.1rem}
+/* process flow */
+.flow{display:flex;align-items:stretch;gap:.3rem;justify-content:center;flex-wrap:wrap}
+.stage{flex:1;min-width:8rem;background:var(--slab);border:1px solid var(--stroke);border-top-width:3px;border-radius:9px;padding:.7rem .7rem;text-align:center}
+.stage .st-no{font-family:var(--mono);font-size:.7rem;color:var(--dim)}
+.stage .st-t{font-weight:800;font-size:.95rem;margin:.15rem 0 .3rem}
+.stage .st-d{font-size:.74rem;color:var(--dim);line-height:1.4}
+.gate{display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--amber);font-size:.7rem;font-weight:700;align-self:center;min-width:2.4rem}
+.gate .g-ico{font-size:1.2rem}
+.loopbar{display:flex;align-items:center;gap:.6rem;border:1px dashed;border-radius:9px;padding:.55rem .9rem;font-size:.85rem}
+.loop-rework{border-color:rgba(251,113,133,.4);background:rgba(251,113,133,.05)}
+.loop-knowledge{border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.05)}
+.loop-ico{font-size:1.3rem;flex-shrink:0}
+/* screenshots */
+.shot{border:1px solid var(--stroke);border-radius:8px;overflow:hidden;background:#000;display:block}
+.shot img{display:block;width:100%;height:auto}
+.cap{font-size:.72rem;color:var(--dim);font-family:var(--mono);margin-top:.35rem;line-height:1.4}
+/* function index */
+.fidx{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+.fcard{background:var(--slab);border:1px solid var(--stroke);border-left-width:3px;border-radius:9px;padding:.8rem .9rem}
+.fcard .fc-h{font-weight:800;font-size:1rem;margin-bottom:.25rem}
+.fcard .fc-cap{font-size:.72rem;color:var(--dim);line-height:1.45;margin-bottom:.45rem}
+.fcard .fc-link{font-family:var(--mono);font-size:.7rem;color:var(--amber);border:1px dashed rgba(251,191,36,.4);border-radius:6px;padding:.25rem .5rem;display:inline-block}
 .slide.active .a{animation:rise .5s ease both}
 .slide.active .a:nth-child(1){animation-delay:.02s}
 .slide.active .a:nth-child(2){animation-delay:.06s}
@@ -76,10 +97,7 @@ h2{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;line-height:1.2;letter-spa
 .slide.active .a:nth-child(4){animation-delay:.14s}
 .slide.active .a:nth-child(5){animation-delay:.18s}
 .slide.active .a:nth-child(6){animation-delay:.22s}
-.slide.active .a:nth-child(7){animation-delay:.26s}
-.slide.active .a:nth-child(8){animation-delay:.3s}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-@keyframes blink{0%,100%{opacity:.4}50%{opacity:.9}}
 .dots{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:99;max-width:80vw;flex-wrap:wrap;justify-content:center}
 .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);border:none;cursor:pointer;transition:all .25s}
 .dot.on{background:var(--orange);transform:scale(1.5);box-shadow:0 0 10px rgba(251,146,60,.5)}
@@ -90,18 +108,10 @@ h2{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;line-height:1.2;letter-spa
 .topbar{position:fixed;top:.7rem;right:1.2rem;z-index:120;display:flex;gap:.5rem}
 .btn{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.05em;color:var(--dim);border:1px solid var(--stroke);background:rgba(255,255,255,.03);padding:.35rem .7rem;border-radius:6px;cursor:pointer;transition:all .2s}
 .btn:hover{color:var(--orange);border-color:rgba(251,146,60,.4)}
-.layers{display:flex;flex-direction:column;gap:.45rem}
-.layer{display:grid;grid-template-columns:9rem 1fr;gap:.8rem;align-items:center;background:var(--slab);border:1px solid var(--stroke);border-left-width:3px;border-radius:9px;padding:.5rem .85rem}
-.ly-name{font-weight:800;font-size:.9rem;line-height:1.15}
-.ly-en{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;display:block;margin-top:.1rem}
-.ly-body{display:flex;flex-wrap:wrap;gap:.35rem}
-.chip{display:inline-flex;align-items:center;gap:.25rem;border:1px solid var(--stroke);background:var(--raised);border-radius:6px;padding:.22rem .55rem;font-size:.74rem;font-weight:600;white-space:nowrap;color:var(--txt)}
-.chip b{font-weight:800}
-.chip .k{font-family:var(--mono);font-size:.6rem;color:var(--dim);margin-right:.1rem}
 .timeline{display:grid;grid-template-columns:6rem 1fr;gap:.4rem .8rem;font-size:1rem}
 .timeline .t-date{color:var(--amber);font-family:var(--mono);font-weight:600;text-align:right;font-size:.9rem}
 .timeline .t-bar{border-left:2px solid rgba(255,255,255,.1);padding-left:.8rem;padding-bottom:.6rem}
-@media(max-width:900px){html{font-size:17px}.slide{padding:1rem .8rem}.inner{gap:.8rem}.g2,.g3,.g4{grid-template-columns:1fr}.nav-btn{display:none}.hero-title{font-size:2rem}}
+@media(max-width:900px){html{font-size:16px}.slide{padding:1rem .8rem}.inner{gap:.7rem}.g2,.g3,.g4,.fidx{grid-template-columns:1fr}.nav-btn{display:none}.hero-title{font-size:2rem}.flow{flex-direction:column}.gate{flex-direction:row;gap:.4rem}}
 @media print{body{height:auto;overflow:visible}.slide{position:relative;opacity:1!important;page-break-after:always;height:100vh}.nav-btn,.dots,.pg,.topbar,#progress{display:none}}
 </style>
 </head>
@@ -110,7 +120,7 @@ h2{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;line-height:1.2;letter-spa
 <div class="topbar"><button class="btn" id="pptxBtn">📥 匯出 PPTX</button><button class="btn" onclick="window.print()">🖨 列印 / PDF</button></div>
 <div class="deck">
 
-<!-- ══════ 0 · COVER ══════ -->
+<!-- 0 · COVER -->
 <section class="slide active" data-slide="0">
 <div class="inner" style="align-items:center;text-align:center;gap:1.2rem">
   <div class="a hero-badge">&#127920; 老虎機 AI 開發競賽 &mdash; 最終成果報告</div>
@@ -118,7 +128,7 @@ h2{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;line-height:1.2;letter-spa
   <p class="a lead" style="text-align:center;margin:0 auto">
     主題：<strong class="accent-o">新一代福星高照</strong>（翻新既有機台）<br>
     6 個職能 Agent 實戰跑完一輪製程 &mdash; 企劃→美術→音效→Client→Server→機率<br>
-    <strong class="accent-c">本份呈現：實戰成果、各職能 Before/After、可複製框架</strong>
+    <strong class="accent-c">核心策略：AI 跑流程、人工審核把關</strong>
   </p>
   <div class="a pipe" style="margin:.3rem 0">
     <div class="node" style="border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.06);color:var(--amber);padding:.5rem .8rem;font-size:.95rem">&#9312; 知識收集 ✓</div>
@@ -127,68 +137,47 @@ h2{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;line-height:1.2;letter-spa
     <div class="arrow">&rarr;</div>
     <div class="node" style="border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.06);color:var(--lime);padding:.5rem .8rem;font-size:.95rem">&#9314; 實戰開發 ✓</div>
   </div>
-  <div class="a hero-hint">&#9654; 按 → 開始　|　Esc 看總覽</div>
+  <div class="a hero-hint">&#9654; 按 → 翻頁</div>
 </div>
 </section>
 
-<!-- ══════ 1 · 摘要 Executive Summary ══════ -->
+<!-- 1 · 摘要 -->
 <section class="slide" data-slide="1">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--cyan)">Executive Summary</span><h2 class="a">一頁看懂這次競賽成果</h2></div>
   <div class="a g4">
-    <div class="panel panel-c" style="padding:1rem;text-align:center">
-      <div class="metric accent-c">6</div>
-      <div class="metric-label">職能 Agent 全數上線運作</div>
-    </div>
-    <div class="panel panel-l" style="padding:1rem;text-align:center">
-      <div class="metric accent-l">1</div>
-      <div class="metric-label">完整老虎機 Demo（福星高照）</div>
-    </div>
-    <div class="panel panel-a" style="padding:1rem;text-align:center">
-      <div class="metric accent-a">3 階段</div>
-      <div class="metric-label">知識收集 → 建置 → 實戰，全數完成</div>
-    </div>
-    <div class="panel panel-o" style="padding:1rem;text-align:center">
-      <div class="metric accent-o">可複製</div>
-      <div class="metric-label">框架可套用到下一台機台</div>
-    </div>
+    <div class="panel panel-c" style="padding:1rem;text-align:center"><div class="metric accent-c">6</div><div class="metric-label">職能 Agent 全數上線運作</div></div>
+    <div class="panel panel-l" style="padding:1rem;text-align:center"><div class="metric accent-l">1</div><div class="metric-label">完整老虎機 Demo（福星高照）</div></div>
+    <div class="panel panel-a" style="padding:1rem;text-align:center"><div class="metric accent-a">3 階段</div><div class="metric-label">知識收集→建置→實戰，全完成</div></div>
+    <div class="panel panel-o" style="padding:1rem;text-align:center"><div class="metric accent-o">可複製</div><div class="metric-label">框架可套用到下一台機台</div></div>
   </div>
   <div class="a g3">
-    <div class="panel panel-r" style="padding:1.1rem">
-      <div class="panel-title" style="color:var(--rose);font-size:1.05rem">做了什麼</div>
-      <div class="panel-body" style="font-size:.9rem">為企劃／美術／音效／Client／Server／機率 6 職能各建一個 AI Agent，以一台既有機台翻新為場景跑通全製程。</div>
-    </div>
-    <div class="panel panel-c" style="padding:1.1rem">
-      <div class="panel-title" style="color:var(--cyan);font-size:1.05rem">怎麼做</div>
-      <div class="panel-body" style="font-size:.9rem">核心策略「<strong class="accent-c">AI 跑流程、人工審核把關</strong>」；串行流程改為七職能平行跑，搭配記憶與自動學習迴路。</div>
-    </div>
-    <div class="panel panel-l" style="padding:1.1rem">
-      <div class="panel-title" style="color:var(--lime);font-size:1.05rem">價值</div>
-      <div class="panel-body" style="font-size:.9rem">不只是一台 Demo，而是<strong class="accent-l">可複製、可累積、效率可量化</strong>的 Agent 製程框架。</div>
-    </div>
+    <div class="panel panel-r" style="padding:1.1rem"><div class="panel-title" style="color:var(--rose);font-size:1.05rem">做了什麼</div><div class="panel-body" style="font-size:.9rem">為 6 個職能各建一個 AI Agent，以一台既有機台翻新為場景，跑通完整開發製程。</div></div>
+    <div class="panel panel-c" style="padding:1.1rem"><div class="panel-title" style="color:var(--cyan);font-size:1.05rem">怎麼做</div><div class="panel-body" style="font-size:.9rem"><strong class="accent-c">AI 跑流程、人工審核把關</strong>；串行流程改為多職能平行，搭配記憶與自動學習迴路。</div></div>
+    <div class="panel panel-l" style="padding:1.1rem"><div class="panel-title" style="color:var(--lime);font-size:1.05rem">價值</div><div class="panel-body" style="font-size:.9rem">不只一台 Demo，而是<strong class="accent-l">可複製、可累積、效率可量化</strong>的 Agent 製程框架。</div></div>
   </div>
 </div>
 </section>
 
-<!-- ══════ 2 · 競賽回顧：痛點與目標 ══════ -->
+<!-- 2 · 痛點與目標 -->
 <section class="slide" data-slide="2">
 <div class="inner">
-  <div><span class="a eyebrow">Recap &middot; Problem &amp; Goal</span><h2 class="a">競賽回顧：痛點與目標</h2></div>
+  <div><span class="a eyebrow">Problem &amp; Goal</span><h2 class="a">為什麼做：痛點與目標</h2></div>
   <div class="a g2">
     <div class="panel panel-r a" style="padding:1.2rem">
       <div class="panel-title" style="color:var(--rose)">&#128293; 欲解決的開發痛點</div>
       <div class="panel-body">
-        &bull; <strong>重複性高</strong> &mdash; 每台新機台都要重做類似的規格、素材、數值設定<br>
-        &bull; <strong>知識散落</strong> &mdash; 競品分析、舊規格的市場與產品經驗、美術設計建議散落各處，難以系統化傳承複用<br>
-        &bull; <strong>迭代效率</strong> &mdash; 修改調整需要大量人工時間重複操作
+        &bull; <strong>重複性高</strong> &mdash; 每台新機台都要重做類似的規格、素材、數值<br>
+        &bull; <strong>知識散落</strong> &mdash; 競品分析、舊規格經驗、美術建議散落各處，難以傳承複用<br>
+        &bull; <strong>迭代效率</strong> &mdash; 修改調整需大量人工重複操作
       </div>
     </div>
     <div class="panel panel-l a" style="padding:1.2rem">
       <div class="panel-title" style="color:var(--lime)">&#127919; 我們的目標</div>
       <div class="panel-body">
         &bull; 選定主題：<strong class="accent-o">新一代福星高照</strong>（翻新既有機台）<br>
-        &bull; 使用既有 Code / 素材為基底，專注驗證 AI 製程<br>
-        &bull; 為 6 個職能各建一個 AI Agent，具備完整知識庫<br>
+        &bull; 用既有 Code / 素材為基底，專注驗證 AI 製程<br>
+        &bull; 為 6 職能各建一個具<strong class="accent-l">完整知識庫</strong>的 Agent<br>
         &bull; 建立<strong class="accent-c">可複製到其他機台</strong>的框架
       </div>
     </div>
@@ -200,264 +189,158 @@ h2{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;line-height:1.2;letter-spa
 </div>
 </section>
 
-<!-- ══════ 3 · 6 Agent 製程架構 ══════ -->
+<!-- 3 · 完整技術架構 -->
 <section class="slide" data-slide="3">
-<div class="inner">
+<div class="inner" style="gap:.8rem">
   <div><span class="a eyebrow" style="color:var(--purple)">System Architecture</span><h2 class="a">系統架構：完整技術架構</h2></div>
-
   <div class="a layers">
-    <!-- 接入層 -->
     <div class="layer" style="border-left-color:var(--orange)">
       <div><div class="ly-name accent-o">接入層</div><span class="ly-en">Ingress</span></div>
-      <div class="ly-body">
-        <span class="chip">各職能人員</span>
-        <span class="chip">Telegram Bot</span>
-        <span class="chip">Discord Bot</span>
-        <span class="chip">CLI / 終端</span>
-      </div>
+      <div class="ly-body"><span class="chip">各職能人員</span><span class="chip">Telegram Bot</span><span class="chip">Discord Bot</span><span class="chip">CLI / 終端</span></div>
     </div>
-    <!-- 編排層 -->
     <div class="layer" style="border-left-color:var(--purple)">
       <div><div class="ly-name accent-p">編排層</div><span class="ly-en">Orchestration · OpenClaw</span></div>
-      <div class="ly-body">
-        <span class="chip">多 Agent 路由 Gateway</span>
-        <span class="chip"><b>6 職能 Agent</b></span>
-        <span class="chip">&#128064; 人工審核節點</span>
-        <span class="chip">排程 / 權限隔離</span>
-        <span class="chip">&#9889; 自動生成 Skill</span>
-      </div>
+      <div class="ly-body"><span class="chip">多 Agent 路由 Gateway</span><span class="chip"><b>6 職能 Agent</b></span><span class="chip">&#128064; 人工審核節點</span><span class="chip">排程 / 權限隔離</span><span class="chip">&#9889; 自動生成 Skill</span></div>
     </div>
-    <!-- 模型層 -->
     <div class="layer" style="border-left-color:var(--cyan)">
       <div><div class="ly-name accent-c">模型層</div><span class="ly-en">LLM &amp; Models</span></div>
-      <div class="ly-body">
-        <span class="chip"><span class="k">雲端</span>GPT-5.5</span>
-        <span class="chip"><span class="k">雲端</span>Claude Opus 4.7</span>
-        <span class="chip"><span class="k">雲端</span>Gemini 3 Pro</span>
-        <span class="chip"><span class="k">本地·vLLM/H200</span>Qwen3.6</span>
-        <span class="chip"><span class="k">本地</span>Embedding</span>
-        <span class="chip"><span class="k">本地</span>Reranker</span>
-      </div>
+      <div class="ly-body"><span class="chip"><span class="k">雲端</span>GPT-5.5</span><span class="chip"><span class="k">雲端</span>Claude Opus 4.7</span><span class="chip"><span class="k">雲端</span>Gemini 3 Pro</span><span class="chip"><span class="k">本地·vLLM/H200</span>Qwen3.6</span><span class="chip"><span class="k">本地</span>Embedding</span><span class="chip"><span class="k">本地</span>Reranker</span></div>
     </div>
-    <!-- 記憶與知識層 -->
     <div class="layer" style="border-left-color:var(--lime)">
       <div><div class="ly-name accent-l">記憶與知識層</div><span class="ly-en">Memory &amp; Knowledge</span></div>
-      <div class="ly-body">
-        <span class="chip"><b>memory-lancedb-pro</b>（各 Agent scope 向量庫）</span>
-        <span class="chip">學習迴路 · 對話即更新</span>
-        <span class="chip">各職能知識庫</span>
-      </div>
+      <div class="ly-body"><span class="chip"><b>memory-lancedb-pro</b>（各 Agent scope 向量庫）</span><span class="chip">學習迴路 · 對話即更新</span><span class="chip">各職能知識庫</span></div>
     </div>
-    <!-- 工具層 -->
     <div class="layer" style="border-left-color:var(--amber)">
       <div><div class="ly-name accent-a">工具層</div><span class="ly-en">Tooling</span></div>
-      <div class="ly-body">
-        <span class="chip"><span class="k">MCP</span>Cocos · Spine</span>
-        <span class="chip"><span class="k">CLI</span>codex-imagegen · ElevenLabs · Suno</span>
-        <span class="chip"><span class="k">API</span>生成式服務</span>
-        <span class="chip">瀏覽器自動化測試</span>
-      </div>
+      <div class="ly-body"><span class="chip"><span class="k">MCP</span>Cocos · Spine</span><span class="chip"><span class="k">CLI</span>codex-imagegen · ElevenLabs · Suno</span><span class="chip"><span class="k">API</span>生成式服務</span><span class="chip">瀏覽器自動化測試</span></div>
     </div>
-    <!-- 治理層 -->
     <div class="layer" style="border-left-color:var(--rose)">
       <div><div class="ly-name accent-r">治理層</div><span class="ly-en">Governance</span></div>
-      <div class="ly-body">
-        <span class="chip">權限分級（讀/寫/執行）</span>
-        <span class="chip">資安 · 操作日誌</span>
-        <span class="chip">&#128202; 職責審計儀表板</span>
-        <span class="chip">&#128147; 健康度監控儀表板</span>
-      </div>
+      <div class="ly-body"><span class="chip">權限分級（讀/寫/執行）</span><span class="chip">資安 · 操作日誌</span><span class="chip">&#128202; 職責審計儀表板</span><span class="chip">&#128147; 健康度監控儀表板</span></div>
     </div>
   </div>
-
-  <div class="a panel" style="border:1px solid var(--stroke);padding:.55rem .8rem">
-    <div class="pipe" style="gap:.3rem;font-size:.72rem">
-      <span style="font-weight:800;color:var(--cyan);font-size:.72rem;margin-right:.2rem">&#128260; 製程流</span>
-      <div class="node" style="padding:.25rem .5rem;font-size:.72rem;border-color:rgba(74,222,128,.3)">企劃</div>
-      <div class="arrow" style="font-size:.9rem">&rarr;</div>
-      <div class="node" style="padding:.25rem .45rem;font-size:.72rem;border-color:rgba(251,191,36,.3)">&#128064;</div>
-      <div class="arrow" style="font-size:.9rem">&rarr;</div>
-      <div class="node" style="padding:.25rem .5rem;font-size:.72rem;border-color:rgba(34,211,238,.3)">美術／音效／機率（平行）</div>
-      <div class="arrow" style="font-size:.9rem">&rarr;</div>
-      <div class="node" style="padding:.25rem .45rem;font-size:.72rem;border-color:rgba(251,191,36,.3)">&#128064;</div>
-      <div class="arrow" style="font-size:.9rem">&rarr;</div>
-      <div class="node" style="padding:.25rem .5rem;font-size:.72rem;border-color:rgba(176,122,255,.3)">Client／Server</div>
-      <div class="arrow" style="font-size:.9rem">&rarr;</div>
-      <div class="node" style="padding:.25rem .45rem;font-size:.72rem;border-color:rgba(251,191,36,.3)">&#128064;</div>
-      <div class="arrow" style="font-size:.9rem">&rarr;</div>
-      <div class="node" style="padding:.25rem .5rem;font-size:.72rem;border-color:rgba(74,222,128,.3)">&#10003; 交付</div>
-      <span style="font-size:.66rem;color:var(--dim);margin-left:.3rem">&#128064; = 人工審核把關</span>
-    </div>
-  </div>
+  <div class="a" style="font-size:.78rem;color:var(--dim);text-align:center">六層由上而下協作：人員下指令 → OpenClaw 編排 6 Agent → 調用雲端/本地模型 → 讀寫記憶與知識 → 操作工具產出 → 全程權限與監控治理</div>
 </div>
 </section>
 
-<!-- ══════ 4 · 三階段如何落地 ══════ -->
+<!-- 4 · 製程流程圖 -->
 <section class="slide" data-slide="4">
-<div class="inner">
-  <div><span class="a eyebrow" style="color:var(--lime)">How We Delivered</span><h2 class="a">三階段如何落地（已完成）</h2></div>
-  <div class="a g3">
-    <div class="panel panel-a a" style="padding:1.1rem">
-      <div class="panel-title" style="color:var(--amber);font-size:1.05rem">&#9312; 知識收集 ✓</div>
-      <div class="panel-body" style="font-size:.88rem">
-        從既有專案萃取開發框架、共用模組、規格書、Code，建立各職能初版知識庫。<br><br>
-        <strong class="accent-a">對話即更新</strong> &mdash; 使用中 Agent 自動萃取有價值資訊持續補充。
-      </div>
+<div class="inner" style="gap:.9rem">
+  <div><span class="a eyebrow" style="color:var(--cyan)">Process Flow</span><h2 class="a">製程流程圖：一台機台怎麼被做出來</h2></div>
+
+  <div class="a flow">
+    <div class="stage" style="border-top-color:var(--lime)">
+      <div class="st-no">STAGE ①</div><div class="st-t accent-l">&#127920; 企劃 Agent</div>
+      <div class="st-d">競品分析 · 撰寫規格書 · 美術/音效需求定義</div>
     </div>
-    <div class="panel panel-c a" style="padding:1.1rem">
-      <div class="panel-title" style="color:var(--cyan);font-size:1.05rem">&#9313; 基礎建設 ✓</div>
-      <div class="panel-body" style="font-size:.88rem">
-        知識灌入、SOP 量化為可執行規則、配置專屬工具鏈、建立記憶與學習迴路。<br><br>
-        產出 <strong class="accent-c">6 個可運作 Agent</strong> + 權限／資安／監控機制。
-      </div>
+    <div class="gate"><span class="g-ico">&#128064;</span>審核</div>
+    <div class="stage" style="border-top-color:var(--cyan)">
+      <div class="st-no">STAGE ② · 平行</div><div class="st-t accent-c">&#127912;&#127925;&#127922; 美術／音效／機率</div>
+      <div class="st-d">同時開跑：素材生成 · 配樂音效 · RTP/機率驗證</div>
     </div>
-    <div class="panel panel-l a" style="padding:1.1rem">
-      <div class="panel-title" style="color:var(--lime);font-size:1.05rem">&#9314; 實戰開發 ✓</div>
-      <div class="panel-body" style="font-size:.88rem">
-        Agent 實際跑福星高照製程、人工審核迭代、調整邊界、監控優化。<br><br>
-        產出 <strong class="accent-l">可運行 Demo</strong> + 各職能 Before/After + 優化後配置。
-      </div>
+    <div class="gate"><span class="g-ico">&#128064;</span>審核</div>
+    <div class="stage" style="border-top-color:var(--purple)">
+      <div class="st-no">STAGE ③</div><div class="st-t accent-p">&#128187; Client／Server</div>
+      <div class="st-d">遊戲模組建置 · 前後端協議 · 整合素材/機率</div>
+    </div>
+    <div class="gate"><span class="g-ico">&#128064;</span>審核</div>
+    <div class="stage" style="border-top-color:var(--orange)">
+      <div class="st-no">STAGE ④</div><div class="st-t accent-o">&#9989; 整合交付</div>
+      <div class="st-d">組裝為可運行 Demo<br>（新一代福星高照）</div>
     </div>
   </div>
-  <div class="a panel" style="padding:1rem">
-    <div class="timeline">
-      <div class="t-date">4/09–5/08</div>
-      <div class="t-bar"><div style="font-weight:700;color:var(--amber)">&#9312;&#9313; 規劃期：知識收集 + Agent 基礎建設</div><div style="color:var(--dim);font-size:.85rem">6 Agent 初版建置完成（提前達成）</div></div>
-      <div class="t-date" style="color:var(--dim)">5/08</div>
-      <div class="t-bar" style="border-color:rgba(255,255,255,.15)"><div style="font-weight:700;color:var(--dim)">&#128203; 規劃藍圖繳交</div></div>
-      <div class="t-date">5/09–6/30</div>
-      <div class="t-bar" style="border-color:rgba(74,222,128,.3)"><div style="font-weight:700;color:var(--lime)">&#9314; 開發期：實戰開發 + 持續優化</div><div style="color:var(--dim);font-size:.85rem">Agent 跑製程、人工審核迭代、知識持續更新、Demo 整合</div></div>
-      <div class="t-date" style="color:var(--orange)">6/30</div>
-      <div class="t-bar" style="border-color:rgba(251,146,60,.4);padding-bottom:0"><div style="font-weight:700;color:var(--orange)">&#127942; 最終成果繳交 &mdash; 本份報告</div></div>
+
+  <div class="a loopbar loop-rework">
+    <span class="loop-ico">&#128260;</span>
+    <div><strong class="accent-r">審核退回迴路</strong> &mdash; 審核未過 → Agent 依意見<strong>自動修正</strong> → 再次審核，直到通過才進入下一關（不怕重工，所以前面各關平行跑）</div>
+  </div>
+  <div class="a loopbar loop-knowledge">
+    <span class="loop-ico">&#129504;</span>
+    <div><strong class="accent-l">知識學習迴路</strong> &mdash; 對話內容＋每次退回案例 → <strong>自動萃取更新知識庫 / 生成 Skill</strong> → Agent 下次更準（越用越強，零額外維護）</div>
+  </div>
+  <div class="a" style="font-size:.75rem;color:var(--dim);text-align:center">&#128064; = 人工品質審核把關，每個環節產出後皆須通過審核</div>
+</div>
+</section>
+
+<!-- 5 · 實證截圖 -->
+<section class="slide" data-slide="5">
+<div class="inner" style="gap:.8rem">
+  <div><span class="a eyebrow" style="color:var(--lime)">Evidence</span><h2 class="a">實證：Agent 真的在運作</h2></div>
+  <div class="a g2" style="grid-template-columns:1.55fr 1fr;align-items:start">
+    <div>
+      <a class="shot" href="assets/audit-dashboard.png" target="_blank"><img src="assets/audit-dashboard.png" alt="職責審計儀表板（去敏）" onerror="this.style.display='none';this.parentNode.querySelector('.shot-ph').style.display='flex'"><div class="shot-ph" style="display:none;min-height:240px;align-items:center;justify-content:center;text-align:center;color:var(--dim);font-size:.85rem;padding:1.5rem;line-height:1.6">📊 職責審計儀表板（去敏版）<br>截圖待上傳<br><span style="font-size:.7rem;font-family:var(--mono)">見最後說明，一行指令補上</span></div></a>
+      <div class="cap">▲ 職責審計儀表板 — 即時追蹤各 Agent（虎機美術 Agent、art-agent…）的工具呼叫、模型用量與操作日誌（姓名/需求欄已去敏）</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.6rem">
+      <div class="panel panel-l" style="padding:.9rem">
+        <div class="panel-title" style="color:var(--lime);font-size:1rem">這張圖證明了什麼</div>
+        <div class="panel-body" style="font-size:.85rem">
+          &bull; 6 職能 Agent <strong class="accent-l">真實在跑</strong>，非概念展示<br>
+          &bull; 每個動作<strong>可追溯</strong>（誰、用哪個 Agent、呼叫什麼工具、哪個模型）<br>
+          &bull; 治理層的<strong class="accent-l">職責審計</strong>實際落地
+        </div>
+      </div>
+      <div class="fill">本頁可再加：① 健康度監控儀表板 ② 福星高照 Demo 實機畫面 ③ 各 Agent 對話/產出截圖（見最後一頁建議清單）</div>
     </div>
   </div>
 </div>
 </section>
 
-<!-- ══════ 5 · 技術亮點 ══════ -->
-<section class="slide" data-slide="5">
+<!-- 6 · 技術亮點 -->
+<section class="slide" data-slide="6">
 <div class="inner" style="gap:.9rem">
   <div><span class="a eyebrow" style="color:var(--purple)">Technical Highlights</span><h2 class="a">技術實作亮點</h2></div>
   <div class="a g3" style="gap:.7rem">
-    <div class="panel panel-p a" style="padding:.9rem">
-      <div class="panel-title" style="color:var(--purple);font-size:1rem">&#129504; 記憶 + 學習迴路</div>
-      <div class="panel-body" style="font-size:.83rem">記住歷次修正、跨 Agent 共享上下文、交付前自檢修正，越用越準的正向循環。</div>
-    </div>
-    <div class="panel panel-l a" style="padding:.9rem">
-      <div class="panel-title" style="color:var(--lime);font-size:1rem">&#9889; 自動生成 Skill</div>
-      <div class="panel-body" style="font-size:.83rem">對話即更新 &mdash; Agent 自動萃取經驗成可執行能力模組，打破手動維護 Prompt／知識庫的舊模式。</div>
-    </div>
-    <div class="panel panel-o a" style="padding:.9rem">
-      <div class="panel-title" style="color:var(--orange);font-size:1rem">&#128736; AI 工具鏈</div>
-      <div class="panel-body" style="font-size:.83rem">每個 Agent 配置專屬生成式／自動化／分析工具，以 MCP・CLI・API・網頁自動化操作。</div>
-    </div>
+    <div class="panel panel-p a" style="padding:.9rem"><div class="panel-title" style="color:var(--purple);font-size:1rem">&#129504; 記憶 + 學習迴路</div><div class="panel-body" style="font-size:.83rem">記住歷次修正、跨 Agent 共享上下文、交付前自檢，越用越準的正向循環。</div></div>
+    <div class="panel panel-l a" style="padding:.9rem"><div class="panel-title" style="color:var(--lime);font-size:1rem">&#9889; 自動生成 Skill</div><div class="panel-body" style="font-size:.83rem">對話即更新，Agent 自動把經驗變成可執行能力模組，打破手動維護知識庫的舊模式。</div></div>
+    <div class="panel panel-o a" style="padding:.9rem"><div class="panel-title" style="color:var(--orange);font-size:1rem">&#128736; AI 工具鏈</div><div class="panel-body" style="font-size:.83rem">每個 Agent 配置專屬生成式／自動化工具，以 MCP・CLI・API・瀏覽器自動化操作。</div></div>
   </div>
   <div class="a g3" style="gap:.7rem">
-    <div class="panel panel-r a" style="padding:.8rem">
-      <div class="panel-title" style="color:var(--rose);font-size:.95rem">&#128274; 權限 / 資安</div>
-      <div class="panel-body" style="font-size:.8rem">獨立權限範圍、分級授權、機敏資料不外洩、操作日誌完整記錄。</div>
-    </div>
-    <div class="panel panel-c a" style="padding:.8rem">
-      <div class="panel-title" style="color:var(--cyan);font-size:.95rem">&#128202; 雙儀表板</div>
-      <div class="panel-body" style="font-size:.8rem">職責審計儀表板（使用狀況／需求缺口）＋ 健康度監控儀表板（即時告警）。</div>
-    </div>
-    <div class="panel panel-a a" style="padding:.8rem">
-      <div class="panel-title" style="color:var(--amber);font-size:.95rem">&#128640; 可擴展設計</div>
-      <div class="panel-body" style="font-size:.8rem">新增 Agent 只需灌知識 + 設工具鏈，不動核心；架構支援隨時擴充。</div>
-    </div>
+    <div class="panel panel-r a" style="padding:.8rem"><div class="panel-title" style="color:var(--rose);font-size:.95rem">&#128274; 權限 / 資安</div><div class="panel-body" style="font-size:.8rem">獨立權限範圍、分級授權、機敏不外洩、操作日誌完整。</div></div>
+    <div class="panel panel-c a" style="padding:.8rem"><div class="panel-title" style="color:var(--cyan);font-size:.95rem">&#128202; 雙儀表板</div><div class="panel-body" style="font-size:.8rem">職責審計（使用狀況/缺口）＋ 健康度監控（即時告警）。</div></div>
+    <div class="panel panel-a a" style="padding:.8rem"><div class="panel-title" style="color:var(--amber);font-size:.95rem">&#128640; 可擴展設計</div><div class="panel-body" style="font-size:.8rem">新增 Agent 只需灌知識 + 設工具鏈，不動核心。</div></div>
   </div>
 </div>
 </section>
 
-<!-- ══════ 6 · 各職能成果 — 開場 ══════ -->
-<section class="slide" data-slide="6">
-<div class="inner" style="align-items:center;text-align:center">
-  <span class="a eyebrow" style="color:var(--orange)">Results by Function</span>
-  <h2 class="a" style="background:linear-gradient(135deg,var(--orange),var(--amber),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">各職能實戰成果</h2>
-  <p class="a lead" style="text-align:center;margin:.4rem auto 0">接下來 6 頁，由<strong class="accent-o">各職能負責人</strong>分享自己 Agent 的能力、實際產出，以及 <strong class="accent-c">Before / After 工時數據</strong>。</p>
-  <div class="a g4" style="gap:.55rem;margin-top:.6rem;font-size:.8rem">
-    <span class="pill pill-l">&#127920; 企劃</span>
-    <span class="pill pill-c">&#127912; 美術</span>
-    <span class="pill pill-r">&#127925; 音效</span>
-    <span class="pill pill-p">&#128187; Client</span>
-    <span class="pill pill-b">&#128421; Server</span>
-    <span class="pill pill-o">&#127922; 機率</span>
-  </div>
-  <div class="a fill" style="max-width:60ch;margin:.8rem auto 0;text-align:left">每頁的 <strong>Before/After 工時</strong>、<strong>實際產出 / Demo</strong>、<strong>一句心得</strong> 三個欄位，請各職能填入真實數字與成果（勿編造；沒有數據可留空於現場口述）。</div>
-</div>
-</section>
-
-<!-- ══════ 7–13 · 各職能成果頁（由 JS 模板生成） ══════ -->
-<div id="funcSlides"></div>
-
-<!-- ══════ 14 · 整體成果彙總 ══════ -->
-<section class="slide" data-slide="14">
+<!-- 7 · 三階段落地 -->
+<section class="slide" data-slide="7">
 <div class="inner">
-  <div><span class="a eyebrow" style="color:var(--cyan)">Aggregate Outcome</span><h2 class="a">整體成果彙總</h2></div>
+  <div><span class="a eyebrow" style="color:var(--lime)">How We Delivered</span><h2 class="a">三階段如何落地（已完成）</h2></div>
   <div class="a g3">
-    <div class="panel panel-l" style="padding:1.2rem;text-align:center">
-      <div class="metric-label" style="margin:0 0 .4rem">規格書產出</div>
-      <div style="color:var(--dim);font-size:.85rem">Before：約 3–5 天</div>
-      <div class="fill" style="margin-top:.5rem;text-align:center">After：＿＿天</div>
-    </div>
-    <div class="panel panel-c" style="padding:1.2rem;text-align:center">
-      <div class="metric-label" style="margin:0 0 .4rem">重複性開發工作</div>
-      <div style="color:var(--dim);font-size:.85rem">Before：每台機台重做</div>
-      <div class="fill" style="margin-top:.5rem;text-align:center">After：降低＿＿%</div>
-    </div>
-    <div class="panel panel-o" style="padding:1.2rem;text-align:center">
-      <div class="metric-label" style="margin:0 0 .4rem">數值驗證</div>
-      <div style="color:var(--dim);font-size:.85rem">Before：約數天</div>
-      <div class="fill" style="margin-top:.5rem;text-align:center">After：＿＿（目標當日）</div>
-    </div>
+    <div class="panel panel-a a" style="padding:1.1rem"><div class="panel-title" style="color:var(--amber);font-size:1.05rem">&#9312; 知識收集 ✓</div><div class="panel-body" style="font-size:.88rem">從既有專案萃取框架、共用模組、規格書、Code，建立各職能初版知識庫。<br><br><strong class="accent-a">對話即更新</strong>，使用中持續補充。</div></div>
+    <div class="panel panel-c a" style="padding:1.1rem"><div class="panel-title" style="color:var(--cyan);font-size:1.05rem">&#9313; 基礎建設 ✓</div><div class="panel-body" style="font-size:.88rem">知識灌入、SOP 量化為規則、配置工具鏈、建立記憶與學習迴路。<br><br>產出 <strong class="accent-c">6 個可運作 Agent</strong> + 權限/資安/監控。</div></div>
+    <div class="panel panel-l a" style="padding:1.1rem"><div class="panel-title" style="color:var(--lime);font-size:1.05rem">&#9314; 實戰開發 ✓</div><div class="panel-body" style="font-size:.88rem">Agent 實際跑福星高照製程、人工審核迭代、監控優化。<br><br>產出 <strong class="accent-l">可運行 Demo</strong> + 優化後配置。</div></div>
   </div>
-  <div class="a panel" style="border:2px solid rgba(74,222,128,.3);padding:1rem">
-    <div style="font-weight:800;color:var(--lime);font-size:1rem;margin-bottom:.4rem">&#128200; 彙總說明</div>
-    <div class="panel-body" style="font-size:.9rem">本頁彙整各職能頁的 Before/After，呈現整體效率提升。<span class="accent-a">＊以各職能實測數據為準，彙整後填入；不編造數字。</span></div>
+  <div class="a panel" style="padding:1rem">
+    <div class="timeline">
+      <div class="t-date">4/09–5/08</div><div class="t-bar"><div style="font-weight:700;color:var(--amber)">&#9312;&#9313; 規劃期：知識收集 + Agent 基礎建設</div><div style="color:var(--dim);font-size:.85rem">6 Agent 初版建置完成（提前達成）</div></div>
+      <div class="t-date" style="color:var(--dim)">5/08</div><div class="t-bar" style="border-color:rgba(255,255,255,.15)"><div style="font-weight:700;color:var(--dim)">&#128203; 規劃藍圖繳交</div></div>
+      <div class="t-date">5/09–6/30</div><div class="t-bar" style="border-color:rgba(74,222,128,.3)"><div style="font-weight:700;color:var(--lime)">&#9314; 開發期：實戰開發 + 持續優化</div><div style="color:var(--dim);font-size:.85rem">Agent 跑製程、人工審核迭代、知識持續更新、Demo 整合</div></div>
+      <div class="t-date" style="color:var(--orange)">6/30</div><div class="t-bar" style="border-color:rgba(251,146,60,.4);padding-bottom:0"><div style="font-weight:700;color:var(--orange)">&#127942; 最終成果繳交 — 本報告</div></div>
+    </div>
   </div>
 </div>
 </section>
 
-<!-- ══════ 15 · 挑戰與解決 ══════ -->
-<section class="slide" data-slide="15">
+<!-- 8 · 各職能成果（連結索引） -->
+<section class="slide" data-slide="8">
 <div class="inner">
-  <div><span class="a eyebrow" style="color:var(--rose)">Challenges &amp; Lessons</span><h2 class="a">遭遇挑戰與解決</h2></div>
-  <div class="a g2">
-    <div class="panel panel-r" style="padding:1.1rem">
-      <div class="panel-title" style="color:var(--rose);font-size:1.05rem">&#9888; 過程中的挑戰</div>
-      <div class="fill" style="margin-top:.5rem">列出 2–4 個實際遇到的問題（例：Agent 產出需多輪審核才達標、工具串接、知識庫冷啟動、跨職能交付格式…）</div>
-    </div>
-    <div class="panel panel-l" style="padding:1.1rem">
-      <div class="panel-title" style="color:var(--lime);font-size:1.05rem">&#10004; 解法與學到的經驗</div>
-      <div class="fill" style="margin-top:.5rem">對應每個挑戰的解決方式與心得（例：量化 SOP、加審核節點、自動學習迴路收斂…）</div>
-    </div>
-  </div>
-  <div class="a panel" style="padding:.9rem">
-    <div class="panel-body" style="font-size:.88rem;color:var(--dim)">＊此頁豐富報告深度，建議由各職能彙整最具代表性的 1–2 個案例。沒有素材可整頁省略。</div>
-  </div>
+  <div><span class="a eyebrow" style="color:var(--orange)">Results by Function</span><h2 class="a">各職能實戰成果</h2></div>
+  <p class="a lead">6 職能各自的能力與實際產出，由<strong class="accent-o">各職能負責人</strong>提供連結，深入展示成果與 Before/After。</p>
+  <div class="a fidx" id="fidx"></div>
+  <div class="a" style="font-size:.75rem;color:var(--dim);text-align:center">各連結待各職能補上（簡報、Demo、產出物或成果頁）</div>
 </div>
 </section>
 
-<!-- ══════ 16 · 未來展望 ══════ -->
-<section class="slide" data-slide="16">
+<!-- 9 · 未來展望 -->
+<section class="slide" data-slide="9">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--orange)">What's Next</span><h2 class="a">未來展望</h2></div>
   <div class="a g3">
-    <div class="panel panel-o a" style="text-align:center;padding:1.1rem">
-      <div style="font-size:1.4rem">&#127920;</div>
-      <div style="font-weight:800;font-size:1rem;color:var(--orange)">本次競賽</div>
-      <div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">翻新既有老虎機一台，跑通並驗證製程</div>
-    </div>
-    <div class="panel panel-c a" style="text-align:center;padding:1.1rem">
-      <div style="font-size:1.4rem">&#128640;</div>
-      <div style="font-weight:800;font-size:1rem;color:var(--cyan)">短期延伸</div>
-      <div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">複製到第二台機台、規劃營運 Agent</div>
-    </div>
-    <div class="panel panel-l a" style="text-align:center;padding:1.1rem">
-      <div style="font-size:1.4rem">&#127907;</div>
-      <div style="font-weight:800;font-size:1rem;color:var(--lime)">長期願景</div>
-      <div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">套用到捕魚機 / 平台活動</div>
-    </div>
+    <div class="panel panel-o a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#127920;</div><div style="font-weight:800;font-size:1rem;color:var(--orange)">本次競賽</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">翻新既有老虎機一台，跑通並驗證製程</div></div>
+    <div class="panel panel-c a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#128640;</div><div style="font-weight:800;font-size:1rem;color:var(--cyan)">短期延伸</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">複製到第二台機台、規劃營運 Agent</div></div>
+    <div class="panel panel-l a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#127907;</div><div style="font-weight:800;font-size:1rem;color:var(--lime)">長期願景</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">套用到捕魚機 / 平台活動</div></div>
   </div>
   <div class="a panel" style="border:2px solid rgba(251,146,60,.3);padding:.9rem">
     <div style="font-weight:800;color:var(--orange);font-size:.95rem;margin-bottom:.3rem">&#128640; 框架進化能力</div>
@@ -471,8 +354,8 @@ h2{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;line-height:1.2;letter-spa
 </div>
 </section>
 
-<!-- ══════ 17 · 結論 ══════ -->
-<section class="slide" data-slide="17">
+<!-- 10 · 結論 -->
+<section class="slide" data-slide="10">
 <div class="inner" style="align-items:center;justify-content:center;text-align:center">
   <div class="a panel" style="padding:2rem 3rem;border-color:rgba(251,146,60,.2);background:linear-gradient(135deg,rgba(251,146,60,.05),rgba(34,211,238,.04))">
     <h2 class="a" style="background:linear-gradient(135deg,var(--orange),var(--amber),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:clamp(1.6rem,3vw,2.4rem)">建立可複製的 AI 製程框架</h2>
@@ -485,69 +368,30 @@ h2{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;line-height:1.2;letter-spa
 
 </div>
 
-<!-- NAV -->
 <button class="nav-btn nav-prev" id="prevBtn">&#10094;</button>
 <button class="nav-btn nav-next" id="nextBtn">&#10095;</button>
 <div class="dots" id="dots"></div>
 <div class="pg" id="pg"></div>
 
 <script>
-// ───── 各職能成果頁資料（能力＝實際 grounding；數據欄位留給各職能填）─────
 const FUNCS=[
-  {key:'plan', emoji:'🎰', name:'企劃', en:'Game Design', color:'lime',
-   caps:[['撰寫遊戲規格書','cli'],['競品分析與拆解','cli'],['AI 生成遊戲示意圖','cli']]},
-  {key:'art', emoji:'🎨', name:'美術', en:'Art', color:'cyan',
-   caps:[['AI 生圖 / 修圖','cli'],['Spine 2D 動畫製作','cli'],['Cocos 素材整合','mcp']]},
-  {key:'audio', emoji:'🎵', name:'音效', en:'Audio', color:'rose',
-   caps:[['批次音效生成','cli'],['AI 配樂 / 語音合成','cli'],['放入 Cocos 專案','cli']]},
-  {key:'client', emoji:'💻', name:'Client', en:'Client', color:'purple',
-   caps:[['Cocos 遊戲模組建置','mcp'],['Spine / 音效整合','mcp'],['共用模組管理','cli']]},
-  {key:'server', emoji:'🖥️', name:'Server', en:'Server', color:'blue',
-   caps:[['後端遊戲模組產出','cli'],['前後端協議設計','cli'],['單元測試撰寫','cli']]},
-  {key:'prob', emoji:'🎲', name:'機率', en:'Probability', color:'orange',
-   caps:[['RTP / 命中率計算','cli'],['機率模擬驗證','cli'],['機率報告審核','mcp']]},
+  {emoji:'🎰',name:'企劃',en:'Game Design',color:'lime',caps:'競品分析 · 規格書 · 需求定義'},
+  {emoji:'🎨',name:'美術',en:'Art',color:'cyan',caps:'AI 生圖/修圖 · Spine 動畫 · 素材整合'},
+  {emoji:'🎵',name:'音效',en:'Audio',color:'rose',caps:'批次音效 · AI 配樂/語音 · 入專案'},
+  {emoji:'💻',name:'Client',en:'Client',color:'purple',caps:'Cocos 模組 · Spine/音效整合 · 共用模組'},
+  {emoji:'🖥️',name:'Server',en:'Server',color:'blue',caps:'後端模組 · 前後端協議 · 單元測試'},
+  {emoji:'🎲',name:'機率',en:'Probability',color:'orange',caps:'RTP/命中率 · 機率模擬驗證 · 報告審核'},
 ];
-const TAGLABEL={cli:'CLI',mcp:'MCP',api:'API',web:'網頁自動化'};
 (function(){
-  const host=document.getElementById('funcSlides');
-  FUNCS.forEach((f,i)=>{
-    const c=f.color;
-    const caps=f.caps.map(([t,tg])=>`<div class="cap-row"><span>${t}</span><span class="tag tag-${tg}">${TAGLABEL[tg]}</span></div>`).join('');
-    host.insertAdjacentHTML('beforeend',`
-<section class="slide" data-slide="${7+i}">
-<div class="inner">
-  <div><span class="a eyebrow" style="color:var(--${c})">${f.en} Agent &middot; 職能 ${i+1}/7</span>
-  <h2 class="a">${f.emoji} ${f.name} Agent — 實戰成果</h2></div>
-  <div class="a g2" style="grid-template-columns:1.05fr 1fr">
-    <div class="panel panel-${c[0]} a" style="padding:1.1rem">
-      <div class="panel-title" style="color:var(--${c});font-size:1.05rem">&#9881;&#65039; Agent 能力</div>
-      <div style="margin-top:.4rem">${caps}</div>
-      <div style="margin-top:.5rem;font-size:.72rem;color:var(--dim)">標籤＝操作方式：CLI 指令／MCP 工具／API／網頁自動化</div>
-    </div>
-    <div class="panel a" style="padding:1.1rem">
-      <div class="panel-title" style="color:var(--${c});font-size:1.05rem">&#9201;&#65039; Before / After 工時</div>
-      <div class="g2" style="gap:.7rem;margin-top:.5rem">
-        <div style="text-align:center"><div class="metric" style="color:var(--rose);font-size:1.8rem">Before</div><div class="fill" style="margin-top:.4rem;text-align:center">＿＿</div></div>
-        <div style="text-align:center"><div class="metric" style="color:var(--lime);font-size:1.8rem">After</div><div class="fill" style="margin-top:.4rem;text-align:center">＿＿</div></div>
-      </div>
-      <div class="fill" style="margin-top:.6rem">提升幅度 / 換算（例：3 天 → 0.5 天，省 80%）</div>
-    </div>
-  </div>
-  <div class="a g2" style="grid-template-columns:1.4fr 1fr">
-    <div class="panel a" style="padding:1rem">
-      <div class="panel-title" style="color:var(--${c});font-size:1rem">&#128221; 實際產出 / Demo</div>
-      <div class="fill" style="margin-top:.4rem">放這次實際做出的成果：規格書／素材／程式模組／機率報告／測試結果…（可貼截圖到 assets/ 後置入）</div>
-    </div>
-    <div class="panel a" style="padding:1rem">
-      <div class="panel-title" style="color:var(--${c});font-size:1rem">&#128172; 一句心得</div>
-      <div class="fill" style="margin-top:.4rem">用 Agent 後最有感的一點</div>
-    </div>
-  </div>
-</div>
-</section>`);
+  const host=document.getElementById('fidx');
+  FUNCS.forEach(f=>{
+    host.insertAdjacentHTML('beforeend',`<div class="fcard" style="border-left-color:var(--${f.color})">
+      <div class="fc-h accent-${f.color[0]}">${f.emoji} ${f.name}</div>
+      <div class="fc-cap">${f.caps}</div>
+      <span class="fc-link">🔗 連結待補</span>
+    </div>`);
   });
 })();
-
 (function(){
   const S=document.querySelectorAll('.slide'),N=S.length;
   const bar=document.getElementById('progress'),dots=document.getElementById('dots'),pg=document.getElementById('pg');
@@ -563,90 +407,48 @@ const TAGLABEL={cli:'CLI',mcp:'MCP',api:'API',web:'網頁自動化'};
   go(0);
 })();
 
-// ───── PPTX 匯出（PptxGenJS）─────
 document.getElementById('pptxBtn').onclick=function(){
-  if(typeof PptxGenJS==='undefined'){
-    const sc=document.createElement('script');
-    sc.src='https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js';
-    sc.onload=buildPptx; document.head.appendChild(sc);
-  } else buildPptx();
+  if(typeof PptxGenJS==='undefined'){const sc=document.createElement('script');sc.src='https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js';sc.onload=buildPptx;document.head.appendChild(sc);}else buildPptx();
 };
 function buildPptx(){
-  const P=new PptxGenJS();
-  P.defineLayout({name:'W',width:13.33,height:7.5}); P.layout='W';
-  const BG={color:'06060e'}, TI='eaeaf4', DIM='a0a0b0';
-  const F='Noto Sans TC';
-  function head(s,ey,t,col){s.background=BG; s.addText(ey,{x:.6,y:.45,w:12,fontSize:11,color:col||'fb923c',fontFace:F,charSpacing:2});
-    s.addText(t,{x:.6,y:.75,w:12.1,fontSize:26,bold:true,color:TI,fontFace:F});}
-  // cover
-  let s=P.addSlide(); s.background=BG;
+  const P=new PptxGenJS(); P.defineLayout({name:'W',width:13.33,height:7.5}); P.layout='W';
+  const BG={color:'06060e'},TI='eaeaf4',DIM='a0a0b0',F='Noto Sans TC';
+  function head(s,ey,t,col){s.background=BG;s.addText(ey,{x:.6,y:.45,w:12,fontSize:11,color:col||'fb923c',fontFace:F,charSpacing:2});s.addText(t,{x:.6,y:.75,w:12.1,fontSize:26,bold:true,color:TI,fontFace:F});}
+  let s=P.addSlide();s.background=BG;
   s.addText('🎰 老虎機 AI 開發競賽 — 最終成果報告',{x:.6,y:1.6,w:12,fontSize:16,color:'fb923c',fontFace:F,align:'center'});
   s.addText('6 Agent：從藍圖到成果',{x:.6,y:2.3,w:12,fontSize:40,bold:true,color:TI,fontFace:F,align:'center'});
-  s.addText('主題：新一代福星高照（翻新既有機台）\n企劃→美術→音效→Client→Server→機率',{x:.6,y:4,w:12,fontSize:15,color:DIM,fontFace:F,align:'center',lineSpacing:26});
-  // summary
-  s=P.addSlide(); head(s,'EXECUTIVE SUMMARY','一頁看懂這次競賽成果','22d3ee');
-  s.addText([{text:'6  ',options:{bold:true,color:'22d3ee'}},{text:'職能 Agent 全數上線　',options:{color:DIM}},
-    {text:'1  ',options:{bold:true,color:'4ade80'}},{text:'完整 Demo（福星高照）',options:{color:DIM}}],{x:.6,y:1.8,w:12,fontSize:18,fontFace:F});
-  s.addText('做了什麼：為 6 職能各建一個 AI Agent，以一台機台翻新跑通全製程。\n怎麼做：AI 跑流程、人工審核把關；串行改六職能平行 + 記憶／自動學習迴路。\n價值：可複製、可累積、效率可量化的 Agent 製程框架。',
-    {x:.6,y:2.9,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
-  // recap
-  s=P.addSlide(); head(s,'RECAP · PROBLEM & GOAL','競賽回顧：痛點與目標');
-  s.addText('痛點：重複性高、知識散落、迭代效率低。',{x:.6,y:1.9,w:12,fontSize:16,color:'fb7185',fontFace:F});
-  s.addText('目標：6 職能各建 Agent、完整知識庫、可複製到其他機台的框架。',{x:.6,y:2.7,w:12,fontSize:16,color:'4ade80',fontFace:F});
-  s.addText('核心策略：AI 跑流程、人工做品質審核把關。',{x:.6,y:3.7,w:12,fontSize:18,bold:true,color:'fb923c',fontFace:F});
-  // architecture
-  s=P.addSlide(); head(s,'SYSTEM ARCHITECTURE','系統架構：完整技術架構','b07aff');
+  s.addText('主題：新一代福星高照（翻新既有機台）\n核心策略：AI 跑流程、人工審核把關',{x:.6,y:4,w:12,fontSize:15,color:DIM,fontFace:F,align:'center',lineSpacing:26});
+  s=P.addSlide();head(s,'EXECUTIVE SUMMARY','一頁看懂這次競賽成果','22d3ee');
+  s.addText('6 職能 Agent 全數上線 ｜ 1 台完整 Demo（福星高照）｜ 3 階段全完成 ｜ 框架可複製',{x:.6,y:1.8,w:12,fontSize:16,color:'e8e8f0',fontFace:F});
+  s.addText('做了什麼：為 6 職能各建一個 AI Agent，以一台機台翻新跑通製程。\n怎麼做：AI 跑流程、人工審核把關；串行改多職能平行 + 記憶/自動學習迴路。\n價值：可複製、可累積、效率可量化的 Agent 製程框架。',{x:.6,y:2.7,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s=P.addSlide();head(s,'PROBLEM & GOAL','為什麼做：痛點與目標','fb7185');
+  s.addText('痛點：重複性高、知識散落、迭代效率低。\n目標：6 職能各建 Agent、完整知識庫、可複製框架。\n核心策略：AI 跑流程、人工審核把關。',{x:.6,y:1.9,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s=P.addSlide();head(s,'SYSTEM ARCHITECTURE','系統架構：完整技術架構','b07aff');
   [['接入層 Ingress','各職能人員 · Telegram / Discord Bot · CLI','fb923c'],
    ['編排層 Orchestration · OpenClaw','多 Agent 路由 Gateway · 6 職能 Agent · 👁 人工審核節點 · 排程/權限隔離 · ⚡ 自動生成 Skill','b07aff'],
    ['模型層 Models','雲端：GPT-5.5 · Claude Opus 4.7 · Gemini 3 Pro ｜ 本地(vLLM/H200)：Qwen3.6 · Embedding · Reranker','22d3ee'],
    ['記憶與知識層 Memory','memory-lancedb-pro（各 Agent scope 向量庫）· 學習迴路 · 各職能知識庫','4ade80'],
    ['工具層 Tooling','MCP：Cocos/Spine ｜ CLI：codex-imagegen/ElevenLabs/Suno ｜ API ｜ 瀏覽器自動化','fbbf24'],
    ['治理層 Governance','權限分級 · 資安/操作日誌 · 📊 職責審計儀表板 · 💓 健康度監控儀表板','fb7185'],
-  ].forEach((L,i)=>{
-    const y=1.55+i*0.92;
-    s.addShape(P.ShapeType.rect,{x:.5,y:y,w:12.3,h:.8,fill:{color:'0c0c1a'},line:{color:L[2],width:1}});
-    s.addText(L[0],{x:.65,y:y,w:2.7,h:.8,fontSize:11,bold:true,color:L[2],fontFace:F,valign:'middle'});
-    s.addText(L[1],{x:3.4,y:y,w:9.2,h:.8,fontSize:10.5,color:'e8e8f0',fontFace:F,valign:'middle'});
-  });
-  s.addText('製程流：企劃 →〔審核〕→ 美術/音效/機率（平行）→〔審核〕→ Client/Server →〔審核〕→ ✓ 交付　（👁 = 人工審核把關）',
-    {x:.5,y:7.0,w:12.3,h:.4,fontSize:9.5,color:DIM,fontFace:F,align:'center'});
-  // 3 phases
-  s=P.addSlide(); head(s,'HOW WE DELIVERED','三階段如何落地（已完成）','4ade80');
-  s.addText('① 知識收集 ✓　② 基礎建設 ✓（6 Agent + 權限/資安/監控）　③ 實戰開發 ✓（Demo + Before/After）',
-    {x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:26});
-  s.addText('時程：4/9–5/8 規劃期｜5/8 藍圖繳交｜5/9–6/30 開發期｜6/30 最終成果',{x:.6,y:3.4,w:12,fontSize:13,color:DIM,fontFace:F});
-  // tech highlights
-  s=P.addSlide(); head(s,'TECHNICAL HIGHLIGHTS','技術實作亮點','b07aff');
-  s.addText('🧠 記憶+學習迴路　⚡ 自動生成 Skill　🛠 AI 工具鏈（MCP/CLI/API/網頁）\n🔒 權限/資安　📊 雙儀表板　🚀 可擴展設計',
-    {x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
-  // function intro
-  s=P.addSlide(); head(s,'RESULTS BY FUNCTION','各職能實戰成果','fb923c');
-  s.addText('以下 6 頁由各職能負責人分享 Agent 能力、實際產出與 Before/After 工時。',{x:.6,y:2,w:12,fontSize:15,color:DIM,fontFace:F});
-  // per-function (editable template pages)
-  FUNCS.forEach((f,i)=>{
-    const sl=P.addSlide(); sl.background=BG;
-    sl.addText(f.en+' Agent · 職能 '+(i+1)+'/7',{x:.6,y:.45,w:12,fontSize:11,color:'fb923c',fontFace:F,charSpacing:2});
-    sl.addText(f.emoji+' '+f.name+' Agent — 實戰成果',{x:.6,y:.78,w:12,fontSize:24,bold:true,color:TI,fontFace:F});
-    sl.addText('Agent 能力：\n'+f.caps.map(c=>'• '+c[0]+'（'+(TAGLABEL[c[1]])+'）').join('\n'),
-      {x:.6,y:1.7,w:6,fontSize:14,color:'e8e8f0',fontFace:F,lineSpacing:24});
-    sl.addText('Before：＿＿　→　After：＿＿\n提升幅度：＿＿\n\n實際產出 / Demo：＿＿\n一句心得：＿＿',
-      {x:6.9,y:1.7,w:6,fontSize:14,color:'fbbf24',fontFace:F,lineSpacing:24});
-    sl.addText('✎ 由各職能填入真實數字與成果（勿編造）',{x:6.9,y:5.6,w:6,fontSize:10,color:DIM,fontFace:F,italic:true});
-  });
-  // aggregate
-  s=P.addSlide(); head(s,'AGGREGATE OUTCOME','整體成果彙總','22d3ee');
-  s.addText('規格書產出：3–5 天 → ＿＿｜重複性開發：每台重做 → 降低＿＿%｜數值驗證：數天 → ＿＿',
-    {x:.6,y:2.1,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:28});
-  s.addText('＊以各職能實測數據彙整後填入，不編造數字。',{x:.6,y:3.4,w:12,fontSize:12,color:DIM,fontFace:F});
-  // challenges
-  s=P.addSlide(); head(s,"CHALLENGES & LESSONS",'遭遇挑戰與解決','fb7185');
-  s.addText('挑戰：＿＿（2–4 個實際問題）\n解法與經驗：＿＿',{x:.6,y:2,w:12,fontSize:15,color:'fbbf24',fontFace:F,lineSpacing:30});
-  // future
-  s=P.addSlide(); head(s,"WHAT'S NEXT",'未來展望','fb923c');
-  s.addText('本次競賽：翻新一台驗證製程\n短期：複製第二台 + 營運 Agent\n長期：套用到捕魚機 / 平台活動',
-    {x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
-  // conclusion
-  s=P.addSlide(); s.background=BG;
+  ].forEach((L,i)=>{const y=1.55+i*0.92;s.addShape(P.ShapeType.rect,{x:.5,y,w:12.3,h:.8,fill:{color:'0c0c1a'},line:{color:L[2],width:1}});s.addText(L[0],{x:.65,y,w:2.7,h:.8,fontSize:11,bold:true,color:L[2],fontFace:F,valign:'middle'});s.addText(L[1],{x:3.4,y,w:9.2,h:.8,fontSize:10.5,color:'e8e8f0',fontFace:F,valign:'middle'});});
+  s=P.addSlide();head(s,'PROCESS FLOW','製程流程圖：一台機台怎麼被做出來','22d3ee');
+  s.addText('① 企劃 Agent →〔審核〕→ ② 美術/音效/機率（平行）→〔審核〕→ ③ Client/Server →〔審核〕→ ④ 整合 → ✅ Demo',{x:.5,y:1.9,w:12.3,fontSize:14,color:'e8e8f0',fontFace:F,align:'center'});
+  s.addText('🔁 審核退回迴路：未過 → Agent 自動修正 → 再審核（不怕重工，各關平行跑）',{x:.6,y:3,w:12,fontSize:13,color:'fb7185',fontFace:F});
+  s.addText('🧠 知識學習迴路：對話＋退回案例 → 自動更新知識庫/生成 Skill → Agent 越用越強',{x:.6,y:3.7,w:12,fontSize:13,color:'4ade80',fontFace:F});
+  s.addText('👁 = 人工品質審核把關，每環節產出後皆須通過',{x:.6,y:4.6,w:12,fontSize:11,color:DIM,fontFace:F});
+  s=P.addSlide();head(s,'EVIDENCE','實證：Agent 真的在運作','4ade80');
+  try{s.addImage({path:'assets/audit-dashboard.png',x:.6,y:1.6,w:7.6,h:5.4});}catch(e){}
+  s.addText('▲ 職責審計儀表板',{x:.6,y:7.0,w:7.6,fontSize:10,color:DIM,fontFace:F});
+  s.addText('這張圖證明：\n• 6 職能 Agent 真實在跑，非概念\n• 每個動作可追溯（人/Agent/工具/模型）\n• 治理層的職責審計實際落地',{x:8.5,y:1.8,w:4.3,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
+  s=P.addSlide();head(s,'TECHNICAL HIGHLIGHTS','技術實作亮點','b07aff');
+  s.addText('🧠 記憶+學習迴路　⚡ 自動生成 Skill　🛠 AI 工具鏈（MCP/CLI/API/瀏覽器）\n🔒 權限/資安　📊 雙儀表板　🚀 可擴展設計',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s=P.addSlide();head(s,'HOW WE DELIVERED','三階段如何落地（已完成）','4ade80');
+  s.addText('① 知識收集 ✓　② 基礎建設 ✓（6 Agent + 權限/資安/監控）　③ 實戰開發 ✓（Demo）\n時程：4/9–5/8 規劃期｜5/8 藍圖｜5/9–6/30 開發期｜6/30 最終成果',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s=P.addSlide();head(s,'RESULTS BY FUNCTION','各職能實戰成果','fb923c');
+  s.addText(FUNCS.map(f=>f.emoji+' '+f.name+'：'+f.caps+'（連結待補）').join('\n'),{x:.6,y:1.8,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
+  s=P.addSlide();head(s,"WHAT'S NEXT",'未來展望','fb923c');
+  s.addText('本次競賽：翻新一台驗證製程\n短期：複製第二台 + 營運 Agent\n長期：套用到捕魚機 / 平台活動',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s=P.addSlide();s.background=BG;
   s.addText('建立可複製的 AI 製程框架',{x:.6,y:2.6,w:12,fontSize:32,bold:true,color:'fb923c',fontFace:F,align:'center'});
   s.addText('框架可複製 • Agent 可累積 • 效率可量化',{x:.6,y:3.8,w:12,fontSize:18,color:'22d3ee',fontFace:F,align:'center'});
   P.writeFile({fileName:'虎機AI開發競賽_最終成果報告.pptx'});
