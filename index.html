@@ -84,6 +84,12 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 .shot{border:1px solid var(--stroke);border-radius:8px;overflow:hidden;background:#000;display:block}
 .shot img{display:block;width:100%;height:auto}
 .cap{font-size:.72rem;color:var(--dim);font-family:var(--mono);margin-top:.35rem;line-height:1.4}
+/* screenshot placeholder slot (user fills later) */
+.shot-slot{border:2px dashed rgba(34,211,238,.45);background:rgba(34,211,238,.04);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.3rem 1rem;width:100%;height:100%;min-height:200px}
+.shot-slot .ss-ico{font-size:1.9rem;opacity:.75}
+.shot-slot .ss-t{font-weight:800;color:var(--cyan);margin-top:.45rem;font-size:1rem}
+.shot-slot .ss-d{font-size:.78rem;color:var(--dim);margin-top:.3rem;line-height:1.5;max-width:34ch}
+.shot-slot .ss-src{font-family:var(--mono);font-size:.68rem;color:var(--amber);margin-top:.6rem;border:1px solid rgba(251,191,36,.35);border-radius:6px;padding:.25rem .6rem;line-height:1.5}
 /* function index */
 .fidx{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
 .fcard{background:var(--slab);border:1px solid var(--stroke);border-left-width:3px;border-radius:9px;padding:.8rem .9rem}
@@ -223,30 +229,48 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </div>
 </section>
 
-<!-- 5 · 實證截圖 -->
+<!-- 5 · 實證① 做出來了（Demo） -->
 <section class="slide" data-slide="5">
 <div class="inner" style="gap:.8rem">
-  <div><span class="a eyebrow" style="color:var(--lime)">Evidence</span><h2 class="a">實證：Agent 真的在運作</h2></div>
-  <div class="a g2" style="grid-template-columns:1.55fr 1fr;align-items:start">
-    <div>
-      <a class="shot" href="assets/audit-dashboard.png" target="_blank"><img src="assets/audit-dashboard.png" alt="職責審計儀表板（去敏）" onerror="this.style.display='none';this.parentNode.querySelector('.shot-ph').style.display='flex'"><div class="shot-ph" style="display:none;min-height:240px;align-items:center;justify-content:center;text-align:center;color:var(--dim);font-size:.85rem;padding:1.5rem;line-height:1.6">📊 職責審計儀表板（去敏版）<br>截圖待上傳<br><span style="font-size:.7rem;font-family:var(--mono)">見最後說明，一行指令補上</span></div></a>
-      <div class="cap">▲ 職責審計儀表板 — 即時追蹤各 Agent（虎機美術 Agent、art-agent…）的工具呼叫、模型用量與操作日誌（姓名/需求欄已去敏）</div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:.6rem">
-      <div class="panel panel-l" style="padding:.9rem">
-        <div class="panel-title" style="color:var(--lime);font-size:1rem">&#128221; 重點解讀</div>
-        <div class="panel-body" style="font-size:.85rem">
-          儀表板<strong class="accent-l">即時記錄</strong>每個 Agent 的每一次操作 &mdash; 由誰觸發、用哪個 Agent、呼叫什麼工具、哪個模型，全程<strong>可追溯</strong>。<br><br>
-          這證明 6 職能 Agent 是<strong class="accent-l">真實運作中的系統</strong>，治理層的職責審計已實際落地。
-        </div>
+  <div><span class="a eyebrow" style="color:var(--lime)">Evidence · 1/2</span><h2 class="a">實證①：做出來了 — 福星高照 Demo</h2></div>
+  <div class="a g2" style="grid-template-columns:1.6fr 1fr;align-items:stretch">
+    <a class="shot" href="assets/demo-fuxing.png" target="_blank" style="min-height:320px">
+      <img src="assets/demo-fuxing.png" alt="福星高照 Demo" style="display:none" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
+      <div class="shot-slot"><div class="ss-ico">🎰</div><div class="ss-t">福星高照 Demo 實機畫面</div><div class="ss-d">遊戲執行中的畫面：主場景 / 轉動 / 重要演出（FreeSpin、得獎、轉場）。可橫排 2–3 張。</div><div class="ss-src">存成 assets/demo-fuxing.png</div></div>
+    </a>
+    <div style="display:flex;flex-direction:column;gap:.6rem;justify-content:center">
+      <div class="panel panel-l" style="padding:1rem">
+        <div class="panel-title" style="color:var(--lime);font-size:1rem">&#127881; 這是成果本體</div>
+        <div class="panel-body" style="font-size:.88rem">由 <strong class="accent-l">6 職能 Agent 協作</strong>產出的一台<strong>可運行老虎機</strong> —— 規格、美術、音效、程式、機率全部跑過 AI 製程＋人工審核。</div>
       </div>
-      <div class="fill">可再搭配：健康度監控儀表板、福星高照 Demo 實機畫面、Agent 對話/產出截圖</div>
     </div>
   </div>
 </div>
 </section>
 
-<!-- 6 · 技術亮點 -->
+<!-- 6 · 實證② 治理：雙儀表板 -->
+<section class="slide" data-slide="6">
+<div class="inner" style="gap:.8rem">
+  <div><span class="a eyebrow" style="color:var(--cyan)">Evidence · 2/2</span><h2 class="a">實證②：治理 — 雙儀表板即時掌握</h2></div>
+  <div class="a g2" style="align-items:stretch">
+    <div style="display:flex;flex-direction:column">
+      <a class="shot" href="assets/dash-audit.png" target="_blank" style="flex:1;min-height:240px">
+        <img src="assets/dash-audit.png" alt="職責審計儀表板" style="display:none" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
+        <div class="shot-slot"><div class="ss-ico">📊</div><div class="ss-t">職責審計儀表板</div><div class="ss-d">追蹤每個 Agent 的工具呼叫、模型用量、操作日誌 —— 證明 Agent 真在運作、可追溯。</div><div class="ss-src">127.0.0.1:3081 → 稽核日誌/總覽分頁<br>務必先按 🔒 遮罩 再截 → assets/dash-audit.png</div></div>
+      </a>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <a class="shot" href="assets/dash-health.png" target="_blank" style="flex:1;min-height:240px">
+        <img src="assets/dash-health.png" alt="健康度監控儀表板" style="display:none" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
+        <div class="shot-slot" style="border-color:rgba(74,222,128,.45);background:rgba(74,222,128,.04)"><div class="ss-ico">💓</div><div class="ss-t" style="color:var(--lime)">健康度監控儀表板</div><div class="ss-d">Gateway / 各 Agent 的健康、uptime、狀態 —— 問題即時發現，不影響使用者。</div><div class="ss-src">127.0.0.1:3080（免登入，直接截）<br>→ assets/dash-health.png</div></div>
+      </a>
+    </div>
+  </div>
+  <div class="a" style="font-size:.8rem;color:var(--dim);text-align:center">一個看「Agent 在做什麼」、一個看「系統健不健康」 —— 治理層實際落地</div>
+</div>
+</section>
+
+<!-- 7 · 技術亮點 -->
 <section class="slide" data-slide="6">
 <div class="inner" style="gap:.9rem">
   <div><span class="a eyebrow" style="color:var(--purple)">Technical Highlights</span><h2 class="a">技術實作亮點</h2></div>
@@ -391,10 +415,16 @@ function buildPptx(){
    ['工具層 Tooling','MCP：Cocos/Spine ｜ CLI：codex-imagegen/ElevenLabs/Suno ｜ API ｜ 瀏覽器自動化','fbbf24'],
    ['治理層 Governance','權限分級 · 資安/操作日誌 · 📊 職責審計儀表板 · 💓 健康度監控儀表板','fb7185'],
   ].forEach((L,i)=>{const y=1.55+i*0.92;s.addShape(P.ShapeType.rect,{x:.5,y,w:12.3,h:.8,fill:{color:'0c0c1a'},line:{color:L[2],width:1}});s.addText(L[0],{x:.65,y,w:2.7,h:.8,fontSize:11,bold:true,color:L[2],fontFace:F,valign:'middle'});s.addText(L[1],{x:3.4,y,w:9.2,h:.8,fontSize:10.5,color:'e8e8f0',fontFace:F,valign:'middle'});});
-  s=P.addSlide();head(s,'EVIDENCE','實證：Agent 真的在運作','4ade80');
-  try{s.addImage({path:'assets/audit-dashboard.png',x:.6,y:1.6,w:7.6,h:5.4});}catch(e){}
-  s.addText('▲ 職責審計儀表板',{x:.6,y:7.0,w:7.6,fontSize:10,color:DIM,fontFace:F});
-  s.addText('這張圖證明：\n• 6 職能 Agent 真實在跑，非概念\n• 每個動作可追溯（人/Agent/工具/模型）\n• 治理層的職責審計實際落地',{x:8.5,y:1.8,w:4.3,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
+  s=P.addSlide();head(s,'EVIDENCE · 1/2','實證①：做出來了 — 福星高照 Demo','4ade80');
+  try{s.addImage({path:'assets/demo-fuxing.png',x:.6,y:1.7,w:8,h:5});}catch(e){}
+  s.addText('🎰 福星高照 Demo 實機畫面（主場景/轉動/FreeSpin/得獎）→ assets/demo-fuxing.png',{x:.6,y:6.9,w:8,fontSize:10,color:DIM,fontFace:F});
+  s.addText('這是成果本體：由 6 職能 Agent 協作產出的可運行老虎機 —— 規格/美術/音效/程式/機率全跑過 AI 製程＋人工審核。',{x:8.8,y:1.9,w:4,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
+  s=P.addSlide();head(s,'EVIDENCE · 2/2','實證②：治理 — 雙儀表板','22d3ee');
+  try{s.addImage({path:'assets/dash-audit.png',x:.5,y:1.7,w:6,h:4.2});}catch(e){}
+  try{s.addImage({path:'assets/dash-health.png',x:6.8,y:1.7,w:6,h:4.2});}catch(e){}
+  s.addText('📊 職責審計儀表板（127.0.0.1:3081，遮罩後截 → assets/dash-audit.png）',{x:.5,y:6.05,w:6.2,fontSize:10,color:DIM,fontFace:F});
+  s.addText('💓 健康度監控儀表板（127.0.0.1:3080，直接截 → assets/dash-health.png）',{x:6.8,y:6.05,w:6.2,fontSize:10,color:DIM,fontFace:F});
+  s.addText('一個看 Agent 在做什麼、一個看系統健不健康 —— 治理層實際落地',{x:.5,y:6.7,w:12.3,fontSize:11,color:DIM,fontFace:F,align:'center'});
   s=P.addSlide();head(s,'TECHNICAL HIGHLIGHTS','技術實作亮點','b07aff');
   s.addText('🧠 記憶+學習迴路　⚡ 自動生成 Skill　🛠 AI 工具鏈（MCP/CLI/API/瀏覽器）\n🔒 權限/資安　📊 雙儀表板　🚀 可擴展設計',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'HOW WE DELIVERED','三階段如何落地（已完成）','4ade80');
