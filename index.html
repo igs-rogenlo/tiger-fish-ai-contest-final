@@ -229,6 +229,53 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </div>
 </section>
 
+<!-- 3.5 · 模型協作 -->
+<section class="slide" data-slide="4">
+<div class="inner" style="gap:.85rem">
+  <div><span class="a eyebrow" style="color:var(--cyan)">Model Orchestration</span><h2 class="a">模型協作：每個任務，配最適合的模型</h2></div>
+  <div class="a g3" style="gap:.8rem;align-items:stretch">
+    <div class="panel panel-c" style="padding:1rem">
+      <div class="panel-title" style="color:var(--cyan);font-size:1.02rem">&#129504; 推理與決策<br><span style="font-size:.72rem;color:var(--dim);font-weight:400">雲端 LLM ·「想」</span></div>
+      <div class="panel-body" style="font-size:.82rem;margin-top:.4rem">
+        &bull; <strong>GPT-5.5</strong> — Agent 主腦：對話、執行、調度工具<br>
+        &bull; <strong>Claude Opus 4.7</strong> — 程式碼規劃與開發（長思考）<br>
+        &bull; <strong>Gemini 3 Pro</strong> — 輔助規格發想（多觀點）
+      </div>
+    </div>
+    <div class="panel panel-l" style="padding:1rem">
+      <div class="panel-title" style="color:var(--lime);font-size:1.02rem">&#128218; 記憶與檢索<br><span style="font-size:.72rem;color:var(--dim);font-weight:400">本地 vLLM/H200 ·「記」</span></div>
+      <div class="panel-body" style="font-size:.82rem;margin-top:.4rem">
+        &bull; <strong>Qwen3-Embedding</strong> — 知識向量化<br>
+        &bull; <strong>Reranker</strong> — 相關度重排<br>
+        &bull; <strong>Qwen3.6</strong> — 摘要/分類，回填 LLM context
+      </div>
+    </div>
+    <div class="panel panel-a" style="padding:1rem">
+      <div class="panel-title" style="color:var(--amber);font-size:1.02rem">&#127912; 生成<br><span style="font-size:.72rem;color:var(--dim);font-weight:400">素材模型 ·「做」</span></div>
+      <div class="panel-body" style="font-size:.82rem;margin-top:.4rem">
+        &bull; <strong>codex-imagegen / GPT Image</strong> — 美術生圖、修圖<br>
+        &bull; <strong>ElevenLabs / Suno</strong> — 音效、配樂<br>
+        &bull; Spine / Cocos 工具串接落地
+      </div>
+    </div>
+  </div>
+  <div class="a panel" style="border:1px solid var(--stroke);padding:.7rem .9rem">
+    <div class="pipe" style="gap:.35rem;font-size:.82rem">
+      <span class="node" style="padding:.3rem .6rem;font-size:.78rem;border-color:rgba(74,222,128,.3)">本地檢索知識</span>
+      <span class="arrow" style="font-size:1rem">&rarr;</span>
+      <span class="node" style="padding:.3rem .6rem;font-size:.78rem;border-color:rgba(34,211,238,.3)">雲端 LLM 推理決策</span>
+      <span class="arrow" style="font-size:1rem">&rarr;</span>
+      <span class="node" style="padding:.3rem .6rem;font-size:.78rem;border-color:rgba(251,191,36,.3)">需要素材→調生成模型</span>
+      <span class="arrow" style="font-size:1rem">&rarr;</span>
+      <span class="node" style="padding:.3rem .6rem;font-size:.78rem;border-color:rgba(251,113,133,.3)">&#128064; 人工審核</span>
+      <span class="arrow" style="font-size:1rem">&rarr;</span>
+      <span class="node" style="padding:.3rem .6rem;font-size:.78rem;border-color:rgba(74,222,128,.3)">&#10003; 產出</span>
+    </div>
+  </div>
+  <div class="a" style="font-size:.8rem;color:var(--dim);text-align:center">雲端負責<strong class="accent-c">想</strong>、本地負責<strong class="accent-l">記</strong>、生成模型負責<strong class="accent-a">做素材</strong> —— 依任務分工，並隨時換上最新最強模型</div>
+</div>
+</section>
+
 <!-- 5 · 實證① 做出來了（Demo） -->
 <section class="slide" data-slide="5">
 <div class="inner" style="gap:.8rem">
@@ -403,6 +450,11 @@ function buildPptx(){
    ['工具層 Tooling','MCP：Cocos/Spine ｜ CLI：codex-imagegen/ElevenLabs/Suno ｜ API ｜ 瀏覽器自動化','fbbf24'],
    ['治理層 Governance','權限分級 · 資安/操作日誌 · 📊 職責審計儀表板 · 💓 健康度監控儀表板','fb7185'],
   ].forEach((L,i)=>{const y=1.55+i*0.92;s.addShape(P.ShapeType.rect,{x:.5,y,w:12.3,h:.8,fill:{color:'0c0c1a'},line:{color:L[2],width:1}});s.addText(L[0],{x:.65,y,w:2.7,h:.8,fontSize:11,bold:true,color:L[2],fontFace:F,valign:'middle'});s.addText(L[1],{x:3.4,y,w:9.2,h:.8,fontSize:10.5,color:'e8e8f0',fontFace:F,valign:'middle'});});
+  s=P.addSlide();head(s,'MODEL ORCHESTRATION','模型協作：每個任務，配最適合的模型','22d3ee');
+  s.addText('🧠 推理與決策（雲端 LLM ·「想」）\n  GPT-5.5 主腦 · Claude Opus 4.7 程式規劃/開發 · Gemini 3 Pro 輔助發想',{x:.6,y:1.7,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
+  s.addText('📚 記憶與檢索（本地 vLLM/H200 ·「記」）\n  Qwen3-Embedding 向量化 → Reranker 重排 → Qwen3.6 摘要回填 context',{x:.6,y:2.9,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
+  s.addText('🎨 生成（素材 ·「做」）\n  codex-imagegen/GPT Image 生圖 · ElevenLabs/Suno 音效配樂',{x:.6,y:4.1,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
+  s.addText('本地檢索 → 雲端 LLM 推理 → 需要素材調生成模型 → 👁 人工審核 → ✓ 產出　｜　雲端「想」、本地「記」、生成模型「做素材」，隨時換最新最強模型',{x:.6,y:5.4,w:12,fontSize:11,color:'a0a0b0',fontFace:F,lineSpacing:18});
   s=P.addSlide();head(s,'EVIDENCE · 1/2','實證①：做出來了 — 福星高照 Demo','4ade80');
   try{s.addImage({path:'assets/demo-fuxing.png',x:.6,y:1.7,w:8,h:5});}catch(e){}
   s.addText('🎰 福星高照 Demo 實機畫面（主場景/轉動/FreeSpin/得獎）→ assets/demo-fuxing.png',{x:.6,y:6.9,w:8,fontSize:10,color:DIM,fontFace:F});
