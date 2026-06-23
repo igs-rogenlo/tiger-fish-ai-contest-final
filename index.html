@@ -255,7 +255,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
       <div class="panel-body" style="font-size:.82rem;margin-top:.4rem">
         &bull; <strong>codex-imagegen / GPT Image</strong> — 美術生圖、修圖<br>
         &bull; <strong>ElevenLabs / Suno</strong> — 音效、配樂<br>
-        &bull; Spine / Cocos 工具串接落地
+        &bull; 產出素材再經 Spine · PS · Cocos · 3D 等工具整合落地
       </div>
     </div>
   </div>
@@ -327,7 +327,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="panel panel-o a" style="padding:.9rem"><div class="panel-title" style="color:var(--orange);font-size:1rem">&#128736; AI 工具鏈</div><div class="panel-body" style="font-size:.83rem">每個 Agent 配置專屬生成式／自動化工具，以 MCP・CLI・API・瀏覽器自動化操作。</div></div>
   </div>
   <div class="a g3" style="gap:.7rem">
-    <div class="panel panel-r a" style="padding:.8rem"><div class="panel-title" style="color:var(--rose);font-size:.95rem">&#128274; 權限 / 資安</div><div class="panel-body" style="font-size:.8rem">獨立權限範圍、分級授權、機敏不外洩、操作日誌完整。</div></div>
+    <div class="panel panel-r a" style="padding:.8rem"><div class="panel-title" style="color:var(--rose);font-size:.95rem">&#128274; 多用戶 × 權限隔離</div><div class="panel-body" style="font-size:.8rem">一個 Agent 同時服務多位使用者，各自獨立：分級授權（讀/寫/執行）、per-user Git 權限、資料與操作日誌逐人隔離。</div></div>
     <div class="panel panel-c a" style="padding:.8rem"><div class="panel-title" style="color:var(--cyan);font-size:.95rem">&#128202; 雙儀表板</div><div class="panel-body" style="font-size:.8rem">職責審計（使用狀況/缺口）＋ 健康度監控（即時告警）。</div></div>
     <div class="panel panel-a a" style="padding:.8rem"><div class="panel-title" style="color:var(--amber);font-size:.95rem">&#128640; 可擴展設計</div><div class="panel-body" style="font-size:.8rem">新增 Agent 只需灌知識 + 設工具鏈，不動核心。</div></div>
   </div>
@@ -466,7 +466,7 @@ function buildPptx(){
   s.addText('💓 健康度監控儀表板（127.0.0.1:3080，直接截 → assets/dash-health.png）',{x:6.8,y:6.05,w:6.2,fontSize:10,color:DIM,fontFace:F});
   s.addText('一個看 Agent 在做什麼、一個看系統健不健康 —— 治理層實際落地',{x:.5,y:6.7,w:12.3,fontSize:11,color:DIM,fontFace:F,align:'center'});
   s=P.addSlide();head(s,'TECHNICAL HIGHLIGHTS','技術實作亮點','b07aff');
-  s.addText('🧠 記憶+學習迴路　⚡ 自動生成 Skill　🛠 AI 工具鏈（MCP/CLI/API/瀏覽器）\n🔒 權限/資安　📊 雙儀表板　🚀 可擴展設計',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s.addText('🧠 記憶+學習迴路　⚡ 自動生成 Skill　🛠 AI 工具鏈（MCP/CLI/API/瀏覽器）\n🔒 多用戶×權限隔離（per-user 權限/Git，一個 Agent 服務多人）　📊 雙儀表板　🚀 可擴展設計',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'HOW WE DELIVERED','三階段如何落地（已完成）','4ade80');
   s.addText('① 知識收集 ✓　② 基礎建設 ✓（6 Agent + 權限/資安/監控）　③ 實戰開發 ✓（Demo）\n時程：4/9–5/8 規劃期｜5/8 藍圖｜5/9–6/30 開發期｜6/30 最終成果',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'RESULTS BY FUNCTION','各職能實戰成果','fb923c');
