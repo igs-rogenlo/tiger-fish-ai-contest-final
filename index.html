@@ -323,7 +323,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
   <div><span class="a eyebrow" style="color:var(--orange)">What's Next</span><h2 class="a">未來展望</h2></div>
   <div class="a g3">
     <div class="panel panel-o a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#127920;</div><div style="font-weight:800;font-size:1rem;color:var(--orange)">本次競賽</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">翻新既有老虎機一台，跑通並驗證製程</div></div>
-    <div class="panel panel-c a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#128640;</div><div style="font-weight:800;font-size:1rem;color:var(--cyan)">短期延伸</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">複製到第二台機台；導入 <strong class="accent-c">PM 主 Agent ＋ 品檢 Agent</strong>，由 PM 自動調用各職能<strong>子 Agent</strong> 進行開發（人從逐關觸發 → PM 編排）</div></div>
+    <div class="panel panel-c a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#128640;</div><div style="font-weight:800;font-size:1rem;color:var(--cyan)">短期延伸</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">複製到第二台機台；新增 <strong class="accent-c">PM 主 Agent</strong>（判斷產品成功性、調度各職能 Agent 開發）與 <strong class="accent-c">品檢 Agent</strong>（自動化測試）</div></div>
     <div class="panel panel-l a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#127907;</div><div style="font-weight:800;font-size:1rem;color:var(--lime)">長期願景</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">套用到捕魚機 / 平台活動</div></div>
   </div>
   <div class="a panel" style="border:2px solid rgba(251,146,60,.3);padding:.9rem">
@@ -420,7 +420,7 @@ function buildPptx(){
   s=P.addSlide();head(s,'RESULTS BY FUNCTION','各職能實戰成果','fb923c');
   s.addText(FUNCS.map(f=>f.emoji+' '+f.name+'：'+f.caps+'（連結待補）').join('\n'),{x:.6,y:1.8,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
   s=P.addSlide();head(s,"WHAT'S NEXT",'未來展望','fb923c');
-  s.addText('本次競賽：翻新一台驗證製程\n短期：複製第二台；導入 PM 主 Agent ＋ 品檢 Agent，由 PM 自動調用各職能子 Agent 開發\n長期：套用到捕魚機 / 平台活動',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s.addText('本次競賽：翻新一台驗證製程\n短期：複製第二台；新增 PM 主 Agent（判斷產品成功性、調度各職能 Agent 開發）＋ 品檢 Agent（自動化測試）\n長期：套用到捕魚機 / 平台活動',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   P.writeFile({fileName:'虎機AI開發競賽_最終成果報告.pptx'});
 }
 </script>
