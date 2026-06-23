@@ -214,7 +214,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     </div>
     <div class="layer" style="border-left-color:var(--lime)">
       <div><div class="ly-name accent-l">記憶與知識層</div><span class="ly-en">Memory &amp; Knowledge</span></div>
-      <div class="ly-body"><span class="chip"><b>memory-lancedb-pro</b>（各 Agent scope 向量庫）</span><span class="chip">學習迴路 · 對話即更新</span><span class="chip">各職能知識庫</span></div>
+      <div class="ly-body"><span class="chip"><b>自建向量記憶庫</b>（各 Agent 獨立 scope）</span><span class="chip">學習迴路 · 對話即更新</span><span class="chip">各職能知識庫</span></div>
     </div>
     <div class="layer" style="border-left-color:var(--amber)">
       <div><div class="ly-name accent-a">工具層</div><span class="ly-en">Tooling</span></div>
@@ -446,7 +446,7 @@ function buildPptx(){
   [['接入層 Ingress','各職能人員 · Telegram / Discord Bot · CLI','fb923c'],
    ['編排層 Orchestration · OpenClaw','多 Agent 路由 Gateway · 6 職能 Agent · 👁 人工審核節點 · 排程/權限隔離 · ⚡ 自動生成 Skill','b07aff'],
    ['模型層 Models','雲端：GPT-5.5 主腦（備援 Kiro Opus 4.6）· Claude Opus 4.8 程式 · Gemini 3 Pro ｜ 本地(vLLM)：Qwen3.6 · Embedding · Reranker','22d3ee'],
-   ['記憶與知識層 Memory','memory-lancedb-pro（各 Agent scope 向量庫）· 學習迴路 · 各職能知識庫','4ade80'],
+   ['記憶與知識層 Memory','自建向量記憶庫（各 Agent 獨立 scope，語意檢索＋重排）· 學習迴路 · 各職能知識庫','4ade80'],
    ['工具層 Tooling','MCP：Cocos/Spine ｜ CLI：codex-imagegen/ElevenLabs/Suno ｜ API ｜ 瀏覽器自動化','fbbf24'],
    ['治理層 Governance','權限分級 · 資安/操作日誌 · 📊 職責審計儀表板 · 💓 健康度監控儀表板','fb7185'],
   ].forEach((L,i)=>{const y=1.55+i*0.92;s.addShape(P.ShapeType.rect,{x:.5,y,w:12.3,h:.8,fill:{color:'0c0c1a'},line:{color:L[2],width:1}});s.addText(L[0],{x:.65,y,w:2.7,h:.8,fontSize:11,bold:true,color:L[2],fontFace:F,valign:'middle'});s.addText(L[1],{x:3.4,y,w:9.2,h:.8,fontSize:10.5,color:'e8e8f0',fontFace:F,valign:'middle'});});
