@@ -253,7 +253,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="panel panel-a" style="padding:1rem">
       <div class="panel-title" style="color:var(--amber);font-size:1.02rem">&#127912; 生成<br><span style="font-size:.72rem;color:var(--dim);font-weight:400">素材模型 ·「做」</span></div>
       <div class="panel-body" style="font-size:.82rem;margin-top:.4rem">
-        &bull; <strong>codex-imagegen</strong> — CLI 呼叫 OpenAI GPT Image 生圖／修圖；Freepik 備援<br>
+        &bull; <strong>AI 生圖／修圖</strong> — codex-imagegen（CLI→GPT Image）· ChatGPT 網頁生圖（省配額）· Freepik · Lovart（網頁工具串接）<br>
         &bull; <strong>ElevenLabs / Suno</strong> — 音效、配樂<br>
         &bull; 產出素材再經 Spine · PS · Cocos · 3D 等工具整合落地
       </div>
@@ -453,7 +453,7 @@ function buildPptx(){
   s=P.addSlide();head(s,'MODEL ORCHESTRATION','模型協作：每個任務，配最適合的模型','22d3ee');
   s.addText('🧠 推理與決策（雲端 LLM ·「想」）\n  GPT-5.5 主腦（備援 Kiro Opus 4.6）· Claude Opus 4.8 程式規劃/開發 · Gemini 3 Pro 輔助發想',{x:.6,y:1.7,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('📚 記憶與檢索（本地 vLLM ·「記」）\n  Qwen3-Embedding 向量化 → Reranker 重排挑最相關 → 回傳入庫時存好的分層摘要；Qwen3.6 負責入庫智能擷取',{x:.6,y:2.9,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('🎨 生成（素材 ·「做」）\n  codex-imagegen 生圖（OpenAI GPT Image）/Freepik 備援 · ElevenLabs/Suno 音效配樂',{x:.6,y:4.1,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
+  s.addText('🎨 生成（素材 ·「做」）\n  AI 生圖：codex-imagegen(CLI→GPT Image)·ChatGPT 網頁生圖(省配額)·Freepik·Lovart ｜ ElevenLabs/Suno 音效配樂',{x:.6,y:4.1,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('本地檢索 → 雲端 LLM 推理 → 需要素材調生成模型 → 👁 人工審核 → ✓ 產出　｜　雲端「想」、本地「記」、生成模型「做素材」，隨時換最新最強模型',{x:.6,y:5.4,w:12,fontSize:11,color:'a0a0b0',fontFace:F,lineSpacing:18});
   s=P.addSlide();head(s,'EVIDENCE · 1/2','實證①：做出來了 — 福星高照 Demo','4ade80');
   try{s.addImage({path:'assets/demo-fuxing.png',x:.6,y:1.7,w:8,h:5});}catch(e){}
