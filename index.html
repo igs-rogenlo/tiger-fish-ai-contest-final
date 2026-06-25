@@ -295,7 +295,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <rect x="40"  y="216" width="293" height="70" rx="9" fill="#0f2630" stroke="#22d3ee" stroke-width="1.5"/>
     <text x="186" y="238" text-anchor="middle" font-size="13.5" fill="#22d3ee" font-weight="800">模型層</text>
     <text x="186" y="257" text-anchor="middle" font-size="10.5" fill="#b8c2d0">想·雲端：GPT-5.5／Claude 4.8／Gemini 3</text>
-    <text x="186" y="273" text-anchor="middle" font-size="10.5" fill="#b8c2d0">記·本地：Qwen3.6／Embedding／Reranker</text>
+    <text x="186" y="273" text-anchor="middle" font-size="10.5" fill="#b8c2d0">記·本地 Qwen 系列：3.6／Embedding／Reranker</text>
     <rect x="353" y="216" width="294" height="70" rx="9" fill="#13231a" stroke="#4ade80" stroke-width="1.5"/>
     <text x="500" y="238" text-anchor="middle" font-size="13.5" fill="#4ade80" font-weight="800">記憶與知識層</text>
     <text x="500" y="257" text-anchor="middle" font-size="10.5" fill="#b8c2d0">各 Agent 獨立知識庫</text>
@@ -347,7 +347,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
       <div class="panel-title" style="color:var(--lime);font-size:1.02rem">&#128218; 記憶與檢索 <span style="font-size:1.08rem;font-weight:900;color:#06060e;background:var(--lime);border-radius:7px;padding:.04rem .55rem;margin-left:.15rem">記</span><br><span style="font-size:.7rem;color:var(--dim);font-weight:400">本地 vLLM</span></div>
       <div class="panel-body" style="font-size:.82rem;margin-top:.4rem">
         &bull; <strong>Qwen3-Embedding</strong> — 知識向量化<br>
-        &bull; <strong>Reranker</strong> — 相關度重排<br>
+        &bull; <strong>Qwen3-Reranker</strong> — 相關度重排<br>
         &bull; <strong>Qwen3.6</strong> — 本地 LLM：判斷哪些對話值得記、入庫時擷取重點
       </div>
     </div>
@@ -625,7 +625,7 @@ function buildPptx(){
   s=P.addSlide();head(s,'SYSTEM ARCHITECTURE','系統架構：完整技術架構','b07aff');
   [['接入層 Ingress','各職能人員 · 🌐 WebUI(Open WebUI) · Telegram/Discord Bot','fb923c'],
    ['編排層 Orchestration · OpenClaw','多 Agent 路由 Gateway · 6 職能 Agent · 👁 人工審核節點 · 排程/權限隔離 · ⚡ 自動生成 Skill','b07aff'],
-   ['模型層 Models','雲端：GPT-5.5 主腦（備援 Kiro Opus 4.6）· Claude Opus 4.8 程式 · Gemini 3 Pro ｜ 本地(vLLM)：Qwen3.6 · Embedding · Reranker','22d3ee'],
+   ['模型層 Models','雲端：GPT-5.5 主腦（備援 Kiro Opus 4.6）· Claude Opus 4.8 程式 · Gemini 3 Pro ｜ 本地(vLLM)：Qwen3.6 · Qwen3-Embedding · Qwen3-Reranker','22d3ee'],
    ['記憶與知識層 Memory','自建向量記憶庫（各 Agent 獨立 scope，語意檢索＋重排）· 學習迴路 · 各職能知識庫','4ade80'],
    ['工具層 Tooling','MCP：Cocos/Spine/Penpot ｜ 與 Agent 即時共編：Penpot 向量美術·Open Design 網頁/儀表板·VS Code 程式碼/看diff(Agent給IDE連結) ｜ CLI：生圖/音效 ｜ 瀏覽器自動化','fbbf24'],
    ['治理層 Governance','權限分級 · 資安/操作日誌 · 📊 使用治理儀表板 · 💓 健康監控儀表板','fb7185'],
@@ -638,7 +638,7 @@ function buildPptx(){
   s.addText('💬 Discord：多人×多 Agent 議題討論　｜　✈️ Telegram：排程提醒／系統訊息分析　｜　🌐 Open WebUI（自架）：瀏覽器對話入口',{x:.5,y:6.05,w:12.3,fontSize:11,color:'e8e8f0',fontFace:F,align:'center'});
   s=P.addSlide();head(s,'MODEL ORCHESTRATION','模型協作：每個任務，配最適合的模型','22d3ee');
   s.addText('🧠 推理與決策（雲端 LLM ·「想」）\n  GPT-5.5 主腦（備援 Kiro Opus 4.6）· Claude Opus 4.8 程式規劃/開發 · Gemini 3 Pro 輔助發想',{x:.6,y:1.7,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('📚 記憶與檢索（本地 vLLM ·「記」）\n  Qwen3-Embedding 向量化 → Reranker 重排挑最相關 → 回傳入庫時存好的分層摘要；Qwen3.6 負責入庫智能擷取',{x:.6,y:2.9,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
+  s.addText('📚 記憶與檢索（本地 vLLM ·「記」）\n  Qwen3-Embedding 向量化 → Qwen3-Reranker 重排挑最相關 → 回傳入庫時存好的分層摘要；Qwen3.6 負責入庫智能擷取',{x:.6,y:2.9,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('🎨 生成（素材 ·「做」）\n  AI 生圖：codex-imagegen(CLI→GPT Image)·ChatGPT 網頁生圖(省配額)·Freepik·Lovart ｜ ElevenLabs/Suno 音效配樂',{x:.6,y:4.1,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('本地檢索 → 雲端 LLM 推理 → 需要素材調生成模型 → 👁 人工審核 → ✓ 產出　｜　雲端「想」、本地「記」、生成模型「做素材」，隨時換最新最強模型',{x:.6,y:5.4,w:12,fontSize:11,color:'a0a0b0',fontFace:F,lineSpacing:18});
   s=P.addSlide();head(s,'EVIDENCE · 1/2','實證①：做出來了 — 福星高照 Demo','4ade80');
