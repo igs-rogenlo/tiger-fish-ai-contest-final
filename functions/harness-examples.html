@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harness Engineering — 實際內容範例</title>
+<style>
+  :root{--bg:#06060e;--slab:#0c0c1a;--raised:#111128;--stroke:rgba(255,255,255,.1);--txt:#e8e8f0;--dim:rgba(255,255,255,.5);--purple:#b07aff;--cyan:#22d3ee;--lime:#4ade80;--amber:#fbbf24;--rose:#fb7185;--orange:#fb923c;--mono:'JetBrains Mono',ui-monospace,monospace}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"Noto Sans TC",system-ui,sans-serif;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:32px 20px 80px}
+  h1{font-size:1.8rem;font-weight:900;margin:0 0 .3rem}
+  .sub{color:var(--dim);font-size:.95rem;margin-bottom:1.4rem}
+  .toc{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+  .toc a{font-size:.8rem;color:var(--txt);text-decoration:none;border:1px solid var(--stroke);background:var(--raised);border-radius:99px;padding:.3rem .8rem}
+  .toc a:hover{border-color:var(--cyan)}
+  section{background:var(--slab);border:1px solid var(--stroke);border-left-width:3px;border-radius:10px;padding:1.1rem 1.3rem;margin-bottom:1.1rem;scroll-margin-top:16px}
+  section h2{font-size:1.15rem;margin:0 0 .2rem}
+  section .desc{color:var(--dim);font-size:.86rem;margin-bottom:.7rem}
+  pre{background:#05060d;border:1px solid var(--stroke);border-radius:8px;padding:.9rem 1rem;overflow-x:auto;margin:0}
+  code,pre{font-family:var(--mono);font-size:.78rem;line-height:1.55;color:#cdd6e3;white-space:pre-wrap;word-break:break-word}
+  .tag{font-family:var(--mono);font-size:.66rem;color:var(--dim);border:1px solid var(--stroke);border-radius:5px;padding:.1rem .4rem;margin-left:.4rem}
+  .note{color:var(--dim);font-size:.78rem;margin-top:.6rem}
+  a.back{color:var(--cyan);text-decoration:none;font-size:.85rem}
+  .acc-p{border-left-color:var(--purple)} .acc-c{border-left-color:var(--cyan)} .acc-l{border-left-color:var(--lime)} .acc-a{border-left-color:var(--amber)} .acc-o{border-left-color:var(--orange)} .acc-r{border-left-color:var(--rose)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 回報告</a>
+  <h1>Harness Engineering — 實際內容範例</h1>
+  <div class="sub">每個職能 Agent 背後的工程結構，取自實際檔案（路徑/帳號等已去識別化）。這是「Agent 工程」而非「prompt 工程」的佐證。</div>
+  <div class="toc">
+    <a href="#agents-md">📋 AGENTS.md</a><a href="#docs-system">📐 系統協議</a><a href="#skills">🧩 Skills</a><a href="#tools-md">🔧 TOOLS.md</a><a href="#knowledge">🧠 知識庫</a><a href="#self-check">✅ 自驗證 Gate</a>
+  </div>
+
+  <section id="agents-md" class="acc-p">
+    <h2>📋 AGENTS.md 規則檔<span class="tag">slot-client · 約 300 行</span></h2>
+    <div class="desc">每個 Agent 一份的標準作業規則，啟動即載入。以下為「輸出格式」段（節錄）：</div>
+    <pre>## ⚠️ 輸出格式（最高優先）
+使用者在手機上也會看，所以：
+1. 結構化資料優先用清單，不要用 markdown 表格（手機欄位會跑掉）
+2. 架構圖/流程圖/sequence/state/ER → 一律用 Mermaid，
+   過 6-gate hardlock（含 vision check）再交付
+3. 大量表格/報表/訊息 PNG → Pillow 產圖（venv + 中文字體）
+4. 程式碼 → code block；檔案路徑 → 用 `file_path:line_number` 方便跳轉
+5. 變更回報 → 固定三段：改了哪些檔案 / 新增哪些資源 / 有沒有碰共用模組</pre>
+    <div class="note">＊另含 Session 啟動序列、自驗證協議、per-user Git 等段落（敏感段不公開）。</div>
+  </section>
+
+  <section id="docs-system" class="acc-c">
+    <h2>📐 系統協議 docs/system/<span class="tag">可機器驗證的契約</span></h2>
+    <div class="desc">把「怎樣算做完」寫成 Agent 能自動檢查的規則。實際檔案清單：</div>
+    <pre>docs/system/
+├─ SESSION_STARTUP.md      每次開工必讀清單與啟動序列
+├─ SELF_CHECK_PROTOCOL.md  交付前自驗證協議（Hermes）
+├─ DIAGRAM_HARDLOCK.md     圖表硬性檢查（6-gate + vision check）
+├─ FRESHNESS_CHECK.md      開工前共用模組鮮度檢查
+├─ DELIVERY_RULES.md       交付規則
+├─ ACP_PIPELINE.md         ACP 製程管線
+├─ EXCEL_INGEST.md         Excel 匯入規範
+├─ OPERATIONAL_TOOLS.md    營運工具
+└─ GIT_PAT_INIT.md         Git 身分初始化</pre>
+  </section>
+
+  <section id="skills" class="acc-l">
+    <h2>🧩 Skills 技能模組<span class="tag">美術 Agent · 19 個</span></h2>
+    <div class="desc">把 SOP 包成可執行技能。以美術 Agent 為例（skills/ 實際清單）：</div>
+    <pre>art-imagegen           AI 生圖/修圖
+art-photoshop          Photoshop 自動化
+art-cocos-validate     Cocos 素材驗證
+art-spine-export       Spine 匯出
+art-spine-prototype    Spine 動畫原型
+art-3d-delivery        3D（Blender）交付
+art-reviewer-agent     美術自審
+slot-art-consultant    老虎機美術 QC 顧問
+penpot-mcp             Penpot 向量共編
+art-reference-research 競品/參考研究
+huashu-design · art-video · art-benchmark-report · …</pre>
+  </section>
+
+  <section id="tools-md" class="acc-a">
+    <h2>🔧 TOOLS.md 工具路由<span class="tag">預配專屬工具鏈</span></h2>
+    <div class="desc">每個 Agent 預先配好的路徑、工具與參考專案對照（路徑已去識別化）：</div>
+    <pre># TOOLS.md — 工具使用備註
+## 常用檔案路徑
+| 用途              | 路徑 |
+| 知識庫            | ~/workspace-slot-client/knowledge/ |
+| 參考專案 symlink  | ~/workspace-slot-client/reference/projects/ |
+| Python venv       | ~/.local/tool-venv/bin/python (Pillow…) |
+| 中文字體          | STHeiti Medium.ttc |
+| ocb wrapper       | ~/.openclaw/bin/ocb |
+
+## 參考專案清單
+| Game ID | 專案路徑 | Cocos 版本 | 類型 |  ← 每台機台對照</pre>
+  </section>
+
+  <section id="knowledge" class="acc-o">
+    <h2>🧠 知識庫 + 記憶<span class="tag">各職能獨立 scope</span></h2>
+    <div class="desc">各職能自己的知識庫（會隨對話更新）。以 Client Agent 的 knowledge/ 為例：</div>
+    <pre>knowledge/
+├─ network-protocol.md          前後端協議
+├─ component-design-rules.md    元件設計規則
+├─ code-review-criteria.md      Code Review 標準
+├─ naming-conventions.md        命名規範
+├─ asset-pipeline.md            素材管線
+├─ audio-integration-guide.md   音效整合
+├─ minimal-runnable-blueprint.md 最小可運行藍圖
+├─ game-id-registry.md          Game ID 登錄
+├─ cocos-version-matrix.md      Cocos 版本對照
+└─ patterns/ · diagrams/ · projects/ …</pre>
+  </section>
+
+  <section id="self-check" class="acc-r">
+    <h2>✅ 自驗證 Gate（SELF_CHECK_PROTOCOL）<span class="tag">交付前 AI 自己負責</span></h2>
+    <div class="desc">交付前 Agent 自己跑契約檢查，不靠下游才發現問題。四個核心原則（節錄）：</div>
+    <pre>🔒 契約優先：每類交付物配 HARDLOCK（圖/規格/code…），
+   定義「什麼算完成」的可機器驗證 gate；條目用「動作＋通過條件」兩段式寫
+
+🔒 自驗證循環：完成交付 → 跑契約 gates → 全 PASS？
+   ├─ YES → 留證 → 交付
+   └─ NO  → 進失敗處理（修交付物）
+
+🔒 失敗不改標準：gate FAIL 不接受降標準/override；永遠修交付物（圖/spec/code），
+   不修 gate；改契約須留 audit trail
+
+🔒 可觀察留證：每次交付附通過證據</pre>
+  </section>
+
+  <a class="back" href="../index.html">← 回報告</a>
+</div>
+</body>
+</html>

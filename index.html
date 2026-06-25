@@ -81,8 +81,10 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 .loop-knowledge{border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.05)}
 .loop-ico{font-size:1.3rem;flex-shrink:0}
 /* screenshots */
-.shot{border:1px solid var(--stroke);border-radius:8px;overflow:hidden;background:#000;display:block}
+.shot{border:1px solid var(--stroke);border-radius:8px;overflow:hidden;background:#000;display:block;position:relative}
 .shot img{display:block;width:100%;height:auto}
+.shot::after{content:'🔍 點擊放大';position:absolute;top:6px;right:6px;font-family:var(--mono);font-size:.62rem;color:#fff;background:rgba(0,0,0,.62);border:1px solid rgba(255,255,255,.3);border-radius:5px;padding:.12rem .45rem;pointer-events:none;z-index:2}
+.shot:hover::after{background:rgba(34,211,238,.85);color:#06060e}
 .cap{font-size:.72rem;color:var(--dim);font-family:var(--mono);margin-top:.35rem;line-height:1.4}
 /* screenshot placeholder slot (user fills later) */
 .shot-slot{border:2px dashed rgba(34,211,238,.45);background:rgba(34,211,238,.04);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.3rem 1rem;width:100%;height:100%;min-height:200px}
@@ -450,14 +452,14 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
   <div><span class="a eyebrow" style="color:var(--purple)">Harness Engineering</span><h2 class="a">每個 Agent 都是「工程化」的，不只是一段 prompt</h2></div>
   <p class="a lead" style="font-size:.92rem;max-width:none">每個職能 Agent 背後，是一整套<strong class="accent-p">結構化、可維護、持續演進</strong>的工程結構（harness）—— 規範檔、協議文件、技能模組、知識庫，不是一句 prompt。這是「<strong class="accent-l">Agent 工程</strong>」，也是別人複製不來的深度。</p>
   <div class="a g3" style="gap:.6rem">
-    <div class="panel panel-p a" style="padding:.85rem"><div class="panel-title" style="color:var(--purple);font-size:.98rem">📋 AGENTS.md 規則檔</div><div class="panel-body" style="font-size:.8rem">每個 Agent 約 <strong>300 行</strong>標準作業規則（.md），snippet 自動注入、持續維護。</div></div>
-    <div class="panel panel-c a" style="padding:.85rem"><div class="panel-title" style="color:var(--cyan);font-size:.98rem">📐 系統協議 docs/system</div><div class="panel-body" style="font-size:.8rem">把「怎樣算做完」寫成<strong>能自動檢查的規則</strong>：開工先讀必讀檔、用最新共用模組、交付前自檢、圖沒過關不准交。</div></div>
-    <div class="panel panel-l a" style="padding:.85rem"><div class="panel-title" style="color:var(--lime);font-size:.98rem">🧩 Skills 技能模組</div><div class="panel-body" style="font-size:.8rem">把 SOP 包成可執行技能（美術 Agent 約 <strong>18 個</strong>：Cocos 驗證／美術 QC／Spine 匯出…）。</div></div>
+    <a class="panel panel-p a" href="functions/harness-examples.html#agents-md" target="_blank" style="padding:.85rem;display:block;text-decoration:none;color:inherit"><div class="panel-title" style="color:var(--purple);font-size:.98rem">📋 AGENTS.md 規則檔</div><div class="panel-body" style="font-size:.8rem">每個 Agent 約 <strong>300 行</strong>標準作業規則（.md），snippet 自動注入、持續維護。</div><div style="font-size:.7rem;color:var(--purple);margin-top:.35rem;font-family:var(--mono)">🔍 看實際範例 →</div></a>
+    <a class="panel panel-c a" href="functions/harness-examples.html#docs-system" target="_blank" style="padding:.85rem;display:block;text-decoration:none;color:inherit"><div class="panel-title" style="color:var(--cyan);font-size:.98rem">📐 系統協議 docs/system</div><div class="panel-body" style="font-size:.8rem">把「怎樣算做完」寫成<strong>能自動檢查的規則</strong>：開工先讀必讀檔、用最新共用模組、交付前自檢、圖沒過關不准交。</div><div style="font-size:.7rem;color:var(--cyan);margin-top:.35rem;font-family:var(--mono)">🔍 看實際範例 →</div></a>
+    <a class="panel panel-l a" href="functions/harness-examples.html#skills" target="_blank" style="padding:.85rem;display:block;text-decoration:none;color:inherit"><div class="panel-title" style="color:var(--lime);font-size:.98rem">🧩 Skills 技能模組</div><div class="panel-body" style="font-size:.8rem">把 SOP 包成可執行技能（美術 Agent 約 <strong>19 個</strong>：Cocos 驗證／美術 QC／Spine 匯出…）。</div><div style="font-size:.7rem;color:var(--lime);margin-top:.35rem;font-family:var(--mono)">🔍 看實際範例 →</div></a>
   </div>
   <div class="a g3" style="gap:.6rem">
-    <div class="panel panel-a a" style="padding:.85rem"><div class="panel-title" style="color:var(--amber);font-size:.98rem">🔧 TOOLS.md 工具路由</div><div class="panel-body" style="font-size:.8rem">預配專屬工具鏈（MCP／CLI／API／瀏覽器自動化），開箱即用、統一維護。</div></div>
-    <div class="panel panel-o a" style="padding:.85rem"><div class="panel-title" style="color:var(--orange);font-size:.98rem">🧠 知識庫 + 記憶</div><div class="panel-body" style="font-size:.8rem">各職能<strong>獨立 knowledge/</strong> ＋ 學習記憶（對話即更新、越用越強）。</div></div>
-    <div class="panel panel-r a" style="padding:.85rem"><div class="panel-title" style="color:var(--rose);font-size:.98rem">✅ 自驗證 Gate + 權限</div><div class="panel-body" style="font-size:.8rem">6-gate hardlock + vision check 交付前自查；per-user Git 權限隔離。</div></div>
+    <a class="panel panel-a a" href="functions/harness-examples.html#tools-md" target="_blank" style="padding:.85rem;display:block;text-decoration:none;color:inherit"><div class="panel-title" style="color:var(--amber);font-size:.98rem">🔧 TOOLS.md 工具路由</div><div class="panel-body" style="font-size:.8rem">預配專屬工具鏈（MCP／CLI／API／瀏覽器自動化），開箱即用、統一維護。</div><div style="font-size:.7rem;color:var(--amber);margin-top:.35rem;font-family:var(--mono)">🔍 看實際範例 →</div></a>
+    <a class="panel panel-o a" href="functions/harness-examples.html#knowledge" target="_blank" style="padding:.85rem;display:block;text-decoration:none;color:inherit"><div class="panel-title" style="color:var(--orange);font-size:.98rem">🧠 知識庫 + 記憶</div><div class="panel-body" style="font-size:.8rem">各職能<strong>獨立 knowledge/</strong> ＋ 學習記憶（對話即更新、越用越強）。</div><div style="font-size:.7rem;color:var(--orange);margin-top:.35rem;font-family:var(--mono)">🔍 看實際範例 →</div></a>
+    <a class="panel panel-r a" href="functions/harness-examples.html#self-check" target="_blank" style="padding:.85rem;display:block;text-decoration:none;color:inherit"><div class="panel-title" style="color:var(--rose);font-size:.98rem">✅ 自驗證 Gate + 權限</div><div class="panel-body" style="font-size:.8rem">交付前自我檢查（跑契約 gates）；per-user Git 權限隔離。</div><div style="font-size:.7rem;color:var(--rose);margin-top:.35rem;font-family:var(--mono)">🔍 看實際範例 →</div></a>
   </div>
 </div>
 </section>
@@ -520,7 +522,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
   <div class="a panel" style="border:2px solid rgba(251,146,60,.3);padding:.9rem">
     <div style="font-weight:800;color:var(--orange);font-size:.95rem;margin-bottom:.3rem">&#128640; 為什麼這套框架會持續進化</div>
     <div class="panel-body" style="font-size:.85rem">
-      &bull; <strong class="accent-l">越用越強</strong> &mdash; 知識自動累積、Skill 自動生成，<strong>設計上</strong>用越多越準（效益待第二台量化）<br>
+      &bull; <strong class="accent-l">越用越強</strong> &mdash; 知識自動累積、Skill 自動生成，<strong>設計上</strong>用越多越準<br>
       &bull; <strong class="accent-c">容易長大</strong> &mdash; 新增 Agent 只要灌知識＋設工具鏈，不動核心<br>
       &bull; <strong class="accent-a">看得到、控得住</strong> &mdash; 使用治理＋健康監控儀表板掌握用量與系統健康；權限分級、資安統一控管
     </div>
