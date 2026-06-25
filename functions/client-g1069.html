@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G1069 LuckyFortune6 — AI 開發競賽前端</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2430;
+    --ink:#e6edf3; --sub:#9fb0c3; --line:#2b3542;
+    --gold:#f5c451; --green:#3fb950; --blue:#58a6ff;
+    --ai:#bd6bff; --human:#ff8a5b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#05070b;color:var(--ink);
+    font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif;
+    display:flex;flex-direction:column;align-items:center;gap:26px;padding:30px 16px}
+  .slide{
+    width:1280px;height:720px;background:
+      radial-gradient(1100px 500px at 80% -12%,rgba(189,107,255,.16),transparent 60%),
+      radial-gradient(900px 480px at 0% 115%,rgba(88,166,255,.13),transparent 60%),
+      var(--bg);
+    border:1px solid var(--line);border-radius:16px;overflow:hidden;position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,.55);padding:44px 56px}
+  .tag{display:inline-block;font-size:13px;letter-spacing:2px;color:var(--gold);
+    border:1px solid rgba(245,196,81,.4);border-radius:999px;padding:4px 14px;margin-bottom:14px}
+  h1{font-size:40px;line-height:1.15;font-weight:850;letter-spacing:.5px}
+  h1 .accent{background:linear-gradient(90deg,var(--gold),#ff8a5b);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--sub);font-size:16px;margin-top:9px;max-width:980px;line-height:1.6}
+  .sub b{color:var(--gold)}
+  .meta{position:absolute;top:44px;right:56px;text-align:right;color:var(--sub);font-size:13px;line-height:1.7}
+  .pageno{position:absolute;bottom:20px;right:30px;color:var(--sub);font-size:12px}
+
+  /* flow (slide1) */
+  .flow{display:grid;grid-template-columns:1fr 56px 1fr 56px 1fr;align-items:stretch;margin-top:36px}
+  .step{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+    border-radius:16px;padding:22px 20px;display:flex;flex-direction:column;gap:9px}
+  .step .who{font-size:13px;letter-spacing:1px;font-weight:700}
+  .step.h .who{color:var(--human)} .step.a .who{color:var(--ai)}
+  .step.a{border-color:rgba(189,107,255,.5);box-shadow:0 0 0 1px rgba(189,107,255,.18) inset}
+  .step h3{font-size:21px;font-weight:800}
+  .step ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .step li{font-size:14px;padding-left:17px;position:relative;line-height:1.4}
+  .step li::before{content:"›";position:absolute;left:2px;color:var(--gold);font-weight:800}
+  .arrow{display:flex;align-items:center;justify-content:center;font-size:32px;color:var(--blue);opacity:.8}
+  .gauge{display:flex;align-items:center;gap:24px;margin-top:34px;background:var(--panel);
+    border:1px solid var(--line);border-radius:16px;padding:20px 28px}
+  .gauge .num{font-size:60px;font-weight:850;line-height:1;
+    background:linear-gradient(90deg,var(--ai),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .gauge .txt b{font-size:17px} .gauge .txt p{color:var(--sub);font-size:13px;margin-top:3px}
+  .gauge .bar{flex:1;height:26px;border-radius:8px;overflow:hidden;display:flex;border:1px solid var(--line)}
+  .gauge .bar div{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#0d1117}
+
+  /* band + cases (slide2) */
+  .band{display:flex;align-items:center;gap:16px;margin-top:22px;background:var(--panel2);
+    border:1px solid var(--line);border-radius:12px;padding:12px 20px}
+  .band .from,.band .to{font-size:16px;font-weight:800;text-align:center;white-space:nowrap}
+  .band .from small,.band .to small{display:block;font-size:11px;font-weight:400;color:var(--sub);margin-top:2px}
+  .band .from{color:var(--human)} .band .to{color:var(--gold)}
+  .band .op{flex:1;text-align:center;font-size:14px;color:var(--ink);line-height:1.6;
+    border-left:1px dashed var(--line);border-right:1px dashed var(--line);padding:0 16px}
+  .cases{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+  .case{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 17px 15px;
+    display:flex;flex-direction:column;gap:10px;border-top:4px solid var(--ai)}
+  .case.star{border-top-color:var(--gold);box-shadow:0 0 0 1px rgba(245,196,81,.22) inset}
+  .case .ico{font-size:27px}
+  .case h3{font-size:17px;font-weight:800;line-height:1.22}
+  .case .task{color:var(--sub);font-size:13px;line-height:1.45}
+  .case .did{font-size:13px;line-height:1.5}
+  .case .did b{color:var(--ai)} .case.star .did b{color:var(--gold)}
+  .case .res{margin-top:auto;background:rgba(63,185,80,.12);border:1px solid rgba(63,185,80,.4);
+    border-radius:10px;padding:9px 11px;font-size:12.5px;color:#9ff0ab;line-height:1.4}
+  .case .res b{color:var(--green)}
+
+  /* detail pages */
+  .detail{display:grid;grid-template-columns:1fr 1.18fr;gap:26px;margin-top:24px}
+  .dcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+  .dcard.bg{border-left:4px solid var(--human)}
+  .dcard.ai{border-left:4px solid var(--ai)}
+  .dcard h4{font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .dcard.bg h4{color:var(--human)} .dcard.ai h4{color:var(--ai)}
+  .dcard p{color:var(--sub);font-size:14.5px;line-height:1.65}
+  .steps{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .steps li{display:flex;gap:12px;font-size:14.5px;line-height:1.5}
+  .steps .n{flex:none;width:24px;height:24px;border-radius:7px;background:rgba(189,107,255,.18);
+    border:1px solid rgba(189,107,255,.5);color:var(--ai);font-weight:800;font-size:13px;
+    display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .steps b{color:var(--ink)}
+  .resbar{margin-top:22px;background:rgba(63,185,80,.1);border:1px solid rgba(63,185,80,.38);
+    border-radius:12px;padding:14px 20px;font-size:14.5px;color:#b6f0bf;line-height:1.55}
+  .resbar b{color:var(--green)}
+  .mono{font-family:"SF Mono",Menlo,Consolas,monospace}
+
+  /* board grids */
+  .boards{display:flex;gap:26px;align-items:flex-end;flex-wrap:wrap}
+  .boardwrap{text-align:center}
+  .boardwrap .cap{font-size:13px;color:var(--sub);margin-bottom:8px}
+  .board{display:inline-grid;grid-template-columns:repeat(5,54px);gap:5px}
+  .board span{height:38px;border-radius:6px;background:var(--panel2);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:"SF Mono",Menlo,monospace}
+  .board span.e{background:transparent;border:1px dashed #2b3542;color:#3a4654;font-weight:400}
+  .board span.coin{background:rgba(245,196,81,.16);border-color:rgba(245,196,81,.55);color:var(--gold)}
+  .board span.fin{background:rgba(63,185,80,.16);border-color:rgba(63,185,80,.55);color:#9ff0ab}
+  .arrowbig{font-size:30px;color:var(--blue);align-self:center;padding-bottom:14px}
+
+  .foot{position:absolute;left:56px;right:56px;bottom:22px;display:flex;justify-content:space-between;
+    color:var(--sub);font-size:12.5px;border-top:1px solid var(--line);padding-top:11px}
+
+  /* closing */
+  .closegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+  .cbox{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+  .cbox .big{font-size:46px;font-weight:850;line-height:1;
+    background:linear-gradient(90deg,var(--ai),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .cbox h4{font-size:17px;margin:10px 0 8px} .cbox p{color:var(--sub);font-size:13.5px;line-height:1.55}
+  .checks{display:flex;flex-direction:column;gap:11px;margin-top:30px}
+  .checks div{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--green);
+    border-radius:10px;padding:13px 18px;font-size:15px}
+
+  @media print{
+    body{background:#fff;padding:0;gap:0}
+    .slide{box-shadow:none;border-radius:0;page-break-after:always;width:100%;height:100vh}
+    @page{size:1280px 720px;margin:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ 1. COVER ============ -->
+<section class="slide">
+  <div class="meta">AI 遊戲開發競賽 · 前端<br>G1069 LuckyFortune6（拉霸遊戲）<br>2026-06-22</div>
+  <span class="tag">AI 開發競賽 · 前端</span>
+  <h1>用 <span class="accent">AI</span> 開發一款拉霸遊戲前端</h1>
+  <div class="sub">本款<b>改製自 Fortune Arrow</b>：在既有遊戲基礎上換皮，新增「免費遊戲特殊輪」玩法 — 金幣飛行、分數收集、盤面顯示與表演流程，並移除原作不適用的特殊規格。下面是「人」與「AI」如何分工。</div>
+
+  <div class="flow">
+    <div class="step h"><div class="who">🧑 人</div><h3>提需求 / 定規則</h3>
+      <ul><li>提供 Fortune Arrow 基底</li><li>說明新玩法規則</li><li>提供 Fuxing6 美術素材</li></ul></div>
+    <div class="arrow">→</div>
+    <div class="step a"><div class="who">🤖 AI</div><h3>寫程式 / 算數據 / 驗證</h3>
+      <ul><li>串接整段演出流程</li><li>實作金幣與分數邏輯</li><li>逐手重算 9 組測試封包</li><li>自動檢查、修錯、提交</li></ul></div>
+    <div class="arrow">→</div>
+    <div class="step h"><div class="who">🧑 人</div><h3>審查 / 拍板</h3>
+      <ul><li>對照畫面確認正確</li><li>美術與視覺微調</li><li>規格最終決策</li></ul></div>
+  </div>
+
+  <div class="gauge">
+    <div class="num">~85%</div>
+    <div class="txt"><b>程式與數據工作量，由 AI 完成</b><p>人專注在「定規則、給素材、做最終確認」</p></div>
+    <div class="bar">
+      <div style="width:85%;background:linear-gradient(90deg,var(--ai),var(--blue))">AI 85%</div>
+      <div style="width:15%;background:linear-gradient(90deg,var(--human),#e0703f)">人 15%</div>
+    </div>
+  </div>
+  <div class="pageno">1 / 9</div>
+</section>
+
+<!-- ============ 2. OVERVIEW ============ -->
+<section class="slide">
+  <div class="meta">改製總覽<br>Fortune Arrow → G1069</div>
+  <span class="tag">AI 實際做了什麼</span>
+  <h1>AI 在 <span class="accent">Fortune Arrow</span> 基底上做了什麼</h1>
+
+  <div class="band">
+    <span class="from">Fortune Arrow<br><small>原始遊戲</small></span>
+    <span class="op">＋ 換皮（Fuxing6 素材） ＋ 新增特殊輪玩法與表演 ＋ 對應測試數據<br><span style="color:var(--human)">－ 移除原作不適用的特殊規格</span></span>
+    <span class="to">G1069<br><small>LuckyFortune6</small></span>
+  </div>
+
+  <div class="cases">
+    <div class="case star"><div class="ico">🎬</div><h3>表演流程<br>串接</h3>
+      <div class="task">進場、金幣飛行、收集、獅子進退場，動畫照順序串、時機對齊。</div>
+      <div class="did"><b>AI 串接</b>整段演出：動畫、Spine 生命週期、金幣拖尾、收集後重置時機。</div>
+      <div class="res"><b>結果：</b>演出順暢，無閃跳、無提前隱藏。</div></div>
+    <div class="case"><div class="ico">🪙</div><h3>金幣飛行<br>分數正確</h3>
+      <div class="task">收金幣時畫面數字一度算錯（加分變累加）。</div>
+      <div class="did"><b>AI 找出</b>該用「設定最終值」而非「持續累加」，並修新轉出盤初始值。</div>
+      <div class="res"><b>結果：</b>每格分數對齊封包，畫面不跳錯。</div></div>
+    <div class="case"><div class="ico">📊</div><h3>9 組封包<br>數據重算</h3>
+      <div class="task">一組封包算錯、後面 6 組全被連累。</div>
+      <div class="did"><b>AI 逐手</b>重算每格最終值，同步修好所有相關欄位。</div>
+      <div class="res"><b>結果：</b>9 組封包全對齊、格式檢查全綠。</div></div>
+    <div class="case"><div class="ico">✂️</div><h3>移除原作<br>特殊規格</h3>
+      <div class="task">原作金/銀幣乘倍、scatter rule、client fallback 不適用新玩法。</div>
+      <div class="did"><b>AI 清掉</b>原作規格，金/銀幣改純加分，重算 8 個測試檔。</div>
+      <div class="res"><b>結果：</b>當天完成，無殘留舊規則。</div></div>
+  </div>
+  <div class="pageno">2 / 9</div>
+</section>
+
+<!-- ============ 3. 架構與重構 ============ -->
+<section class="slide">
+  <div class="meta">技術基礎<br>架構與重構</div>
+  <span class="tag">🏗️ 架構與重構</span>
+  <h1>把 <span class="accent">Arrow 舊架構</span> 重整成 G1069 新骨架</h1>
+
+  <div class="detail">
+    <div class="dcard bg"><h4>🎯 背景 / 挑戰</h4>
+      <p>Fortune Arrow 原始碼是「<b style="color:var(--ink)">箭頭（Arrow）</b>」機制的舊架構。要直接改成 G1069 新玩法，新舊邏輯會纏在一起，難維護、易出錯。</p>
+      <p style="margin-top:12px">需要先把<b style="color:var(--ink)">骨架重整乾淨</b>，新功能才好長上去。</p>
+      <div class="resbar" style="margin-top:16px;background:rgba(88,166,255,.1);border-color:rgba(88,166,255,.4);color:#bcdcff">
+        <b style="color:var(--blue)">規模：</b>自 2026-04-24 基底起<br>
+        <span class="mono" style="font-size:13px">154 次提交 · 809 檔變更 · +71.8k / −58k 行</span></div>
+    </div>
+    <div class="dcard ai"><h4>🤖 AI 做了什麼</h4>
+      <ul class="steps">
+        <li><span class="n">1</span><div>全專案腳本改 <b>G1069 前綴</b>，與舊遊戲徹底隔離。</div></li>
+        <li><span class="n">2</span><div>拆成 <b>State（狀態機）＋ Presenter（表演）</b>兩層，免費遊戲流程清楚分離。</div></li>
+        <li><span class="n">3</span><div>把原作箭頭特殊邏輯隔離成 <b>LegacyArrowFlow</b>，不污染新流程。</div></li>
+        <li><span class="n">4</span><div><b>移除福星5獨有規格</b>，清掉不適用的舊包袱。</div></li>
+        <li><span class="n">5</span><div>導入元件規則與 <b>MoneyGong 品質門檻</b>做為基準。</div></li>
+      </ul>
+    </div>
+  </div>
+  <div class="resbar"><b>結果：</b>產出 <b style="color:var(--ink)">35+ 個 G1069 腳本</b>，State / Presenter 分層清楚，新舊邏輯乾淨分離、好維護。</div>
+  <div class="pageno">3 / 9</div>
+</section>
+
+<!-- ============ 4. 表演流程 ============ -->
+<section class="slide">
+  <div class="meta">大項目 ①<br>表演流程開發</div>
+  <span class="tag">🎬 表演流程開發</span>
+  <h1>整段 <span class="accent">演出流程</span> 由 AI 串接</h1>
+
+  <div class="detail">
+    <div class="dcard bg"><h4>🎯 背景 / 挑戰</h4>
+      <p>免費遊戲一手裡，動畫要照固定順序播：<b style="color:var(--ink)">進場宣告 → 金幣飛行 → 分數收集 → 獅子進退場</b>。時機只要對不準，就會出現提前隱藏、閃跳、特效卡住等問題。Spine 動畫物件在銷毀時還可能讓遊戲崩潰。</p>
+    </div>
+    <div class="dcard ai"><h4>🤖 AI 做了什麼</h4>
+      <ul class="steps">
+        <li><span class="n">1</span><div>停輪與快速停輪時，正確播 scatter <b>「In」進場動畫</b>，快停則直接跳最後一幀、不重播。</div></li>
+        <li><span class="n">2</span><div>金幣飛行改用 <b>VFX 拖尾特效</b>，飛行後盤面數字與封包一致。</div></li>
+        <li><span class="n">3</span><div>收集分數條的重置，<b>延到免費遊戲幕簾關閉後</b>才做，避免玩家看到數字突然歸零。</div></li>
+        <li><span class="n">4</span><div>分數累加改成 <b>逐幀（tick）驅動</b>的計數，跳數更穩。</div></li>
+        <li><span class="n">5</span><div>獅子進退場（進場 / 離場各一套動畫）<b>對齊宣告與倒數</b>的節奏，並修掉 Spine 銷毀時的崩潰風險。</div></li>
+      </ul>
+    </div>
+  </div>
+  <div class="resbar"><b>結果：</b>免費遊戲一整手的演出順暢銜接，無閃跳、無提前隱藏、無 Spine 崩潰。</div>
+  <div class="pageno">4 / 9</div>
+</section>
+
+<!-- ============ 4. 金幣/分數/盤面 ============ -->
+<section class="slide">
+  <div class="meta">大項目 ②<br>金幣 / 分數 / 盤面邏輯</div>
+  <span class="tag">🪙 金幣飛行與分數顯示</span>
+  <h1>盤面數字 <span class="accent">算對、顯示對</span></h1>
+
+  <div class="detail" style="grid-template-columns:1fr 1fr">
+    <div class="dcard ai"><h4>🤖 AI 釐清的規則</h4>
+      <ul class="steps">
+        <li><span class="n">1</span><div>金幣飛行後顯示值 = <b>設定最終值（SET）</b>，不是持續累加（ADD）。</div></li>
+        <li><span class="n">2</span><div>當手<b>新轉出</b>的盤一開始沒有數值，金幣 <span class="mono">+90</span> 後就顯示 <span class="mono">90</span>，不是累積值。</div></li>
+        <li><span class="n">3</span><div>收集階段：<b>綠盤先收、金盤後收</b>，依封包順序逐一計算最終值。</div></li>
+        <li><span class="n">4</span><div>同手新出的盤，<b>不能提前</b>互相當作收集來源。</div></li>
+      </ul>
+    </div>
+    <div class="dcard bg" style="border-left-color:var(--blue)"><h4>🧮 第二手盤面範例</h4>
+      <div class="boards">
+        <div class="boardwrap"><div class="cap">金幣後</div>
+          <div class="board">
+            <span>280</span><span>280</span><span class="e">·</span><span class="coin">90</span><span class="coin">90</span>
+            <span>280</span><span>280</span><span class="e">·</span><span class="e">·</span><span class="e">·</span>
+            <span>280</span><span>280</span><span class="e">·</span><span>1320</span><span class="coin">90</span>
+          </div></div>
+        <div class="arrowbig">→</div>
+        <div class="boardwrap"><div class="cap">收集後 final</div>
+          <div class="board">
+            <span>280</span><span>280</span><span class="e">·</span><span class="fin">4860</span><span class="fin">1770</span>
+            <span>280</span><span>280</span><span class="e">·</span><span class="e">·</span><span class="e">·</span>
+            <span>280</span><span>280</span><span class="e">·</span><span>1320</span><span class="fin">9720</span>
+          </div></div>
+      </div>
+      <p style="margin-top:14px;font-size:13px">綠盤 <span class="mono">[4,0]=1770</span> · 金盤 <span class="mono">[3,0]=4860</span> · 金盤 <span class="mono">[4,2]=9720</span></p>
+    </div>
+  </div>
+  <div class="resbar"><b>結果：</b>client 照封包資料顯示、不自行重算；每一格金幣後與收集後的數字都對得上。</div>
+  <div class="pageno">5 / 9</div>
+</section>
+
+<!-- ============ 5. 測試數據 ============ -->
+<section class="slide">
+  <div class="meta">大項目 ③<br>測試封包重算</div>
+  <span class="tag">📊 9 組完整測試封包</span>
+  <h1>一組錯，<span class="accent">連累六組</span> — 全部重算對齊</h1>
+
+  <div class="detail">
+    <div class="dcard bg"><h4>🎯 背景 / 挑戰</h4>
+      <p>共 9 組<b style="color:var(--ink)">從 maingame 打到 freegame 的完整測試封包</b>（<span class="mono">fever_1~9</span>），模擬一整條遊戲流程。第 <b style="color:var(--ink)">3</b> 組第二手的盤面數字原本算錯，後面的 <b style="color:var(--ink)">4~9 組</b>都接到錯誤基底，一路錯下去。</p>
+      <p style="margin-top:12px">每組要同步的欄位多達 <b style="color:var(--ink)">8 種</b>：金幣後顯示值、綠盤、金盤、收集記錄、收集前 / 後值、特徵值與其位置。手動對極易出錯。</p>
+    </div>
+    <div class="dcard ai"><h4>🤖 AI 做了什麼</h4>
+      <ul class="steps">
+        <li><span class="n">1</span><div><b>逐手逐格</b>重算每組最終數值，從第 3 組修正後往後重建。</div></li>
+        <li><span class="n">2</span><div>一次同步 <b>8 種相關欄位</b>，確保整條數值鏈一致。</div></li>
+        <li><span class="n">3</span><div>用程式自動驗證 <b>9 組封包 JSON 全數可正常解析</b>。</div></li>
+      </ul>
+      <div class="resbar" style="margin-top:16px"><b>重算後重點：</b><br>
+        <span class="mono" style="font-size:12.5px;color:#b6f0bf">fever_3: [3,0]=4860 · [4,0]=1770 · [4,2]=9720<br>
+        fever_4: [3,0]=4950 · [4,0]=1860 · [4,2]=9810<br>
+        fever_5: [2,1]=4350 　 fever_6: [2,1]=4440 …</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>✅ 9 組封包 fever_1~9 JSON parse 全綠</span><span>數值鏈：before → targets → collect → after → feature_value</span></div>
+  <div class="pageno">6 / 9</div>
+</section>
+
+<!-- ============ 6. 移除原作規格 ============ -->
+<section class="slide">
+  <div class="meta">大項目 ④<br>移除原作特殊規格</div>
+  <span class="tag">✂️ 移除原作特殊規格</span>
+  <h1>拆掉 <span class="accent">Fortune Arrow</span> 不適用的舊規格</h1>
+
+  <div class="detail">
+    <div class="dcard bg"><h4>🎯 背景 / 挑戰</h4>
+      <p>Fortune Arrow 原作帶有一些特殊規格，套到 G1069 新玩法會出錯或多餘，必須乾淨移除，否則殘留邏輯會干擾盤面與分數。</p>
+      <ul class="steps" style="margin-top:14px">
+        <li><span class="n" style="background:rgba(255,138,91,.18);border-color:rgba(255,138,91,.5);color:var(--human)">✕</span><div>金 / 銀幣 <b>乘倍</b>規格</div></li>
+        <li><span class="n" style="background:rgba(255,138,91,.18);border-color:rgba(255,138,91,.5);color:var(--human)">✕</span><div>原作 <b>scatter rule</b>（改從設定檔移除）</div></li>
+        <li><span class="n" style="background:rgba(255,138,91,.18);border-color:rgba(255,138,91,.5);color:var(--human)">✕</span><div>特殊輪 <b>client fallback</b> 邏輯</div></li>
+      </ul>
+    </div>
+    <div class="dcard ai"><h4>🤖 AI 做了什麼</h4>
+      <ul class="steps">
+        <li><span class="n">1</span><div>金 / 銀幣統一改成<b>純加分</b>：<span class="mono">mode=add · award_type=amount · value=90</span>，不再有乘倍。</div></li>
+        <li><span class="n">2</span><div>移除原作 scatter rule 與 client fallback，<b>讓盤面完全照封包</b>顯示。</div></li>
+        <li><span class="n">3</span><div>一次更新 <b>8 個測試檔</b>，並重算受影響的盤面數字。</div></li>
+        <li><span class="n">4</span><div>檢查殘留：確認沒有任何 <span class="mono">multiply / value=2</span> 舊規格。</div></li>
+      </ul>
+    </div>
+  </div>
+  <div class="resbar"><b>結果：</b>規格變更當天完成，金/銀幣只做加分，無殘留舊規則；共用模組未受影響。</div>
+  <div class="pageno">7 / 9</div>
+</section>
+
+<!-- ============ 8. 主遊戲收集等級條 ============ -->
+<section class="slide">
+  <div class="meta">大項目 ⑤<br>主遊戲收集等級條</div>
+  <span class="tag">🎚️ 主遊戲 · 收集等級條（Collect Lv Bar）</span>
+  <h1>主遊戲 <span class="accent">收集等級條</span> 從零打造</h1>
+
+  <div class="detail">
+    <div class="dcard bg"><h4>🎯 背景 / 挑戰</h4>
+      <p>主遊戲要新增一條<b style="color:var(--ink)">收集等級條</b>：玩家收集 scatter 累積進度，集滿觸發升級與 <span class="mono">+1 spin</span>。原作沒有這個玩法，整條 bar 的<b style="color:var(--ink)">表演、特效與資料串接都要從零做</b>。</p>
+      <div class="resbar" style="margin-top:16px;background:rgba(88,166,255,.1);border-color:rgba(88,166,255,.4);color:#bcdcff">
+        <b style="color:var(--blue)">新建腳本：</b><br>
+        <span class="mono" style="font-size:12.5px">G1069CollectLvBarController<br>G1069CollectLvHitEffectCtrl<br>G1069ScatterCollectController</span></div>
+    </div>
+    <div class="dcard ai"><h4>🤖 AI 做了什麼</h4>
+      <ul class="steps">
+        <li><span class="n">1</span><div>進度用 Sprite <b>fillStart（0~100%）</b>控制，bar 端點<b>隨進度即時移動</b>對齊。</div></li>
+        <li><span class="n">2</span><div>串接封包 <span class="mono">CollectInfo</span>（collect_lv / collect_count），scatter <b>飛行貼到 bar</b>（VFX 拖尾）。</div></li>
+        <li><span class="n">3</span><div>命中特效控制器：收集瞬間播 hit 動畫，<b>idle / bingo / 加值</b>三組特效切換。</div></li>
+        <li><span class="n">4</span><div>數值累加 + <b>集滿回退節奏</b>（<span class="mono">0.8s / 1.6s</span>）避免畫面突兀。</div></li>
+        <li><span class="n">5</span><div>修 bar 場景階層、遮罩、Spine premultiply，接上 <span class="mono">+1spin</span> 圖騰動畫。</div></li>
+      </ul>
+    </div>
+  </div>
+  <div class="resbar"><b>結果：</b>收集等級條從零完成 — 進度、飛行、命中、升級表演一條龍，資料照封包顯示。</div>
+  <div class="pageno">8 / 9</div>
+</section>
+
+<!-- ============ 9. CLOSING ============ -->
+<section class="slide">
+  <div class="meta">總結<br>AI 使用程度</div>
+  <span class="tag">總結 · AI 使用程度</span>
+  <h1>AI 不只寫程式，<span class="accent">還算數據、跑驗證</span></h1>
+
+  <div class="closegrid">
+    <div class="cbox"><div class="big">154</div><h4>次提交 · 35+ 腳本</h4><p>自 2026-04-24 基底起，809 檔變更、+71.8k / −58k 行；新增 35+ 個 G1069 腳本。</p></div>
+    <div class="cbox"><div class="big">~85%</div><h4>程式與數據工作量</h4><p>架構重構、表演串接、金幣 / 分數邏輯、封包數據重算，主要由 AI 完成。</p></div>
+    <div class="cbox"><div class="big">9 / 9</div><h4>完整封包對齊</h4><p>maingame→freegame 完整測試封包 fever_1~9 全部重算對齊、格式檢查全綠。</p></div>
+  </div>
+
+  <div class="checks">
+    <div>✅ <b>自動驗證全綠</b>：程式檢查（lint） · 型別檢查（typecheck） · 9 組封包數據格式</div>
+    <div>🔒 <b>邊界乾淨</b>：只動本遊戲檔案，共用模組與不相關檔案未受影響</div>
+  </div>
+  <div class="pageno">9 / 9</div>
+</section>
+
+</body>
+</html>

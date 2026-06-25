@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>福星高照6 — AI 機率製程優化報告</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2430;
+    --ink:#e6edf3; --sub:#9fb0c3; --line:#2b3542;
+    --gold:#f5c451; --green:#3fb950; --blue:#58a6ff;
+    --ai:#bd6bff; --human:#ff8a5b; --red:#f85149;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#05070b;color:var(--ink);
+    font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif;
+    display:flex;flex-direction:column;align-items:center;gap:26px;padding:30px 16px}
+  .slide{
+    width:1280px;height:720px;background:
+      radial-gradient(1100px 500px at 80% -12%,rgba(189,107,255,.16),transparent 60%),
+      radial-gradient(900px 480px at 0% 115%,rgba(88,166,255,.13),transparent 60%),
+      var(--bg);
+    border:1px solid var(--line);border-radius:16px;overflow:hidden;position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,.55);padding:46px 56px}
+  .tag{display:inline-block;font-size:13px;letter-spacing:2px;color:var(--gold);
+    border:1px solid rgba(245,196,81,.4);border-radius:999px;padding:4px 14px;margin-bottom:16px}
+  h1{font-size:42px;line-height:1.15;font-weight:850;letter-spacing:.5px}
+  h1 .accent{background:linear-gradient(90deg,var(--gold),#ff8a5b);-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1 .accent-ai{background:linear-gradient(90deg,var(--ai),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--sub);font-size:17px;margin-top:10px;max-width:900px;line-height:1.6}
+  .meta{position:absolute;top:46px;right:56px;text-align:right;color:var(--sub);font-size:13px;line-height:1.7}
+  .pageno{position:absolute;bottom:22px;right:30px;color:var(--sub);font-size:12px}
+
+  /* ---- Flow (slide 1) ---- */
+  .flow{display:grid;grid-template-columns:1fr 48px 1.4fr 48px 1fr;align-items:stretch;margin-top:32px;gap:0}
+  .step{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+    border-radius:16px;padding:22px 20px;display:flex;flex-direction:column;gap:9px}
+  .step .who{font-size:13px;letter-spacing:1px;font-weight:700}
+  .step.h .who{color:var(--human)} .step.a .who{color:var(--ai)}
+  .step.a{border-color:rgba(189,107,255,.5);box-shadow:0 0 0 1px rgba(189,107,255,.18) inset}
+  .step h3{font-size:20px;font-weight:800}
+  .step ul{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:2px}
+  .step li{font-size:14px;color:var(--ink);padding-left:16px;position:relative;line-height:1.45}
+  .step li::before{content:"›";position:absolute;left:2px;color:var(--gold);font-weight:800}
+  .arrow{display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--blue);opacity:.8}
+
+  .gauge{display:flex;align-items:center;gap:24px;margin-top:28px;background:var(--panel);
+    border:1px solid var(--line);border-radius:16px;padding:20px 28px}
+  .gauge .num{font-size:58px;font-weight:850;line-height:1;white-space:nowrap;
+    background:linear-gradient(90deg,var(--gold),var(--human));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .gauge .txt b{font-size:17px} .gauge .txt p{color:var(--sub);font-size:13.5px;margin-top:4px}
+  .gauge .bar{flex:1;height:24px;border-radius:8px;overflow:hidden;display:flex;border:1px solid var(--line)}
+  .gauge .bar div{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#0d1117}
+
+  /* ---- Cases (slide 2) ---- */
+  .cases{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+  .case{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 17px 15px;
+    display:flex;flex-direction:column;gap:10px;border-top:4px solid var(--ai)}
+  .case.star{border-top-color:var(--gold);box-shadow:0 0 0 1px rgba(245,196,81,.18) inset}
+  .case.green-top{border-top-color:var(--green)}
+  .case .ico{font-size:26px}
+  .case h3{font-size:16.5px;font-weight:800;line-height:1.25}
+  .case .task{color:var(--sub);font-size:13px;line-height:1.45}
+  .case .did{font-size:13px;line-height:1.5}
+  .case .did b{color:var(--ai)}
+  .case.star .did b{color:var(--gold)}
+  .case.green-top .did b{color:var(--green)}
+  .case .res{margin-top:auto;background:rgba(63,185,80,.11);border:1px solid rgba(63,185,80,.38);
+    border-radius:10px;padding:9px 11px;font-size:12.5px;color:#9ff0ab;line-height:1.4}
+  .case .res b{color:var(--green)}
+
+  /* ---- Before/After (slide 3) ---- */
+  .band{display:flex;align-items:center;gap:16px;margin-top:18px;background:var(--panel2);
+    border:1px solid var(--line);border-radius:12px;padding:12px 20px}
+  .band .from,.band .to{font-size:16px;font-weight:800;text-align:center;white-space:nowrap}
+  .band .from small,.band .to small{display:block;font-size:11px;font-weight:400;color:var(--sub);margin-top:2px}
+  .band .from{color:var(--human)} .band .to{color:var(--gold)}
+  .band .op{flex:1;text-align:center;font-size:14px;color:var(--ink);
+    border-left:1px dashed var(--line);border-right:1px dashed var(--line);padding:0 16px;line-height:1.7}
+  .ba-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px}
+  .ba-table th{background:var(--panel2);padding:10px 14px;text-align:left;border:1px solid var(--line);font-size:13px;letter-spacing:.5px}
+  .ba-table th:first-child{color:var(--sub)}
+  .ba-table th.bad{color:var(--human)} .ba-table th.good{color:var(--green)}
+  .ba-table td{padding:10px 14px;border:1px solid var(--line);line-height:1.5;vertical-align:top}
+  .ba-table tr:nth-child(odd) td{background:rgba(255,255,255,.02)}
+  .ba-table td:first-child{color:var(--sub);font-weight:600;white-space:nowrap}
+  .ba-table td.bad{color:#ffa8a3}
+  .ba-table td.good{color:#9ff0ab}
+
+  /* ---- Metrics (slide 4) ---- */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
+  .metric{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+    border-radius:14px;padding:22px 18px;text-align:center}
+  .metric .big{font-size:52px;font-weight:850;line-height:1;
+    background:linear-gradient(90deg,var(--ai),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .metric .big.gold-grad{background:linear-gradient(90deg,var(--gold),var(--human));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .metric .big.green-grad{background:linear-gradient(90deg,var(--green),#58d68d);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .metric .unit{font-size:14px;color:var(--sub);margin-top:4px}
+  .metric .label{font-size:14px;font-weight:700;margin-top:8px}
+  .metric .note{font-size:12px;color:var(--sub);margin-top:6px;line-height:1.45}
+
+  .insight{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:20px 24px;margin-top:18px;display:flex;gap:20px;align-items:flex-start}
+  .insight .label{font-size:13px;color:var(--gold);font-weight:700;letter-spacing:1px;white-space:nowrap}
+  .insight p{font-size:14.5px;color:var(--ink);line-height:1.65}
+  .insight p b{color:var(--ai)}
+
+  /* ---- Quality gates (slide 4 right) ---- */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+  .gate-col h4{font-size:14px;letter-spacing:1px;color:var(--sub);margin-bottom:10px;font-weight:600}
+  .gate{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;margin-bottom:10px}
+  .gate .fname{font-size:14px;font-weight:800;color:var(--blue);margin-bottom:8px;font-family:monospace}
+  .gate.ai-gate .fname{color:var(--ai)}
+  .gate.green-gate .fname{color:var(--green)}
+  .gate ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+  .gate li{font-size:13px;color:var(--sub);padding-left:16px;position:relative;line-height:1.4}
+  .gate li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800;font-size:11px}
+  .next-col h4{font-size:14px;letter-spacing:1px;color:var(--sub);margin-bottom:10px;font-weight:600}
+  .next-item{display:flex;gap:12px;align-items:flex-start;padding:11px 14px;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;margin-bottom:10px}
+  .next-item .n{min-width:24px;height:24px;border-radius:50%;background:rgba(88,166,255,.2);
+    border:1px solid rgba(88,166,255,.5);display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-weight:800;color:var(--blue)}
+  .next-item .body{font-size:13px;color:var(--sub);line-height:1.5}
+  .next-item .body b{color:var(--ink)}
+
+  /* ---- Conclusion band ---- */
+  .concl{background:linear-gradient(135deg,rgba(189,107,255,.12),rgba(88,166,255,.10));
+    border:1px solid rgba(189,107,255,.3);border-radius:16px;padding:24px 28px;margin-top:20px;
+    display:flex;gap:28px;align-items:center}
+  .concl .big-text{flex:1}
+  .concl .big-text .c1{font-size:28px;font-weight:850;line-height:1.25}
+  .concl .big-text .c1 span{background:linear-gradient(90deg,var(--ai),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .concl .big-text .c2{font-size:14px;color:var(--sub);margin-top:8px;line-height:1.6}
+  .concl .warn{flex:1;background:rgba(248,81,73,.1);border:1px solid rgba(248,81,73,.35);
+    border-radius:12px;padding:16px 18px}
+  .concl .warn .wlabel{font-size:12px;color:var(--red);font-weight:700;letter-spacing:1px;margin-bottom:8px}
+  .concl .warn p{font-size:13.5px;color:var(--sub);line-height:1.6}
+  .concl .warn b{color:var(--ink)}
+
+  .foot{position:absolute;left:56px;right:56px;bottom:24px;display:flex;justify-content:space-between;
+    color:var(--sub);font-size:13px;border-top:1px solid var(--line);padding-top:12px}
+
+  @media print{
+    body{background:#fff;padding:0;gap:0}
+    .slide{box-shadow:none;border-radius:0;page-break-after:always;width:100%;height:100vh}
+    @page{size:1280px 720px;margin:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= SLIDE 1 ================= -->
+<section class="slide">
+  <div class="meta">AI 機率製程優化報告<br>福星高照6 · Go quicktest scaffold<br>2026-06-22</div>
+  <span class="tag">內部技術報告 · 機率設計部門</span>
+  <h1>用 <span class="accent-ai">AI</span> 加速機率製程：<span class="accent">規格書 → scaffold</span></h1>
+  <div class="sub">從福星高照6規格書出發，參考福星5框架，生成可驗證的 Go quicktest scaffold — 人專注在<b style="color:var(--gold)">定規則、確認矛盾、最終拍板</b>，AI 負責整理、生成、修版、驗證。</div>
+
+  <div class="flow">
+    <div class="step h">
+      <div class="who">🧑 人</div>
+      <h3>提需求 / 給素材</h3>
+      <ul>
+        <li>提供福星6規格書（Excel）</li>
+        <li>提供福星5作為參考框架</li>
+        <li>確認規格矛盾與待確認項</li>
+      </ul>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step a">
+      <div class="who">🤖 AI</div>
+      <h3>整理 / 生成 / 修版 / 驗證</h3>
+      <ul>
+        <li>抽出設計重點、列規格矛盾</li>
+        <li>對齊 Gold1–5、ALLWAYS、SC 框架</li>
+        <li>生成 Go quicktest scaffold（v1→v2）</li>
+        <li>自動跑 go test / go build，修錯</li>
+        <li>補齊 FG 紅盤／綠盤／金盤流程</li>
+      </ul>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step h">
+      <div class="who">🧑 人</div>
+      <h3>審查 / 拍板</h3>
+      <ul>
+        <li>比對 scaffold 與規格書</li>
+        <li>驗收 go test PASS</li>
+        <li>補 PAR 值、正式 RTP 驗證</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="gauge">
+    <div class="num">60–80%</div>
+    <div class="txt"><b>前置整理與骨架產出工作量，由 AI 完成</b><p>基於本次人工步驟自動化後的工作項拆解，非統計抽樣</p></div>
+    <div class="bar">
+      <div style="width:70%;background:linear-gradient(90deg,var(--ai),var(--blue))">AI ≈70%</div>
+      <div style="width:30%;background:linear-gradient(90deg,var(--human),#e0703f)">人 30%</div>
+    </div>
+  </div>
+  <div class="pageno">1 / 4</div>
+</section>
+
+<!-- ================= SLIDE 2 ================= -->
+<section class="slide">
+  <div class="meta">四項核心能力<br>任務說明 → AI 做了什麼 → 結果</div>
+  <span class="tag">AI 可以做到的事</span>
+  <h1>AI 在機率製程中負責的 <span class="accent-ai">四項工作</span></h1>
+
+  <div class="cases">
+    <div class="case star">
+      <div class="ico">📋</div>
+      <h3>規格轉譯</h3>
+      <div class="task">從 Excel 規格書抽出 base game、FG、BuyBonus、JP、scatter、special reel、collect gate 等設計重點。</div>
+      <div class="did"><b>AI 自動抽取</b>重點並列出規格矛盾與待確認項，省去人工逐頁翻讀。</div>
+      <div class="res"><b>結果：</b>矛盾項即時浮現，reviewer 可直接針對問題拍板。</div>
+    </div>
+
+    <div class="case">
+      <div class="ico">🏗️</div>
+      <h3>架構設計</h3>
+      <div class="task">參考福星5既有 PAR sheet 與遊戲框架，拆 RTP contribution、feature gate、盤面狀態、參數表。</div>
+      <div class="did"><b>AI 直接對齊</b> Gold1–5 / ALLWAYS / SC 框架，補上福星6差異：MG collect gate、FG special reel、JP gate。</div>
+      <div class="res"><b>結果：</b>架構草案完整覆蓋福星6新增設計，無漏項。</div>
+    </div>
+
+    <div class="case">
+      <div class="ico">⚙️</div>
+      <h3>程式生成</h3>
+      <div class="task">從架構草案生成 Go quicktest scaffold，odds.go 維持純參數檔，flow 邏輯放 game_process.go。</div>
+      <div class="did"><b>AI 生成 v1 scaffold</b>，依 reviewer 回饋修正 v2：移除 odds.go 的 executable content，補 FG 盤面狀態邏輯。</div>
+      <div class="res"><b>結果：</b>v2 go test ./... ＆ go build ./... 全部 PASS。</div>
+    </div>
+
+    <div class="case green-top">
+      <div class="ico">✅</div>
+      <h3>驗證協助</h3>
+      <div class="task">scaffold 產出後需要立即確認可 build、可 test，正式 PAR 值補完後還要跑 Monte Carlo。</div>
+      <div class="did"><b>AI 自動執行</b> go test / go build，生成後即驗證；正式值到位後可接 RTP / SD / CI / hit rate 輸出。</div>
+      <div class="res"><b>結果：</b>第一版可 build 可 review，降低 template drift 風險。</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>✅ 本次完成：機率架構草案 · v1 scaffold · v2 scaffold · go test PASS · go build PASS</span>
+    <span>🔒 範圍定位：工程骨架，非正式 RTP 版；PAR 值補完後才跑正式驗證</span>
+  </div>
+  <div class="pageno">2 / 4</div>
+</section>
+
+<!-- ================= SLIDE 3 ================= -->
+<section class="slide">
+  <div class="meta">製程前後對照<br>傳統作法 vs AI 輔助後</div>
+  <span class="tag">製程 Before / After</span>
+  <h1>把<span class="accent"> 前置整理 → 骨架產出 → review 修版</span>變成穩定製程</h1>
+
+  <div class="band">
+    <span class="from">傳統作法<br><small>人工逐步完成</small></span>
+    <span class="op">
+      規格整理人工化 → 架構從頭想 → 手刻 scaffold → 逐檔 review → 手動 build 找錯<br>
+      <span style="color:var(--green)">→ AI 輔助後：自動抽取 → 對齊舊框架 → 直接生成 → 集中修版 → 即時驗證</span>
+    </span>
+    <span class="to">AI 輔助後<br><small>穩定製程</small></span>
+  </div>
+
+  <table class="ba-table">
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th class="bad">傳統作法</th>
+        <th class="good">AI 輔助後</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>規格整理</td>
+        <td class="bad">人工讀 Excel 後自行摘規則</td>
+        <td class="good">自動抽重點並列規格矛盾</td>
+      </tr>
+      <tr>
+        <td>參考舊遊戲</td>
+        <td class="bad">人工翻福星5架構與參數習慣</td>
+        <td class="good">直接對齊 Gold level / ALLWAYS / SC 框架</td>
+      </tr>
+      <tr>
+        <td>程式骨架</td>
+        <td class="bad">手刻 quicktest 初版</td>
+        <td class="good">直接產 scaffold 並保留 TODO_PAR_VALUE</td>
+      </tr>
+      <tr>
+        <td>review 修版</td>
+        <td class="bad">逐檔人工調整</td>
+        <td class="good">依回饋集中修 odds.go 與 FG 流程</td>
+      </tr>
+      <tr>
+        <td>驗證</td>
+        <td class="bad">手動 build 後再找錯</td>
+        <td class="good">產出後立即 go test / go build</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="foot">
+    <span>⚠ 重點：不是取代 PAR 設計，而是把前置整理、骨架產出、review 修版變成較穩定的製程</span>
+    <span>正式 RTP / SD / CI 仍必須依賴完整 PAR 值與 Monte Carlo 驗證</span>
+  </div>
+  <div class="pageno">3 / 4</div>
+</section>
+
+<!-- ================= SLIDE 4 ================= -->
+<section class="slide">
+  <div class="meta">成果 · 品質門檻 · 下一步<br>福星高照6 · 2026-06-22</div>
+  <span class="tag">優化成果 · 品質門檻 · 下一步</span>
+  <h1>本次<span class="accent-ai"> 4 類工作物</span>產出，形成<span class="accent"> 1 套可複用製程</span></h1>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="big gold-grad">4</div>
+      <div class="unit">類</div>
+      <div class="label">工作物產出</div>
+      <div class="note">架構草案 · v1 scaffold<br>v2 scaffold · 驗證摘要</div>
+    </div>
+    <div class="metric">
+      <div class="big green-grad">2</div>
+      <div class="unit">項</div>
+      <div class="label">自動驗證完成</div>
+      <div class="note">go test ./...<br>go build ./...</div>
+    </div>
+    <div class="metric">
+      <div class="big">60–80</div>
+      <div class="unit">% 省時估算</div>
+      <div class="label">前置整理工序</div>
+      <div class="note">基於本次工作項拆解<br>非統計抽樣</div>
+    </div>
+    <div class="metric">
+      <div class="big" style="font-size:38px;padding-top:7px">odds.go<br>only params</div>
+      <div class="label" style="margin-top:6px">固化規則 × 1</div>
+      <div class="note">不放 loop / function<br>命名對齊 PAR sheet</div>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-top:16px">
+    <div>
+      <div class="gate-col"><h4>QUALITY GATES</h4></div>
+      <div class="gate">
+        <div class="fname">odds.go</div>
+        <ul>
+          <li>只放參數 literal，不放 loop / function</li>
+          <li>命名對齊 PAR sheet</li>
+        </ul>
+      </div>
+      <div class="gate ai-gate">
+        <div class="fname">game_process.go</div>
+        <ul>
+          <li>只處理流程與盤面狀態</li>
+          <li>FG token 狀態完整；feature contribution 可拆</li>
+        </ul>
+      </div>
+      <div class="gate green-gate">
+        <div class="fname">驗證</div>
+        <ul>
+          <li>build / test 先過；正式值補完後跑 Monte Carlo</li>
+          <li>RTP / SD / CI / hit rate / feature rate 另出表</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="next-col"><h4>NEXT STEPS</h4></div>
+      <div class="next-item">
+        <div class="n">1</div>
+        <div class="body"><b>補 PAR 值</b> — paytable、base/FG reels、SC cash weight、collect gate、special reel weight、JP contribution</div>
+      </div>
+      <div class="next-item">
+        <div class="n">2</div>
+        <div class="body"><b>跑正式驗證</b> — 理論 RTP 拆貢獻、Monte Carlo RTP/SD/CI、hit rate、feature rate、分布尾端檢查</div>
+      </div>
+      <div class="next-item">
+        <div class="n">3</div>
+        <div class="body"><b>固化模板</b> — 把福星6規則寫回 quicktest template，reviewer feedback 變成 lint checklist，減少下一款重工</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pageno">4 / 4</div>
+</section>
+
+</body>
+</html>
