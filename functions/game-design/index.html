@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>人工與 AI 製程差異報告</title>
+  <link rel="stylesheet" href="presentation-editor.css">
+  <style>
+    :root {
+      --bg: #f3f7fb;
+      --ink: #182235;
+      --muted: #607085;
+      --navy: #163a5c;
+      --teal: #2b7f90;
+      --amber: #f0b342;
+      --green: #5a9f69;
+      --red: #c7534b;
+      --paper: #fffdf8;
+      --line: #dce5ee;
+      --soft: #f7fafc;
+      --shadow: 0 20px 60px rgba(30, 48, 70, .14);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top left, #ffffff 0, var(--bg) 44%, #eaf1f7 100%);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+      overflow: hidden;
+    }
+    .stage { width: 100vw; height: 100vh; display: grid; place-items: center; padding: 22px; }
+    .deck {
+      position: relative;
+      width: min(100%, calc(100vh * 16 / 9));
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid rgba(23, 32, 51, .08);
+      box-shadow: var(--shadow);
+    }
+	    .slide {
+	      position: absolute;
+	      inset: 0;
+	      display: none;
+	      padding: 48px 58px 42px;
+	      background: linear-gradient(180deg, #fffdf8 0%, #f8fbfd 100%);
+	      overflow-x: hidden;
+	      overflow-y: auto;
+	      scrollbar-gutter: stable;
+	    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 8px;
+      background: linear-gradient(90deg, var(--navy), var(--teal), var(--amber), var(--green));
+    }
+    .kicker { color: var(--teal); font-size: 14px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { margin-top: 14px; max-width: 950px; color: var(--navy); font-size: 56px; line-height: 1.12; letter-spacing: 0; }
+    h2 { margin-top: 10px; color: var(--navy); font-size: 39px; line-height: 1.15; letter-spacing: 0; }
+    h3 { color: var(--navy); letter-spacing: 0; }
+    .lead { margin-top: 18px; max-width: 900px; color: #35445a; font-size: 22px; line-height: 1.48; }
+    .version { margin-top: auto; display: flex; gap: 20px; color: var(--muted); font-size: 15px; font-weight: 800; }
+    .hero-strip, .savings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .hero-strip div, .saving-card, .compare-panel, .evidence-panel, .insight, .large-image, .optimization-grid div, .phase-split div {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.88);
+    }
+    .hero-strip div, .saving-card { padding: 19px 21px; }
+    .hero-strip span, .saving-card span, .panel-head span, .evidence-panel > span, .phase-split span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 900;
+    }
+    .hero-strip strong, .saving-card strong { display: block; margin-top: 8px; color: var(--navy); font-size: 32px; line-height: 1.08; }
+    .saving-card em { display: block; margin-top: 8px; color: #3e5068; font-style: normal; font-size: 16px; font-weight: 800; }
+    .saving-card.highlight strong, .saving-card.highlight em { color: var(--green); }
+	    .cover-showcase {
+	      display: grid;
+	      grid-template-columns: .62fr 1fr;
+	      gap: 14px;
+	      margin-top: 20px;
+	      min-height: 286px;
+	    }
+	    .cover-image {
+	      min-width: 0;
+	      min-height: 286px;
+	      overflow: hidden;
+	      border: 1px solid var(--line);
+	      border-radius: 8px;
+	      background: #f6f2ec;
+	      box-shadow: 0 10px 24px rgba(24, 42, 64, .08);
+    }
+    .cover-image img {
+      width: 100%;
+      height: 100%;
+	      object-fit: contain;
+	      background: #160d0b;
+	    }
+	    .cover-showcase figure {
+	      min-width: 0;
+	      min-height: 286px;
+	      padding: 10px;
+	      border: 1px solid var(--line);
+	      border-radius: 8px;
+	      background: #fff;
+	      box-shadow: 0 10px 24px rgba(24, 42, 64, .08);
+	      display: flex;
+	      flex-direction: column;
+	    }
+	    .cover-showcase figure .image-link-wrap {
+	      flex: 1;
+	      min-height: 0;
+	      display: flex;
+	    }
+	    .cover-showcase figure img {
+	      width: 100%;
+	      flex: 1;
+	      min-height: 0;
+	      object-fit: contain;
+	      border-radius: 6px;
+	      background: #160d0b;
+	    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 28px;
+      flex: 1;
+      min-height: 0;
+    }
+    .large-image { padding: 14px; display: flex; flex-direction: column; min-height: 0; }
+    figure { margin: 0; }
+    figcaption { margin-top: 8px; color: var(--muted); font-size: 13px; font-weight: 900; }
+    img { max-width: 100%; display: block; }
+    .large-image img {
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #f4f0e8;
+    }
+	    .process-layout {
+	      display: grid;
+	      grid-template-columns: minmax(0, .95fr) minmax(0, .95fr) minmax(280px, .8fr);
+	      gap: 16px;
+	      margin-top: 24px;
+	      flex: 1;
+	      min-height: 0;
+	    }
+	    .compare-panel { padding: 18px; min-height: 0; overflow-x: hidden; overflow-y: auto; }
+    .compare-panel.human { border-top: 7px solid var(--amber); }
+    .compare-panel.ai { border-top: 7px solid var(--teal); }
+    .panel-head { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+    .panel-head strong { color: var(--red); font-size: 20px; white-space: nowrap; }
+    .compare-panel.ai .panel-head strong { color: var(--teal); }
+    .compare-panel h3 { margin-top: 12px; font-size: 23px; line-height: 1.25; }
+    ul { margin: 16px 0 0; padding-left: 20px; color: #35445a; font-size: 17px; line-height: 1.45; }
+    li + li { margin-top: 9px; }
+	    .evidence-panel { padding: 16px; min-height: 0; display: flex; flex-direction: column; overflow-x: hidden; overflow-y: auto; }
+	    .evidence-grid { display: grid; gap: 14px; margin-top: 10px; flex: 0 0 auto; overflow: visible; padding-right: 3px; align-items: start; grid-auto-rows: max-content; }
+	    .evidence-grid figure { min-height: 0; display: grid; grid-template-rows: auto auto auto; align-content: start; }
+    .evidence-grid img {
+      width: 100%;
+      max-height: 118px;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #f4f0e8;
+    }
+    .insight {
+      margin-top: 16px;
+      padding: 14px 18px;
+      border-left: 8px solid var(--green);
+      color: #33465e;
+      font-size: 18px;
+      line-height: 1.42;
+      background: #f7fbf8;
+    }
+    .evidence-board {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 26px;
+      flex: 1;
+      min-height: 0;
+    }
+    .evidence-board figure {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 10px;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .evidence-board img {
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #f6f2ec;
+      border: 1px solid var(--line);
+    }
+    .phase-split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .phase-split div { padding: 18px; }
+    .phase-split strong { display: block; margin-top: 8px; color: var(--navy); font-size: 25px; }
+    .phase-split p { margin-top: 8px; color: #4b5b72; font-size: 17px; }
+    .final-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      gap: 16px;
+      margin-top: 18px;
+      flex: 0 1 auto;
+      min-height: 0;
+    }
+    .final-savings {
+      display: grid;
+      gap: 8px;
+      min-height: 0;
+    }
+    .final-savings .saving-card { padding: 10px 14px; }
+    .final-savings .saving-card strong { margin-top: 4px; font-size: 24px; }
+    .final-savings .saving-card em { margin-top: 4px; font-size: 14px; }
+    .phase-mini {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 9px 14px;
+    }
+    .phase-mini span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .phase-mini strong {
+      display: block;
+      margin-top: 3px;
+      color: var(--navy);
+      font-size: 17px;
+      line-height: 1.18;
+    }
+    .phase-mini p { margin-top: 3px; color: #4b5b72; font-size: 13px; }
+    .final-optimizations {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      min-height: 0;
+    }
+    .final-optimizations div {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 14px 17px;
+      border-left: 7px solid var(--teal);
+    }
+    .final-optimizations div:nth-child(2) { border-left-color: var(--amber); }
+    .final-optimizations div:nth-child(3) { border-left-color: var(--green); }
+    .final-optimizations h3 { font-size: 21px; }
+    .final-optimizations p { margin-top: 6px; color: #35445a; font-size: 15px; line-height: 1.38; }
+    .optimization-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 32px;
+    }
+    .optimization-grid div { padding: 24px; border-top: 7px solid var(--teal); }
+    .optimization-grid div:nth-child(2) { border-top-color: var(--amber); }
+    .optimization-grid div:nth-child(3) { border-top-color: var(--green); }
+    .optimization-grid h3 { font-size: 25px; }
+    .optimization-grid p { margin-top: 12px; color: #35445a; font-size: 19px; line-height: 1.52; }
+    .closing { margin-top: 28px; padding: 20px 24px; border-radius: 8px; background: var(--navy); color: #fff; font-size: 24px; line-height: 1.42; }
+    .closing.compact { margin-top: 10px; padding: 10px 16px; font-size: 16px; }
+	    .footer { margin-top: auto; padding-top: 18px; display: flex; justify-content: space-between; color: #7d8998; font-size: 13px; font-weight: 900; }
+    .controls { position: fixed; top: 12px; right: 16px; display: flex; align-items: center; gap: 8px; z-index: 20; color: #33425a; font-size: 13px; font-weight: 900; }
+    .controls button { border: 1px solid #cdd8e4; background: rgba(255,255,255,.92); border-radius: 8px; padding: 7px 10px; color: #183a5a; font: inherit; cursor: pointer; }
+    .progress { position: fixed; left: 0; bottom: 0; height: 4px; width: 100%; background: rgba(24,58,90,.12); z-index: 20; }
+    .progress i { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, var(--teal), var(--green)); transition: width .25s ease; }
+    a { color: var(--teal); font-weight: 900; }
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .stage { padding: 8px; height: auto; min-height: 100vh; }
+      .deck { width: 100%; aspect-ratio: 16 / 9; min-height: 720px; }
+      .slide { padding: 28px 24px; overflow: auto; }
+      h1 { font-size: 34px; }
+      h2 { font-size: 28px; }
+      .lead { font-size: 17px; }
+      .hero-strip, .savings-grid, .overview-grid, .process-layout, .evidence-board, .phase-split, .optimization-grid { grid-template-columns: 1fr; }
+      .cover-showcase, .final-layout { grid-template-columns: 1fr; height: auto; }
+	      .cover-image, .cover-showcase figure { min-height: 148px; }
+      .footer { position: static; margin-top: auto; padding-top: 20px; }
+      .controls { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <button type="button" data-prev>上一頁</button>
+    <span data-count>1 / 9</span>
+    <button type="button" data-next>下一頁</button>
+  </div>
+  <div class="stage">
+    <main class="deck" aria-label="人工與 AI 製程差異報告">
+      
+      <section class="slide active">
+        <div class="kicker">Process Analysis · v2026.06.24.1145</div>
+        <h1>人工與 AI 製程差異報告</h1>
+        <p class="lead">本版聚焦「每個流程怎麼從人工做法轉成 AI 輔助做法」，並搭配人工文件與 AI 產出範例圖，最後收斂節省時間與後續優化方向。</p>
+        <div class="hero-strip">
+          <div><span>傳統人工</span><strong>130.5 小時</strong></div>
+          <div><span>目前 AI 輔助</span><strong>109.75 小時</strong></div>
+          <div><span>優化後目標</span><strong>74.9 小時</strong></div>
+        </div>
+        <div class="cover-showcase" aria-label="福星高照6 原型畫面示意">
+          <div class="cover-image"><img src="assets/cover-fuxing-prototype-dashboard.jpg" alt="福星高照6 原型控制與流程紀錄畫面"></div>
+          <div class="cover-image"><img src="assets/cover-fuxing-prototype-gameplay.jpg" alt="福星高照6 免費遊戲盤面示意"></div>
+        </div>
+        <div class="version"><span>更新時間：2026-06-24 11:45</span><span>來源：原始流程圖＋製程分析報告</span></div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>1 / 8</span></div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Overview</div>
+        <h2>整體流程：AI 先產初稿，企劃負責驗證與決策</h2>
+        
+        <div class="overview-grid">
+          <figure class="large-image"><img src="assets/phase1-flow.jpg" alt="第一階段流程圖"><figcaption>第一階段：規格設計＋文件製作</figcaption></figure>
+          <figure class="large-image"><img src="assets/phase2-flow.jpg" alt="第二階段流程圖"><figcaption>第二階段：實作討論＋產品調校</figcaption></figure>
+        </div>
+        <div class="insight">報告主軸：AI 不是取代企劃判斷，而是先處理資料整理、初稿、示意圖與文件格式化，讓企劃時間集中在驗證、攻防與品質收斂。</div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>2 / 8</span></div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Flow 01</div>
+        <h2>流程 1：玩法發想與競品研究</h2>
+        
+        <div class="process-layout">
+          <div class="compare-panel human">
+            <div class="panel-head"><span>人工製程</span><strong>約 11.5 小時</strong></div>
+            <h3>人工先看影片、比對競品，再整理成可討論資料</h3>
+            <ul><li>逐款搜尋競品影片與規則。</li><li>人工判讀玩法特色與市場方向。</li><li>再整理成競品拆解、創新方向與主題包裝內容。</li></ul>
+          </div>
+          <div class="compare-panel ai">
+            <div class="panel-head"><span>AI 製程</span><strong>約 7.8 小時</strong></div>
+            <h3>AI 先產競品拆解與方向草稿，企劃再驗證</h3>
+            <ul><li>AI 先整理競品拆解、玩法特色與主題方向。</li><li>企劃再確認正確性、補足市場判斷。</li><li>可把空白發想時間轉為快速篩選與取捨。</li></ul>
+          </div>
+          <div class="evidence-panel">
+            <span>文件附圖</span>
+            <div class="evidence-grid"><figure><img src="assets/human-docs-top.jpg" alt="人工競品整理範例"><figcaption>人工競品整理範例</figcaption></figure><figure><img src="assets/ai-doc-bottom.jpg" alt="AI 競品/規格產出範例"><figcaption>AI 競品/規格產出範例</figcaption></figure></div>
+          </div>
+        </div>
+        <div class="insight">節省重點：競品研究、創新設計、主題包裝由人工查找改為 AI 先整理，後續優化可放在 reference 品質與驗證流程。</div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>3 / 8</span></div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Flow 02</div>
+        <h2>流程 2：提案文件與策略來源</h2>
+        
+        <div class="process-layout">
+          <div class="compare-panel human">
+            <div class="panel-head"><span>人工製程</span><strong>約 11 小時</strong></div>
+            <h3>人工把策略、玩法、畫面示意逐項拼成提案</h3>
+            <ul><li>人工整理市場策略來源與提案文字。</li><li>玩法規格、畫面示意與會議說明需要多次補充。</li><li>原型製作過去不是企劃可獨立完成的工作。</li></ul>
+          </div>
+          <div class="compare-panel ai">
+            <div class="panel-head"><span>AI 製程</span><strong>約 9.4 小時</strong></div>
+            <h3>AI 產初版提案、畫面示意與可討論原型</h3>
+            <ul><li>AI 先生成策略草稿、玩法規格與示意圖。</li><li>複雜功能可先產可玩原型，讓討論有具體畫面。</li><li>企劃再補足取捨、風險與正式提案語言。</li></ul>
+          </div>
+          <div class="evidence-panel">
+            <span>文件附圖</span>
+            <div class="evidence-grid"><figure><img src="assets/human-docs-bottom.jpg" alt="人工提案/規格整理範例"><figcaption>人工提案/規格整理範例</figcaption></figure><figure><img src="assets/ai-ui-top.jpg" alt="AI 原型介面範例"><figcaption>AI 原型介面範例</figcaption></figure><figure><img src="assets/ai-doc-mid.jpg" alt="AI 文件產出範例"><figcaption>AI 文件產出範例</figcaption></figure></div>
+          </div>
+        </div>
+        <div class="insight">節省重點：提案不再從空白開始；未來可進一步優化圖像精準度、原型品質與提案通過率。</div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>4 / 8</span></div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Flow 03</div>
+        <h2>流程 3：規格書與跨職能需求文件</h2>
+        
+        <div class="process-layout">
+          <div class="compare-panel human">
+            <div class="panel-head"><span>人工製程</span><strong>約 29 小時</strong></div>
+            <h3>人工整理流程圖、規格說明、表演流程與美術/聲音需求</h3>
+            <ul><li>流程圖、規格說明、表演流程各自需要人工整理。</li><li>美術需求與聲音需求容易受原型品質與描述精準度影響。</li><li>發包與腳本會議仍需企劃口頭補充背景。</li></ul>
+          </div>
+          <div class="compare-panel ai">
+            <div class="panel-head"><span>AI 製程</span><strong>約 14.55 小時</strong></div>
+            <h3>AI 先輸出規格框架，再由企劃做正確性校準</h3>
+            <ul><li>AI 可快速產流程圖、規格說明與 info/多國初稿。</li><li>美術/聲音需求可先生成骨架，再由企劃精修。</li><li>跨職能溝通可用同一份規格源頭減少重複說明。</li></ul>
+          </div>
+          <div class="evidence-panel">
+            <span>文件附圖</span>
+            <div class="evidence-grid"><figure><img src="assets/ai-doc-mid.jpg" alt="AI 規格文件範例"><figcaption>AI 規格文件範例</figcaption></figure><figure><img src="assets/ai-doc-bottom.jpg" alt="AI 規格/競品頁面範例"><figcaption>AI 規格/競品頁面範例</figcaption></figure></div>
+          </div>
+        </div>
+        <div class="insight">節省重點：規格書製作是目前最能放大 AI 產能的區塊；未來優化在規格文案、流程畫面、美術與聲音需求精準度。</div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>5 / 8</span></div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Flow 04</div>
+        <h2>流程 4：實作討論與產品調校</h2>
+        
+        <div class="process-layout">
+          <div class="compare-panel human">
+            <div class="panel-head"><span>人工製程</span><strong>約 76 小時</strong></div>
+            <h3>第二階段仍以人工判斷、跨職能協作與調校為主</h3>
+            <ul><li>美術圖、後製特效、版本節奏需要長時間討論。</li><li>DEMO、真金體驗、機率定版仍仰賴人員經驗。</li><li>KPI 會議文件需要整理成主管可讀報告。</li></ul>
+          </div>
+          <div class="compare-panel ai">
+            <div class="panel-head"><span>AI 製程</span><strong>約 74 小時</strong></div>
+            <h3>AI 目前僅部分支援，未來以流程優化為主</h3>
+            <ul><li>目前 AI 對第二階段直接節省有限。</li><li>可協助整理會議資料、KPI 報告與版本調整紀錄。</li><li>更大的節省來自會議精簡、人員能力與資料整理自動化。</li></ul>
+          </div>
+          <div class="evidence-panel">
+            <span>文件附圖</span>
+            <div class="evidence-grid"><figure><img src="assets/phase2-flow.jpg" alt="第二階段實作討論流程"><figcaption>第二階段實作討論流程</figcaption></figure></div>
+          </div>
+        </div>
+        <div class="insight">節省重點：第二階段目前只節省 2 小時，但優化後可再省 25 小時，是下一輪改善重點。</div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>6 / 8</span></div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Evidence</div>
+        <h2>文件附圖總覽：人工文件 vs AI 產出</h2>
+        
+        <div class="evidence-board">
+          <figure><img src="assets/human-docs-top.jpg" alt="人工文件 1"><figcaption>人工：競品與提案整理</figcaption></figure>
+          <figure><img src="assets/human-docs-bottom.jpg" alt="人工文件 2"><figcaption>人工：規格與素材拼貼</figcaption></figure>
+          <figure><img src="assets/ai-ui-top.jpg" alt="AI 原型介面"><figcaption>AI：原型介面</figcaption></figure>
+          <figure><img src="assets/ai-doc-mid.jpg" alt="AI 文件"><figcaption>AI：策略/文件初稿</figcaption></figure>
+          <figure><img src="assets/ai-doc-bottom.jpg" alt="AI 規格範例"><figcaption>AI：競品/規格頁面</figcaption></figure>
+        </div>
+        <div class="insight">報告時可用這頁說明：人工產出偏向「資料蒐集＋手動拼貼」，AI 產出偏向「快速生成可討論初稿＋原型/文件化」。</div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>7 / 8</span></div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Time Saving / Next Optimization</div>
+        <h2>AI 製程節省時間與後續優化方向</h2>
+        
+        <div class="final-layout">
+          <div class="final-savings">
+            <div class="saving-card"><span>傳統人工總工時</span><strong>130.5 小時</strong></div>
+            <div class="saving-card"><span>目前 AI 輔助總工時</span><strong>109.75 小時</strong><em>目前已節省 20.75 小時</em></div>
+            <div class="saving-card highlight"><span>優化後目標總工時</span><strong>74.9 小時</strong><em>總節省 55.6 小時 / 42.6%</em></div>
+            <div class="phase-mini"><span>第一階段文件製作</span><strong>54.5 → 35.75 → 25.9 小時</strong><p>優化後總節省 28.6 小時。</p></div>
+            <div class="phase-mini"><span>第二階段實作討論</span><strong>76 → 74 → 49 小時</strong><p>優化後總節省 27 小時。</p></div>
+          </div>
+          <div class="final-optimizations">
+            <div><h3>提升產出精準度</h3><p>圖像示意、規格文案、流程畫面、美術需求與聲音需求仍需要提高準確度。</p></div>
+            <div><h3>精簡討論流程</h3><p>DEMO 會議、真金體驗、機率定版可用 AI 整理議題、紀錄差異與追蹤決議。</p></div>
+            <div><h3>建立可重用模板</h3><p>把競品拆解、提案、規格書、KPI 報告固定成模板，提高每次產出品質。</p></div>
+          </div>
+        </div>
+        <div class="closing compact">結論：AI 製程把「初稿產出、文件整理、原型具象化」變成企劃日常流程，讓企劃把時間集中在判斷與品質收斂。</div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>8 / 8</span></div>
+      </section>
+    </main>
+  </div>
+  <div class="progress"><i data-progress></i></div>
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const count = document.querySelector('[data-count]');
+    const progress = document.querySelector('[data-progress]');
+    let index = 0;
+    function show(next) {
+      index = Math.max(0, Math.min(slides.length - 1, next));
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+      count.textContent = `${index + 1} / ${slides.length}`;
+      progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+      history.replaceState(null, '', `#${index + 1}`);
+    }
+    document.querySelector('[data-prev]').addEventListener('click', () => show(index - 1));
+    document.querySelector('[data-next]').addEventListener('click', () => show(index + 1));
+    window.addEventListener('keydown', event => {
+      const active = document.activeElement;
+      const isEditing = active && (
+        active.isContentEditable ||
+        active.tagName === 'INPUT' ||
+        active.tagName === 'TEXTAREA' ||
+        active.tagName === 'SELECT'
+      );
+      if (isEditing) return;
+      if (['ArrowRight', 'PageDown', ' '].includes(event.key)) show(index + 1);
+      if (['ArrowLeft', 'PageUp'].includes(event.key)) show(index - 1);
+      if (event.key === 'Home') show(0);
+      if (event.key === 'End') show(slides.length - 1);
+    });
+    const initial = Number.parseInt(location.hash.replace('#', ''), 10);
+    show(Number.isFinite(initial) ? initial - 1 : 0);
+  </script>
+</body>
+</html>
