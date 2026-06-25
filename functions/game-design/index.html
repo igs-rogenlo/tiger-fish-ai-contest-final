@@ -495,5 +495,20 @@
     const initial = Number.parseInt(location.hash.replace('#', ''), 10);
     show(Number.isFinite(initial) ? initial - 1 : 0);
   </script>
+  <style>.slide img{cursor:zoom-in}</style>
+  <div id="imgbox" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.93);align-items:center;justify-content:center;cursor:zoom-out;padding:2vmin">
+    <img id="imgbox-img" alt="放大檢視" style="max-width:96vw;max-height:96vh;object-fit:contain;box-shadow:0 12px 48px rgba(0,0,0,.7);border-radius:4px">
+  </div>
+  <script>
+    (function(){
+      var box=document.getElementById('imgbox'),bi=document.getElementById('imgbox-img');
+      document.addEventListener('click',function(e){
+        var im=e.target.closest('.slide img'); if(!im) return;
+        e.preventDefault(); e.stopPropagation();
+        bi.src=im.currentSrc||im.src; box.style.display='flex';
+      });
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape') box.style.display='none'; });
+    })();
+  </script>
 </body>
 </html>
