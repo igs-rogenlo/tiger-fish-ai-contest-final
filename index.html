@@ -408,8 +408,27 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </div>
 </section>
 
-<!-- 8 · 三階段落地 -->
+<!-- 9 · Harness Engineering -->
 <section class="slide" data-slide="9">
+<div class="inner" style="gap:.7rem">
+  <div><span class="a eyebrow" style="color:var(--purple)">Harness Engineering</span><h2 class="a">每個 Agent 都是「工程化」的，不只是一段 prompt</h2></div>
+  <p class="a lead" style="font-size:.92rem;max-width:none">每個職能 Agent 背後，是一整套<strong class="accent-p">版本控管、持續演進</strong>的工程結構（harness）—— 全部進 git、隨用隨長。這是「<strong class="accent-l">Agent 工程</strong>」，不是「prompt 工程」，也是別人複製不來的深度。</p>
+  <div class="a g3" style="gap:.6rem">
+    <div class="panel panel-p a" style="padding:.85rem"><div class="panel-title" style="color:var(--purple);font-size:.98rem">📋 AGENTS.md 規則檔</div><div class="panel-body" style="font-size:.8rem">每個 Agent 約 <strong>300 行</strong>標準作業規則，snippet 自動注入維護、全進 git 版控。</div></div>
+    <div class="panel panel-c a" style="padding:.85rem"><div class="panel-title" style="color:var(--cyan);font-size:.98rem">📐 系統協議 docs/system</div><div class="panel-body" style="font-size:.8rem">自驗證、圖表硬鎖、開工鮮度檢查、啟動序列… <strong>可機器驗證的契約</strong>。</div></div>
+    <div class="panel panel-l a" style="padding:.85rem"><div class="panel-title" style="color:var(--lime);font-size:.98rem">🧩 Skills 技能模組</div><div class="panel-body" style="font-size:.8rem">把 SOP 包成可執行技能（美術 Agent 約 <strong>18 個</strong>：Cocos 驗證／美術 QC／Spine 匯出…）。</div></div>
+  </div>
+  <div class="a g3" style="gap:.6rem">
+    <div class="panel panel-a a" style="padding:.85rem"><div class="panel-title" style="color:var(--amber);font-size:.98rem">🔧 TOOLS.md 工具路由</div><div class="panel-body" style="font-size:.8rem">預配專屬工具鏈（MCP／CLI／API／瀏覽器自動化），開箱即用、統一維護。</div></div>
+    <div class="panel panel-o a" style="padding:.85rem"><div class="panel-title" style="color:var(--orange);font-size:.98rem">🧠 知識庫 + 記憶</div><div class="panel-body" style="font-size:.8rem">各職能<strong>獨立 knowledge/</strong> ＋ 學習記憶（對話即更新、越用越強）。</div></div>
+    <div class="panel panel-r a" style="padding:.85rem"><div class="panel-title" style="color:var(--rose);font-size:.98rem">✅ 自驗證 Gate + 權限</div><div class="panel-body" style="font-size:.8rem">6-gate hardlock + vision check 交付前自查；per-user Git 權限隔離。</div></div>
+  </div>
+  <div class="a" style="font-size:.82rem;color:var(--dim);text-align:center">全部納入 <strong class="accent-p">git 版控、持續演進</strong> —— 換人接手、複製到下一台，整套 harness 直接帶著走。</div>
+</div>
+</section>
+
+<!-- 10 · 三階段落地 -->
+<section class="slide" data-slide="10">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--lime)">How We Delivered</span><h2 class="a">交付歷程：三階段如何落地</h2></div>
   <p class="a lead" style="font-size:.95rem;max-width:none"><strong class="accent-a">知識收集</strong> → <strong class="accent-c">基礎建設</strong> → <strong class="accent-l">實戰開發</strong>，三階段如期跑通；下為實際時程，規劃期提前達成。</p>
@@ -425,7 +444,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 9 · 各職能成果（連結索引） -->
-<section class="slide" data-slide="10">
+<section class="slide" data-slide="11">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--orange)">Results by Function</span><h2 class="a">各職能實戰成果</h2></div>
   <p class="a lead">6 職能各自的能力與實際產出，由<strong class="accent-o">各職能負責人</strong>提供連結，深入展示成果與 Before/After。</p>
@@ -435,7 +454,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 10 · 未來展望 -->
-<section class="slide" data-slide="11">
+<section class="slide" data-slide="12">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--orange)">What's Next</span><h2 class="a">未來展望</h2></div>
   <div class="a g3">
@@ -558,6 +577,9 @@ function buildPptx(){
   s.addText('一個看 Agent 在做什麼、一個看系統健不健康 —— 治理層實際落地',{x:.5,y:6.7,w:12.3,fontSize:11,color:DIM,fontFace:F,align:'center'});
   s=P.addSlide();head(s,'TECHNICAL HIGHLIGHTS','技術實作亮點','b07aff');
   s.addText('🧠 記憶+學習迴路　⚡ 自動生成 Skill　🛠 AI 工具鏈（MCP/CLI/API/瀏覽器）\n🔒 多用戶×權限隔離（per-user 權限/Git，一個 Agent 服務多人）　🧠 跨機台知識複用　🚀 可擴展設計',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s=P.addSlide();head(s,'HARNESS ENGINEERING','每個 Agent 都是「工程化」的，不只是一段 prompt','b07aff');
+  s.addText('每個職能 Agent 背後是一整套版本控管、持續演進的工程結構（harness），全部進 git。是「Agent 工程」不是「prompt 工程」。',{x:.6,y:1.65,w:12.1,fontSize:14,italic:true,color:'bd8bff',fontFace:F});
+  s.addText('📋 AGENTS.md 規則檔：每 Agent 約 300 行 SOP，snippet 自動維護、git 版控\n📐 系統協議 docs/system：自驗證／圖表硬鎖／鮮度檢查／啟動序列 —— 可機器驗證的契約\n🧩 Skills 技能模組：SOP 包成可執行技能（美術 Agent 約 18 個：Cocos 驗證/QC/Spine 匯出）\n🔧 TOOLS.md 工具路由：預配專屬工具鏈（MCP/CLI/API/瀏覽器），開箱即用\n🧠 知識庫＋記憶：各職能獨立 knowledge ＋ 學習記憶（對話即更新）\n✅ 自驗證 Gate＋權限：6-gate hardlock + vision check 交付前自查；per-user Git 隔離\n\n全部納入 git 版控、持續演進 —— 換人接手、複製到下一台，整套 harness 直接帶著走。',{x:.6,y:2.4,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:24});
   s=P.addSlide();head(s,'HOW WE DELIVERED','交付歷程：三階段如何落地','4ade80');
   s.addText('① 知識收集 ✓　② 基礎建設 ✓（6 Agent + 權限/資安/監控）　③ 實戰開發 ✓（Demo）\n時程：4/9–5/8 規劃期｜5/8 藍圖｜5/9–6/30 開發期｜6/30 最終成果',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'RESULTS BY FUNCTION','各職能實戰成果','fb923c');
