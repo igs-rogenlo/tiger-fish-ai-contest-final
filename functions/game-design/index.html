@@ -89,12 +89,12 @@
 	      display: grid;
 	      grid-template-columns: .62fr 1fr;
 	      gap: 14px;
-	      margin-top: 20px;
-	      min-height: 286px;
+		      margin-top: 18px;
+		      min-height: 342px;
 	    }
 	    .cover-image {
 	      min-width: 0;
-	      min-height: 286px;
+		      min-height: 342px;
 	      overflow: hidden;
 	      border: 1px solid var(--line);
 	      border-radius: 8px;
@@ -109,7 +109,7 @@
 	    }
 	    .cover-showcase figure {
 	      min-width: 0;
-	      min-height: 286px;
+		      min-height: 342px;
 	      padding: 10px;
 	      border: 1px solid var(--line);
 	      border-radius: 8px;
@@ -134,12 +134,12 @@
     .overview-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-      margin-top: 28px;
+	      gap: 26px;
+	      margin-top: 22px;
       flex: 1;
       min-height: 0;
     }
-    .large-image { padding: 14px; display: flex; flex-direction: column; min-height: 0; }
+	    .large-image { padding: 12px; display: flex; flex-direction: column; min-height: 0; }
     figure { margin: 0; }
     figcaption { margin-top: 8px; color: var(--muted); font-size: 13px; font-weight: 900; }
     img { max-width: 100%; display: block; }
@@ -154,27 +154,27 @@
     }
 	    .process-layout {
 	      display: grid;
-	      grid-template-columns: minmax(0, .95fr) minmax(0, .95fr) minmax(280px, .8fr);
-	      gap: 16px;
-	      margin-top: 24px;
+		      grid-template-columns: minmax(0, .72fr) minmax(0, .72fr) minmax(360px, 1.18fr);
+		      gap: 14px;
+		      margin-top: 20px;
 	      flex: 1;
 	      min-height: 0;
 	    }
-	    .compare-panel { padding: 18px; min-height: 0; overflow-x: hidden; overflow-y: auto; }
+		    .compare-panel { padding: 15px; min-height: 0; overflow-x: hidden; overflow-y: auto; }
     .compare-panel.human { border-top: 7px solid var(--amber); }
     .compare-panel.ai { border-top: 7px solid var(--teal); }
     .panel-head { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
     .panel-head strong { color: var(--red); font-size: 20px; white-space: nowrap; }
     .compare-panel.ai .panel-head strong { color: var(--teal); }
-    .compare-panel h3 { margin-top: 12px; font-size: 23px; line-height: 1.25; }
-    ul { margin: 16px 0 0; padding-left: 20px; color: #35445a; font-size: 17px; line-height: 1.45; }
-    li + li { margin-top: 9px; }
-	    .evidence-panel { padding: 16px; min-height: 0; display: flex; flex-direction: column; overflow-x: hidden; overflow-y: auto; }
-	    .evidence-grid { display: grid; gap: 14px; margin-top: 10px; flex: 0 0 auto; overflow: visible; padding-right: 3px; align-items: start; grid-auto-rows: max-content; }
+	    .compare-panel h3 { margin-top: 10px; font-size: 21px; line-height: 1.24; }
+	    ul { margin: 13px 0 0; padding-left: 18px; color: #35445a; font-size: 15px; line-height: 1.38; }
+	    li + li { margin-top: 7px; }
+		    .evidence-panel { padding: 13px; min-height: 0; display: flex; flex-direction: column; overflow-x: hidden; overflow-y: auto; }
+		    .evidence-grid { display: grid; gap: 16px; margin-top: 10px; flex: 0 0 auto; overflow: visible; padding-right: 3px; align-items: start; grid-auto-rows: max-content; }
 	    .evidence-grid figure { min-height: 0; display: grid; grid-template-rows: auto auto auto; align-content: start; }
     .evidence-grid img {
       width: 100%;
-      max-height: 118px;
+	      max-height: 190px;
       object-fit: contain;
       border: 1px solid var(--line);
       border-radius: 6px;
@@ -306,7 +306,7 @@
       .lead { font-size: 17px; }
       .hero-strip, .savings-grid, .overview-grid, .process-layout, .evidence-board, .phase-split, .optimization-grid { grid-template-columns: 1fr; }
       .cover-showcase, .final-layout { grid-template-columns: 1fr; height: auto; }
-	      .cover-image, .cover-showcase figure { min-height: 148px; }
+	      .cover-image, .cover-showcase figure { min-height: 220px; }
       .footer { position: static; margin-top: auto; padding-top: 20px; }
       .controls { display: none; }
     }
@@ -315,7 +315,7 @@
 <body>
   <div class="controls">
     <button type="button" data-prev>上一頁</button>
-    <span data-count>1 / 9</span>
+    <span data-count>1 / 7</span>
     <button type="button" data-next>下一頁</button>
   </div>
   <div class="stage">
@@ -335,7 +335,7 @@
           <div class="cover-image"><img src="assets/cover-fuxing-prototype-gameplay.jpg" alt="福星高照6 免費遊戲盤面示意"></div>
         </div>
         <div class="version"><span>更新時間：2026-06-24 11:45</span><span>來源：原始流程圖＋製程分析報告</span></div>
-        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>1 / 8</span></div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>1 / 7</span></div>
       </section>
       <section class="slide">
         <div class="kicker">Overview</div>
@@ -346,7 +346,7 @@
           <figure class="large-image"><img src="assets/phase2-flow.jpg" alt="第二階段流程圖"><figcaption>第二階段：實作討論＋產品調校</figcaption></figure>
         </div>
         <div class="insight">報告主軸：AI 不是取代企劃判斷，而是先處理資料整理、初稿、示意圖與文件格式化，讓企劃時間集中在驗證、攻防與品質收斂。</div>
-        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>2 / 8</span></div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>2 / 7</span></div>
       </section>
       <section class="slide">
         <div class="kicker">Flow 01</div>
@@ -369,7 +369,7 @@
           </div>
         </div>
         <div class="insight">節省重點：競品研究、創新設計、主題包裝由人工查找改為 AI 先整理，後續優化可放在 reference 品質與驗證流程。</div>
-        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>3 / 8</span></div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>3 / 7</span></div>
       </section>
       <section class="slide">
         <div class="kicker">Flow 02</div>
@@ -392,7 +392,7 @@
           </div>
         </div>
         <div class="insight">節省重點：提案不再從空白開始；未來可進一步優化圖像精準度、原型品質與提案通過率。</div>
-        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>4 / 8</span></div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>4 / 7</span></div>
       </section>
       <section class="slide">
         <div class="kicker">Flow 03</div>
@@ -415,7 +415,7 @@
           </div>
         </div>
         <div class="insight">節省重點：規格書製作是目前最能放大 AI 產能的區塊；未來優化在規格文案、流程畫面、美術與聲音需求精準度。</div>
-        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>5 / 8</span></div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>5 / 7</span></div>
       </section>
       <section class="slide">
         <div class="kicker">Flow 04</div>
@@ -438,21 +438,7 @@
           </div>
         </div>
         <div class="insight">節省重點：第二階段目前只節省 2 小時，但優化後可再省 25 小時，是下一輪改善重點。</div>
-        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>6 / 8</span></div>
-      </section>
-      <section class="slide">
-        <div class="kicker">Evidence</div>
-        <h2>文件附圖總覽：人工文件 vs AI 產出</h2>
-        
-        <div class="evidence-board">
-          <figure><img src="assets/human-docs-top.jpg" alt="人工文件 1"><figcaption>人工：競品與提案整理</figcaption></figure>
-          <figure><img src="assets/human-docs-bottom.jpg" alt="人工文件 2"><figcaption>人工：規格與素材拼貼</figcaption></figure>
-          <figure><img src="assets/ai-ui-top.jpg" alt="AI 原型介面"><figcaption>AI：原型介面</figcaption></figure>
-          <figure><img src="assets/ai-doc-mid.jpg" alt="AI 文件"><figcaption>AI：策略/文件初稿</figcaption></figure>
-          <figure><img src="assets/ai-doc-bottom.jpg" alt="AI 規格範例"><figcaption>AI：競品/規格頁面</figcaption></figure>
-        </div>
-        <div class="insight">報告時可用這頁說明：人工產出偏向「資料蒐集＋手動拼貼」，AI 產出偏向「快速生成可討論初稿＋原型/文件化」。</div>
-        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>7 / 8</span></div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>6 / 7</span></div>
       </section>
       <section class="slide">
         <div class="kicker">Time Saving / Next Optimization</div>
@@ -473,7 +459,7 @@
           </div>
         </div>
         <div class="closing compact">結論：AI 製程把「初稿產出、文件整理、原型具象化」變成企劃日常流程，讓企劃把時間集中在判斷與品質收斂。</div>
-        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>8 / 8</span></div>
+        <div class="footer"><span>研四部門・老虎機企劃製程分析</span><span>7 / 7</span></div>
       </section>
     </main>
   </div>
