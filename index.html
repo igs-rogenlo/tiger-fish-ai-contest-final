@@ -315,6 +315,15 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
       </a>
     </div>
   </div>
+  <div class="a panel panel-c" style="padding:1rem">
+    <div class="panel-title" style="color:var(--cyan);font-size:1rem">&#128172; 不只看得到，還能「問」 —— 審計儀表板內建 AI 對話查詢</div>
+    <div class="a g3" style="gap:.7rem;margin-top:.6rem">
+      <div class="panel" style="padding:.8rem;border-left:3px solid var(--cyan)"><div style="font-weight:800;font-size:.9rem;color:var(--cyan)">&#128202; Agent 效能與成本</div><div class="panel-body" style="font-size:.8rem;margin-top:.3rem">各 Agent 的 Token 消耗、Session 數；近 7／30 天趨勢，揪出高成本／高頻 Agent；可查特定 Agent 最近對話與回應品質。</div></div>
+      <div class="panel" style="padding:.8rem;border-left:3px solid var(--lime)"><div style="font-weight:800;font-size:.9rem;color:var(--lime)">&#128100; 使用者行為洞察</div><div class="panel-body" style="font-size:.8rem;margin-top:.3rem">最活躍使用者及其常用 Agent；特定使用者歷史對話與互動頻率；偏好功能類別（數據查詢／繪圖／規劃…）。</div></div>
+      <div class="panel" style="padding:.8rem;border-left:3px solid var(--amber)"><div style="font-weight:800;font-size:.9rem;color:var(--amber)">&#127760; 系統整體統計</div><div class="panel-body" style="font-size:.8rem;margin-top:.3rem">總訊息量、活躍使用者數、活躍 Agent 數概覽；協助監控系統負載與使用熱度。</div></div>
+    </div>
+    <div class="panel-body" style="font-size:.78rem;color:var(--dim);margin-top:.6rem">&#128161; 直接用自然語言問，例如：「最近一週哪個 Agent 消耗最多 Token？」「列出近 30 天最活躍的前 10 名使用者」「bq-research 這個 Agent 這週使用情況如何？」</div>
+  </div>
   <div class="a" style="font-size:.8rem;color:var(--dim);text-align:center">一個看「Agent 在做什麼」、一個看「系統健不健康」 —— 治理層實際落地</div>
 </div>
 </section>
@@ -396,21 +405,26 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <script>
 const FUNCS=[
   {emoji:'🎰',name:'企劃',en:'Game Design',color:'lime',caps:'競品分析 · 規格書 · 需求定義',slugs:['game-design','planning','plan','design']},
-  {emoji:'🎨',name:'美術',en:'Art',color:'cyan',caps:'AI 生圖/修圖 · Spine 動畫 · 素材整合',slugs:['art']},
+  {emoji:'🎨',name:'美術',en:'Art',color:'cyan',caps:'AI 生圖/修圖 · Spine 動畫 · 素材整合',href:'https://canva.link/zapbkc9cx6zzqtc',ext:true},
   {emoji:'🎵',name:'音效',en:'Audio',color:'rose',caps:'批次音效 · AI 配樂/語音 · 入專案',slugs:['audio','sound']},
-  {emoji:'💻',name:'Client',en:'Client',color:'purple',caps:'Cocos 模組 · Spine/音效整合 · 共用模組',slugs:['client-g1069','client']},
-  {emoji:'🖥️',name:'Server',en:'Server',color:'blue',caps:'後端模組 · 前後端協議 · Spin/機率整合',slugs:['server-g1069','server']},
-  {emoji:'🎲',name:'機率',en:'Probability',color:'orange',caps:'RTP/命中率 · 機率模擬驗證 · 報告審核',slugs:['probability-g1069','probability','prob']},
+  {emoji:'💻',name:'Client',en:'Client',color:'purple',caps:'Cocos 模組 · Spine/音效整合 · 共用模組',href:'functions/client-g1069.html'},
+  {emoji:'🖥️',name:'Server',en:'Server',color:'blue',caps:'後端模組 · 前後端協議 · Spin/機率整合',href:'functions/server-g1069.html'},
+  {emoji:'🎲',name:'機率',en:'Probability',color:'orange',caps:'RTP/命中率 · 機率模擬驗證 · 報告審核',href:'functions/probability-g1069.html'},
 ];
 (function(){
   const host=document.getElementById('fidx');
   FUNCS.forEach((f,i)=>{
+    // 已提供連結：直接顯示真連結（ext=外部連結另開分頁）。否則先顯示「連結待補」並嘗試自動偵測 functions/{slug}.html。
+    const linkHTML=f.href
+      ? `<a class="fc-link fc-link-live" href="${f.href}"${f.ext?' target="_blank" rel="noopener"':''}>🔗 ${f.ext?'查看 Canva ↗':'查看成果 →'}</a>`
+      : `<span class="fc-link">🔗 連結待補</span>`;
     host.insertAdjacentHTML('beforeend',`<div class="fcard" id="fcard-${i}" style="border-left-color:var(--${f.color})">
       <div class="fc-h accent-${f.color[0]}">${f.emoji} ${f.name}</div>
       <div class="fc-cap">${f.caps}</div>
-      <span class="fc-link">🔗 連結待補</span>
+      ${linkHTML}
     </div>`);
-    // 探測 functions/{候選檔名}.html，存在就把「連結待補」換成可點連結（push 上來自動亮燈）
+    if(f.href) return;
+    // 自動偵測：檔案存在就把「連結待補」換成可點連結（push 上來自動亮燈）
     const cands=(f.slugs||[]).map(s=>`functions/${s}.html`);
     (async()=>{
       for(const url of cands){
