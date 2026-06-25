@@ -198,8 +198,45 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </div>
 </section>
 
-<!-- 3 · 完整技術架構 -->
+<!-- 3 · 與個人 Agent 的差異 -->
 <section class="slide" data-slide="3">
+<div class="inner" style="gap:.6rem">
+  <div><span class="a eyebrow" style="color:var(--purple)">Why Not Just a Personal Agent</span><h2 class="a">和「自己電腦裝 AI Agent」差在哪</h2></div>
+  <p class="a lead" style="font-size:.92rem;max-width:none;line-height:1.5">現在人人都能裝 Claude Code／Cursor。差別不在「誰的 Agent 比較聰明」，而在 —— <strong class="accent-l">個人 Agent 讓「一個人」做得更快；我們的框架讓「一個組織」能複製、能累積、管得住。</strong></p>
+  <div class="a" style="display:grid;grid-template-columns:5.5rem 1fr 1fr;gap:.4rem;font-size:.8rem;align-items:stretch">
+    <div></div>
+    <div style="font-weight:800;font-size:.82rem;color:var(--rose);padding:0 .2rem">🧑‍💻 個人 Agent（各自裝）</div>
+    <div style="font-weight:800;font-size:.82rem;color:var(--lime);padding:0 .2rem">🏭 我們的職能 Agent 製程框架</div>
+
+    <div style="font-weight:800;color:var(--purple);align-self:center">怎麼用</div>
+    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--rose);line-height:1.45">要自己會<strong>安裝、設定、串接工具</strong>（有技術門檻）</div>
+    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--lime);line-height:1.45">員工只用<strong>自然語言對話</strong>，拿自己的專業去糾正、教育 Agent（零技術門檻）</div>
+
+    <div style="font-weight:800;color:var(--purple);align-self:center">分工</div>
+    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--rose);line-height:1.45">一個萬用助理什麼都做</div>
+    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--lime);line-height:1.45"><strong>6 職能各建專屬 Agent</strong>，覆蓋完整製程線</div>
+
+    <div style="font-weight:800;color:var(--purple);align-self:center">知識</div>
+    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--rose);line-height:1.45">留在個人/單機，難組織級傳承（人走帶走）</div>
+    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--lime);line-height:1.45">各職能<strong>獨立知識庫</strong>，留在組織、隨對話更新</div>
+
+    <div style="font-weight:800;color:var(--purple);align-self:center">品質一致性</div>
+    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--rose);line-height:1.45">看個人會不會下指令，時好時壞</div>
+    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--lime);line-height:1.45">規範做進 Agent（<strong>AGENTS.md</strong> 規範檔 ＋ 自我精進的 <strong>skills</strong>/職能知識 ＋ <strong>self-check</strong> 交件前自查）＋ 人工審核</div>
+
+    <div style="font-weight:800;color:var(--purple);align-self:center">治理</div>
+    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--rose);line-height:1.45">缺乏集中治理／稽核</div>
+    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--lime);line-height:1.45"><strong>使用治理＋健康監控</strong>、權限隔離、成本/稽核可追溯</div>
+
+    <div style="font-weight:800;color:var(--purple);align-self:center">複製</div>
+    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--rose);line-height:1.45">換人/換專案重來（1→1）</div>
+    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--lime);line-height:1.45"><strong>為複製而設計</strong>，1→N（複製效益待第二台驗證）</div>
+  </div>
+</div>
+</section>
+
+<!-- 4 · 完整技術架構 -->
+<section class="slide" data-slide="4">
 <div class="inner" style="gap:.8rem">
   <div><span class="a eyebrow" style="color:var(--purple)">System Architecture</span><h2 class="a">系統架構：完整技術架構</h2></div>
   <div class="a layers">
@@ -233,7 +270,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 3.5 · 模型協作 -->
-<section class="slide" data-slide="4">
+<section class="slide" data-slide="5">
 <div class="inner" style="gap:.85rem">
   <div><span class="a eyebrow" style="color:var(--cyan)">Model Orchestration</span><h2 class="a">模型協作：每個任務，配最適合的模型</h2></div>
   <div class="a g3" style="gap:.8rem;align-items:stretch">
@@ -280,7 +317,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 5 · 實證① 做出來了（Demo） -->
-<section class="slide" data-slide="5">
+<section class="slide" data-slide="6">
 <div class="inner" style="gap:.8rem">
   <div><span class="a eyebrow" style="color:var(--lime)">Evidence · 1/2</span><h2 class="a">實證①：做出來了 — 福星高照 Demo</h2></div>
   <div class="a g2" style="grid-template-columns:1.6fr 1fr;align-items:stretch">
@@ -302,7 +339,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 6 · 實證② 治理：雙儀表板 -->
-<section class="slide" data-slide="6">
+<section class="slide" data-slide="7">
 <div class="inner" style="gap:.8rem">
   <div><span class="a eyebrow" style="color:var(--cyan)">Evidence · 2/2</span><h2 class="a">實證②：6 Agent 製程留痕 — 看得到、可治理</h2></div>
   <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">Demo 是成果，儀表板是<strong class="accent-c">證據</strong>：開發福星高照的 6 個 Agent 真的各自被呼叫、有 Token 消耗、有日誌可追溯。它們與捕魚機／iGaming 等其他產線 Agent 同掛在一套<strong class="accent-c">共用治理平台</strong>——正印證框架<strong class="accent-l">一次建好、多產品共用</strong>。</p>
@@ -327,7 +364,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 7 · 技術亮點 -->
-<section class="slide" data-slide="7">
+<section class="slide" data-slide="8">
 <div class="inner" style="gap:.9rem">
   <div><span class="a eyebrow" style="color:var(--purple)">Technical Highlights</span><h2 class="a">技術實作亮點</h2></div>
   <div class="a g3" style="gap:.7rem">
@@ -344,7 +381,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 8 · 三階段落地 -->
-<section class="slide" data-slide="8">
+<section class="slide" data-slide="9">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--lime)">How We Delivered</span><h2 class="a">交付歷程：三階段如何落地</h2></div>
   <p class="a lead" style="font-size:.95rem;max-width:none"><strong class="accent-a">知識收集</strong> → <strong class="accent-c">基礎建設</strong> → <strong class="accent-l">實戰開發</strong>，三階段如期跑通；下為實際時程，規劃期提前達成。</p>
@@ -360,7 +397,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 9 · 各職能成果（連結索引） -->
-<section class="slide" data-slide="9">
+<section class="slide" data-slide="10">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--orange)">Results by Function</span><h2 class="a">各職能實戰成果</h2></div>
   <p class="a lead">6 職能各自的能力與實際產出，由<strong class="accent-o">各職能負責人</strong>提供連結，深入展示成果與 Before/After。</p>
@@ -370,7 +407,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 10 · 未來展望 -->
-<section class="slide" data-slide="10">
+<section class="slide" data-slide="11">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--orange)">What's Next</span><h2 class="a">未來展望</h2></div>
   <div class="a g3">
@@ -465,6 +502,9 @@ function buildPptx(){
   s.addText('做了什麼：為 6 職能各建一個 AI Agent，以一台機台翻新跑通製程。\n怎麼做：AI 跑流程、人工審核把關；串行改多職能平行 + 記憶/自動學習迴路。\n價值：為複製而設計、Agent 持續累積的製程框架（複製效益與效率量化待第二台驗證）。',{x:.6,y:2.7,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'PROBLEM & GOAL','為什麼做：痛點與目標','fb7185');
   s.addText('痛點：重複性高、知識散落、迭代效率低。\n目標：6 職能各建 Agent、完整知識庫、可複製框架。\n核心策略：AI 跑流程、人工審核把關。',{x:.6,y:1.9,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s=P.addSlide();head(s,'WHY NOT JUST A PERSONAL AGENT','和「自己電腦裝 AI Agent」差在哪','b07aff');
+  s.addText('個人 Agent 讓「一個人」做得更快；我們的框架讓「一個組織」能複製、累積、管得住。',{x:.6,y:1.65,w:12.1,fontSize:14,italic:true,color:'4ade80',fontFace:F});
+  s.addText('怎麼用：個人→要自己安裝/設定/串工具（技術門檻）｜框架→員工只用自然語言對話、拿專業糾正教育 Agent（零技術門檻）\n分工：個人→一個萬用助理什麼都做｜框架→6 職能各建專屬 Agent，覆蓋完整製程線\n知識：個人→留在單機、難組織級傳承｜框架→各職能獨立知識庫，留在組織、隨對話更新\n品質：個人→看個人功力、時好時壞｜框架→規範做進 Agent（AGENTS.md＋自我精進 skills＋self-check）＋人工審核\n治理：個人→缺乏集中治理/稽核｜框架→使用治理＋健康監控、權限隔離、成本/稽核可追溯\n複製：個人→換人/換專案重來(1→1)｜框架→為複製而設計 1→N（複製效益待第二台驗證）',{x:.6,y:2.4,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
   s=P.addSlide();head(s,'SYSTEM ARCHITECTURE','系統架構：完整技術架構','b07aff');
   [['接入層 Ingress','各職能人員 · Telegram / Discord Bot · CLI','fb923c'],
    ['編排層 Orchestration · OpenClaw','多 Agent 路由 Gateway · 6 職能 Agent · 👁 人工審核節點 · 排程/權限隔離 · ⚡ 自動生成 Skill','b07aff'],
