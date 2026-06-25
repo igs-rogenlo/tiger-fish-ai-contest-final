@@ -119,6 +119,21 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 .timeline{display:grid;grid-template-columns:6rem 1fr;gap:.4rem .8rem;font-size:1rem}
 .timeline .t-date{color:var(--amber);font-family:var(--mono);font-weight:600;text-align:right;font-size:.9rem}
 .timeline .t-bar{border-left:2px solid rgba(255,255,255,.1);padding-left:.8rem;padding-bottom:.6rem}
+/* comparison table (vs personal agent) */
+.cmp{border:1px solid var(--stroke);border-radius:12px;overflow:hidden;background:var(--slab)}
+.cmp-row{display:grid;grid-template-columns:6.5rem 1fr 1.25fr}
+.cmp-row>div{padding:.6rem .85rem;font-size:.84rem;line-height:1.5;border-top:1px solid var(--stroke);display:flex;align-items:center;gap:.4rem}
+.cmp-row:first-child>div{border-top:none}
+.cmp-row .lbl{font-weight:800;color:var(--purple);background:rgba(176,122,255,.06);font-size:.85rem}
+.cmp-row .them{color:var(--dim)}
+.cmp-row .you{background:rgba(74,222,128,.06)}
+.cmp-row .ic{flex:none;font-weight:800}
+.cmp-row .them .ic{color:var(--rose)} .cmp-row .you .ic{color:var(--lime)}
+.cmp-head>div{font-weight:800;font-size:.82rem;padding:.65rem .85rem}
+.cmp-head .lbl{background:transparent;color:var(--dim)}
+.cmp-head .them{color:var(--rose);background:rgba(251,113,133,.1)}
+.cmp-head .you{color:var(--lime);background:rgba(74,222,128,.12)}
+@media(max-width:900px){.cmp-row{grid-template-columns:4.5rem 1fr 1fr}.cmp-row>div{font-size:.7rem;padding:.4rem .5rem}}
 @media(max-width:900px){html{font-size:16px}.slide{padding:1rem .8rem}.inner{gap:.7rem}.g2,.g3,.g4,.fidx{grid-template-columns:1fr}.nav-btn{display:none}.hero-title{font-size:2rem}.flow{flex-direction:column}.gate{flex-direction:row;gap:.4rem}}
 @media print{body{height:auto;overflow:visible}.slide{position:relative;opacity:1!important;page-break-after:always;height:100vh}.nav-btn,.dots,.pg,.topbar,#progress{display:none}}
 </style>
@@ -203,34 +218,42 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <div class="inner" style="gap:.6rem">
   <div><span class="a eyebrow" style="color:var(--purple)">Why Not Just a Personal Agent</span><h2 class="a">和「自己電腦裝 AI Agent」差在哪</h2></div>
   <p class="a lead" style="font-size:.92rem;max-width:none;line-height:1.5">現在人人都能裝 Claude Code／Cursor。差別不在「誰的 Agent 比較聰明」，而在 —— <strong class="accent-l">個人 Agent 讓「一個人」做得更快；我們的框架讓「一個組織」能複製、能累積、管得住。</strong></p>
-  <div class="a" style="display:grid;grid-template-columns:5.5rem 1fr 1fr;gap:.4rem;font-size:.8rem;align-items:stretch">
-    <div></div>
-    <div style="font-weight:800;font-size:.82rem;color:var(--rose);padding:0 .2rem">🧑‍💻 個人 Agent（各自裝）</div>
-    <div style="font-weight:800;font-size:.82rem;color:var(--lime);padding:0 .2rem">🏭 我們的職能 Agent 製程框架</div>
-
-    <div style="font-weight:800;color:var(--purple);align-self:center">怎麼用</div>
-    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--rose);line-height:1.45">要自己會<strong>安裝、設定、串接工具</strong>（有技術門檻）</div>
-    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--lime);line-height:1.45">員工只用<strong>自然語言對話</strong>，拿自己的專業去糾正、教育 Agent（零技術門檻）</div>
-
-    <div style="font-weight:800;color:var(--purple);align-self:center">分工</div>
-    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--rose);line-height:1.45">一個萬用助理什麼都做</div>
-    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--lime);line-height:1.45"><strong>6 職能各建專屬 Agent</strong>，覆蓋完整製程線</div>
-
-    <div style="font-weight:800;color:var(--purple);align-self:center">知識</div>
-    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--rose);line-height:1.45">留在個人/單機，難組織級傳承（人走帶走）</div>
-    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--lime);line-height:1.45">各職能<strong>獨立知識庫</strong>，留在組織、隨對話更新</div>
-
-    <div style="font-weight:800;color:var(--purple);align-self:center">品質一致性</div>
-    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--rose);line-height:1.45">看個人會不會下指令，時好時壞</div>
-    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--lime);line-height:1.45">規範做進 Agent（<strong>AGENTS.md</strong> 規範檔 ＋ 自我精進的 <strong>skills</strong>/職能知識 ＋ <strong>self-check</strong> 交件前自查）＋ 人工審核</div>
-
-    <div style="font-weight:800;color:var(--purple);align-self:center">治理</div>
-    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--rose);line-height:1.45">缺乏集中治理／稽核</div>
-    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--lime);line-height:1.45"><strong>使用治理＋健康監控</strong>、權限隔離、成本/稽核可追溯</div>
-
-    <div style="font-weight:800;color:var(--purple);align-self:center">複製</div>
-    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--rose);line-height:1.45">換人/換專案重來（1→1）</div>
-    <div class="panel" style="padding:.45rem .65rem;border-left:3px solid var(--lime);line-height:1.45"><strong>為複製而設計</strong>，1→N（複製效益待第二台驗證）</div>
+  <div class="a cmp">
+    <div class="cmp-row cmp-head">
+      <div class="lbl"></div>
+      <div class="them">🧑‍💻 個人 Agent（各自裝）</div>
+      <div class="you">🏭 我們的職能 Agent 製程框架</div>
+    </div>
+    <div class="cmp-row">
+      <div class="lbl">怎麼用</div>
+      <div class="them"><span class="ic">✗</span>要自己會安裝、設定、串接工具（技術門檻）</div>
+      <div class="you"><span class="ic">✓</span>員工只用<strong>自然語言對話</strong>，拿專業糾正、教育 Agent（零技術門檻）</div>
+    </div>
+    <div class="cmp-row">
+      <div class="lbl">分工</div>
+      <div class="them"><span class="ic">✗</span>一個萬用助理什麼都做</div>
+      <div class="you"><span class="ic">✓</span><strong>6 職能各建專屬 Agent</strong>，覆蓋完整製程線</div>
+    </div>
+    <div class="cmp-row">
+      <div class="lbl">知識</div>
+      <div class="them"><span class="ic">✗</span>留在個人/單機，難組織級傳承</div>
+      <div class="you"><span class="ic">✓</span>各職能<strong>獨立知識庫</strong>，留在組織、隨對話更新</div>
+    </div>
+    <div class="cmp-row">
+      <div class="lbl">品質一致性</div>
+      <div class="them"><span class="ic">✗</span>看個人會不會下指令，時好時壞</div>
+      <div class="you"><span class="ic">✓</span>規範做進 Agent（<strong>AGENTS.md</strong>＋自我精進 <strong>skills</strong>＋<strong>self-check</strong> 自查）＋人工審核</div>
+    </div>
+    <div class="cmp-row">
+      <div class="lbl">治理</div>
+      <div class="them"><span class="ic">✗</span>缺乏集中治理／稽核</div>
+      <div class="you"><span class="ic">✓</span><strong>使用治理＋健康監控</strong>、權限隔離、成本/稽核可追溯</div>
+    </div>
+    <div class="cmp-row">
+      <div class="lbl">複製</div>
+      <div class="them"><span class="ic">✗</span>換人/換專案重來（1→1）</div>
+      <div class="you"><span class="ic">✓</span><strong>為複製而設計</strong>，1→N（效益待第二台驗證）</div>
+    </div>
   </div>
 </div>
 </section>
