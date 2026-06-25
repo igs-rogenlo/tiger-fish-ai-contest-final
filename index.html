@@ -156,7 +156,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
   <div class="a g4">
     <div class="panel panel-c" style="padding:1rem;text-align:center"><div class="metric accent-c">6</div><div class="metric-label">職能 Agent 全數上線運作</div></div>
     <div class="panel panel-l" style="padding:1rem;text-align:center"><div class="metric accent-l">1</div><div class="metric-label">完整老虎機 Demo（福星高照）</div></div>
-    <div class="panel panel-a" style="padding:1rem;text-align:center"><div class="metric accent-a">3 階段</div><div class="metric-label">知識收集→建置→實戰，全完成</div></div>
+    <div class="panel panel-a" style="padding:1rem;text-align:center"><div class="metric accent-a">3 階段</div><div class="metric-label">知識收集→建置→實戰，製程跑通</div></div>
     <div class="panel panel-o" style="padding:1rem;text-align:center"><div class="metric accent-o">1 → N</div><div class="metric-label">為複製而設計（下一台驗證）</div></div>
   </div>
   <div class="a g3">
@@ -224,7 +224,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     </div>
     <div class="layer" style="border-left-color:var(--rose)">
       <div><div class="ly-name accent-r">治理層</div><span class="ly-en">Governance</span></div>
-      <div class="ly-body"><span class="chip">權限分級（讀/寫/執行）</span><span class="chip">資安 · 操作日誌</span><span class="chip">&#128202; 職責審計儀表板</span><span class="chip">&#128147; 健康度監控儀表板</span></div>
+      <div class="ly-body"><span class="chip">權限分級（讀/寫/執行）</span><span class="chip">資安 · 操作日誌</span><span class="chip">&#128202; 使用治理儀表板</span><span class="chip">&#128147; 健康監控儀表板</span></div>
     </div>
   </div>
   <div class="a" style="font-size:.78rem;color:var(--dim);text-align:center">六層由上而下協作：人員下指令 → OpenClaw 編排 6 Agent → 調用雲端/本地模型 → 讀寫記憶與知識 → 操作工具產出 → 全程權限與監控治理</div>
@@ -300,36 +300,37 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <!-- 6 · 實證② 治理：雙儀表板 -->
 <section class="slide" data-slide="6">
 <div class="inner" style="gap:.8rem">
-  <div><span class="a eyebrow" style="color:var(--cyan)">Evidence · 2/2</span><h2 class="a">實證②：治理 — 雙儀表板即時掌握</h2></div>
+  <div><span class="a eyebrow" style="color:var(--cyan)">Evidence · 2/2</span><h2 class="a">實證②：6 Agent 製程留痕 — 看得到、可治理</h2></div>
+  <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">Demo 是成果，儀表板是<strong class="accent-c">證據</strong>：開發福星高照的 6 個 Agent 真的各自被呼叫、有 Token 消耗、有日誌可追溯。它們與捕魚機／iGaming 等其他產線 Agent 同掛在一套<strong class="accent-c">共用治理平台</strong>——正印證框架<strong class="accent-l">一次建好、多產品共用</strong>。</p>
   <div class="a g2" style="align-items:stretch">
     <div style="display:flex;flex-direction:column">
-      <a class="shot" href="assets/dash-audit.png" target="_blank" style="flex:1;min-height:180px">
-        <img src="assets/dash-audit.png" alt="職責審計儀表板" style="display:none;width:100%;max-height:260px;object-fit:contain;object-position:top" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
-        <div class="shot-slot"><div class="ss-ico">📊</div><div class="ss-t">職責審計儀表板</div><div class="ss-d">追蹤每個 Agent 的工具呼叫、模型用量、操作日誌 —— 證明 Agent 真在運作、可追溯。</div><div class="ss-src">127.0.0.1:3081 → 稽核日誌/總覽分頁<br>務必先按 🔒 遮罩 再截 → assets/dash-audit.png</div></div>
+      <a class="shot" href="assets/dash-audit.png" target="_blank" style="flex:1;min-height:150px">
+        <img src="assets/dash-audit.png" alt="使用治理儀表板" style="display:none;width:100%;max-height:200px;object-fit:contain;object-position:top" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
+        <div class="shot-slot"><div class="ss-ico">📊</div><div class="ss-t">使用治理儀表板 <span style="font-family:var(--mono);font-size:.62rem;color:var(--dim)">:3081</span></div><div class="ss-d"><strong>目的：看「每個 Agent 做了什麼、花多少」</strong>—— 工具呼叫、Token 用量、對話可追溯，證明 6 個 Agent 真在運作。</div><div class="ss-src">127.0.0.1:3081 → 成員/稽核分頁；列表篩「虎機」只留本競賽 6 Agent、遮罩帳號後再截 → assets/dash-audit.png</div></div>
       </a>
     </div>
     <div style="display:flex;flex-direction:column">
-      <a class="shot" href="assets/dash-health.png" target="_blank" style="flex:1;min-height:180px">
-        <img src="assets/dash-health.png" alt="健康度監控儀表板" style="display:none;width:100%;max-height:260px;object-fit:contain;object-position:top" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
-        <div class="shot-slot" style="border-color:rgba(74,222,128,.45);background:rgba(74,222,128,.04)"><div class="ss-ico">💓</div><div class="ss-t" style="color:var(--lime)">健康度監控儀表板</div><div class="ss-d">Gateway / 各 Agent 的健康、uptime、狀態 —— 問題即時發現，不影響使用者。</div><div class="ss-src">127.0.0.1:3080（免登入，直接截）<br>→ assets/dash-health.png</div></div>
+      <a class="shot" href="assets/dash-health.png" target="_blank" style="flex:1;min-height:150px">
+        <img src="assets/dash-health.png" alt="健康監控儀表板" style="display:none;width:100%;max-height:200px;object-fit:contain;object-position:top" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
+        <div class="shot-slot" style="border-color:rgba(74,222,128,.45);background:rgba(74,222,128,.04)"><div class="ss-ico">💓</div><div class="ss-t" style="color:var(--lime)">健康監控儀表板 <span style="font-family:var(--mono);font-size:.62rem;color:var(--dim)">:3080</span></div><div class="ss-d"><strong>目的：看「系統健不健康」</strong>—— Gateway 與各 Agent 的存活、uptime、狀態，問題即時發現、不影響使用者。</div><div class="ss-src">127.0.0.1:3080（免登入，直接截）<br>→ assets/dash-health.png</div></div>
       </a>
     </div>
   </div>
   <div class="a panel panel-c" style="padding:.8rem .9rem">
-    <div class="panel-title" style="color:var(--cyan);font-size:.95rem">&#128172; 不只看得到，還能「問」 —— 審計儀表板內建 AI 對話查詢</div>
+    <div class="panel-title" style="color:var(--cyan);font-size:.95rem">&#128172; 不只看得到，還能「問」 —— 使用治理儀表板內建 AI 對話查詢</div>
     <div class="a g3" style="gap:.5rem;margin-top:.45rem">
       <div class="panel" style="padding:.6rem .7rem;border-left:3px solid var(--cyan)"><div style="font-weight:800;font-size:.85rem;color:var(--cyan)">&#128202; Agent 效能與成本</div><div class="panel-body" style="font-size:.76rem;margin-top:.25rem;line-height:1.5">各 Agent 的 Token 消耗、Session 數；近 7／30 天趨勢，揪出高成本／高頻 Agent；可查特定 Agent 最近對話與回應品質。</div></div>
       <div class="panel" style="padding:.6rem .7rem;border-left:3px solid var(--lime)"><div style="font-weight:800;font-size:.85rem;color:var(--lime)">&#128100; 使用者行為洞察</div><div class="panel-body" style="font-size:.76rem;margin-top:.25rem;line-height:1.5">最活躍使用者及其常用 Agent；特定使用者歷史對話與互動頻率；偏好功能類別（數據查詢／繪圖／規劃…）。</div></div>
       <div class="panel" style="padding:.6rem .7rem;border-left:3px solid var(--amber)"><div style="font-weight:800;font-size:.85rem;color:var(--amber)">&#127760; 系統整體統計</div><div class="panel-body" style="font-size:.76rem;margin-top:.25rem;line-height:1.5">總訊息量、活躍使用者數、活躍 Agent 數概覽；協助監控系統負載與使用熱度。</div></div>
     </div>
-    <div class="panel-body" style="font-size:.75rem;color:var(--dim);margin-top:.45rem;line-height:1.5">&#128161; 直接用自然語言問，例如：「最近一週哪個 Agent 消耗最多 Token？」「列出近 30 天最活躍的前 10 名使用者」「bq-research 這個 Agent 這週使用情況如何？」</div>
+    <div class="panel-body" style="font-size:.75rem;color:var(--dim);margin-top:.45rem;line-height:1.5">&#128161; 直接用自然語言問，例如：「福星高照這週哪個 Agent 消耗最多 Token？」「虎機美術 Agent 近 30 天被呼叫幾次？」「列出本競賽 6 個 Agent 的工具呼叫次數排名」</div>
   </div>
   <div class="a" style="font-size:.8rem;color:var(--dim);text-align:center">一個看「Agent 在做什麼」、一個看「系統健不健康」 —— 治理層實際落地</div>
 </div>
 </section>
 
 <!-- 7 · 技術亮點 -->
-<section class="slide" data-slide="6">
+<section class="slide" data-slide="7">
 <div class="inner" style="gap:.9rem">
   <div><span class="a eyebrow" style="color:var(--purple)">Technical Highlights</span><h2 class="a">技術實作亮點</h2></div>
   <div class="a g3" style="gap:.7rem">
@@ -339,21 +340,17 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
   </div>
   <div class="a g3" style="gap:.7rem">
     <div class="panel panel-r a" style="padding:.8rem"><div class="panel-title" style="color:var(--rose);font-size:.95rem">&#128274; 多用戶 × 權限隔離</div><div class="panel-body" style="font-size:.8rem">一個 Agent 同時服務多位使用者，各自獨立：分級授權（讀/寫/執行）、per-user Git 權限、資料與操作日誌逐人隔離。</div></div>
-    <div class="panel panel-c a" style="padding:.8rem"><div class="panel-title" style="color:var(--cyan);font-size:.95rem">&#128202; 雙儀表板</div><div class="panel-body" style="font-size:.8rem">職責審計（使用狀況/缺口）＋ 健康度監控（即時告警）。</div></div>
+    <div class="panel panel-c a" style="padding:.8rem"><div class="panel-title" style="color:var(--cyan);font-size:.95rem">&#129504; 跨機台知識複用</div><div class="panel-body" style="font-size:.8rem">既有專案的框架、規格、Code 萃取入庫，下一台機台直接複用，不從零開始。</div></div>
     <div class="panel panel-a a" style="padding:.8rem"><div class="panel-title" style="color:var(--amber);font-size:.95rem">&#128640; 可擴展設計</div><div class="panel-body" style="font-size:.8rem">新增 Agent 只需灌知識 + 設工具鏈，不動核心。</div></div>
   </div>
 </div>
 </section>
 
-<!-- 7 · 三階段落地 -->
-<section class="slide" data-slide="7">
+<!-- 8 · 三階段落地 -->
+<section class="slide" data-slide="8">
 <div class="inner">
-  <div><span class="a eyebrow" style="color:var(--lime)">How We Delivered</span><h2 class="a">三階段如何落地（已完成）</h2></div>
-  <div class="a g3">
-    <div class="panel panel-a a" style="padding:1.1rem"><div class="panel-title" style="color:var(--amber);font-size:1.05rem">&#9312; 知識收集 ✓</div><div class="panel-body" style="font-size:.88rem">從既有專案萃取框架、共用模組、規格書、Code，建立各職能初版知識庫。<br><br><strong class="accent-a">對話即更新</strong>，使用中持續補充。</div></div>
-    <div class="panel panel-c a" style="padding:1.1rem"><div class="panel-title" style="color:var(--cyan);font-size:1.05rem">&#9313; 基礎建設 ✓</div><div class="panel-body" style="font-size:.88rem">知識灌入、SOP 量化為規則、配置工具鏈、建立記憶與學習迴路。<br><br>產出 <strong class="accent-c">6 個可運作 Agent</strong> + 權限/資安/監控。</div></div>
-    <div class="panel panel-l a" style="padding:1.1rem"><div class="panel-title" style="color:var(--lime);font-size:1.05rem">&#9314; 實戰開發 ✓</div><div class="panel-body" style="font-size:.88rem">Agent 實際跑福星高照製程、人工審核迭代、監控優化。<br><br>產出 <strong class="accent-l">可運行 Demo</strong> + 優化後配置。</div></div>
-  </div>
+  <div><span class="a eyebrow" style="color:var(--lime)">How We Delivered</span><h2 class="a">交付歷程：三階段如何落地</h2></div>
+  <p class="a lead" style="font-size:.95rem;max-width:none"><strong class="accent-a">知識收集</strong> → <strong class="accent-c">基礎建設</strong> → <strong class="accent-l">實戰開發</strong>，三階段如期跑通；下為實際時程，規劃期提前達成。</p>
   <div class="a panel" style="padding:1rem">
     <div class="timeline">
       <div class="t-date">4/09–5/08</div><div class="t-bar"><div style="font-weight:700;color:var(--amber)">&#9312;&#9313; 規劃期：知識收集 + Agent 基礎建設</div><div style="color:var(--dim);font-size:.85rem">6 Agent 初版建置完成（提前達成）</div></div>
@@ -365,8 +362,8 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </div>
 </section>
 
-<!-- 8 · 各職能成果（連結索引） -->
-<section class="slide" data-slide="8">
+<!-- 9 · 各職能成果（連結索引） -->
+<section class="slide" data-slide="9">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--orange)">Results by Function</span><h2 class="a">各職能實戰成果</h2></div>
   <p class="a lead">6 職能各自的能力與實際產出，由<strong class="accent-o">各職能負責人</strong>提供連結，深入展示成果與 Before/After。</p>
@@ -375,21 +372,21 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </div>
 </section>
 
-<!-- 9 · 未來展望 -->
-<section class="slide" data-slide="9">
+<!-- 10 · 未來展望 -->
+<section class="slide" data-slide="10">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--orange)">What's Next</span><h2 class="a">未來展望</h2></div>
   <div class="a g3">
     <div class="panel panel-o a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#127920;</div><div style="font-weight:800;font-size:1rem;color:var(--orange)">本次競賽</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">翻新既有老虎機一台，跑通並驗證製程</div></div>
-    <div class="panel panel-c a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#128640;</div><div style="font-weight:800;font-size:1rem;color:var(--cyan)">短期延伸</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">複製到第二台機台；新增 <strong class="accent-c">PM 主 Agent</strong>（判斷產品成功性、調度各職能 Agent 開發）與 <strong class="accent-c">品檢 Agent</strong>（自動化測試）</div></div>
+    <div class="panel panel-c a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#128640;</div><div style="font-weight:800;font-size:1rem;color:var(--cyan)">短期延伸</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">複製到第二台機台；新增 <strong class="accent-c">PM 主 Agent</strong>（判斷產品成功性、調度各職能 Agent 開發）；將<strong class="accent-c">已試行的品檢 Agent</strong> 深化為自動化測試把關</div></div>
     <div class="panel panel-l a" style="text-align:center;padding:1.1rem"><div style="font-size:1.4rem">&#127907;</div><div style="font-weight:800;font-size:1rem;color:var(--lime)">長期願景</div><div style="font-size:.85rem;color:var(--dim);margin-top:.3rem">套用到捕魚機 / 平台活動</div></div>
   </div>
   <div class="a panel" style="border:2px solid rgba(251,146,60,.3);padding:.9rem">
     <div style="font-weight:800;color:var(--orange);font-size:.95rem;margin-bottom:.3rem">&#128640; 為什麼這套框架會持續進化</div>
     <div class="panel-body" style="font-size:.85rem">
-      &bull; <strong class="accent-l">越用越強</strong> &mdash; 知識自動累積、Skill 自動生成，Agent 用越多越準<br>
+      &bull; <strong class="accent-l">越用越強</strong> &mdash; 知識自動累積、Skill 自動生成，<strong>設計上</strong>用越多越準（效益待第二台量化）<br>
       &bull; <strong class="accent-c">容易長大</strong> &mdash; 新增 Agent 只要灌知識＋設工具鏈，不動核心<br>
-      &bull; <strong class="accent-a">看得到、控得住</strong> &mdash; 雙儀表板掌握使用狀況與系統健康；權限分級、資安統一控管
+      &bull; <strong class="accent-a">看得到、控得住</strong> &mdash; 使用治理＋健康監控儀表板掌握用量與系統健康；權限分級、資安統一控管
     </div>
   </div>
 </div>
@@ -477,7 +474,7 @@ function buildPptx(){
    ['模型層 Models','雲端：GPT-5.5 主腦（備援 Kiro Opus 4.6）· Claude Opus 4.8 程式 · Gemini 3 Pro ｜ 本地(vLLM)：Qwen3.6 · Embedding · Reranker','22d3ee'],
    ['記憶與知識層 Memory','自建向量記憶庫（各 Agent 獨立 scope，語意檢索＋重排）· 學習迴路 · 各職能知識庫','4ade80'],
    ['工具層 Tooling','MCP：Cocos/Spine ｜ CLI：codex-imagegen/ElevenLabs/Suno ｜ API ｜ 瀏覽器自動化','fbbf24'],
-   ['治理層 Governance','權限分級 · 資安/操作日誌 · 📊 職責審計儀表板 · 💓 健康度監控儀表板','fb7185'],
+   ['治理層 Governance','權限分級 · 資安/操作日誌 · 📊 使用治理儀表板 · 💓 健康監控儀表板','fb7185'],
   ].forEach((L,i)=>{const y=1.55+i*0.92;s.addShape(P.ShapeType.rect,{x:.5,y,w:12.3,h:.8,fill:{color:'0c0c1a'},line:{color:L[2],width:1}});s.addText(L[0],{x:.65,y,w:2.7,h:.8,fontSize:11,bold:true,color:L[2],fontFace:F,valign:'middle'});s.addText(L[1],{x:3.4,y,w:9.2,h:.8,fontSize:10.5,color:'e8e8f0',fontFace:F,valign:'middle'});});
   s=P.addSlide();head(s,'MODEL ORCHESTRATION','模型協作：每個任務，配最適合的模型','22d3ee');
   s.addText('🧠 推理與決策（雲端 LLM ·「想」）\n  GPT-5.5 主腦（備援 Kiro Opus 4.6）· Claude Opus 4.8 程式規劃/開發 · Gemini 3 Pro 輔助發想',{x:.6,y:1.7,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
@@ -488,20 +485,20 @@ function buildPptx(){
   try{s.addImage({path:'assets/demo-fuxing.png',x:.6,y:1.7,w:8,h:5});}catch(e){}
   s.addText('🎰 福星高照 Demo 實機畫面（主場景/轉動/FreeSpin/得獎）→ assets/demo-fuxing.png',{x:.6,y:6.9,w:8,fontSize:10,color:DIM,fontFace:F});
   s.addText('這是成果本體：由 6 職能 Agent 協作產出的可運行老虎機 —— 規格/美術/音效/程式/機率全跑過 AI 製程＋人工審核。',{x:8.8,y:1.9,w:4,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
-  s=P.addSlide();head(s,'EVIDENCE · 2/2','實證②：治理 — 雙儀表板','22d3ee');
+  s=P.addSlide();head(s,'EVIDENCE · 2/2','實證②：6 Agent 製程留痕，可治理','22d3ee');
   try{s.addImage({path:'assets/dash-audit.png',x:.5,y:1.7,w:6,h:4.2});}catch(e){}
   try{s.addImage({path:'assets/dash-health.png',x:6.8,y:1.7,w:6,h:4.2});}catch(e){}
-  s.addText('📊 職責審計儀表板（127.0.0.1:3081，遮罩後截 → assets/dash-audit.png）',{x:.5,y:6.05,w:6.2,fontSize:10,color:DIM,fontFace:F});
-  s.addText('💓 健康度監控儀表板（127.0.0.1:3080，直接截 → assets/dash-health.png）',{x:6.8,y:6.05,w:6.2,fontSize:10,color:DIM,fontFace:F});
+  s.addText('📊 使用治理儀表板（:3081）：看每個 Agent 做了什麼、花多少 → assets/dash-audit.png',{x:.5,y:6.05,w:6.2,fontSize:10,color:DIM,fontFace:F});
+  s.addText('💓 健康監控儀表板（:3080）：看系統健不健康、即時告警 → assets/dash-health.png',{x:6.8,y:6.05,w:6.2,fontSize:10,color:DIM,fontFace:F});
   s.addText('一個看 Agent 在做什麼、一個看系統健不健康 —— 治理層實際落地',{x:.5,y:6.7,w:12.3,fontSize:11,color:DIM,fontFace:F,align:'center'});
   s=P.addSlide();head(s,'TECHNICAL HIGHLIGHTS','技術實作亮點','b07aff');
-  s.addText('🧠 記憶+學習迴路　⚡ 自動生成 Skill　🛠 AI 工具鏈（MCP/CLI/API/瀏覽器）\n🔒 多用戶×權限隔離（per-user 權限/Git，一個 Agent 服務多人）　📊 雙儀表板　🚀 可擴展設計',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
-  s=P.addSlide();head(s,'HOW WE DELIVERED','三階段如何落地（已完成）','4ade80');
+  s.addText('🧠 記憶+學習迴路　⚡ 自動生成 Skill　🛠 AI 工具鏈（MCP/CLI/API/瀏覽器）\n🔒 多用戶×權限隔離（per-user 權限/Git，一個 Agent 服務多人）　🧠 跨機台知識複用　🚀 可擴展設計',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s=P.addSlide();head(s,'HOW WE DELIVERED','交付歷程：三階段如何落地','4ade80');
   s.addText('① 知識收集 ✓　② 基礎建設 ✓（6 Agent + 權限/資安/監控）　③ 實戰開發 ✓（Demo）\n時程：4/9–5/8 規劃期｜5/8 藍圖｜5/9–6/30 開發期｜6/30 最終成果',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'RESULTS BY FUNCTION','各職能實戰成果','fb923c');
-  s.addText(FUNCS.map(f=>f.emoji+' '+f.name+'：'+f.caps+'（連結待補）').join('\n'),{x:.6,y:1.8,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
+  s.addText(FUNCS.map(f=>f.emoji+' '+f.name+'：'+f.caps).join('\n')+'\n（各職能成果頁詳見線上報告連結）',{x:.6,y:1.8,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
   s=P.addSlide();head(s,"WHAT'S NEXT",'未來展望','fb923c');
-  s.addText('本次競賽：翻新一台驗證製程\n短期：複製第二台；新增 PM 主 Agent（判斷產品成功性、調度各職能 Agent 開發）＋ 品檢 Agent（自動化測試）\n長期：套用到捕魚機 / 平台活動',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s.addText('本次競賽：翻新一台驗證製程\n短期：複製第二台；新增 PM 主 Agent（判斷產品成功性、調度各職能 Agent 開發）；將已試行的品檢 Agent 深化為自動化測試\n長期：套用到捕魚機 / 平台活動',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   P.writeFile({fileName:'虎機AI開發競賽_最終成果報告.pptx'});
 }
 </script>
