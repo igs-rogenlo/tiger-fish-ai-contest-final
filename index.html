@@ -201,15 +201,15 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 
     <div class="panel panel-r" style="padding:.75rem .95rem"><strong>重複性高</strong><br>每台新機台都要重做規格、素材、數值</div>
     <div style="display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.4rem;font-weight:800">→</div>
-    <div class="panel panel-l" style="padding:.75rem .95rem"><strong class="accent-l">可複製框架</strong><br>下一台直接複用、不從零重做</div>
+    <div class="panel panel-l" style="padding:.75rem .95rem"><strong class="accent-l">重點經驗延續到下一款</strong><br>累積的規格、數值、做法直接承接，不從零重來</div>
 
     <div class="panel panel-r" style="padding:.75rem .95rem"><strong>知識散落</strong><br>競品、舊規格、美術經驗散各處，難傳承</div>
     <div style="display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.4rem;font-weight:800">→</div>
-    <div class="panel panel-l" style="padding:.75rem .95rem">各職能建<strong class="accent-l">完整知識庫 Agent</strong><br>知識沉澱、可複用、越用越強</div>
+    <div class="panel panel-l" style="padding:.75rem .95rem">各職能建<strong class="accent-l">完整知識庫 Agent</strong><br>知識沉澱可複用 ＋ <strong>自動學習、把經驗變 Skill</strong>，越用越強</div>
 
     <div class="panel panel-r" style="padding:.75rem .95rem"><strong>迭代慢</strong><br>修改調整需大量人工重複操作</div>
     <div style="display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.4rem;font-weight:800">→</div>
-    <div class="panel panel-l" style="padding:.75rem .95rem"><strong class="accent-l">AI 跑流程、人專注審核</strong><br>串行流程改多職能平行</div>
+    <div class="panel panel-l" style="padding:.75rem .95rem"><strong class="accent-l">AI 不怕重複、不喊累</strong><br>繁瑣的重複修改交給 AI，人專注在審核與決策</div>
   </div>
 </div>
 </section>
@@ -412,9 +412,9 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <section class="slide" data-slide="9">
 <div class="inner" style="gap:.7rem">
   <div><span class="a eyebrow" style="color:var(--purple)">Harness Engineering</span><h2 class="a">每個 Agent 都是「工程化」的，不只是一段 prompt</h2></div>
-  <p class="a lead" style="font-size:.92rem;max-width:none">每個職能 Agent 背後，是一整套<strong class="accent-p">版本控管、持續演進</strong>的工程結構（harness）—— 全部進 git、隨用隨長。這是「<strong class="accent-l">Agent 工程</strong>」，不是「prompt 工程」，也是別人複製不來的深度。</p>
+  <p class="a lead" style="font-size:.92rem;max-width:none">每個職能 Agent 背後，是一整套<strong class="accent-p">結構化、可維護、持續演進</strong>的工程結構（harness）—— 規範檔、協議文件、技能模組、知識庫，不是一句 prompt。這是「<strong class="accent-l">Agent 工程</strong>」，也是別人複製不來的深度。</p>
   <div class="a g3" style="gap:.6rem">
-    <div class="panel panel-p a" style="padding:.85rem"><div class="panel-title" style="color:var(--purple);font-size:.98rem">📋 AGENTS.md 規則檔</div><div class="panel-body" style="font-size:.8rem">每個 Agent 約 <strong>300 行</strong>標準作業規則，snippet 自動注入維護、全進 git 版控。</div></div>
+    <div class="panel panel-p a" style="padding:.85rem"><div class="panel-title" style="color:var(--purple);font-size:.98rem">📋 AGENTS.md 規則檔</div><div class="panel-body" style="font-size:.8rem">每個 Agent 約 <strong>300 行</strong>標準作業規則（.md），snippet 自動注入、持續維護。</div></div>
     <div class="panel panel-c a" style="padding:.85rem"><div class="panel-title" style="color:var(--cyan);font-size:.98rem">📐 系統協議 docs/system</div><div class="panel-body" style="font-size:.8rem">自驗證、圖表硬鎖、開工鮮度檢查、啟動序列… <strong>可機器驗證的契約</strong>。</div></div>
     <div class="panel panel-l a" style="padding:.85rem"><div class="panel-title" style="color:var(--lime);font-size:.98rem">🧩 Skills 技能模組</div><div class="panel-body" style="font-size:.8rem">把 SOP 包成可執行技能（美術 Agent 約 <strong>18 個</strong>：Cocos 驗證／美術 QC／Spine 匯出…）。</div></div>
   </div>
@@ -423,7 +423,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="panel panel-o a" style="padding:.85rem"><div class="panel-title" style="color:var(--orange);font-size:.98rem">🧠 知識庫 + 記憶</div><div class="panel-body" style="font-size:.8rem">各職能<strong>獨立 knowledge/</strong> ＋ 學習記憶（對話即更新、越用越強）。</div></div>
     <div class="panel panel-r a" style="padding:.85rem"><div class="panel-title" style="color:var(--rose);font-size:.98rem">✅ 自驗證 Gate + 權限</div><div class="panel-body" style="font-size:.8rem">6-gate hardlock + vision check 交付前自查；per-user Git 權限隔離。</div></div>
   </div>
-  <div class="a" style="font-size:.82rem;color:var(--dim);text-align:center">全部納入 <strong class="accent-p">git 版控、持續演進</strong> —— 換人接手、複製到下一台，整套 harness 直接帶著走。</div>
+  <div class="a" style="font-size:.82rem;color:var(--dim);text-align:center">整套都是<strong class="accent-p">結構化檔案、持續演進</strong> —— 換人接手、複製到下一台，harness 直接承接帶走。</div>
 </div>
 </section>
 
@@ -597,8 +597,8 @@ function buildPptx(){
   s=P.addSlide();head(s,'TECHNICAL HIGHLIGHTS','技術實作亮點','b07aff');
   s.addText('🧠 記憶+學習迴路　⚡ 自動生成 Skill　🛠 AI 工具鏈（MCP/CLI/API/瀏覽器）\n🔒 多用戶×權限隔離（per-user 權限/Git，一個 Agent 服務多人）　🧠 跨機台知識複用　🚀 可擴展設計',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'HARNESS ENGINEERING','每個 Agent 都是「工程化」的，不只是一段 prompt','b07aff');
-  s.addText('每個職能 Agent 背後是一整套版本控管、持續演進的工程結構（harness），全部進 git。是「Agent 工程」不是「prompt 工程」。',{x:.6,y:1.65,w:12.1,fontSize:14,italic:true,color:'bd8bff',fontFace:F});
-  s.addText('📋 AGENTS.md 規則檔：每 Agent 約 300 行 SOP，snippet 自動維護、git 版控\n📐 系統協議 docs/system：自驗證／圖表硬鎖／鮮度檢查／啟動序列 —— 可機器驗證的契約\n🧩 Skills 技能模組：SOP 包成可執行技能（美術 Agent 約 18 個：Cocos 驗證/QC/Spine 匯出）\n🔧 TOOLS.md 工具路由：預配專屬工具鏈（MCP/CLI/API/瀏覽器），開箱即用\n🧠 知識庫＋記憶：各職能獨立 knowledge ＋ 學習記憶（對話即更新）\n✅ 自驗證 Gate＋權限：6-gate hardlock + vision check 交付前自查；per-user Git 隔離\n\n全部納入 git 版控、持續演進 —— 換人接手、複製到下一台，整套 harness 直接帶著走。',{x:.6,y:2.4,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:24});
+  s.addText('每個職能 Agent 背後是一整套結構化、可維護、持續演進的工程結構（harness）：規範檔/協議/技能/知識庫，不是一句 prompt。是「Agent 工程」。',{x:.6,y:1.65,w:12.1,fontSize:14,italic:true,color:'bd8bff',fontFace:F});
+  s.addText('📋 AGENTS.md 規則檔：每 Agent 約 300 行 SOP（.md），snippet 自動注入、持續維護\n📐 系統協議 docs/system：自驗證／圖表硬鎖／鮮度檢查／啟動序列 —— 可機器驗證的契約\n🧩 Skills 技能模組：SOP 包成可執行技能（美術 Agent 約 18 個：Cocos 驗證/QC/Spine 匯出）\n🔧 TOOLS.md 工具路由：預配專屬工具鏈（MCP/CLI/API/瀏覽器），開箱即用\n🧠 知識庫＋記憶：各職能獨立 knowledge ＋ 學習記憶（對話即更新）\n✅ 自驗證 Gate＋權限：6-gate hardlock + vision check 交付前自查；per-user Git 隔離\n\n整套都是結構化檔案、持續演進 —— 換人接手、複製到下一台，harness 直接承接帶走。',{x:.6,y:2.4,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:24});
   s=P.addSlide();head(s,'CO-EDITING WITH AGENTS · 已支援/前瞻','與 Agent 即時共編（已建置、為未來預備）','22d3ee');
   s.addText('已自架可用：員工自然語言交辦，Agent 做到一段給連結，點開即時看/接手共編(Penpot/Open Design 設計、VS Code 程式)。本次福星高照 6 職能尚未實際採用，是為日後專案複雜度與共編需求變大時預先備好。',{x:.6,y:1.55,w:12.1,fontSize:12,italic:true,color:'4ade80',fontFace:F,lineSpacing:20});
   try{s.addImage({path:'assets/tool-penpot.png',x:.6,y:2.5,w:7.4,h:4.0});}catch(e){}
