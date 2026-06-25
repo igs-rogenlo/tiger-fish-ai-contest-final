@@ -263,7 +263,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <section class="slide" data-slide="4">
 <div class="inner" style="gap:.8rem">
   <div><span class="a eyebrow" style="color:var(--purple)">System Architecture</span><h2 class="a">系統架構：完整技術架構</h2></div>
-  <div class="a" style="width:100%;max-width:1040px;margin:0 auto">
+  <div class="a" style="width:100%;margin:0 auto">
   <svg viewBox="0 0 1000 392" style="width:100%;height:auto;display:block" font-family="Noto Sans TC, sans-serif">
     <defs>
       <marker id="ah" markerWidth="9" markerHeight="9" refX="5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fb923c"/></marker>
@@ -459,15 +459,18 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <div class="inner" style="gap:.7rem">
   <div><span class="a eyebrow" style="color:var(--cyan)">Co-Editing with Agents · 已支援 / 前瞻</span><h2 class="a">與 Agent 即時共編（已建置、為未來預備）</h2></div>
   <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">已<strong class="accent-l">自架、可用</strong>的「與 Agent 共編」能力：員工自然語言交辦，<strong class="accent-l">Agent 做到一段給連結</strong>，點開即時看／接手共編（設計 Penpot・Open Design，程式 VS Code）。<strong class="accent-a">本次福星高照 6 職能尚未實際採用</strong>，是為<strong class="accent-o">日後專案複雜度提高、共編需求變大</strong>時預先備好的基礎建設。</p>
-  <div class="a" style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem .9rem;align-items:center">
-    <div style="font-weight:800;font-size:.9rem;color:var(--cyan)">🎨 設計共編 · Penpot（美術 Agent）</div>
-    <div style="font-weight:800;font-size:.9rem;color:var(--blue)">💻 程式共編 · VS Code（Client Agent）</div>
-    <a class="shot" href="assets/penpot-telegram.png" target="_blank"><img src="assets/penpot-telegram.png" alt="美術 Agent 對話給 Penpot 共編連結" style="width:100%;height:152px;object-fit:contain;background:#05070b;display:block"></a>
-    <a class="shot" href="assets/ide-telegram.png" target="_blank"><img src="assets/ide-telegram.png" alt="Client Agent 對話給 IDE 連結" style="width:100%;height:152px;object-fit:contain;background:#05070b;display:block"></a>
-    <a class="shot" href="assets/penpot-canvas.png" target="_blank"><img src="assets/penpot-canvas.png" alt="Penpot 向量共編畫布（老虎機美術元件）" style="width:100%;height:152px;object-fit:contain;background:#05070b;display:block"></a>
-    <a class="shot" href="assets/ide-diff.png" target="_blank"><img src="assets/ide-diff.png" alt="VS Code 看 diff／共改" style="width:100%;height:152px;object-fit:contain;background:#05070b;display:block"></a>
+  <div class="a" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.35rem .6rem;align-items:center">
+    <div style="font-weight:800;font-size:.84rem;color:var(--cyan)">🎨 設計共編 · Penpot<br><span style="font-size:.68rem;color:var(--dim);font-weight:400">美術 Agent</span></div>
+    <div style="font-weight:800;font-size:.84rem;color:var(--blue)">💻 程式共編 · VS Code<br><span style="font-size:.68rem;color:var(--dim);font-weight:400">Client Agent</span></div>
+    <div style="font-weight:800;font-size:.84rem;color:var(--lime)">🖥️ 網頁/介面共編 · Open Design<br><span style="font-size:.68rem;color:var(--dim);font-weight:400">企劃 Agent</span></div>
+    <a class="shot" href="assets/penpot-telegram.png" target="_blank"><img src="assets/penpot-telegram.png" alt="美術 Agent 對話給 Penpot 共編連結" style="width:100%;height:138px;object-fit:contain;background:#05070b;display:block"></a>
+    <a class="shot" href="assets/ide-telegram.png" target="_blank"><img src="assets/ide-telegram.png" alt="Client Agent 對話給 IDE 連結" style="width:100%;height:138px;object-fit:contain;background:#05070b;display:block"></a>
+    <a class="shot" href="assets/od-telegram.png" target="_blank"><img src="assets/od-telegram.png" alt="企劃 Agent 對話給 Open Design 共編連結" style="width:100%;height:138px;object-fit:contain;background:#05070b;display:block"></a>
+    <a class="shot" href="assets/penpot-canvas.png" target="_blank"><img src="assets/penpot-canvas.png" alt="Penpot 向量共編畫布（老虎機美術元件）" style="width:100%;height:138px;object-fit:contain;background:#05070b;display:block"></a>
+    <a class="shot" href="assets/ide-diff.png" target="_blank"><img src="assets/ide-diff.png" alt="VS Code 看 diff／共改" style="width:100%;height:138px;object-fit:contain;background:#05070b;display:block"></a>
+    <a class="shot" href="assets/od-workspace.png" target="_blank"><img src="assets/od-workspace.png" alt="Open Design 工作區（遊戲大廳設計）" style="width:100%;height:138px;object-fit:contain;background:#05070b;display:block"></a>
   </div>
-  <div class="a" style="font-size:.8rem;color:var(--dim);text-align:center"><strong class="accent-l">Agent 做到一段 → 對話給連結（上排）→ 員工點開即時看、接手共編（下排）</strong>。同模式也支援 Open Design（網頁/儀表板）、Open WebUI（對話入口）。</div>
+  <div class="a" style="font-size:.78rem;color:var(--dim);text-align:center"><strong class="accent-l">Agent 做到一段 → 對話給連結（上排）→ 員工點開即時看、接手共編（下排）</strong>。另也支援 💬 Open WebUI（團隊與各職能 Agent 對話入口）。圖片可點擊放大。</div>
 </div>
 </section>
 
