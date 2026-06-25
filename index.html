@@ -264,7 +264,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <div class="inner" style="gap:.8rem">
   <div><span class="a eyebrow" style="color:var(--purple)">System Architecture</span><h2 class="a">系統架構：完整技術架構</h2></div>
   <div class="a archflow">
-    <div class="arch-box" style="--ac:var(--orange)"><b class="accent-o">接入層 Ingress</b>　各職能人員 · Telegram / Discord Bot · CLI 終端</div>
+    <div class="arch-box" style="--ac:var(--orange)"><b class="accent-o">接入層 Ingress</b>　各職能人員 · 🌐 WebUI（Open WebUI）· Telegram / Discord Bot · CLI 終端</div>
     <div class="arch-ar">↓</div>
     <div class="arch-box" style="--ac:var(--purple)"><b class="accent-p">編排層 · OpenClaw Gateway</b>　多 Agent 路由 · 排程 · 權限隔離 · 👁 人工審核節點 · ⚡ 自動生成 Skill</div>
     <div class="arch-ar">↓ 分派任務</div>
@@ -275,7 +275,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="arch-3">
       <div class="arch-box" style="--ac:var(--cyan)"><b class="accent-c">模型層</b><br><span style="font-size:.74rem;color:var(--dim)">想·雲端：GPT-5.5／Claude Opus 4.8／Gemini 3｜記·本地：Qwen3.6／Embedding／Reranker</span></div>
       <div class="arch-box" style="--ac:var(--lime)"><b class="accent-l">記憶與知識層</b><br><span style="font-size:.74rem;color:var(--dim)">各 Agent 獨立知識庫 · 學習迴路（對話即更新）</span></div>
-      <div class="arch-box" style="--ac:var(--amber)"><b class="accent-a">工具層</b><br><span style="font-size:.74rem;color:var(--dim)">MCP(Cocos/Spine) · CLI(生圖/音效) · 瀏覽器自動化</span></div>
+      <div class="arch-box" style="--ac:var(--amber)"><b class="accent-a">工具層</b><br><span style="font-size:.74rem;color:var(--dim)">MCP(Cocos/Spine/Penpot) · 設計共編(Penpot 向量美術／Open Design 網頁·儀表板) · CLI(生圖/音效) · 瀏覽器自動化</span></div>
     </div>
     <div class="arch-ar">‖ 全程治理</div>
     <div class="arch-box" style="--ac:var(--rose)"><b class="accent-r">治理層 Governance</b>　📊 使用治理儀表板 · 💓 健康監控儀表板 · 權限分級 · 資安/操作日誌/稽核可追溯</div>
@@ -553,11 +553,11 @@ function buildPptx(){
   s.addText('個人 Agent 讓「一個人」做得更快；我們的框架讓「一個組織」能複製、累積、管得住。',{x:.6,y:1.65,w:12.1,fontSize:14,italic:true,color:'4ade80',fontFace:F});
   s.addText('怎麼用：個人→要自己安裝/設定/串工具（技術門檻）｜框架→員工只用自然語言對話、拿專業糾正教育 Agent（零技術門檻）\n分工：個人→一個萬用助理什麼都做｜框架→6 職能各建專屬 Agent，覆蓋完整製程線\n知識：個人→留在單機、難組織級傳承｜框架→各職能獨立知識庫，留在組織、隨對話更新\n品質：個人→看個人功力、時好時壞｜框架→規範做進 Agent（AGENTS.md＋自我精進 skills＋self-check）＋人工審核\n治理：個人→缺乏集中治理/稽核｜框架→使用治理＋健康監控、權限隔離、成本/稽核可追溯\n複製：個人→換人/換專案重來(1→1)｜框架→為複製而設計 1→N（複製效益待第二台驗證）',{x:.6,y:2.4,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
   s=P.addSlide();head(s,'SYSTEM ARCHITECTURE','系統架構：完整技術架構','b07aff');
-  [['接入層 Ingress','各職能人員 · Telegram / Discord Bot · CLI','fb923c'],
+  [['接入層 Ingress','各職能人員 · 🌐 WebUI(Open WebUI) · Telegram / Discord Bot · CLI','fb923c'],
    ['編排層 Orchestration · OpenClaw','多 Agent 路由 Gateway · 6 職能 Agent · 👁 人工審核節點 · 排程/權限隔離 · ⚡ 自動生成 Skill','b07aff'],
    ['模型層 Models','雲端：GPT-5.5 主腦（備援 Kiro Opus 4.6）· Claude Opus 4.8 程式 · Gemini 3 Pro ｜ 本地(vLLM)：Qwen3.6 · Embedding · Reranker','22d3ee'],
    ['記憶與知識層 Memory','自建向量記憶庫（各 Agent 獨立 scope，語意檢索＋重排）· 學習迴路 · 各職能知識庫','4ade80'],
-   ['工具層 Tooling','MCP：Cocos/Spine ｜ CLI：codex-imagegen/ElevenLabs/Suno ｜ API ｜ 瀏覽器自動化','fbbf24'],
+   ['工具層 Tooling','MCP：Cocos/Spine/Penpot ｜ 設計共編：Penpot 向量美術·Open Design 網頁/儀表板 ｜ CLI：生圖/音效 ｜ 瀏覽器自動化','fbbf24'],
    ['治理層 Governance','權限分級 · 資安/操作日誌 · 📊 使用治理儀表板 · 💓 健康監控儀表板','fb7185'],
   ].forEach((L,i)=>{const y=1.55+i*0.92;s.addShape(P.ShapeType.rect,{x:.5,y,w:12.3,h:.8,fill:{color:'0c0c1a'},line:{color:L[2],width:1}});s.addText(L[0],{x:.65,y,w:2.7,h:.8,fontSize:11,bold:true,color:L[2],fontFace:F,valign:'middle'});s.addText(L[1],{x:3.4,y,w:9.2,h:.8,fontSize:10.5,color:'e8e8f0',fontFace:F,valign:'middle'});});
   s=P.addSlide();head(s,'MODEL ORCHESTRATION','模型協作：每個任務，配最適合的模型','22d3ee');
