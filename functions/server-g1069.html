@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>福星6 — AI 加速後端開發成效</title>
+<style>
+ :root{
+ --bg:#0d1117; --panel:#161b22; --panel2:#1c2430;
+ --ink:#e6edf3; --sub:#9fb0c3; --line:#2b3542;
+ --gold:#f5c451; --green:#3fb950; --blue:#58a6ff;
+ --ai:#bd6bff; --human:#ff8a5b; --red:#f06b64;
+ }
+ *{box-sizing:border-box;margin:0;padding:0}
+ body{background:#05070b;color:var(--ink);
+ font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif;
+ display:flex;flex-direction:column;align-items:center;gap:26px;padding:30px 16px}
+ .slide{
+ width:1280px;height:720px;background:
+ radial-gradient(1100px 500px at 80% -12%,rgba(189,107,255,.16),transparent 60%),
+ radial-gradient(900px 480px at 0% 115%,rgba(88,166,255,.13),transparent 60%),
+ var(--bg);
+ border:1px solid var(--line);border-radius:16px;overflow:hidden;position:relative;
+ box-shadow:0 20px 60px rgba(0,0,0,.55);padding:44px 56px}
+ .tag{display:inline-block;font-size:13px;letter-spacing:2px;color:var(--gold);
+ border:1px solid rgba(245,196,81,.4);border-radius:999px;padding:4px 14px;margin-bottom:14px}
+ h1{font-size:40px;line-height:1.15;font-weight:850;letter-spacing:.5px}
+ h1 .accent{background:linear-gradient(90deg,var(--gold),#ff8a5b);-webkit-background-clip:text;background-clip:text;color:transparent}
+ .sub{color:var(--sub);font-size:16px;margin-top:9px;max-width:980px;line-height:1.6}
+ .sub b{color:var(--gold)}
+ .meta{position:absolute;top:44px;right:56px;text-align:right;color:var(--sub);font-size:13px;line-height:1.7}
+ .pageno{position:absolute;bottom:20px;right:30px;color:var(--sub);font-size:12px}
+ .flow{display:grid;grid-template-columns:1fr 56px 1fr 56px 1fr;align-items:stretch;margin-top:36px}
+ .step{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+ border-radius:16px;padding:22px 20px;display:flex;flex-direction:column;gap:9px}
+ .step .who{font-size:13px;letter-spacing:1px;font-weight:700}
+ .step.h .who{color:var(--human)} .step.a .who{color:var(--ai)}
+ .step.a{border-color:rgba(189,107,255,.5);box-shadow:0 0 0 1px rgba(189,107,255,.18) inset}
+ .step h3{font-size:21px;font-weight:800}
+ .step ul,.case ul,.dcard ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+ .step li,.case li{font-size:14px;padding-left:17px;position:relative;line-height:1.4}
+ .step li::before,.case li::before{content:"›";position:absolute;left:2px;color:var(--gold);font-weight:800}
+ .arrow{display:flex;align-items:center;justify-content:center;font-size:32px;color:var(--blue);opacity:.8}
+ .gauge{display:flex;align-items:center;gap:24px;margin-top:34px;background:var(--panel);
+ border:1px solid var(--line);border-radius:16px;padding:20px 28px}
+ .gauge .num{font-size:60px;font-weight:850;line-height:1;
+ background:linear-gradient(90deg,var(--ai),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+ .gauge .txt b{font-size:17px} .gauge .txt p{color:var(--sub);font-size:13px;margin-top:3px}
+ .gauge .bar{flex:1;height:26px;border-radius:8px;overflow:hidden;display:flex;border:1px solid var(--line)}
+ .gauge .bar div{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#0d1117}
+ .band{display:flex;align-items:center;gap:16px;margin-top:22px;background:var(--panel2);
+ border:1px solid var(--line);border-radius:12px;padding:12px 20px}
+ .band .from,.band .to{font-size:16px;font-weight:800;text-align:center;white-space:nowrap}
+ .band .from small,.band .to small{display:block;font-size:11px;font-weight:400;color:var(--sub);margin-top:2px}
+ .band .from{color:var(--human)} .band .to{color:var(--gold)}
+ .band .op{flex:1;text-align:center;font-size:14px;color:var(--ink);line-height:1.6;
+ border-left:1px dashed var(--line);border-right:1px dashed var(--line);padding:0 16px}
+ .cases{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+ .case{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 17px 15px;
+ display:flex;flex-direction:column;gap:10px;border-top:4px solid var(--ai)}
+ .case.star{border-top-color:var(--gold);box-shadow:0 0 0 1px rgba(245,196,81,.22) inset}
+ .case .ico{font-size:27px}
+ .case h3{font-size:17px;font-weight:800;line-height:1.22}
+ .case .task{color:var(--sub);font-size:13px;line-height:1.45}
+ .case .did{font-size:13px;line-height:1.5}
+ .case .did b{color:var(--ai)} .case.star .did b{color:var(--gold)}
+ .case .res{margin-top:auto;background:rgba(63,185,80,.12);border:1px solid rgba(63,185,80,.4);
+ border-radius:10px;padding:9px 11px;font-size:12.5px;color:#9ff0ab;line-height:1.4}
+ .case .res b{color:var(--green)}
+ .detail{display:grid;grid-template-columns:1fr 1.18fr;gap:26px;margin-top:24px}
+ .detail.equal{grid-template-columns:1fr 1fr}
+ .dcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+ .dcard.bg{border-left:4px solid var(--human)}
+ .dcard.ai{border-left:4px solid var(--ai)}
+ .dcard h4{font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+ .dcard.bg h4{color:var(--human)} .dcard.ai h4{color:var(--ai)}
+ .dcard p{color:var(--sub);font-size:14.5px;line-height:1.65}
+ .steps{list-style:none;display:flex;flex-direction:column;gap:12px}
+ .steps li{display:flex;gap:12px;font-size:14.5px;line-height:1.5}
+ .steps .n{flex:none;width:24px;height:24px;border-radius:7px;background:rgba(189,107,255,.18);
+ border:1px solid rgba(189,107,255,.5);color:var(--ai);font-weight:800;font-size:13px;
+ display:flex;align-items:center;justify-content:center;margin-top:1px}
+ .steps b{color:var(--ink)}
+ .resbar{margin-top:22px;background:rgba(63,185,80,.1);border:1px solid rgba(63,185,80,.38);
+ border-radius:12px;padding:14px 20px;font-size:14.5px;color:#b6f0bf;line-height:1.55}
+ .resbar b{color:var(--green)}
+ .mono{font-family:"SF Mono",Menlo,Consolas,monospace}
+ .metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:28px}
+ .metric{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 16px}
+ .metric .big{font-size:38px;font-weight:850;line-height:1;
+ background:linear-gradient(90deg,var(--ai),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+ .metric p{color:var(--sub);font-size:13px;line-height:1.45;margin-top:9px}
+ .bars{display:flex;flex-direction:column;gap:18px;margin-top:26px}
+ .barrow{display:grid;grid-template-columns:150px 1fr 168px;align-items:center;gap:16px}
+ .barrow .name{font-weight:800;font-size:15px}
+ .track{height:30px;border-radius:9px;overflow:hidden;display:flex;border:1px solid var(--line);background:var(--panel2)}
+ .track span{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#0d1117}
+ .track .human{background:linear-gradient(90deg,var(--human),#e0703f)}
+ .track .ai{background:linear-gradient(90deg,var(--ai),var(--blue))}
+ .barrow .pct{font-size:13px;color:var(--sub)}
+ .timeline{position:relative;margin:72px 30px 0}
+ .timeline::before{content:"";position:absolute;left:0;right:0;top:54px;height:2px;background:var(--line)}
+ .titems{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+ .titem{position:relative;min-height:142px}
+ .dot{position:absolute;top:45px;left:0;width:20px;height:20px;border-radius:7px;background:var(--gold);box-shadow:0 0 0 5px rgba(245,196,81,.14)}
+ .titem .date{font-size:13px;color:var(--gold);font-weight:800;white-space:pre-line}
+ .titem .label{position:absolute;top:80px;left:0;font-size:13px;line-height:1.35;font-weight:800}
+ .foot{position:absolute;left:56px;right:56px;bottom:22px;display:flex;justify-content:space-between;
+ color:var(--sub);font-size:12.5px;border-top:1px solid var(--line);padding-top:11px}
+ .closegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+ .cbox{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+ .cbox .big{font-size:46px;font-weight:850;line-height:1;
+ background:linear-gradient(90deg,var(--ai),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+ .cbox h4{font-size:17px;margin:10px 0 8px}
+ .cbox p{color:var(--sub);font-size:13.5px;line-height:1.55}
+ .checks{display:flex;flex-direction:column;gap:11px;margin-top:30px}
+ .checks div{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--green);
+ border-radius:10px;padding:13px 18px;font-size:15px}
+ @media print{
+ body{background:#fff;padding:0;gap:0}
+ .slide{box-shadow:none;border-radius:0;page-break-after:always;width:100%;height:100vh}
+ @page{size:1280px 720px;margin:0}
+ }
+</style>
+</head>
+<body>
+
+<section class="slide">
+ <div class="meta">AI 遊戲開發競賽 · 後端<br>G1069 / Fuxing6（Slot Server）<br>2026-06-25</div>
+ <span class="tag">AI 開發競賽 · 後端</span>
+ <h1>用 <span class="accent">AI</span> 加速福星6後端開發</h1>
+ <div class="sub">本次回顧涵蓋 <b>Protocol 文件</b>、<b>server core 三支檔案</b>、<b>Info / Setting 參數草案</b> 與 <b>Spin / next_fever 單元測試</b>。重點不是宣稱 AI 取代工程師，而是把規格整理、初版落檔、欄位對齊與測試骨架快速收斂。</div>
+
+ <div class="flow">
+ <div class="step h"><div class="who">人</div><h3>定規格 / 給方向</h3>
+ <ul><li>提供玩法規格與 client 問題</li><li>確認資料欄位歸位</li><li>拍板 scope 與語意</li></ul></div>
+ <div class="arrow">→</div>
+ <div class="step a"><div class="who">AI</div><h3>產文件 / 寫 core / 補測試</h3>
+ <ul><li>Protocol 版本收斂</li><li>實作 spin 與 next_fever</li><li>反推 Info / Setting key</li><li>語法與 coverage 檢查</li></ul></div>
+ <div class="arrow">→</div>
+ <div class="step h"><div class="who">人</div><h3>審查 / 驗收 / 調整</h3>
+ <ul><li>確認玩法正確性</li><li>替換正式機率參數</li><li>QA 與 client 對包</li></ul></div>
+ </div>
+
+ <div class="gauge">
+ <div class="num">~65%</div>
+ <div class="txt"><b>Prototype 階段工作量，由 AI 協助完成</b><p>人工介入約 35%，集中在規格判斷、語意確認與最終驗收</p></div>
+ <div class="bar">
+ <div style="width:65%;background:linear-gradient(90deg,var(--ai),var(--blue))">AI 65%</div>
+ <div style="width:35%;background:linear-gradient(90deg,var(--human),#e0703f)">人 35%</div>
+ </div>
+ </div>
+ <div class="pageno">1 / 8</div>
+</section>
+
+<section class="slide">
+ <div class="meta">總覽<br>文件 → Core → 參數 → 測試</div>
+ <span class="tag">AI 實際做了什麼</span>
+ <h1>把福星6後端從 <span class="accent">規格</span> 推到可驗證初版</h1>
+
+ <div class="band">
+ <span class="from">需求 / 規格<br><small>人工輸入</small></span>
+ <span class="op">＋ Protocol 欄位收斂 ＋ SlotCommon extension point 實作 ＋ Info / Setting 草案 ＋ 單元測試骨架<br><span style="color:var(--human)">－ 正式 RTP、完整 QA、量產參數仍需人工 gate</span></span>
+ <span class="to">Server Prototype<br><small>AI 協作初版</small></span>
+ </div>
+
+ <div class="cases">
+ <div class="case star"><div class="ico">📄</div><h3>Protocol<br>文件定版</h3>
+ <div class="task">從 v1 到 v2_rev2，整理 spin、bonus_spin、next_fever 的資料位置與命名。</div>
+ <div class="did"><b>AI 收斂</b>欄位、版本、client Q&A，保留共用 protocol 欄位一致性。</div>
+ <div class="res"><b>結果：</b>約 1.5 小時走到可實作基準。</div></div>
+ <div class="case"><div class="ico">🧩</div><h3>Core<br>三支主檔</h3>
+ <div class="task">依 SlotCommon 實作 Fuxing6.py、Fuxing6Chance.py、Fuxing6Check.py。</div>
+ <div class="did"><b>AI 拆出</b>Collect、SC value、Step-Up、特殊上輪、JP、settlement 流程。</div>
+ <div class="res"><b>結果：</b>核心資料流可跑語法與 key coverage。</div></div>
+ <div class="case"><div class="ico">⚙️</div><h3>Info / Setting<br>參數草案</h3>
+ <div class="task">core 會讀到的參數先補齊，權重先全部平均分配。</div>
+ <div class="did"><b>AI 反推</b>extra_odds 與 _gameSetting key，對齊現有遊戲格式。</div>
+ <div class="res"><b>結果：</b>可先驗資料流，正式權重後補。</div></div>
+ <div class="case"><div class="ico">✅</div><h3>Spin / next_fever<br>單元測試</h3>
+ <div class="task">針對主流程、Step-Up 初始化與特殊遊戲 payload 位置建立測試。</div>
+ <div class="did"><b>AI 補上</b>spin trigger、sg_map 邊界、feature value 與 collect meter 測試。</div>
+ <div class="res"><b>結果：</b>測試檔已納入 core zip 草案。</div></div>
+ </div>
+ <div class="pageno">2 / 8</div>
+</section>
+
+<section class="slide">
+ <div class="meta">重點 ①<br>Protocol</div>
+ <span class="tag">📄 Protocol 文件</span>
+ <h1>Protocol 約 <span class="accent">1.5 小時</span> 走到定版基準</h1>
+ <div class="detail">
+ <div class="dcard bg"><h4>背景 / 挑戰</h4>
+ <p>福星6有主遊戲收集、Step-Up、特殊上輪、JP、settlement、recovery 等資料。若欄位分散在 protocol 外層，client / server 很容易各自解讀。</p>
+ <div class="resbar" style="background:rgba(88,166,255,.1);border-color:rgba(88,166,255,.4);color:#bcdcff"><b style="color:var(--blue)">定案口徑：</b><br>spin / bonus_spin 客製資料放 <span class="mono">extra_info</span>；next_fever 客製資料放 <span class="mono">sg_map</span>；共用欄位保留 <span class="mono">result</span>、<span class="mono">result_wheels</span>。</div>
+ </div>
+ <div class="dcard ai"><h4>AI 做了什麼</h4>
+ <ul class="steps">
+ <li><span class="n">1</span><div>產出 v1 / v2 / v2_rev1 / v2_rev2 多版文件。</div></li>
+ <li><span class="n">2</span><div>整理座標、symbol ID、feature wheel command、Step-Up data shape。</div></li>
+ <li><span class="n">3</span><div>回覆 client alignment：Buy Bonus scope、fake packet、可寫死欄位。</div></li>
+ <li><span class="n">4</span><div>把每次修正落成 Excel，降低人工重新排版時間。</div></li>
+ </ul>
+ </div>
+ </div>
+ <div class="resbar"><b>人工介入估算：</b>約 30%。人工負責規格決策與 client 問題判斷；AI 負責整理、版本落檔與欄位一致性。</div>
+ <div class="pageno">3 / 8</div>
+</section>
+
+<section class="slide">
+ <div class="meta">重點 ②<br>Server Core</div>
+ <span class="tag">🧩 Core 三支檔案</span>
+ <h1>Core 採 <span class="accent">Protocol-first</span> 加 SlotCommon extension point</h1>
+ <div class="cases" style="grid-template-columns:repeat(3,1fr)">
+ <div class="case star"><div class="ico">A</div><h3>Protocol-first</h3>
+ <div class="task">先依 v2_rev2 拆資料流，不讓欄位散落。</div>
+ <ul><li>spin extra_info</li><li>next_fever sg_map</li><li>result / result_wheels 保留</li></ul>
+ <div class="res"><b>效果：</b>server / client 資料邊界清楚。</div></div>
+ <div class="case"><div class="ico">B</div><h3>SlotCommon-first</h3>
+ <div class="task">沿用共用框架既有擴充點，不改 shared framework。</div>
+ <ul><li>DefaultSlotCalculator</li><li>MainGameChance</li><li>MainGameCheckWays</li></ul>
+ <div class="res"><b>效果：</b>符合既有 slot server 架構。</div></div>
+ <div class="case"><div class="ico">C</div><h3>Feature 拆模組</h3>
+ <div class="task">把玩法拆成可檢查的資料段。</div>
+ <ul><li>Collect meter / SC value</li><li>Step-Up lower / upper reels</li><li>coin effect / JP / settlement</li></ul>
+ <div class="res"><b>效果：</b>方便後續測試與替換機率資料。</div></div>
+ </div>
+ <div class="detail equal" style="margin-top:26px">
+ <div class="dcard ai"><h4>實作檔案</h4><p><span class="mono">Fuxing6.py</span>：spin / next_fever 主流程。<br><span class="mono">Fuxing6Chance.py</span>：dev_mode 與 reel 抽取。<br><span class="mono">Fuxing6Check.py</span>：Ways、Collect、SC / feature value 判斷。</p></div>
+ <div class="dcard bg"><h4>人工介入估算</h4><p>約 40%。核心玩法語意、規格邊界與驗收需要工程師確認；AI 主要負責初版實作、資料結構串接、syntax / key coverage 檢查。</p></div>
+ </div>
+ <div class="pageno">4 / 8</div>
+</section>
+
+<section class="slide">
+ <div class="meta">重點 ③<br>Info / Setting</div>
+ <span class="tag">⚙️ 參數草案</span>
+ <h1>Info / Setting 從 <span class="accent">core 實際讀取 key</span> 反推</h1>
+ <div class="detail">
+ <div class="dcard bg"><h4>參照來源</h4>
+ <ul class="steps">
+ <li><span class="n">1</span><div><span class="mono">Fuxing6.py</span> / <span class="mono">Fuxing6Chance.py</span> / <span class="mono">Fuxing6Check.py</span></div></li>
+ <li><span class="n">2</span><div><span class="mono">Fuxing6_Protocol_v2_rev2.xlsx</span></div></li>
+ <li><span class="n">3</span><div>其他遊戲 Info / Setting 寫法與 <span class="mono">_draw_weight_row()</span> 格式</div></li>
+ <li><span class="n">4</span><div>client alignment 與 spec flow 回覆</div></li>
+ </ul>
+ </div>
+ <div class="dcard ai"><h4>草案內容</h4>
+ <ul class="steps">
+ <li><span class="n">1</span><div><b>Setting</b>：遊戲結構、symbol id、fake reels、base_rate、odds、special_odds。</div></li>
+ <li><span class="n">2</span><div><b>Info</b>：MG combination、Collect、SC value、FG profile、特殊上輪、coin effect、JP。</div></li>
+ <li><span class="n">3</span><div><b>權重</b>：Result / Weights 先平均分配，目的為先跑通資料流。</div></li>
+ </ul>
+ </div>
+ </div>
+ <div class="resbar"><b>人工介入估算：</b>約 20%。本階段目標是可跑通初版，不是正式 RTP；正式 reel strip / weight 仍需 probability 端替換。</div>
+ <div class="pageno">5 / 8</div>
+</section>
+
+<section class="slide">
+ <div class="meta">重點 ④<br>Unit Test</div>
+ <span class="tag">✅ Spin / next_fever 單元測試</span>
+ <h1>針對福星6遊戲流程補上 <span class="accent">可回歸檢查</span></h1>
+ <div class="detail equal">
+ <div class="dcard ai"><h4>測試範圍</h4>
+ <ul class="steps">
+ <li><span class="n">1</span><div><b>spin</b>：確認 special game trigger 與 extra_info 匯出。</div></li>
+ <li><span class="n">2</span><div><b>next_fever init</b>：初始化 Step-Up special game state。</div></li>
+ <li><span class="n">3</span><div><b>next_fever spin</b>：客製 payload 維持在 sg_map，不外漏到 extra_info。</div></li>
+ <li><span class="n">4</span><div><b>feature value</b>：只標記 red special symbols，避免 SC value 語意混淆。</div></li>
+ </ul>
+ </div>
+ <div class="dcard bg"><h4>驗證價值</h4>
+ <p>這組測試不是最終 QA，而是保護 AI 初版最容易壞的資料邊界：Protocol 欄位位置、special game state 初始化、Collect / SC / feature value 的語意一致性。</p>
+ <div class="resbar"><b>目前檔案：</b><br><span class="mono">tmp/LuckyFortune6_server_core/tests/test_lucky_fortune6_spin_next_fever.py</span><br>共 348 行。</div>
+ </div>
+ </div>
+ <div class="foot"><span>測試草案可移入正式 repo 後接 CI / FastTest</span><span>共用框架未修改</span></div>
+ <div class="pageno">6 / 8</div>
+</section>
+
+<section class="slide">
+ <div class="meta">人工介入比例<br>Estimated</div>
+ <span class="tag">總體估算</span>
+ <h1>整體人工介入約 <span class="accent">35%</span></h1>
+ <div class="bars">
+ <div class="barrow"><div class="name">Protocol</div><div class="track"><span class="human" style="width:30%">人 30%</span><span class="ai" style="width:70%">AI 70%</span></div><div class="pct">文件定版與 Q&A</div></div>
+ <div class="barrow"><div class="name">Core</div><div class="track"><span class="human" style="width:40%">人 40%</span><span class="ai" style="width:60%">AI 60%</span></div><div class="pct">玩法語意較重</div></div>
+ <div class="barrow"><div class="name">Info / Setting</div><div class="track"><span class="human" style="width:20%">人 20%</span><span class="ai" style="width:80%">AI 80%</span></div><div class="pct">平均權重初版</div></div>
+ <div class="barrow"><div class="name">整體 Prototype</div><div class="track"><span class="human" style="width:35%">人 35%</span><span class="ai" style="width:65%">AI 65%</span></div><div class="pct">保守估算</div></div>
+ </div>
+ <div class="detail equal" style="margin-top:32px">
+ <div class="dcard ai"><h4>AI 負責的中段工作</h4><p>把規格整理成 Protocol、把 Protocol 轉成 core data flow、把 core 讀取 key 補成 Info / Setting，再用單元測試保護欄位位置。</p></div>
+ <div class="dcard bg"><h4>人工集中的兩端工作</h4><p>前段：玩法語意、scope、命名、client 問題判斷。後段：正式機率、QA、client integration、recovery 與 edge case 驗收。</p></div>
+ </div>
+ <div class="pageno">7 / 8</div>
+</section>
+
+<section class="slide">
+ <div class="meta">總結<br>交付口徑</div>
+ <span class="tag">結論 · AI 使用程度</span>
+ <h1>AI 的價值是把 <span class="accent">文件、程式、參數、測試</span> 對齊</h1>
+ <div class="closegrid">
+ <div class="cbox"><div class="big">1.5h</div><h4>Protocol 收斂</h4><p>從初版到 v2_rev2，包含 client Q&A 與欄位位置整理。</p></div>
+ <div class="cbox"><div class="big">5</div><h4>核心與參數檔</h4><p>三支 core 加 Info / Setting 草案，形成可交接初版。</p></div>
+ <div class="cbox"><div class="big">~35%</div><h4>人工介入</h4><p>以 prototype 階段估算；正式上線仍需工程師、機率與 QA gate。</p></div>
+ </div>
+ <div class="checks">
+ <div><b>建議對外說法：</b>AI 協助把福星6 server prototype 的人工介入壓到約 35%，並把初版文件與 core 落地集中在數天內完成。</div>
+ <div><b>限制說明：</b>Info / Setting 權重目前為平均分配，不代表正式 RTP；正式輪帶、權重、QA 與 client 對包仍需人工完成。</div>
+ <div><b>邊界乾淨：</b>只產出本遊戲草案與 tmp 交付物，沒有修改 SlotCommon 共用框架。</div>
+ </div>
+ <div class="pageno">8 / 8</div>
+</section>
+
+</body>
+</html>
