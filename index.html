@@ -311,8 +311,24 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </div>
 </section>
 
-<!-- 3.5 · 模型協作 -->
+<!-- 5 · 多通道接入 -->
 <section class="slide" data-slide="5">
+<div class="inner" style="gap:.6rem">
+  <div><span class="a eyebrow" style="color:var(--orange)">Multi-Channel Access</span><h2 class="a">多通道接入：在你慣用的地方找 Agent</h2></div>
+  <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">同仁不必換工具 —— <strong>Telegram、Discord、自架 Open WebUI、CLI</strong> 都能用自然語言找對應 Agent，且不同通道各有擅長場景。</p>
+  <div class="a" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem .7rem;align-items:start">
+    <div style="font-weight:800;font-size:.86rem;color:var(--purple)">💬 Discord<br><span style="font-size:.72rem;color:var(--dim);font-weight:400">多人 × 多 Agent 議題討論：拉同仁＋對應 Agent 開議題（如「上週營收降低10%追蹤」），或拉多個 Agent 一起討論。</span></div>
+    <div style="font-weight:800;font-size:.86rem;color:var(--cyan)">✈️ Telegram<br><span style="font-size:.72rem;color:var(--dim);font-weight:400">排程提醒／系統訊息分析：叫 Agent 做排程提醒；群組自動收系統訊息、彙整提醒（活動提醒、大事件儀表板）。</span></div>
+    <div style="font-weight:800;font-size:.86rem;color:var(--lime)">🌐 Open WebUI（自架）<br><span style="font-size:.72rem;color:var(--dim);font-weight:400">瀏覽器對話入口：直接與各職能 Agent 對話、開新議題（如虎機前端 Agent）。</span></div>
+    <a class="shot" href="assets/ch-discord.png" target="_blank"><img src="assets/ch-discord.png" alt="Discord 多人/多 Agent 議題討論" style="width:100%;height:168px;object-fit:contain;background:#05070b;display:block"></a>
+    <a class="shot" href="assets/ch-telegram.png" target="_blank"><img src="assets/ch-telegram.png" alt="Telegram 排程提醒/系統訊息" style="width:100%;height:168px;object-fit:contain;background:#05070b;display:block"></a>
+    <a class="shot" href="assets/ch-webui.png" target="_blank"><img src="assets/ch-webui.png" alt="Open WebUI 瀏覽器對話" style="width:100%;height:168px;object-fit:contain;background:#05070b;display:block"></a>
+  </div>
+</div>
+</section>
+
+<!-- 6 · 模型協作 -->
+<section class="slide" data-slide="6">
 <div class="inner" style="gap:.85rem">
   <div><span class="a eyebrow" style="color:var(--cyan)">Model Orchestration</span><h2 class="a">模型協作：每個任務，配最適合的模型</h2></div>
   <div class="a g3" style="gap:.8rem;align-items:stretch">
@@ -361,7 +377,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 5 · 實證① 做出來了（Demo） -->
-<section class="slide" data-slide="6">
+<section class="slide" data-slide="7">
 <div class="inner" style="gap:.8rem">
   <div><span class="a eyebrow" style="color:var(--lime)">Evidence · 1/2</span><h2 class="a">實證①：做出來了 — 福星高照 Demo</h2></div>
   <div class="a g2" style="grid-template-columns:1.6fr 1fr;align-items:stretch">
@@ -387,7 +403,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 6 · 實證② 治理：雙儀表板 -->
-<section class="slide" data-slide="7">
+<section class="slide" data-slide="8">
 <div class="inner" style="gap:.8rem">
   <div><span class="a eyebrow" style="color:var(--cyan)">Evidence · 2/2</span><h2 class="a">實證②：6 Agent 製程留痕 — 看得到、可治理</h2></div>
   <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">Demo 是成果，儀表板是<strong class="accent-c">證據</strong>：開發福星高照的 6 個 Agent 真的各自被呼叫、有 Token 消耗、有日誌可追溯。它們與捕魚機／iGaming 等其他產線 Agent 同掛在一套<strong class="accent-c">共用治理平台</strong>——正印證框架<strong class="accent-l">一次建好、多產品共用</strong>。</p>
@@ -412,7 +428,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 7 · 技術亮點 -->
-<section class="slide" data-slide="8">
+<section class="slide" data-slide="9">
 <div class="inner" style="gap:.9rem">
   <div><span class="a eyebrow" style="color:var(--purple)">Technical Highlights</span><h2 class="a">技術實作亮點</h2></div>
   <div class="a g3" style="gap:.7rem">
@@ -429,7 +445,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 9 · Harness Engineering -->
-<section class="slide" data-slide="9">
+<section class="slide" data-slide="10">
 <div class="inner" style="gap:.7rem">
   <div><span class="a eyebrow" style="color:var(--purple)">Harness Engineering</span><h2 class="a">每個 Agent 都是「工程化」的，不只是一段 prompt</h2></div>
   <p class="a lead" style="font-size:.92rem;max-width:none">每個職能 Agent 背後，是一整套<strong class="accent-p">結構化、可維護、持續演進</strong>的工程結構（harness）—— 規範檔、協議文件、技能模組、知識庫，不是一句 prompt。這是「<strong class="accent-l">Agent 工程</strong>」，也是別人複製不來的深度。</p>
@@ -447,7 +463,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 10 · 設計與程式：與 Agent 即時共編 -->
-<section class="slide" data-slide="10">
+<section class="slide" data-slide="11">
 <div class="inner" style="gap:.7rem">
   <div><span class="a eyebrow" style="color:var(--cyan)">Co-Editing with Agents · 已支援 / 前瞻</span><h2 class="a">與 Agent 即時共編（已建置、為未來預備）</h2></div>
   <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">已<strong class="accent-l">自架、可用</strong>的「與 Agent 共編」能力：員工自然語言交辦，<strong class="accent-l">Agent 做到一段給連結</strong>，點開即時看／接手共編（設計 Penpot・Open Design，程式 VS Code）。<strong class="accent-a">本次福星高照 6 職能尚未實際採用</strong>，是為<strong class="accent-o">日後專案複雜度提高、共編需求變大</strong>時預先備好的基礎建設。</p>
@@ -467,7 +483,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 11 · 三階段落地 -->
-<section class="slide" data-slide="11">
+<section class="slide" data-slide="12">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--lime)">How We Delivered</span><h2 class="a">交付歷程：三階段如何落地</h2></div>
   <p class="a lead" style="font-size:.95rem;max-width:none"><strong class="accent-a">知識收集</strong> → <strong class="accent-c">基礎建設</strong> → <strong class="accent-l">實戰開發</strong>，三階段如期跑通；下為實際時程，規劃期提前達成。</p>
@@ -483,7 +499,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 9 · 各職能成果（連結索引） -->
-<section class="slide" data-slide="12">
+<section class="slide" data-slide="13">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--orange)">Results by Function</span><h2 class="a">各職能實戰成果</h2></div>
   <p class="a lead">6 職能各自的能力與實際產出，由<strong class="accent-o">各職能負責人</strong>提供連結，深入展示成果與 Before/After。</p>
@@ -493,7 +509,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 10 · 未來展望 -->
-<section class="slide" data-slide="13">
+<section class="slide" data-slide="14">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--orange)">What's Next</span><h2 class="a">未來展望</h2></div>
   <div class="a g3">
@@ -599,6 +615,12 @@ function buildPptx(){
    ['工具層 Tooling','MCP：Cocos/Spine/Penpot ｜ 與 Agent 即時共編：Penpot 向量美術·Open Design 網頁/儀表板·VS Code 程式碼/看diff(Agent給IDE連結) ｜ CLI：生圖/音效 ｜ 瀏覽器自動化','fbbf24'],
    ['治理層 Governance','權限分級 · 資安/操作日誌 · 📊 使用治理儀表板 · 💓 健康監控儀表板','fb7185'],
   ].forEach((L,i)=>{const y=1.55+i*0.92;s.addShape(P.ShapeType.rect,{x:.5,y,w:12.3,h:.8,fill:{color:'0c0c1a'},line:{color:L[2],width:1}});s.addText(L[0],{x:.65,y,w:2.7,h:.8,fontSize:11,bold:true,color:L[2],fontFace:F,valign:'middle'});s.addText(L[1],{x:3.4,y,w:9.2,h:.8,fontSize:10.5,color:'e8e8f0',fontFace:F,valign:'middle'});});
+  s=P.addSlide();head(s,'MULTI-CHANNEL ACCESS','多通道接入：在慣用的地方找 Agent','fb923c');
+  s.addText('同仁不必換工具——Telegram / Discord / 自架 Open WebUI / CLI 都能用自然語言找對應 Agent，不同通道各有擅長場景。',{x:.6,y:1.6,w:12.1,fontSize:13,italic:true,color:'4ade80',fontFace:F});
+  try{s.addImage({path:'assets/ch-discord.png',x:.5,y:2.55,w:4.1,h:3.25});}catch(e){}
+  try{s.addImage({path:'assets/ch-telegram.png',x:4.85,y:2.55,w:3.05,h:3.25});}catch(e){}
+  try{s.addImage({path:'assets/ch-webui.png',x:8.1,y:2.85,w:4.8,h:2.6});}catch(e){}
+  s.addText('💬 Discord：多人×多 Agent 議題討論　｜　✈️ Telegram：排程提醒／系統訊息分析　｜　🌐 Open WebUI（自架）：瀏覽器對話入口',{x:.5,y:6.05,w:12.3,fontSize:11,color:'e8e8f0',fontFace:F,align:'center'});
   s=P.addSlide();head(s,'MODEL ORCHESTRATION','模型協作：每個任務，配最適合的模型','22d3ee');
   s.addText('🧠 推理與決策（雲端 LLM ·「想」）\n  GPT-5.5 主腦（備援 Kiro Opus 4.6）· Claude Opus 4.8 程式規劃/開發 · Gemini 3 Pro 輔助發想',{x:.6,y:1.7,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('📚 記憶與檢索（本地 vLLM ·「記」）\n  Qwen3-Embedding 向量化 → Reranker 重排挑最相關 → 回傳入庫時存好的分層摘要；Qwen3.6 負責入庫智能擷取',{x:.6,y:2.9,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
