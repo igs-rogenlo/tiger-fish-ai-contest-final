@@ -422,13 +422,8 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
   </div>
   <div class="a g3" style="gap:.7rem">
     <div class="panel panel-r a" style="padding:.8rem"><div class="panel-title" style="color:var(--rose);font-size:.95rem">&#128274; 多用戶 × 權限隔離</div><div class="panel-body" style="font-size:.8rem">一個 Agent 同時服務多位使用者，各自獨立：分級授權（讀/寫/執行）、per-user Git 權限、資料與操作日誌逐人隔離。</div></div>
-    <div class="panel panel-c a" style="padding:.8rem"><div class="panel-title" style="color:var(--cyan);font-size:.95rem">&#129504; 跨機台知識複用</div><div class="panel-body" style="font-size:.8rem">既有專案的框架、規格、Code 萃取入庫，下一台機台直接複用，不從零開始。</div></div>
+    <div class="panel panel-c a" style="padding:.8rem"><div class="panel-title" style="color:var(--cyan);font-size:.95rem">&#129504; 相似類型自動複用</div><div class="panel-body" style="font-size:.8rem">做新機台時，AI 自動比對、挑出<strong>相似規格/類型</strong>的既有框架與 Code 直接複用，不從零開始。</div></div>
     <div class="panel panel-a a" style="padding:.8rem"><div class="panel-title" style="color:var(--amber);font-size:.95rem">&#128640; 可擴展設計</div><div class="panel-body" style="font-size:.8rem">新增 Agent 只需灌知識 + 設工具鏈，不動核心。</div></div>
-  </div>
-  <div class="a panel" style="padding:.6rem .9rem;background:#080b14">
-    <div style="font-size:.78rem;color:var(--dim);margin-bottom:.3rem">📄 <span style="font-family:var(--mono);color:var(--purple)">每個 Agent 的 AGENTS.md ＋ docs/system/SELF_CHECK_PROTOCOL.md</span> — 規範不是口號，是可機器驗證的契約（書審佐證）：</div>
-    <div style="font-family:var(--mono);font-size:.68rem;line-height:1.5;color:#9fb3c8;white-space:pre-wrap">🔒 契約優先：每類產出（圖/規格/code）配 HARDLOCK，定義「什麼算完成」的 gate　🔒 自驗證循環：完成→跑 gates→全 PASS 才交付
-🔒 失敗不改標準：gate FAIL 只修產出、不降標準　🔒 可觀察留證：交付附通過證據 —— 交付前 AI 自己負責，不靠下游才發現問題</div>
   </div>
 </div>
 </section>
