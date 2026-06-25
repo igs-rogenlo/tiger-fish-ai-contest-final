@@ -49,18 +49,17 @@
   </section>
 
   <section id="docs-system" class="acc-c">
-    <h2>📐 系統協議 docs/system/<span class="tag">可機器驗證的契約</span></h2>
-    <div class="desc">把「怎樣算做完」寫成 Agent 能自動檢查的規則。實際檔案清單：</div>
-    <pre>docs/system/
-├─ SESSION_STARTUP.md      每次開工必讀清單與啟動序列
-├─ SELF_CHECK_PROTOCOL.md  交付前自驗證協議（Hermes）
-├─ DIAGRAM_HARDLOCK.md     圖表硬性檢查（6-gate + vision check）
-├─ FRESHNESS_CHECK.md      開工前共用模組鮮度檢查
-├─ DELIVERY_RULES.md       交付規則
-├─ ACP_PIPELINE.md         ACP 製程管線
-├─ EXCEL_INGEST.md         Excel 匯入規範
-├─ OPERATIONAL_TOOLS.md    營運工具
-└─ GIT_PAT_INIT.md         Git 身分初始化</pre>
+    <h2>📐 系統協議 docs/system/<span class="tag">把「做完」寫成可機器驗證的契約</span></h2>
+    <div class="desc">不是只放幾份說明檔，而是把「怎樣算做完」拆成 Agent 能<strong>自動逐項檢查</strong>的 gate。檔案群：<code>SESSION_STARTUP · SELF_CHECK_PROTOCOL · DIAGRAM_HARDLOCK · FRESHNESS_CHECK · DELIVERY_RULES · ACP_PIPELINE …</code></div>
+    <div class="desc" style="margin-top:.7rem">以 <strong>DIAGRAM_HARDLOCK.md</strong>（交付架構／流程圖的硬規則）為例 —— 它定義「6 個 Gate 全 PASS 才能說完成」，每條都是「動作＋通過條件」兩段式（實際內容節錄）：</div>
+    <pre># │ Gate              │ 通過條件
+2 │ mermaid_valid     │ mermaid parser 解析退出碼 0、無 syntax error
+3 │ rendered_artifact │ 渲染檔存在、且 mtime 晚於 source（source 改過必重 render）
+4 │ size_check        │ 渲染圖 ≥ 600×400px；不可全白；不可只有 title
+6 │ vision_pass       │ vision LLM 對照 source 三項全 PASS：
+  │                   │   READABLE（字可讀）· NO_OVERLAP（不重疊）
+  │                   │   · SEMANTICALLY_CORRECT（節點數／方向對齊 source）</pre>
+    <div class="note">任一 Gate 沒過 → Agent <strong>不可回「完成」</strong>，必須標記 FAIL、修補後重跑。「可機器驗證的契約」不是口號，是這種一條條能跑的判定。</div>
   </section>
 
   <section id="skills" class="acc-l">
@@ -80,35 +79,36 @@ huashu-design · art-video · art-benchmark-report … 等，合計 19 個技能
   </section>
 
   <section id="tools-md" class="acc-a">
-    <h2>🔧 TOOLS.md 工具路由<span class="tag">預配專屬工具鏈</span></h2>
-    <div class="desc">每個 Agent 預先配好的路徑、工具與參考專案對照（路徑已去識別化）：</div>
-    <pre># TOOLS.md — 工具使用備註
-## 常用檔案路徑
-| 用途              | 路徑 |
-| 知識庫            | ~/workspace-slot-client/knowledge/ |
-| 參考專案 symlink  | ~/workspace-slot-client/reference/projects/ |
-| Python venv       | ~/.local/tool-venv/bin/python (Pillow…) |
-| 中文字體          | STHeiti Medium.ttc |
-| ocb wrapper       | ~/.openclaw/bin/ocb |
+    <h2>🔧 TOOLS.md 工具路由 ＋ 參考專案對照<span class="tag">相似類型直接複用</span></h2>
+    <div class="desc">每個 Agent 預配好工具鏈與路徑（Python venv／中文字體／Cocos build wrapper／ocb 瀏覽器自動化），並維護一張<strong>參考專案對照表</strong> —— 新機台依「類型」挑最相近的範本直接複用，不從零開始（Game ID／專案名已去識別化）：</div>
+    <pre>## 參考專案清單（新機台依「類型」挑最近範本複用）
+  機台 A   —  Cocos 3.8.8          —  三收模板
+  機台 B   —  Cocos 3.8.8          —  掉落消去模板
+  機台 C   —  Cocos 3.8.8          —  極速模板
+  機台 D   —  Cocos 3.8.8          —  完整型骨架
+  舊參考×2 —  Cocos 2.4.13／3.8.6  —  舊版參考
 
-## 參考專案清單
-| Game ID | 專案路徑 | Cocos 版本 | 類型 |  ← 每台機台對照</pre>
+→ 例：新案是「掉落消去」型 → 直接複用機台 B 的骨架再改</pre>
+    <div class="note">＊另含 Cocos 雙路徑（互動走 MCP server、批次走 cocos-build wrapper，依專案 package.json 自動挑 Cocos 版本）、Pillow 產圖、慣用 grep pattern 等工具組合，開箱即用、統一維護。</div>
   </section>
 
   <section id="knowledge" class="acc-o">
-    <h2>🧠 知識庫 + 記憶<span class="tag">各職能獨立 scope</span></h2>
-    <div class="desc">各職能自己的知識庫（會隨對話更新）。以 Client Agent 的 knowledge/ 為例：</div>
-    <pre>knowledge/
-├─ network-protocol.md          前後端協議
-├─ component-design-rules.md    元件設計規則
-├─ code-review-criteria.md      Code Review 標準
-├─ naming-conventions.md        命名規範
-├─ asset-pipeline.md            素材管線
-├─ audio-integration-guide.md   音效整合
-├─ minimal-runnable-blueprint.md 最小可運行藍圖
-├─ game-id-registry.md          Game ID 登錄
-├─ cocos-version-matrix.md      Cocos 版本對照
-└─ patterns/ · diagrams/ · projects/ …</pre>
+    <h2>🧠 知識庫（.md）＋ 記憶（向量庫）<span class="tag">兩層互補</span></h2>
+    <div class="desc"><strong>① 知識庫 ＝ 人／Agent 維護的 .md</strong>（可 git diff、可審）：裡面是<strong>踩過坑才寫得出的規則</strong>。例如 <code>naming-conventions.md</code> 這條（避免新機台撞到共用模組命名）：</div>
+    <pre>## 不要在 Game/ 內使用的名稱
+（共用模組的保留類別名，重複定義會污染命名空間、撞到所有遊戲共用模組）
+   MachineHost · SlotGameMediator · Symbol · DropModule …
+→ 要繼承就用帶前綴子類別：G{NN}_MachineHost extends MachineHost</pre>
+    <div class="desc" style="margin-top:.8rem"><strong>② 記憶 ＝ LanceDB 向量庫（mlpro），不是 .md</strong>：Agent 被糾正／踩坑時自動寫入，每輪對話自動召回最相關的幾條 —— 這才是「對話即更新、越用越強」。實際 store 介面（節錄）：</div>
+    <pre>memory_store({
+  text, l0_abstract:"≤180", l1_overview:"≤500", l2_content:"≤1500",
+  category,      // fact(更正/lesson) · decision · preference · entity
+  importance,    // 0.5 預設 · 0.85+ lesson · 0.9+ critical
+  scope:"agent:&lt;id&gt;"
+})
+# 每輪自動注入 &lt;relevant-memories&gt;；memory_recall({query,limit}) 可主動查
+# 自檢協議：用戶更正/lesson → memory_store(category:"fact", importance:0.85+)</pre>
+    <div class="note">知識庫（.md，結構化參考、人可讀可審）＋ 記憶（LanceDB 向量、自動召回學習）兩層互補 ＝ 越用越強。另含 network-protocol、code-review-criteria、cocos-version-matrix、patterns/ 等 20+ 份知識。</div>
   </section>
 
   <section id="self-check" class="acc-r">
