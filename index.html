@@ -427,8 +427,27 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </div>
 </section>
 
-<!-- 10 · 三階段落地 -->
+<!-- 10 · 設計與程式：與 Agent 即時共編 -->
 <section class="slide" data-slide="10">
+<div class="inner" style="gap:.7rem">
+  <div><span class="a eyebrow" style="color:var(--cyan)">Co-Editing with Agents</span><h2 class="a">設計與程式：與 Agent 即時共編</h2></div>
+  <p class="a lead" style="font-size:.92rem;max-width:none">不只給工具 —— 員工用<strong class="accent-c">自然語言對話</strong>，Agent 直接在共編面板上改設計／程式，員工<strong class="accent-l">即時看到 Agent 改了什麼</strong>、隨時介入糾正。全部<strong>自架、團隊共用</strong>。</p>
+  <div class="a g2" style="grid-template-columns:1.5fr 1fr;align-items:stretch;gap:.8rem">
+    <a class="shot" href="assets/tool-penpot.png" target="_blank" style="display:flex;align-items:center;min-height:200px">
+      <img src="assets/tool-penpot.png" alt="Penpot：與 Agent 共編設計稿" style="display:block;width:100%">
+    </a>
+    <div style="display:flex;flex-direction:column;gap:.5rem;justify-content:center">
+      <div class="panel panel-c" style="padding:.65rem .85rem"><div style="font-weight:800;font-size:.9rem;color:var(--cyan)">🎨 Penpot — 向量美術共編</div><div class="panel-body" style="font-size:.77rem;margin-top:.2rem;line-height:1.45">如左圖：Agent 帳號＋「活動頁即時共編版面」「Golden Tide Carnival」等 Agent 設計稿。</div></div>
+      <div class="panel panel-l" style="padding:.65rem .85rem"><div style="font-weight:800;font-size:.9rem;color:var(--lime)">🖥️ Open Design — 網頁／儀表板共編</div><div class="panel-body" style="font-size:.77rem;margin-top:.2rem;line-height:1.45">雲端 AI 直接設計網頁/儀表板，對話即生成版面。</div></div>
+      <div class="panel panel-p" style="padding:.65rem .85rem"><div style="font-weight:800;font-size:.9rem;color:var(--purple)">💻 VS Code IDE — 程式共編／看 diff</div><div class="panel-body" style="font-size:.77rem;margin-top:.2rem;line-height:1.45">Client/Server/機率 與 Agent 共改程式碼，Agent 給 IDE 連結直接看差異。</div></div>
+      <div class="panel panel-o" style="padding:.65rem .85rem"><div style="font-weight:800;font-size:.9rem;color:var(--orange)">💬 Open WebUI — 團隊對話入口</div><div class="panel-body" style="font-size:.77rem;margin-top:.2rem;line-height:1.45">瀏覽器直接與各職能 Agent（openclaw）對話。</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 11 · 三階段落地 -->
+<section class="slide" data-slide="11">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--lime)">How We Delivered</span><h2 class="a">交付歷程：三階段如何落地</h2></div>
   <p class="a lead" style="font-size:.95rem;max-width:none"><strong class="accent-a">知識收集</strong> → <strong class="accent-c">基礎建設</strong> → <strong class="accent-l">實戰開發</strong>，三階段如期跑通；下為實際時程，規劃期提前達成。</p>
@@ -444,7 +463,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 9 · 各職能成果（連結索引） -->
-<section class="slide" data-slide="11">
+<section class="slide" data-slide="12">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--orange)">Results by Function</span><h2 class="a">各職能實戰成果</h2></div>
   <p class="a lead">6 職能各自的能力與實際產出，由<strong class="accent-o">各職能負責人</strong>提供連結，深入展示成果與 Before/After。</p>
@@ -454,7 +473,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </section>
 
 <!-- 10 · 未來展望 -->
-<section class="slide" data-slide="12">
+<section class="slide" data-slide="13">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--orange)">What's Next</span><h2 class="a">未來展望</h2></div>
   <div class="a g3">
@@ -580,6 +599,10 @@ function buildPptx(){
   s=P.addSlide();head(s,'HARNESS ENGINEERING','每個 Agent 都是「工程化」的，不只是一段 prompt','b07aff');
   s.addText('每個職能 Agent 背後是一整套版本控管、持續演進的工程結構（harness），全部進 git。是「Agent 工程」不是「prompt 工程」。',{x:.6,y:1.65,w:12.1,fontSize:14,italic:true,color:'bd8bff',fontFace:F});
   s.addText('📋 AGENTS.md 規則檔：每 Agent 約 300 行 SOP，snippet 自動維護、git 版控\n📐 系統協議 docs/system：自驗證／圖表硬鎖／鮮度檢查／啟動序列 —— 可機器驗證的契約\n🧩 Skills 技能模組：SOP 包成可執行技能（美術 Agent 約 18 個：Cocos 驗證/QC/Spine 匯出）\n🔧 TOOLS.md 工具路由：預配專屬工具鏈（MCP/CLI/API/瀏覽器），開箱即用\n🧠 知識庫＋記憶：各職能獨立 knowledge ＋ 學習記憶（對話即更新）\n✅ 自驗證 Gate＋權限：6-gate hardlock + vision check 交付前自查；per-user Git 隔離\n\n全部納入 git 版控、持續演進 —— 換人接手、複製到下一台，整套 harness 直接帶著走。',{x:.6,y:2.4,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:24});
+  s=P.addSlide();head(s,'CO-EDITING WITH AGENTS','設計與程式：與 Agent 即時共編','22d3ee');
+  s.addText('不只給工具——員工用自然語言對話，Agent 直接在共編面板改設計／程式，員工即時看到 Agent 改了什麼、隨時介入。全部自架、團隊共用。',{x:.6,y:1.65,w:12.1,fontSize:14,italic:true,color:'4ade80',fontFace:F});
+  try{s.addImage({path:'assets/tool-penpot.png',x:.6,y:2.45,w:7.4,h:4.0});}catch(e){}
+  s.addText('🎨 Penpot — 向量美術共編（Agent 帳號＋活動頁即時共編版面、Golden Tide Carnival 等 Agent 設計稿）\n🖥️ Open Design — 網頁/儀表板共編（雲端 AI 直接設計版面）\n💻 VS Code IDE — 程式共編/看 diff（Client/Server/機率，Agent 給 IDE 連結）\n💬 Open WebUI — 團隊與各職能 Agent 對話入口（openclaw）',{x:8.2,y:2.5,w:4.7,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:26});
   s=P.addSlide();head(s,'HOW WE DELIVERED','交付歷程：三階段如何落地','4ade80');
   s.addText('① 知識收集 ✓　② 基礎建設 ✓（6 Agent + 權限/資安/監控）　③ 實戰開發 ✓（Demo）\n時程：4/9–5/8 規劃期｜5/8 藍圖｜5/9–6/30 開發期｜6/30 最終成果',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'RESULTS BY FUNCTION','各職能實戰成果','fb923c');
