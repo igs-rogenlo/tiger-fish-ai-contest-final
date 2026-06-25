@@ -20,9 +20,9 @@ body{font-family:var(--sans);background:var(--void);color:var(--txt);height:100v
 body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 10% 30%,rgba(251,146,60,.05),transparent),radial-gradient(ellipse 70% 50% at 90% 70%,rgba(34,211,238,.04),transparent);pointer-events:none;z-index:0}
 #progress{position:fixed;top:0;left:0;height:3px;z-index:200;background:linear-gradient(90deg,var(--orange),var(--amber),var(--cyan));transition:width .35s ease}
 .deck{position:relative;width:100vw;height:100vh;z-index:1}
-.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:1.5rem 4vw;opacity:0;pointer-events:none;transition:opacity .45s ease;overflow:hidden}
+.slide{position:absolute;inset:0;display:flex;padding:1.5rem 4vw;opacity:0;pointer-events:none;transition:opacity .45s ease;overflow-y:auto}
 .slide.active{opacity:1;pointer-events:auto}
-.inner{width:100%;max-width:none;display:flex;flex-direction:column;justify-content:center;gap:1.1rem}
+.inner{width:100%;max-width:none;display:flex;flex-direction:column;gap:1.1rem;margin:auto}
 .eyebrow{font-family:var(--mono);font-size:.85rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
 h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spacing:-.02em}
 .lead{font-size:1.12rem;color:var(--dim);line-height:1.65;max-width:62ch}
@@ -303,26 +303,26 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
   <div><span class="a eyebrow" style="color:var(--cyan)">Evidence · 2/2</span><h2 class="a">實證②：治理 — 雙儀表板即時掌握</h2></div>
   <div class="a g2" style="align-items:stretch">
     <div style="display:flex;flex-direction:column">
-      <a class="shot" href="assets/dash-audit.png" target="_blank" style="flex:1;min-height:240px">
-        <img src="assets/dash-audit.png" alt="職責審計儀表板" style="display:none" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
+      <a class="shot" href="assets/dash-audit.png" target="_blank" style="flex:1;min-height:180px">
+        <img src="assets/dash-audit.png" alt="職責審計儀表板" style="display:none;width:100%;max-height:260px;object-fit:contain;object-position:top" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
         <div class="shot-slot"><div class="ss-ico">📊</div><div class="ss-t">職責審計儀表板</div><div class="ss-d">追蹤每個 Agent 的工具呼叫、模型用量、操作日誌 —— 證明 Agent 真在運作、可追溯。</div><div class="ss-src">127.0.0.1:3081 → 稽核日誌/總覽分頁<br>務必先按 🔒 遮罩 再截 → assets/dash-audit.png</div></div>
       </a>
     </div>
     <div style="display:flex;flex-direction:column">
-      <a class="shot" href="assets/dash-health.png" target="_blank" style="flex:1;min-height:240px">
-        <img src="assets/dash-health.png" alt="健康度監控儀表板" style="display:none" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
+      <a class="shot" href="assets/dash-health.png" target="_blank" style="flex:1;min-height:180px">
+        <img src="assets/dash-health.png" alt="健康度監控儀表板" style="display:none;width:100%;max-height:260px;object-fit:contain;object-position:top" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
         <div class="shot-slot" style="border-color:rgba(74,222,128,.45);background:rgba(74,222,128,.04)"><div class="ss-ico">💓</div><div class="ss-t" style="color:var(--lime)">健康度監控儀表板</div><div class="ss-d">Gateway / 各 Agent 的健康、uptime、狀態 —— 問題即時發現，不影響使用者。</div><div class="ss-src">127.0.0.1:3080（免登入，直接截）<br>→ assets/dash-health.png</div></div>
       </a>
     </div>
   </div>
-  <div class="a panel panel-c" style="padding:1rem">
-    <div class="panel-title" style="color:var(--cyan);font-size:1rem">&#128172; 不只看得到，還能「問」 —— 審計儀表板內建 AI 對話查詢</div>
-    <div class="a g3" style="gap:.7rem;margin-top:.6rem">
-      <div class="panel" style="padding:.8rem;border-left:3px solid var(--cyan)"><div style="font-weight:800;font-size:.9rem;color:var(--cyan)">&#128202; Agent 效能與成本</div><div class="panel-body" style="font-size:.8rem;margin-top:.3rem">各 Agent 的 Token 消耗、Session 數；近 7／30 天趨勢，揪出高成本／高頻 Agent；可查特定 Agent 最近對話與回應品質。</div></div>
-      <div class="panel" style="padding:.8rem;border-left:3px solid var(--lime)"><div style="font-weight:800;font-size:.9rem;color:var(--lime)">&#128100; 使用者行為洞察</div><div class="panel-body" style="font-size:.8rem;margin-top:.3rem">最活躍使用者及其常用 Agent；特定使用者歷史對話與互動頻率；偏好功能類別（數據查詢／繪圖／規劃…）。</div></div>
-      <div class="panel" style="padding:.8rem;border-left:3px solid var(--amber)"><div style="font-weight:800;font-size:.9rem;color:var(--amber)">&#127760; 系統整體統計</div><div class="panel-body" style="font-size:.8rem;margin-top:.3rem">總訊息量、活躍使用者數、活躍 Agent 數概覽；協助監控系統負載與使用熱度。</div></div>
+  <div class="a panel panel-c" style="padding:.8rem .9rem">
+    <div class="panel-title" style="color:var(--cyan);font-size:.95rem">&#128172; 不只看得到，還能「問」 —— 審計儀表板內建 AI 對話查詢</div>
+    <div class="a g3" style="gap:.5rem;margin-top:.45rem">
+      <div class="panel" style="padding:.6rem .7rem;border-left:3px solid var(--cyan)"><div style="font-weight:800;font-size:.85rem;color:var(--cyan)">&#128202; Agent 效能與成本</div><div class="panel-body" style="font-size:.76rem;margin-top:.25rem;line-height:1.5">各 Agent 的 Token 消耗、Session 數；近 7／30 天趨勢，揪出高成本／高頻 Agent；可查特定 Agent 最近對話與回應品質。</div></div>
+      <div class="panel" style="padding:.6rem .7rem;border-left:3px solid var(--lime)"><div style="font-weight:800;font-size:.85rem;color:var(--lime)">&#128100; 使用者行為洞察</div><div class="panel-body" style="font-size:.76rem;margin-top:.25rem;line-height:1.5">最活躍使用者及其常用 Agent；特定使用者歷史對話與互動頻率；偏好功能類別（數據查詢／繪圖／規劃…）。</div></div>
+      <div class="panel" style="padding:.6rem .7rem;border-left:3px solid var(--amber)"><div style="font-weight:800;font-size:.85rem;color:var(--amber)">&#127760; 系統整體統計</div><div class="panel-body" style="font-size:.76rem;margin-top:.25rem;line-height:1.5">總訊息量、活躍使用者數、活躍 Agent 數概覽；協助監控系統負載與使用熱度。</div></div>
     </div>
-    <div class="panel-body" style="font-size:.78rem;color:var(--dim);margin-top:.6rem">&#128161; 直接用自然語言問，例如：「最近一週哪個 Agent 消耗最多 Token？」「列出近 30 天最活躍的前 10 名使用者」「bq-research 這個 Agent 這週使用情況如何？」</div>
+    <div class="panel-body" style="font-size:.75rem;color:var(--dim);margin-top:.45rem;line-height:1.5">&#128161; 直接用自然語言問，例如：「最近一週哪個 Agent 消耗最多 Token？」「列出近 30 天最活躍的前 10 名使用者」「bq-research 這個 Agent 這週使用情況如何？」</div>
   </div>
   <div class="a" style="font-size:.8rem;color:var(--dim);text-align:center">一個看「Agent 在做什麼」、一個看「系統健不健康」 —— 治理層實際落地</div>
 </div>
