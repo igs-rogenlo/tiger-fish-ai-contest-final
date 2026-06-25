@@ -186,7 +186,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
   <div class="a g3">
     <div class="panel panel-r" style="padding:1.1rem"><div class="panel-title" style="color:var(--rose);font-size:1.05rem">做了什麼</div><div class="panel-body" style="font-size:.9rem">為 6 個職能各建一個 AI Agent，以一台既有機台翻新為場景，跑通完整開發製程。</div></div>
     <div class="panel panel-c" style="padding:1.1rem"><div class="panel-title" style="color:var(--cyan);font-size:1.05rem">怎麼做</div><div class="panel-body" style="font-size:.9rem"><strong class="accent-c">AI 跑流程、人工審核把關</strong>；串行流程改為多職能平行，搭配記憶與自動學習迴路。</div></div>
-    <div class="panel panel-l" style="padding:1.1rem"><div class="panel-title" style="color:var(--lime);font-size:1.05rem">價值</div><div class="panel-body" style="font-size:.9rem">不只一台 Demo，而是<strong class="accent-l">為複製而設計、Agent 持續累積</strong>的 Agent 製程框架（複製效益與效率量化待第二台驗證）。</div></div>
+    <div class="panel panel-l" style="padding:1.1rem"><div class="panel-title" style="color:var(--lime);font-size:1.05rem">價值</div><div class="panel-body" style="font-size:.9rem">真正的成果是<strong class="accent-l">一套為複製而設計、會持續累積經驗的 AI 製程框架</strong>，Demo 只是它跑出來的證明（複製效益待第二台量化）。</div></div>
   </div>
 </div>
 </section>
@@ -201,7 +201,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 
     <div class="panel panel-r" style="padding:.75rem .95rem"><strong>重複性高</strong><br>每台新機台都要重做規格、素材、數值</div>
     <div style="display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.4rem;font-weight:800">→</div>
-    <div class="panel panel-l" style="padding:.75rem .95rem"><strong class="accent-l">重點經驗延續到下一款</strong><br>累積的規格、數值、做法直接承接，不從零重來</div>
+    <div class="panel panel-l" style="padding:.75rem .95rem"><strong class="accent-l">精華淬鍊、延續到下一款</strong><br>共用框架／同類型 Agent 把規格、數值、做法的精華淬鍊保留，下一款承接再改良</div>
 
     <div class="panel panel-r" style="padding:.75rem .95rem"><strong>知識散落</strong><br>競品、舊規格、美術經驗散各處，難傳承</div>
     <div style="display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.4rem;font-weight:800">→</div>
@@ -218,7 +218,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <section class="slide" data-slide="3">
 <div class="inner" style="gap:.6rem">
   <div><span class="a eyebrow" style="color:var(--purple)">Why Not Just a Personal Agent</span><h2 class="a">和「自己電腦裝 AI Agent」差在哪</h2></div>
-  <p class="a lead" style="font-size:.92rem;max-width:none;line-height:1.5">現在人人都能裝 Claude Code／Cursor。差別不在「誰的 Agent 比較聰明」，而在 —— <strong class="accent-l">個人 Agent 讓「一個人」做得更快；我們的框架讓「一個組織」能複製、能累積、管得住。</strong></p>
+  <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">現在人人都能裝 Claude Code／Cursor。差別不在「誰的 Agent 聰明」，而是<strong>定位不同</strong> —— <strong class="accent-l">個人 Agent 讓「一個人」更快、把機敏資料留在本機；我們的框架讓「一個組織」能複製、能累積、能治理</strong>。不是取代，是<strong class="accent-c">各守其位</strong>。</p>
   <div class="a cmp">
     <div class="cmp-row cmp-head">
       <div class="lbl"></div>
@@ -569,7 +569,7 @@ function buildPptx(){
   s=P.addSlide();head(s,'PROBLEM & GOAL','為什麼做：痛點與目標','fb7185');
   s.addText('痛點：重複性高、知識散落、迭代效率低。\n目標：6 職能各建 Agent、完整知識庫、可複製框架。\n核心策略：AI 跑流程、人工審核把關。',{x:.6,y:1.9,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'WHY NOT JUST A PERSONAL AGENT','和「自己電腦裝 AI Agent」差在哪','b07aff');
-  s.addText('個人 Agent 讓「一個人」做得更快；我們的框架讓「一個組織」能複製、累積、管得住。',{x:.6,y:1.65,w:12.1,fontSize:14,italic:true,color:'4ade80',fontFace:F});
+  s.addText('定位不同：個人 Agent 讓「一個人」更快、把機敏資料留在本機；我們的框架讓「一個組織」能複製、累積、治理。不是取代，是各守其位。',{x:.6,y:1.6,w:12.1,fontSize:13,italic:true,color:'4ade80',fontFace:F,lineSpacing:20});
   s.addText('怎麼用：個人→要自己安裝/設定/串工具（技術門檻）｜框架→員工只用自然語言對話、拿專業糾正教育 Agent（零技術門檻）\n分工：個人→一個萬用助理什麼都做｜框架→6 職能各建專屬 Agent，覆蓋完整製程線\n知識：個人→留在單機、難組織級傳承｜框架→各職能獨立知識庫，留在組織、隨對話更新\n品質：個人→看個人功力、時好時壞｜框架→規範做進 Agent（AGENTS.md＋自我精進 skills＋self-check）＋人工審核\n治理：個人→缺乏集中治理/稽核｜框架→使用治理＋健康監控、權限隔離、成本/稽核可追溯\n複製：個人→換人/換專案重來(1→1)｜框架→為複製而設計 1→N（複製效益待第二台驗證）',{x:.6,y:2.4,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
   s=P.addSlide();head(s,'SYSTEM ARCHITECTURE','系統架構：完整技術架構','b07aff');
   [['接入層 Ingress','各職能人員 · 🌐 WebUI(Open WebUI) · Telegram/Discord Bot · CLI','fb923c'],
