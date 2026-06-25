@@ -134,6 +134,15 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 .cmp-head .them{color:var(--rose);background:rgba(251,113,133,.1)}
 .cmp-head .you{color:var(--lime);background:rgba(74,222,128,.12)}
 @media(max-width:900px){.cmp-row{grid-template-columns:4.5rem 1fr 1fr}.cmp-row>div{font-size:.7rem;padding:.4rem .5rem}}
+/* architecture flow diagram */
+.archflow{display:flex;flex-direction:column;align-items:center;gap:.3rem}
+.arch-box{width:100%;background:var(--raised);border:1px solid var(--stroke);border-top:3px solid var(--ac,var(--stroke));border-radius:9px;padding:.55rem .9rem;font-size:.88rem;text-align:center}
+.arch-ar{color:var(--orange);font-weight:700;font-size:.78rem;font-family:var(--mono);opacity:.85;line-height:1}
+.arch-agents{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;width:100%}
+.arch-agents .ag{flex:1;min-width:5.2rem;text-align:center;background:var(--raised);border:1px solid var(--stroke);border-bottom:3px solid var(--ac);border-radius:9px;padding:.5rem .35rem;font-weight:800;font-size:.9rem;color:var(--txt)}
+.arch-3{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;width:100%}
+.arch-3 .arch-box{text-align:left}
+@media(max-width:900px){.arch-3{grid-template-columns:1fr}.arch-agents .ag{min-width:28%}}
 @media(max-width:900px){html{font-size:16px}.slide{padding:1rem .8rem}.inner{gap:.7rem}.g2,.g3,.g4,.fidx{grid-template-columns:1fr}.nav-btn{display:none}.hero-title{font-size:2rem}.flow{flex-direction:column}.gate{flex-direction:row;gap:.4rem}}
 @media print{body{height:auto;overflow:visible}.slide{position:relative;opacity:1!important;page-break-after:always;height:100vh}.nav-btn,.dots,.pg,.topbar,#progress{display:none}}
 </style>
@@ -254,33 +263,23 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <section class="slide" data-slide="4">
 <div class="inner" style="gap:.8rem">
   <div><span class="a eyebrow" style="color:var(--purple)">System Architecture</span><h2 class="a">系統架構：完整技術架構</h2></div>
-  <div class="a layers">
-    <div class="layer" style="border-left-color:var(--orange)">
-      <div><div class="ly-name accent-o">接入層</div><span class="ly-en">Ingress</span></div>
-      <div class="ly-body"><span class="chip">各職能人員</span><span class="chip">Telegram Bot</span><span class="chip">Discord Bot</span><span class="chip">CLI / 終端</span></div>
+  <div class="a archflow">
+    <div class="arch-box" style="--ac:var(--orange)"><b class="accent-o">接入層 Ingress</b>　各職能人員 · Telegram / Discord Bot · CLI 終端</div>
+    <div class="arch-ar">↓</div>
+    <div class="arch-box" style="--ac:var(--purple)"><b class="accent-p">編排層 · OpenClaw Gateway</b>　多 Agent 路由 · 排程 · 權限隔離 · 👁 人工審核節點 · ⚡ 自動生成 Skill</div>
+    <div class="arch-ar">↓ 分派任務</div>
+    <div class="arch-agents">
+      <span class="ag" style="--ac:var(--lime)">🎰 企劃</span><span class="ag" style="--ac:var(--cyan)">🎨 美術</span><span class="ag" style="--ac:var(--rose)">🎵 音效</span><span class="ag" style="--ac:var(--purple)">💻 Client</span><span class="ag" style="--ac:var(--blue)">🖥️ Server</span><span class="ag" style="--ac:var(--orange)">🎲 機率</span>
     </div>
-    <div class="layer" style="border-left-color:var(--purple)">
-      <div><div class="ly-name accent-p">編排層</div><span class="ly-en">Orchestration · OpenClaw</span></div>
-      <div class="ly-body"><span class="chip">多 Agent 路由 Gateway</span><span class="chip"><b>6 職能 Agent</b></span><span class="chip">&#128064; 人工審核節點</span><span class="chip">排程 / 權限隔離</span><span class="chip">&#9889; 自動生成 Skill</span></div>
+    <div class="arch-ar">↓ 各 Agent 各自調用</div>
+    <div class="arch-3">
+      <div class="arch-box" style="--ac:var(--cyan)"><b class="accent-c">模型層</b><br><span style="font-size:.74rem;color:var(--dim)">想·雲端：GPT-5.5／Claude Opus 4.8／Gemini 3｜記·本地：Qwen3.6／Embedding／Reranker</span></div>
+      <div class="arch-box" style="--ac:var(--lime)"><b class="accent-l">記憶與知識層</b><br><span style="font-size:.74rem;color:var(--dim)">各 Agent 獨立知識庫 · 學習迴路（對話即更新）</span></div>
+      <div class="arch-box" style="--ac:var(--amber)"><b class="accent-a">工具層</b><br><span style="font-size:.74rem;color:var(--dim)">MCP(Cocos/Spine) · CLI(生圖/音效) · 瀏覽器自動化</span></div>
     </div>
-    <div class="layer" style="border-left-color:var(--cyan)">
-      <div><div class="ly-name accent-c">模型層</div><span class="ly-en">LLM &amp; Models</span></div>
-      <div class="ly-body"><span class="chip"><span class="k">雲端·主腦</span>GPT-5.5</span><span class="chip"><span class="k">備援</span>Kiro Opus 4.6</span><span class="chip"><span class="k">雲端·程式</span>Claude Opus 4.8</span><span class="chip"><span class="k">雲端</span>Gemini 3 Pro</span><span class="chip"><span class="k">本地·vLLM</span>Qwen3.6</span><span class="chip"><span class="k">本地</span>Embedding</span><span class="chip"><span class="k">本地</span>Reranker</span></div>
-    </div>
-    <div class="layer" style="border-left-color:var(--lime)">
-      <div><div class="ly-name accent-l">記憶與知識層</div><span class="ly-en">Memory &amp; Knowledge</span></div>
-      <div class="ly-body"><span class="chip"><b>自建向量記憶庫</b>（各 Agent 獨立 scope）</span><span class="chip">學習迴路 · 對話即更新</span><span class="chip">各職能知識庫</span></div>
-    </div>
-    <div class="layer" style="border-left-color:var(--amber)">
-      <div><div class="ly-name accent-a">工具層</div><span class="ly-en">Tooling</span></div>
-      <div class="ly-body"><span class="chip"><span class="k">MCP</span>Cocos · Spine</span><span class="chip"><span class="k">CLI</span>codex-imagegen · ElevenLabs · Suno</span><span class="chip"><span class="k">API</span>生成式服務</span><span class="chip">瀏覽器自動化</span></div>
-    </div>
-    <div class="layer" style="border-left-color:var(--rose)">
-      <div><div class="ly-name accent-r">治理層</div><span class="ly-en">Governance</span></div>
-      <div class="ly-body"><span class="chip">權限分級（讀/寫/執行）</span><span class="chip">資安 · 操作日誌</span><span class="chip">&#128202; 使用治理儀表板</span><span class="chip">&#128147; 健康監控儀表板</span></div>
-    </div>
+    <div class="arch-ar">‖ 全程治理</div>
+    <div class="arch-box" style="--ac:var(--rose)"><b class="accent-r">治理層 Governance</b>　📊 使用治理儀表板 · 💓 健康監控儀表板 · 權限分級 · 資安/操作日誌/稽核可追溯</div>
   </div>
-  <div class="a" style="font-size:.78rem;color:var(--dim);text-align:center">六層由上而下協作：人員下指令 → OpenClaw 編排 6 Agent → 調用雲端/本地模型 → 讀寫記憶與知識 → 操作工具產出 → 全程權限與監控治理</div>
 </div>
 </section>
 
@@ -316,6 +315,8 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
   </div>
   <div class="a panel" style="border:1px solid var(--stroke);padding:.7rem .9rem">
     <div class="pipe" style="gap:.35rem;font-size:.82rem">
+      <span class="node" style="padding:.3rem .6rem;font-size:.78rem;border-color:rgba(176,122,255,.35)">&#128203; 任務進來</span>
+      <span class="arrow" style="font-size:1rem">&rarr;</span>
       <span class="node" style="padding:.3rem .6rem;font-size:.78rem;border-color:rgba(74,222,128,.3)">本地檢索知識</span>
       <span class="arrow" style="font-size:1rem">&rarr;</span>
       <span class="node" style="padding:.3rem .6rem;font-size:.78rem;border-color:rgba(34,211,238,.3)">雲端 LLM 推理決策</span>
@@ -326,6 +327,9 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
       <span class="arrow" style="font-size:1rem">&rarr;</span>
       <span class="node" style="padding:.3rem .6rem;font-size:.78rem;border-color:rgba(74,222,128,.3)">&#10003; 產出</span>
     </div>
+  </div>
+  <div class="a panel panel-c" style="padding:.6rem .95rem">
+    <div class="panel-body" style="font-size:.84rem;line-height:1.55">&#9989; <strong class="accent-c">怎麼確保 AI 產出可信</strong>：關鍵產出（如<strong>規格</strong>）採「<strong>人先做基準版 → AI 獨立再產一版 → 比對確認 AI 版可用</strong>」，證明 AI 真能獨立勝任，再交人工審核把關。</div>
   </div>
   <div class="a" style="font-size:.8rem;color:var(--dim);text-align:center">雲端負責<strong class="accent-c">想</strong>、本地負責<strong class="accent-l">記</strong>、生成模型負責<strong class="accent-a">做素材</strong> —— 依任務分工，並隨時換上最新最強模型</div>
 </div>
@@ -347,6 +351,10 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
       <div class="panel panel-l" style="padding:1rem">
         <div class="panel-title" style="color:var(--lime);font-size:1rem">&#127881; 這是成果本體</div>
         <div class="panel-body" style="font-size:.88rem">由 <strong class="accent-l">6 職能 Agent 協作</strong>產出的一台<strong>可運行老虎機</strong> —— 規格、美術、音效、程式、機率全部跑過 AI 製程＋人工審核。</div>
+      </div>
+      <div class="panel panel-o" style="padding:1rem">
+        <div class="panel-title" style="color:var(--orange);font-size:1rem">&#9989; 不是 demo 殼，是可產品化版本</div>
+        <div class="panel-body" style="font-size:.85rem">底層 Client／Server／機率直接採用<strong class="accent-o">公司自家 API 與共用模組</strong>，產出即<strong>可直接產品化</strong>的版本；目前僅<strong>美術</strong>部分需人工再處理。</div>
       </div>
     </div>
   </div>
@@ -391,6 +399,11 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="panel panel-r a" style="padding:.8rem"><div class="panel-title" style="color:var(--rose);font-size:.95rem">&#128274; 多用戶 × 權限隔離</div><div class="panel-body" style="font-size:.8rem">一個 Agent 同時服務多位使用者，各自獨立：分級授權（讀/寫/執行）、per-user Git 權限、資料與操作日誌逐人隔離。</div></div>
     <div class="panel panel-c a" style="padding:.8rem"><div class="panel-title" style="color:var(--cyan);font-size:.95rem">&#129504; 跨機台知識複用</div><div class="panel-body" style="font-size:.8rem">既有專案的框架、規格、Code 萃取入庫，下一台機台直接複用，不從零開始。</div></div>
     <div class="panel panel-a a" style="padding:.8rem"><div class="panel-title" style="color:var(--amber);font-size:.95rem">&#128640; 可擴展設計</div><div class="panel-body" style="font-size:.8rem">新增 Agent 只需灌知識 + 設工具鏈，不動核心。</div></div>
+  </div>
+  <div class="a panel" style="padding:.6rem .9rem;background:#080b14">
+    <div style="font-size:.78rem;color:var(--dim);margin-bottom:.3rem">📄 <span style="font-family:var(--mono);color:var(--purple)">每個 Agent 的 AGENTS.md ＋ docs/system/SELF_CHECK_PROTOCOL.md</span> — 規範不是口號，是可機器驗證的契約（書審佐證）：</div>
+    <div style="font-family:var(--mono);font-size:.68rem;line-height:1.5;color:#9fb3c8;white-space:pre-wrap">🔒 契約優先：每類產出（圖/規格/code）配 HARDLOCK，定義「什麼算完成」的 gate　🔒 自驗證循環：完成→跑 gates→全 PASS 才交付
+🔒 失敗不改標準：gate FAIL 只修產出、不降標準　🔒 可觀察留證：交付附通過證據 —— 交付前 AI 自己負責，不靠下游才發現問題</div>
   </div>
 </div>
 </section>
@@ -536,7 +549,7 @@ function buildPptx(){
   s=P.addSlide();head(s,'EVIDENCE · 1/2','實證①：做出來了 — 福星高照 Demo','4ade80');
   try{s.addImage({path:'assets/demo-fuxing.png',x:.6,y:1.7,w:8,h:5});}catch(e){}
   s.addText('🎰 福星高照 Demo 實機畫面（主場景/轉動/FreeSpin/得獎）→ assets/demo-fuxing.png',{x:.6,y:6.9,w:8,fontSize:10,color:DIM,fontFace:F});
-  s.addText('這是成果本體：由 6 職能 Agent 協作產出的可運行老虎機 —— 規格/美術/音效/程式/機率全跑過 AI 製程＋人工審核。',{x:8.8,y:1.9,w:4,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
+  s.addText('這是成果本體：由 6 職能 Agent 協作產出的可運行老虎機 —— 規格/美術/音效/程式/機率全跑過 AI 製程＋人工審核。\n\n✅ 不是 demo 殼：底層 Client/Server/機率直接採用公司自家 API 與共用模組，是可直接產品化的版本；目前僅美術需人工再處理。',{x:8.8,y:1.9,w:4,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:24});
   s=P.addSlide();head(s,'EVIDENCE · 2/2','實證②：6 Agent 製程留痕，可治理','22d3ee');
   try{s.addImage({path:'assets/dash-audit.png',x:.5,y:1.7,w:6,h:4.2});}catch(e){}
   try{s.addImage({path:'assets/dash-health.png',x:6.8,y:1.7,w:6,h:4.2});}catch(e){}
