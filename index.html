@@ -96,6 +96,8 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 .fcard .fc-h{font-weight:800;font-size:1rem;margin-bottom:.25rem}
 .fcard .fc-cap{font-size:.72rem;color:var(--dim);line-height:1.45;margin-bottom:.45rem}
 .fcard .fc-link{font-family:var(--mono);font-size:.7rem;color:var(--amber);border:1px dashed rgba(251,191,36,.4);border-radius:6px;padding:.25rem .5rem;display:inline-block}
+.fcard a.fc-link-live{color:#0a0a12;background:var(--amber);border:1px solid var(--amber);border-style:solid;font-weight:800;text-decoration:none;transition:filter .15s,transform .15s}
+.fcard a.fc-link-live:hover{filter:brightness(1.1);transform:translateX(2px)}
 .slide.active .a{animation:rise .5s ease both}
 .slide.active .a:nth-child(1){animation-delay:.02s}
 .slide.active .a:nth-child(2){animation-delay:.06s}
@@ -393,21 +395,35 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 
 <script>
 const FUNCS=[
-  {emoji:'🎰',name:'企劃',en:'Game Design',color:'lime',caps:'競品分析 · 規格書 · 需求定義'},
-  {emoji:'🎨',name:'美術',en:'Art',color:'cyan',caps:'AI 生圖/修圖 · Spine 動畫 · 素材整合'},
-  {emoji:'🎵',name:'音效',en:'Audio',color:'rose',caps:'批次音效 · AI 配樂/語音 · 入專案'},
-  {emoji:'💻',name:'Client',en:'Client',color:'purple',caps:'Cocos 模組 · Spine/音效整合 · 共用模組'},
-  {emoji:'🖥️',name:'Server',en:'Server',color:'blue',caps:'後端模組 · 前後端協議 · Spin/機率整合'},
-  {emoji:'🎲',name:'機率',en:'Probability',color:'orange',caps:'RTP/命中率 · 機率模擬驗證 · 報告審核'},
+  {emoji:'🎰',name:'企劃',en:'Game Design',color:'lime',caps:'競品分析 · 規格書 · 需求定義',slugs:['game-design','planning','plan','design']},
+  {emoji:'🎨',name:'美術',en:'Art',color:'cyan',caps:'AI 生圖/修圖 · Spine 動畫 · 素材整合',slugs:['art']},
+  {emoji:'🎵',name:'音效',en:'Audio',color:'rose',caps:'批次音效 · AI 配樂/語音 · 入專案',slugs:['audio','sound']},
+  {emoji:'💻',name:'Client',en:'Client',color:'purple',caps:'Cocos 模組 · Spine/音效整合 · 共用模組',slugs:['client-g1069','client']},
+  {emoji:'🖥️',name:'Server',en:'Server',color:'blue',caps:'後端模組 · 前後端協議 · Spin/機率整合',slugs:['server-g1069','server']},
+  {emoji:'🎲',name:'機率',en:'Probability',color:'orange',caps:'RTP/命中率 · 機率模擬驗證 · 報告審核',slugs:['probability-g1069','probability','prob']},
 ];
 (function(){
   const host=document.getElementById('fidx');
-  FUNCS.forEach(f=>{
-    host.insertAdjacentHTML('beforeend',`<div class="fcard" style="border-left-color:var(--${f.color})">
+  FUNCS.forEach((f,i)=>{
+    host.insertAdjacentHTML('beforeend',`<div class="fcard" id="fcard-${i}" style="border-left-color:var(--${f.color})">
       <div class="fc-h accent-${f.color[0]}">${f.emoji} ${f.name}</div>
       <div class="fc-cap">${f.caps}</div>
       <span class="fc-link">🔗 連結待補</span>
     </div>`);
+    // 探測 functions/{候選檔名}.html，存在就把「連結待補」換成可點連結（push 上來自動亮燈）
+    const cands=(f.slugs||[]).map(s=>`functions/${s}.html`);
+    (async()=>{
+      for(const url of cands){
+        try{
+          const r=await fetch(url,{method:'HEAD',cache:'no-store'});
+          if(r.ok){
+            const link=document.querySelector(`#fcard-${i} .fc-link`);
+            if(link){link.outerHTML=`<a class="fc-link fc-link-live" href="${url}">🔗 查看成果 →</a>`;}
+            break;
+          }
+        }catch(e){/* file:// 或離線環境探測失敗，保留「連結待補」 */}
+      }
+    })();
   });
 })();
 (function(){
