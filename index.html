@@ -346,8 +346,8 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="panel panel-l" style="padding:1rem">
       <div class="panel-title" style="color:var(--lime);font-size:1.02rem">&#128218; 記憶與檢索 <span style="font-size:1.08rem;font-weight:900;color:#06060e;background:var(--lime);border-radius:7px;padding:.04rem .55rem;margin-left:.15rem">記</span><br><span style="font-size:.7rem;color:var(--dim);font-weight:400">本地 vLLM</span></div>
       <div class="panel-body" style="font-size:.82rem;margin-top:.4rem">
-        &bull; <strong>Qwen3-Embedding</strong> — 知識向量化<br>
-        &bull; <strong>Qwen3-Reranker</strong> — 相關度重排<br>
+        &bull; <strong>Qwen3-Embedding 8B</strong> — 知識向量化（4096 維）<br>
+        &bull; <strong>Qwen3-Reranker 8B</strong> — 相關度重排<br>
         &bull; <strong>Qwen3.6</strong> — 本地 LLM：判斷哪些對話值得記、入庫時擷取重點
       </div>
     </div>
@@ -638,7 +638,7 @@ function buildPptx(){
   s.addText('💬 Discord：多人×多 Agent 議題討論　｜　✈️ Telegram：排程提醒／系統訊息分析　｜　🌐 Open WebUI（自架）：瀏覽器對話入口',{x:.5,y:6.05,w:12.3,fontSize:11,color:'e8e8f0',fontFace:F,align:'center'});
   s=P.addSlide();head(s,'MODEL ORCHESTRATION','模型協作：每個任務，配最適合的模型','22d3ee');
   s.addText('🧠 推理與決策（雲端 LLM ·「想」）\n  GPT-5.5 主腦（備援 Kiro Opus 4.6）· Claude Opus 4.8 程式規劃/開發 · Gemini 3 Pro 輔助發想',{x:.6,y:1.7,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('📚 記憶與檢索（本地 vLLM ·「記」）\n  Qwen3-Embedding 向量化 → Qwen3-Reranker 重排挑最相關 → 回傳入庫時存好的分層摘要；Qwen3.6 負責入庫智能擷取',{x:.6,y:2.9,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
+  s.addText('📚 記憶與檢索（本地 vLLM ·「記」）\n  Qwen3-Embedding 8B 向量化（4096 維）→ Qwen3-Reranker 8B 重排挑最相關 → 回傳入庫時存好的分層摘要；Qwen3.6 負責入庫智能擷取',{x:.6,y:2.9,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('🎨 生成（素材 ·「做」）\n  AI 生圖：codex-imagegen(CLI→GPT Image)·ChatGPT 網頁生圖(省配額)·Freepik·Lovart ｜ ElevenLabs/Suno 音效配樂',{x:.6,y:4.1,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('本地檢索 → 雲端 LLM 推理 → 需要素材調生成模型 → 👁 人工審核 → ✓ 產出　｜　雲端「想」、本地「記」、生成模型「做素材」，隨時換最新最強模型',{x:.6,y:5.4,w:12,fontSize:11,color:'a0a0b0',fontFace:F,lineSpacing:18});
   s=P.addSlide();head(s,'EVIDENCE · 1/2','實證①：做出來了 — 福星高照 Demo','4ade80');
