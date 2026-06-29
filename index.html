@@ -390,6 +390,20 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </div>
 </section>
 
+<!-- 6b · 為什麼 GPT-5.5 當主腦 -->
+<section class="slide" data-slide="6b">
+<div class="inner" style="gap:.8rem">
+  <div><span class="a eyebrow" style="color:var(--cyan)">Why GPT-5.5 as the Brain</span><h2 class="a">為什麼選 GPT-5.5 當「主腦」</h2></div>
+  <p class="a lead" style="font-size:.92rem;max-width:none;line-height:1.5">主腦要負責<strong>想清楚＋調對工具</strong>（一個任務常要串十幾次工具）。選型只看兩件事：<strong class="accent-c">推論夠不夠強</strong>、<strong class="accent-a">會不會用工具</strong> —— 三個理由選了 GPT-5.5：</p>
+  <div class="a g3" style="gap:.8rem;align-items:stretch">
+    <div class="panel panel-c" style="padding:1rem"><div class="panel-title" style="color:var(--cyan);font-size:1rem">🧠 推論最強</div><div class="panel-body" style="font-size:.85rem">經查證，GPT-5.5 <strong>當前推論能力領先</strong> —— 複雜規劃、決策、除錯都扛得住。</div></div>
+    <div class="panel panel-a" style="padding:1rem"><div class="panel-title" style="color:var(--amber);font-size:1rem">🛠 工具調用遠勝</div><div class="panel-body" style="font-size:.85rem">Agent 一個任務要<strong>串十幾次工具</strong>；GPT-5.5 的 tool 能力<strong>明顯強過 Kiro Opus 4.6</strong> —— 主腦最吃這個。</div></div>
+    <div class="panel panel-l" style="padding:1rem"><div class="panel-title" style="color:var(--lime);font-size:1rem">✅ 官方支援 OpenClaw</div><div class="panel-body" style="font-size:.85rem">GPT-5.5（Codex）是 OpenClaw <strong>官方支援</strong>的後端，可直接、穩定地當 Agent 主腦。</div></div>
+  </div>
+  <div class="a panel" style="border:1px solid var(--stroke);padding:.7rem .95rem"><div style="font-size:.85rem;line-height:1.6"><strong class="accent-r">為什麼不是 Claude Opus 4.8 當主腦？</strong> —— Opus 4.8 的<strong>訂閱方案無法當 OpenClaw 後端（不支援）</strong>，所以它改用在<strong>程式／腳本</strong>（Claude Code）那一塊；主腦撞額度時，<strong>備援自動切 Kiro Opus 4.6</strong>。</div></div>
+</div>
+</section>
+
 <!-- 5 · 實證① 做出來了（Demo） -->
 <section class="slide" data-slide="7">
 <div class="inner" style="gap:.8rem">
@@ -1004,6 +1018,10 @@ function buildPptx(){
   s.addText('📚 記憶與檢索（本地 vLLM ·「記」）\n  Qwen3-Embedding 8B 向量化（文字→可比對向量）→ Qwen3-Reranker 8B 重排挑最相關 → 回傳入庫時存好的分層摘要；Qwen3.6 負責入庫智能擷取',{x:.6,y:2.9,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('🎨 生成（素材 ·「做」）\n  AI 生圖：ChatGPT 網頁生圖＋GPT Image API(省配額)·Freepik·Lovart ｜ ElevenLabs/Suno 音效配樂',{x:.6,y:4.1,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('本地檢索 → 雲端 LLM 推理 → 需要素材調生成模型 → 👁 人工審核 → ✓ 產出　｜　雲端「想」、本地「記」、生成模型「做素材」，隨時換最新最強模型',{x:.6,y:5.4,w:12,fontSize:11,color:'a0a0b0',fontFace:F,lineSpacing:18});
+  s=P.addSlide();head(s,'WHY GPT-5.5 AS THE BRAIN','為什麼選 GPT-5.5 當「主腦」','22d3ee');
+  s.addText('主腦要「想清楚＋調對工具」（一個任務常串十幾次工具）—— 選型只看：推論強不強、會不會用工具。',{x:.6,y:1.5,w:12.1,fontSize:13,italic:true,color:'4ade80',fontFace:F});
+  s.addText('🧠 推論最強：GPT-5.5 當前推論能力領先，複雜規劃/決策/除錯都扛得住\n🛠 工具調用遠勝：Agent 一個任務串十幾次工具，GPT-5.5 的 tool 能力明顯強過 Kiro Opus 4.6（主腦最吃這個）\n✅ 官方支援 OpenClaw：GPT-5.5（Codex）是 OpenClaw 官方支援後端，可直接穩定當主腦',{x:.6,y:2.4,w:12.1,fontSize:14,color:'e8e8f0',fontFace:F,lineSpacing:36});
+  s.addText('為什麼不是 Claude Opus 4.8 當主腦？訂閱方案無法當 OpenClaw 後端（不支援）→ 改用在程式/腳本（Claude Code）；主腦撞額度時備援自動切 Kiro Opus 4.6。',{x:.6,y:5.5,w:12.1,fontSize:12,color:'a0a0b0',fontFace:F,lineSpacing:20});
   s=P.addSlide();head(s,'EVIDENCE · 1/2','實證①：做出來了 — 福星高照 Demo','4ade80');
   try{s.addImage({path:'assets/demo-fuxing.png',x:.6,y:1.7,w:8,h:5});}catch(e){}
   s.addText('🎰 福星高照 Demo 實機畫面（主場景/轉動/免費遊戲/得獎）→ assets/demo-fuxing.png',{x:.6,y:6.9,w:8,fontSize:10,color:DIM,fontFace:F});
