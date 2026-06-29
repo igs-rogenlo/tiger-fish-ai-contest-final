@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>老虎機 AI 開發競賽 — 最終成果報告</title>
+<title>老虎機 AI 開發競賽 — 現場簡報版</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -151,7 +151,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </head>
 <body>
 <div id="progress" style="width:0"></div>
-<div class="topbar"><a class="btn" href="pitch.html" style="text-decoration:none;color:var(--orange);border-color:rgba(251,146,60,.4)">⚡ 2分鐘簡報版</a><a class="btn" href="present.html" style="text-decoration:none;color:var(--cyan);border-color:rgba(34,211,238,.4)">🎯 現場簡報版</a><button class="btn" id="pptxBtn">📥 匯出 PPTX</button><button class="btn" onclick="window.print()">🖨 列印 / PDF</button></div>
+<div class="topbar"><a class="btn" href="pitch.html" style="text-decoration:none;color:var(--orange);border-color:rgba(251,146,60,.4)">⚡ 2分鐘簡報版</a><a class="btn" href="index.html" style="text-decoration:none;color:var(--cyan);border-color:rgba(34,211,238,.4)">📖 完整版（全 25 頁）</a><button class="btn" id="pptxBtn">📥 匯出 PPTX</button><button class="btn" onclick="window.print()">🖨 列印 / PDF</button></div>
 <div class="deck">
 
 <!-- 0 · COVER -->
@@ -313,22 +313,6 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </div>
 </section>
 
-<!-- 5 · 多通道接入 -->
-<section class="slide" data-slide="5">
-<div class="inner" style="gap:.6rem">
-  <div><span class="a eyebrow" style="color:var(--orange)">Multi-Channel Access</span><h2 class="a">多通道接入：在你慣用的地方找 Agent</h2></div>
-  <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">同仁不必換工具 —— <strong>Telegram、Discord、自架 Open WebUI</strong> 都能用自然語言找對應 Agent，且不同通道各有擅長場景。</p>
-  <div class="a" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem .7rem;align-items:start">
-    <div style="font-weight:800;font-size:.86rem;color:var(--purple)">💬 Discord<br><span style="font-size:.72rem;color:var(--dim);font-weight:400">多人 × 多 Agent 議題討論：拉同仁＋對應 Agent 開議題（如「上週營收降低10%追蹤」），或拉多個 Agent 一起討論。</span></div>
-    <div style="font-weight:800;font-size:.86rem;color:var(--cyan)">✈️ Telegram<br><span style="font-size:.72rem;color:var(--dim);font-weight:400">排程提醒／系統訊息分析：叫 Agent 做排程提醒；群組自動收系統訊息、彙整提醒（活動提醒、大事件儀表板）。</span></div>
-    <div style="font-weight:800;font-size:.86rem;color:var(--lime)">🌐 Open WebUI（自架）<br><span style="font-size:.72rem;color:var(--dim);font-weight:400">內部自架、資料不外流：架在公司內網，<strong style="color:var(--lime)">機敏內容可安心對話</strong>；ChatGPT 式完整介面、免安裝，瀏覽器直接與各職能 Agent 對話、開議題。</span></div>
-    <a class="shot" href="assets/ch-discord.png" target="_blank"><img src="assets/ch-discord.png" alt="Discord 多人/多 Agent 議題討論" style="width:100%;height:168px;object-fit:contain;background:#05070b;display:block"></a>
-    <a class="shot" href="assets/ch-telegram.png" target="_blank"><img src="assets/ch-telegram.png" alt="Telegram 排程提醒/系統訊息" style="width:100%;height:168px;object-fit:contain;background:#05070b;display:block"></a>
-    <a class="shot" href="assets/ch-webui.png" target="_blank"><img src="assets/ch-webui.png" alt="Open WebUI 瀏覽器對話" style="width:100%;height:168px;object-fit:contain;background:#05070b;display:block"></a>
-  </div>
-</div>
-</section>
-
 <!-- 6 · 模型協作 -->
 <section class="slide" data-slide="6">
 <div class="inner" style="gap:.85rem">
@@ -457,381 +441,6 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="panel panel-a a" style="padding:.8rem"><div class="panel-title" style="color:var(--amber);font-size:.95rem">&#128640; 可擴展設計</div><div class="panel-body" style="font-size:.8rem">新增 Agent 只需灌知識 + 設工具鏈，不動核心。</div></div>
   </div>
   <div class="a panel panel-l" style="padding:.7rem .95rem;border:1px solid rgba(74,222,128,.3)"><div style="font-size:.88rem"><strong class="accent-l">&#128176; 近乎零邊際成本</strong> —— 整套 6-Agent 製程跑在<strong>固定月訂閱（約 US$300：Codex ~$200 ＋ Claude／Opus 4.8 ~$100，且與個人共用）＋ 本地自架模型（零 API 費）</strong>。多跑一台機台，成本幾乎不變 —— 不是按 API 用量計費的燒錢模式。</div></div>
-</div>
-</section>
-
-<!-- 9 · Harness Engineering -->
-<section class="slide" id="harness" data-slide="10">
-<div class="inner" style="gap:.7rem">
-  <div><span class="a eyebrow" style="color:var(--purple)">Harness Engineering</span><h2 class="a">每個 Agent 都是「工程化」的，不只是一段 prompt</h2></div>
-  <p class="a lead" style="font-size:.92rem;max-width:none">每個職能 Agent 背後，是一整套<strong class="accent-p">結構化、可維護、持續演進</strong>的工程結構（harness）—— 規範檔、協議文件、技能模組、知識庫，不是一句 prompt。這是「<strong class="accent-l">Agent 工程</strong>」，也是別人複製不來的深度。</p>
-  <div class="a g3" style="gap:.6rem">
-    <a class="panel panel-p a" href="functions/harness-examples.html#agents-md" target="_blank" style="padding:.85rem;display:block;text-decoration:none;color:inherit"><div class="panel-title" style="color:var(--purple);font-size:.98rem">📋 AGENTS.md 規則檔</div><div class="panel-body" style="font-size:.8rem">每個 Agent 約 <strong>300 行</strong>標準作業規則（.md），共用規範自動套用、持續維護。</div><div style="font-size:.7rem;color:var(--purple);margin-top:.35rem;font-family:var(--mono)">🔍 看實際範例 →</div></a>
-    <a class="panel panel-c a" href="functions/harness-examples.html#docs-system" target="_blank" style="padding:.85rem;display:block;text-decoration:none;color:inherit"><div class="panel-title" style="color:var(--cyan);font-size:.98rem">📐 系統協議 docs/system</div><div class="panel-body" style="font-size:.8rem">把「怎樣算做完」寫成<strong>能自動檢查的規則</strong>：開工先讀必讀檔、用最新共用模組、交付前自檢、圖沒過關不准交。</div><div style="font-size:.7rem;color:var(--cyan);margin-top:.35rem;font-family:var(--mono)">🔍 看實際範例 →</div></a>
-    <a class="panel panel-l a" href="functions/harness-examples.html#skills" target="_blank" style="padding:.85rem;display:block;text-decoration:none;color:inherit"><div class="panel-title" style="color:var(--lime);font-size:.98rem">🧩 Skills 技能模組</div><div class="panel-body" style="font-size:.8rem">把 SOP 包成可執行技能（美術 Agent 約 <strong>19 個</strong>：Cocos 驗證／美術 QC／Spine 匯出…）。</div><div style="font-size:.7rem;color:var(--lime);margin-top:.35rem;font-family:var(--mono)">🔍 看實際範例 →</div></a>
-  </div>
-  <div class="a g3" style="gap:.6rem">
-    <a class="panel panel-a a" href="functions/harness-examples.html#tools-md" target="_blank" style="padding:.85rem;display:block;text-decoration:none;color:inherit"><div class="panel-title" style="color:var(--amber);font-size:.98rem">🔧 TOOLS.md 工具路由</div><div class="panel-body" style="font-size:.8rem">預配專屬工具鏈（MCP／CLI／API／瀏覽器自動化），開箱即用、統一維護。</div><div style="font-size:.7rem;color:var(--amber);margin-top:.35rem;font-family:var(--mono)">🔍 看實際範例 →</div></a>
-    <a class="panel panel-o a" href="functions/harness-examples.html#knowledge" target="_blank" style="padding:.85rem;display:block;text-decoration:none;color:inherit"><div class="panel-title" style="color:var(--orange);font-size:.98rem">🧠 知識庫 + 記憶</div><div class="panel-body" style="font-size:.8rem">各職能<strong>獨立 knowledge/</strong> ＋ 學習記憶（對話即更新、越用越強）。</div><div style="font-size:.7rem;color:var(--orange);margin-top:.35rem;font-family:var(--mono)">🔍 看實際範例 →</div></a>
-    <a class="panel panel-r a" href="functions/harness-examples.html#self-check" target="_blank" style="padding:.85rem;display:block;text-decoration:none;color:inherit"><div class="panel-title" style="color:var(--rose);font-size:.98rem">✅ 自驗證 Gate + 權限</div><div class="panel-body" style="font-size:.8rem">交付前自我檢查（跑契約 gates）；per-user Git 權限隔離。</div><div style="font-size:.7rem;color:var(--rose);margin-top:.35rem;font-family:var(--mono)">🔍 看實際範例 →</div></a>
-  </div>
-</div>
-</section>
-
-<!-- 10a · 知識萃取 × Agent 建置流程 -->
-<section class="slide" id="kb-pipeline" data-slide="10a">
-<div class="inner" style="gap:.7rem">
-  <div><span class="a eyebrow" style="color:var(--orange)">Knowledge · Store &amp; Retrieve</span><h2 class="a">記憶：知識怎麼存、新問題怎麼讀</h2></div>
-
-  <div class="a panel panel-l" style="padding:.65rem .9rem">
-    <div style="font-size:.85rem;font-weight:700;color:var(--lime);margin-bottom:.4rem">📥 知識萃取流程 <span style="color:var(--dim);font-weight:400;font-size:.74rem">— 把多款既有遊戲萃取成結構化知識</span></div>
-    <div class="pipe" style="gap:.3rem;justify-content:flex-start">
-      <span class="node" style="padding:.35rem .6rem;font-size:.75rem">既有遊戲 Code／規格書／競品／影片</span>
-      <span class="arrow">&rarr;</span>
-      <span class="node" style="padding:.35rem .6rem;font-size:.75rem;border-color:rgba(34,211,238,.35)">轉 Markdown<br><span style="color:var(--dim);font-size:.61rem;font-weight:400">轉檔 + AI 視覺描述截圖</span></span>
-      <span class="arrow">&rarr;</span>
-      <span style="font-size:.64rem;color:var(--dim);font-weight:600;text-align:center;line-height:1.25">同一份<br>Markdown<br>分兩條 &rarr;</span>
-      <span style="display:flex;flex-direction:column;gap:.3rem">
-        <span class="node" style="padding:.3rem .55rem;font-size:.72rem;border-color:rgba(74,222,128,.45);text-align:left">① 存進語意記憶庫 <b class="accent-l">向量庫</b><br><span style="color:var(--dim);font-size:.6rem;font-weight:400">切段落 · 粗／中／細三層摘要 · 轉成向量 → 語意檢索</span></span>
-        <span class="node" style="padding:.3rem .55rem;font-size:.72rem;border-color:rgba(176,122,255,.45);text-align:left">② Graphify → <b class="accent-p">程式碼依賴圖</b><br><span style="color:var(--dim);font-size:.6rem;font-weight:400">Client／Server codebase（建置期萃玩法骨架）</span></span>
-      </span>
-      <span class="arrow">&rarr;</span>
-      <span class="node" style="padding:.35rem .6rem;font-size:.75rem;border-color:rgba(74,222,128,.35)">各 Agent 知識庫<br><span style="color:var(--dim);font-size:.61rem;font-weight:400">向量庫＋圖譜 · 各 Agent 獨立</span></span>
-    </div>
-    <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.55rem;font-size:.72rem">
-      <span class="chip"><b class="accent-l">87</b>&nbsp;遊戲規格</span>
-      <span class="chip"><b class="accent-l">188</b>&nbsp;競品分析（玩法機制百科）</span>
-      <span class="chip"><b class="accent-o">11</b>&nbsp;款機率數學 · 3387 張 PAR</span>
-      <span class="chip"><b class="accent-c">~13</b>&nbsp;遊戲/模組依賴圖譜（client 7＋server 6）</span>
-    </div>
-  </div>
-
-  <div class="a panel panel-b" style="padding:.65rem .9rem">
-    <div style="font-size:.85rem;font-weight:700;color:var(--blue);margin-bottom:.4rem">📤 取得流程 RETRIEVE <span style="color:var(--dim);font-weight:400;font-size:.74rem">— 新問題進來，自動把最相關的舊知識讀出來、餵給 AI 一起回答</span></div>
-    <div class="pipe" style="gap:.3rem;justify-content:flex-start">
-      <span class="node" style="padding:.35rem .6rem;font-size:.75rem">新問題／當前對話</span>
-      <span class="arrow">&rarr;</span>
-      <span class="node" style="padding:.35rem .6rem;font-size:.75rem;border-color:rgba(74,222,128,.4)">自動找最相關記憶<br><span style="color:var(--dim);font-size:.61rem;font-weight:400">語意比對（向量）＋關鍵字</span></span>
-      <span class="arrow">&rarr;</span>
-      <span class="node" style="padding:.35rem .6rem;font-size:.75rem;border-color:rgba(176,122,255,.4)">重排挑出前幾名<br><span style="color:var(--dim);font-size:.61rem;font-weight:400">Reranker 精算相關度</span></span>
-      <span class="arrow">&rarr;</span>
-      <span class="node" style="padding:.35rem .6rem;font-size:.75rem;border-color:rgba(96,165,250,.4)">補進 AI 上下文一起回答<br><span style="color:var(--dim);font-size:.61rem;font-weight:400">答案有依據、不亂編</span></span>
-    </div>
-  </div>
-
-</div>
-</section>
-
-<!-- 10a2 · Agent 建置 -->
-<section class="slide" id="agent-build" data-slide="10a2">
-<div class="inner" style="gap:.8rem">
-  <div><span class="a eyebrow" style="color:var(--cyan)">Agent Setup</span><h2 class="a">Agent 怎麼建起來</h2></div>
-  <div class="a panel panel-c" style="padding:.65rem .9rem">
-    <div style="font-size:.85rem;font-weight:700;color:var(--cyan);margin-bottom:.4rem">🛠 Agent 建置流程 <span style="color:var(--dim);font-weight:400;font-size:.74rem">— 新增一個職能 Agent 的標準步驟</span></div>
-    <div class="pipe" style="gap:.3rem">
-      <span class="node" style="padding:.3rem .55rem;font-size:.74rem">建 workspace<br><span style="color:var(--dim);font-size:.6rem;font-weight:400">AGENTS.md·TOOLS.md·knowledge·skills</span></span>
-      <span class="arrow">&rarr;</span>
-      <span class="node" style="padding:.3rem .55rem;font-size:.74rem">註冊 + 記憶 scope</span>
-      <span class="arrow">&rarr;</span>
-      <span class="node" style="padding:.3rem .55rem;font-size:.74rem">通道 / Bot</span>
-      <span class="arrow">&rarr;</span>
-      <span class="node" style="padding:.3rem .55rem;font-size:.74rem">灌知識<br><span style="color:var(--dim);font-size:.6rem;font-weight:400">存進語意記憶庫</span></span>
-      <span class="arrow">&rarr;</span>
-      <span class="node" style="padding:.3rem .55rem;font-size:.74rem">工具鏈設定 + 共用規範套用</span>
-      <span class="arrow">&rarr;</span>
-      <span class="node" style="padding:.3rem .55rem;font-size:.74rem;border-color:rgba(74,222,128,.4)">✓ 上線</span>
-    </div>
-    <div style="font-size:.74rem;color:var(--dim);margin-top:.5rem">上線後持續學：<strong class="accent-l">對話即更新</strong> —— 自動把有價值的對話萃取入該 Agent 記憶庫（各 Agent 記憶獨立、互不干擾）。</div>
-  </div>
-</div>
-</section>
-
-<!-- 10b · 企劃 Agent -->
-<section class="slide" id="agent-planning" data-slide="10b">
-<div class="inner" style="gap:.65rem">
-  <div><span class="a eyebrow" style="color:var(--lime)">Agent Deep-Dive · 1/6 企劃</span><h2 class="a">🎰 虎機企劃 Agent</h2></div>
-  <p class="a lead" style="font-size:.86rem;max-width:none">把模糊需求整理成可交付企劃 —— 規格書、競品拆解、需求定義、Excel 轉檔。</p>
-  <div class="a" style="font-size:.66rem;color:var(--dim);margin-top:-.2rem;line-height:1.5">工具標記：<b class="accent-c">MCP</b> 標準工具接口・<b class="accent-l">CLI</b> 指令列工具・<b class="accent-a">API</b> 外部服務・<b class="accent-o">瀏覽器</b> 瀏覽器自動操作・<b class="accent-p">記憶</b> 向量記憶庫・<b class="accent-r">外掛</b> 平台外掛（六職能頁通用）</div>
-  <div class="a g2" style="align-items:stretch">
-    <div class="panel panel-l" style="padding:.8rem .9rem">
-      <div class="panel-title" style="color:var(--lime);font-size:.96rem">🧩 Agent 設計（md）</div>
-      <div class="panel-body" style="font-size:.79rem;line-height:1.55">
-        &bull; 薄契約 ＋ <strong>V1.5 規格 SOP 硬鎖</strong>（觸發即強制讀框架，否則 validator 拒交付）<br>
-        &bull; <strong>數值紅線</strong>：不猜 RTP／賠率，未給一律標 ⚠️ 待補；競品圖須真實截圖（禁 AI 模擬）<br>
-        &bull; 交付前跑 <strong>9 道驗證 gate</strong>（含 AI 視覺評分＋HTTP 200），全 PASS 才結案<br>
-        &bull; <span style="color:var(--dim)">知識庫 <strong style="color:var(--txt)">295 份</strong>（含 87 遊戲規格＋188 競品分析＋其他）</span>
-      </div>
-    </div>
-    <div class="panel panel-a" style="padding:.8rem .9rem">
-      <div class="panel-title" style="color:var(--amber);font-size:.96rem">🔧 串接工具 × 串接方式</div>
-      <div class="panel-body" style="font-size:.77rem;line-height:1.5">
-        &bull; 向量記憶庫 — 召回陷阱、永久規則入庫 <b class="accent-p">[記憶]</b><br>
-        &bull; spec 9-gate 驗證器（內含 codex 視覺評分）<b class="accent-l">[CLI]</b><br>
-        &bull; xlsx_to_md · 競品網頁 fetch — Excel／網頁→MD <b class="accent-l">[CLI]</b><br>
-        &bull; mmdc · 生圖 CLI — 流程圖／架構圖 <b class="accent-l">[CLI]</b><br>
-        &bull; nodriver-browse 競品網頁（VPN／繞反爬驗證）· ocb 公司文件（M365／SharePoint）<b class="accent-o">[瀏覽器]</b><br>
-        &bull; web_search（SearXNG）— 競品／市場檢索 <b class="accent-b">[web]</b>；Redmine 工單 <b class="accent-r">[外掛]</b>
-      </div>
-    </div>
-  </div>
-  <div class="a panel panel-l" style="padding:.55rem .9rem"><div style="font-size:.8rem"><strong class="accent-l">💡 亮點：</strong>9 道 spec 交付 gate（含 AI 視覺檢查）—— Agent 無法「假裝完成」。</div></div>
-</div>
-</section>
-
-<!-- 10c · 美術 Agent -->
-<section class="slide" id="agent-art" data-slide="10c">
-<div class="inner" style="gap:.65rem">
-  <div><span class="a eyebrow" style="color:var(--cyan)">Agent Deep-Dive · 2/6 美術</span><h2 class="a">🎨 虎機美術 Agent</h2></div>
-  <p class="a lead" style="font-size:.86rem;max-width:none">Slot 美術全鏈 —— 生圖／修圖、Spine 2D 動畫、3D、Cocos 匯入驗證、競品 QC。</p>
-  <div class="a g2" style="align-items:stretch">
-    <div class="panel panel-c" style="padding:.8rem .9rem">
-      <div class="panel-title" style="color:var(--cyan);font-size:.96rem">🧩 Agent 設計（md）</div>
-      <div class="panel-body" style="font-size:.79rem;line-height:1.55">
-        &bull; <strong>「Cocos Creator 是最終真相」</strong>：只看 Spine／Blender 預覽不算完成<br>
-        &bull; <strong>三段式交付驗證</strong>（結構→視覺→Cocos 引擎內），任一段 FAIL 即停、不背景自動重做<br>
-        &bull; <span style="color:var(--dim)">知識庫 <strong style="color:var(--txt)">21 份</strong> ＋ <strong style="color:var(--txt)">19 個 Skills</strong>（生圖／Cocos 驗證／Spine 匯出／美術 QC…）</span>
-      </div>
-    </div>
-    <div class="panel panel-a" style="padding:.8rem .9rem">
-      <div class="panel-title" style="color:var(--amber);font-size:.96rem">🔧 串接工具 × 串接方式</div>
-      <div class="panel-body" style="font-size:.77rem;line-height:1.5">
-        &bull; cocos-art（美術專用引擎）— Spine／3D 引擎內驗證 <b class="accent-c">[MCP]</b><br>
-        &bull; Blender — 3D 建模／渲染 <b class="accent-c">[MCP]</b><br>
-        &bull; Photoshop — 去背／拆圖／修瑕（AppleScript/ExtendScript）<b class="accent-l">[CLI]</b><br>
-        &bull; Spine 4.2 — 2D 骨骼動畫匯出 <b class="accent-l">[CLI]</b><br>
-        &bull; AI 生圖 — ChatGPT 網頁＋GPT Image API 後援 <b class="accent-l">[CLI]</b><br>
-        &bull; Freepik／Magnific — 高品質生圖／精修（art-chrome 專屬）<b class="accent-o">[瀏覽器]</b><br>
-        &bull; Kling — symbol 動效／短影片 <b class="accent-o">[瀏覽器]</b><br>
-        &bull; Penpot · Open Design — 向量／整頁 UI 共編 <b class="accent-r">[外掛]</b>；記憶／web
-      </div>
-    </div>
-  </div>
-  <div class="a panel panel-c" style="padding:.55rem .9rem"><div style="font-size:.8rem"><strong class="accent-c">💡 亮點：</strong>生圖→Photoshop 去背→Spine→<strong>Cocos 引擎內自檢</strong>的閉環，過不了就停、不假裝 PASS。</div></div>
-</div>
-</section>
-
-<!-- 10d · 音效 Agent -->
-<section class="slide" id="agent-audio" data-slide="10d">
-<div class="inner" style="gap:.65rem">
-  <div><span class="a eyebrow" style="color:var(--rose)">Agent Deep-Dive · 3/6 音效</span><h2 class="a">🎵 虎機音效 Agent</h2></div>
-  <p class="a lead" style="font-size:.86rem;max-width:none">博弈音效／配樂／人聲 AI 製作 —— 規格表批次生成 → 命名 → 轉檔 → 入 Cocos。</p>
-  <div class="a g2" style="align-items:stretch">
-    <div class="panel panel-r" style="padding:.8rem .9rem">
-      <div class="panel-title" style="color:var(--rose);font-size:.96rem">🧩 Agent 設計（md）</div>
-      <div class="panel-body" style="font-size:.79rem;line-height:1.55">
-        &bull; 嚴守範圍（只做音效）；生成前 <strong>prompt 必具體化</strong>（省 credits）<br>
-        &bull; <strong>流程零 SOP</strong>：Excel 規格表 → 先出 2–3 個 demo 確認方向 → 才批次生成<br>
-        &bull; 紅線：不暴露 API key、不自動填 Suno 帳密、大量生成先報預估 credits<br>
-        &bull; <span style="color:var(--dim)">領域 know-how 內嵌於規範檔（中獎遞進音、觸發音、BGM loop 銜接）；命名慣例由現有專案歸納</span>
-      </div>
-    </div>
-    <div class="panel panel-a" style="padding:.8rem .9rem">
-      <div class="panel-title" style="color:var(--amber);font-size:.96rem">🔧 串接工具 × 串接方式</div>
-      <div class="panel-body" style="font-size:.77rem;line-height:1.5">
-        &bull; ElevenLabs — TTS／音效／配樂／語音複製・轉換 <b class="accent-a">[CLI 包 API]</b><br>
-        &bull; Suno — 高品質完整配樂 <b class="accent-o">[瀏覽器]</b><br>
-        &bull; mlx_whisper — 語音轉文字（本機 GPU）<b class="accent-l">[CLI]</b><br>
-        &bull; ffmpeg — mp3／m4a／wav 轉檔、正規化 <b class="accent-l">[CLI]</b><br>
-        &bull; excel_to_graphify — 規格表→PNG＋MD <b class="accent-l">[CLI]</b><br>
-        &bull; 音檔入專案 — 複製進 Cocos assets/GameAudio/Audio/ <b class="accent-l">[CLI／檔案複製]</b><br>
-        &bull; web_search — 音效參考／風格研究 <b class="accent-b">[web]</b>；向量記憶庫 <b class="accent-p">[記憶]</b>
-      </div>
-    </div>
-  </div>
-  <div class="a panel panel-r" style="padding:.55rem .9rem"><div style="font-size:.8rem"><strong class="accent-r">💡 亮點：</strong>一張 Excel 規格表 → 端到端跑成命名正確、可直接進 Cocos 的整批音檔（API 批次＋瀏覽器配樂雙引擎）。</div></div>
-</div>
-</section>
-
-<!-- 10e · Client Agent -->
-<section class="slide" id="agent-client" data-slide="10e">
-<div class="inner" style="gap:.65rem">
-  <div><span class="a eyebrow" style="color:var(--purple)">Agent Deep-Dive · 4/6 Client</span><h2 class="a">💻 虎機 Client Agent</h2></div>
-  <p class="a lead" style="font-size:.86rem;max-width:none">Cocos Creator／TypeScript —— 共用模組擴充新 slot、整合美術／Spine／音效／多國語言。</p>
-  <div class="a g2" style="align-items:stretch">
-    <div class="panel panel-p" style="padding:.8rem .9rem">
-      <div class="panel-title" style="color:var(--purple);font-size:.96rem">🧩 Agent 設計（md）</div>
-      <div class="panel-body" style="font-size:.79rem;line-height:1.55">
-        &bull; <strong>共用模組「絕對禁改」</strong>：5 個共用目錄永不動，只在 Game／ 子目錄擴充<br>
-        &bull; <strong>多 Cocos 版本對齊</strong>（不同專案用不同版本），動手前先對齊、不跨版本貼 code<br>
-        &bull; 節點接線一律用 @property（禁 find／路徑搜尋）；交付前自我檢查＋人工檢核 Gate<br>
-        &bull; <span style="color:var(--dim)">知識庫 <strong style="color:var(--txt)">28 份</strong>：7 款現役 codebase 用 Graphify 抽依賴圖 → 萃成 3 種玩法骨架</span>
-      </div>
-    </div>
-    <div class="panel panel-a" style="padding:.8rem .9rem">
-      <div class="panel-title" style="color:var(--amber);font-size:.96rem">🔧 串接工具 × 串接方式</div>
-      <div class="panel-body" style="font-size:.77rem;line-height:1.5">
-        &bull; cocos（客戶端引擎）— 互動式場景／節點／資源操作 <b class="accent-c">[MCP]</b><br>
-        &bull; cocos-build — 批次／headless build <b class="accent-l">[CLI]</b><br>
-        &bull; Spine 匯出 <b class="accent-l">[CLI]</b>・資產掛進 Prefab 用 cocos <b class="accent-c">[MCP]</b><br>
-        &bull; git（個人 GitHub 帳號）— 推程式碼歸屬本人 <b class="accent-r">[外掛]</b><br>
-        &bull; BigQuery — 埋點 log 除錯 <b class="accent-l">[CLI]</b>；mmdc · codex vision <b class="accent-l">[CLI]</b><br>
-        &bull; ocb — 雲端素材／SharePoint <b class="accent-o">[瀏覽器]</b>；Redmine <b class="accent-r">[外掛]</b>／記憶／web
-      </div>
-    </div>
-  </div>
-  <div class="a panel panel-p" style="padding:.55rem .9rem"><div style="font-size:.8rem"><strong class="accent-p">💡 亮點：</strong>7 款現役 slot 用 <strong>Graphify＋Claude/Codex 交叉驗證</strong>萃成可複用玩法骨架；共用模組絕對禁改。</div></div>
-</div>
-</section>
-
-<!-- 10f · Server Agent -->
-<section class="slide" id="agent-server" data-slide="10f">
-<div class="inner" style="gap:.65rem">
-  <div><span class="a eyebrow" style="color:var(--blue)">Agent Deep-Dive · 5/6 Server</span><h2 class="a">🖥️ 虎機 Server Agent</h2></div>
-  <p class="a lead" style="font-size:.86rem;max-width:none">Python —— Spin 邏輯、機率整合、Protocol 設計、單元測試。</p>
-  <div class="a g2" style="align-items:stretch">
-    <div class="panel panel-b" style="padding:.8rem .9rem">
-      <div class="panel-title" style="color:var(--blue);font-size:.96rem">🧩 Agent 設計（md）</div>
-      <div class="panel-body" style="font-size:.79rem;line-height:1.55">
-        &bull; <strong>SlotCommon 共用框架「禁修改」</strong>，只在 Game／Slot／{GameId}／ 擴充<br>
-        &bull; 新遊戲固定產出 <strong>6 個核心 class</strong>（Calculator／Chance／Check／Setting／Info／Definition）<br>
-        &bull; <strong>3 道人工 Gate</strong>：規劃 → 寫碼 → Codex review → FastTest RTP 收斂，逐 Gate 等人工核准<br>
-        &bull; <span style="color:var(--dim)">知識庫 <strong style="color:var(--txt)">22 份</strong>：已登錄 6 款遊戲 ＋ Graphify 依賴圖（LilGreen／FistChampion／FortuneGems…）</span>
-      </div>
-    </div>
-    <div class="panel panel-a" style="padding:.8rem .9rem">
-      <div class="panel-title" style="color:var(--amber);font-size:.96rem">🔧 串接工具 × 串接方式</div>
-      <div class="panel-body" style="font-size:.77rem;line-height:1.5">
-        &bull; Python · FastTest／TestClient — RTP 收斂與流程驗證 <b class="accent-l">[CLI]</b><br>
-        &bull; Docker（本機 build）<b class="accent-l">[CLI]</b>（K8S／CI 為部署知識）<br>
-        &bull; git（個人 GitHub 帳號）<b class="accent-r">[外掛]</b>・gh api 唯讀 <b class="accent-l">[CLI]</b><br>
-        &bull; mmdc · codex vision — 流程圖／圖檢核 <b class="accent-l">[CLI]</b><br>
-        &bull; 向量記憶庫 — 知識／lesson 召回 <b class="accent-p">[記憶]</b><br>
-        &bull; ocb — SharePoint／網頁 <b class="accent-o">[瀏覽器]</b>；Redmine <b class="accent-r">[外掛]</b>／web
-      </div>
-    </div>
-  </div>
-  <div class="a panel panel-b" style="padding:.55rem .9rem"><div style="font-size:.8rem"><strong class="accent-b">💡 亮點：</strong>三重鎖 —— SlotCommon 禁改 ＋ 3 道人工 Gate（規劃／寫碼／RTP 收斂）＋ 自我驗證；每 Gate 等人工核准才續。</div></div>
-</div>
-</section>
-
-<!-- 10g · 機率 Agent -->
-<section class="slide" id="agent-probability" data-slide="10g">
-<div class="inner" style="gap:.65rem">
-  <div><span class="a eyebrow" style="color:var(--orange)">Agent Deep-Dive · 6/6 機率</span><h2 class="a">🎲 虎機機率 Agent</h2></div>
-  <p class="a lead" style="font-size:.86rem;max-width:none">機率／數學實驗室 —— PAR sheet、RTP／命中率／波動度、Monte Carlo 模擬驗證。</p>
-  <div class="a g2" style="align-items:stretch">
-    <div class="panel panel-o" style="padding:.8rem .9rem">
-      <div class="panel-title" style="color:var(--orange);font-size:.96rem">🧩 Agent 設計（md）</div>
-      <div class="panel-body" style="font-size:.79rem;line-height:1.55">
-        &bull; <strong>零幻覺</strong>：機率參數只能來自已驗證來源，禁「業界常見」推論<br>
-        &bull; <strong>數值紅線</strong>：模擬 vs 理論偏差 &gt;2% → 標人工審核停手；FG 觸發率 0% → pipeline 失敗<br>
-        &bull; 與品檢 Agent 分工「<strong>理論 vs 實測</strong>」；刻意移除 BigQuery（實測歸品檢）<br>
-        &bull; <span style="color:var(--dim)">知識庫 <strong style="color:var(--txt)">15 份</strong>：萃取 11 款遊戲數學／規格（3387 張 PAR sheet）</span>
-      </div>
-    </div>
-    <div class="panel panel-a" style="padding:.8rem .9rem">
-      <div class="panel-title" style="color:var(--amber);font-size:.96rem">🔧 串接工具 × 串接方式</div>
-      <div class="panel-body" style="font-size:.77rem;line-height:1.5">
-        &bull; Python Monte Carlo · Go 快測（quicktest）— 理論／模擬 RTP <b class="accent-l">[CLI]</b><br>
-        &bull; ACP（三個 AI 分工）— claude 寫／codex 審／gemini 驗 <b class="accent-c">[多代理]</b><br>
-        &bull; 瀏覽器自動跑機率快測（背景無視窗＋AI 視覺讀畫面）<b class="accent-o">[瀏覽器]</b><br>
-        &bull; excel_to_graphify — PAR→PNG＋MD <b class="accent-l">[CLI]</b><br>
-        &bull; 圖表（Chart.js→截圖）· mmdc — RTP 曲線／流程圖 <b class="accent-l">[CLI]</b><br>
-        &bull; git（個人 GitHub 帳號）<b class="accent-r">[外掛]</b>；ocb 讀 PAR <b class="accent-o">[瀏覽器]</b>；記憶／web
-      </div>
-    </div>
-  </div>
-  <div class="a panel panel-o" style="padding:.55rem .9rem"><div style="font-size:.8rem"><strong class="accent-o">💡 亮點：</strong>純靠 Monte Carlo＋<strong>ACP 多代理</strong>（claude 寫／codex 審／gemini 驗）做 PAR pipeline；理論與實測分工，杜絕「猜參數」。</div></div>
-</div>
-</section>
-
-<!-- 10h · 平台控管 Agent -->
-<section class="slide" id="agent-ops" data-slide="10h">
-<div class="inner" style="gap:.65rem">
-  <div><span class="a eyebrow" style="color:var(--purple)">Platform Control · Agent Ops</span><h2 class="a">🛠️ 管平台的 Agent</h2></div>
-  <p class="a lead" style="font-size:.86rem;max-width:none">不是職能產品 Agent，而是<strong class="accent-p">管理整個平台的治理 Agent</strong> —— 唯一服務對象是平台機主，握有最高權限。</p>
-  <div class="a g2" style="align-items:stretch">
-    <div class="panel panel-p" style="padding:.8rem .9rem">
-      <div class="panel-title" style="color:var(--purple);font-size:.96rem">🎛 它管什麼（治理範圍）</div>
-      <div class="panel-body" style="font-size:.79rem;line-height:1.55">
-        &bull; <strong>可觀測性</strong>：每個 Agent／使用者的用量、成本、工具成功率、活躍度（/agent · /user · /overview · 週報）<br>
-        &bull; <strong>Skill 審核核准</strong>：新技能上線分 LOW／MEDIUM／HIGH 風險把關（高風險須明確確認）<br>
-        &bull; <strong>異常與健康告警</strong>：0 使用 Agent、error 突增、記憶庫異常<br>
-        &bull; <strong>成員與權限</strong>：Telegram 授權清冊 ＋ Discord 頻道權限，並同步 Notion 權限帳冊
-      </div>
-    </div>
-    <div class="panel panel-a" style="padding:.8rem .9rem">
-      <div class="panel-title" style="color:var(--amber);font-size:.96rem">🔧 串接工具 × 串接方式</div>
-      <div class="panel-body" style="font-size:.77rem;line-height:1.5">
-        &bull; activity-collector — 每 5 分鐘匯總各 Agent／使用者活動 <b class="accent-l">[CLI]</b><br>
-        &bull; skill-pipeline — 技能審核狀態機＋稽核 log <b class="accent-l">[CLI]</b><br>
-        &bull; tg-users — Telegram 授權／配對管理 <b class="accent-l">[CLI]</b><br>
-        &bull; discord-channel-perm — Discord 頻道權限 <b class="accent-l">[CLI]</b><br>
-        &bull; Notion CLI — 權限清冊同步 <b class="accent-l">[CLI]</b>；launchctl 重啟服務 <b class="accent-l">[CLI]</b><br>
-        &bull; 向量記憶庫 <b class="accent-p">[記憶]</b>；Quartz 知識網站 <b class="accent-b">[web]</b>
-      </div>
-    </div>
-  </div>
-  <div class="a panel panel-p" style="padding:.55rem .9rem"><div style="font-size:.8rem"><strong class="accent-p">💡 亮點：</strong>平台的「治理控制塔」—— 觀測全 Agent 用量、審核 Skill 上線、下放權限；且<strong>三層信任鎖死單一機主</strong>，改任何狀態都先預覽再核准、全程稽核。</div></div>
-</div>
-</section>
-
-<!-- 10i · 多節點架構 -->
-<section class="slide" id="multi-node" data-slide="10i">
-<div class="inner" style="gap:.7rem">
-  <div><span class="a eyebrow" style="color:var(--cyan)">Multi-Node Architecture</span><h2 class="a">多節點架構：大腦一台、手腳多台</h2></div>
-  <p class="a lead" style="font-size:.88rem;max-width:none">Gateway「大腦」負責編排與服務；<strong>吃重或需特定環境的執行，外派到「執行節點」</strong>（機率＝獨立 Windows 機、美術＝同機的隔離角色）—— 算力隔離、平行不卡主腦、可水平擴充。</p>
-  <div class="a" style="width:100%;margin:0 auto">
-  <svg viewBox="0 0 1000 300" style="width:100%;height:auto;display:block" font-family="Noto Sans TC, sans-serif">
-    <defs><marker id="ahn" markerWidth="9" markerHeight="9" refX="5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#fb923c"/></marker></defs>
-    <!-- Gateway 大腦 -->
-    <rect x="230" y="10" width="540" height="60" rx="10" fill="#15102b" stroke="#b07aff" stroke-width="1.5"/>
-    <text x="500" y="34" text-anchor="middle" font-size="15" fill="#b07aff" font-weight="800">🧠 大腦 · Gateway（一台 Mac）</text>
-    <text x="500" y="55" text-anchor="middle" font-size="10.5" fill="#b8c2d0">多 Agent 路由 · 編排 · 記憶 ·（企劃／Client／Server／音效／ops 就地執行）</text>
-    <!-- fan-out arrows to nodes -->
-    <line x1="430" y1="70" x2="195" y2="118" stroke="#fb923c" stroke-width="2" marker-end="url(#ahn)"/>
-    <line x1="500" y1="70" x2="500" y2="118" stroke="#fb923c" stroke-width="2" marker-end="url(#ahn)"/>
-    <line x1="570" y1="70" x2="805" y2="118" stroke="#fb923c" stroke-width="2" marker-end="url(#ahn)"/>
-    <text x="512" y="96" font-size="10.5" fill="#9fb3c8">派工到執行節點</text>
-    <!-- 機率 node (Windows) -->
-    <rect x="40" y="122" width="285" height="166" rx="10" fill="#2a1d10" stroke="#fb923c" stroke-width="1.5"/>
-    <text x="182" y="150" text-anchor="middle" font-size="22">🎲</text>
-    <text x="182" y="174" text-anchor="middle" font-size="14" fill="#fb923c" font-weight="800">機率執行節點</text>
-    <text x="182" y="196" text-anchor="middle" font-size="11.5" fill="#fbbf24" font-weight="700">Windows 電腦（另一台）</text>
-    <text x="182" y="220" text-anchor="middle" font-size="10.5" fill="#b8c2d0">Go 快測 · Monte Carlo</text>
-    <text x="182" y="238" text-anchor="middle" font-size="10.5" fill="#b8c2d0">瀏覽器自動跑機率快測</text>
-    <text x="182" y="263" text-anchor="middle" font-size="9.5" fill="#9fb3c8">算力密集 → 獨立機器跑</text>
-    <!-- 美術 node -->
-    <rect x="357" y="122" width="285" height="166" rx="10" fill="#0f2630" stroke="#22d3ee" stroke-width="1.5"/>
-    <text x="499" y="150" text-anchor="middle" font-size="22">🎨</text>
-    <text x="499" y="174" text-anchor="middle" font-size="14" fill="#22d3ee" font-weight="800">美術執行節點</text>
-    <text x="499" y="196" text-anchor="middle" font-size="11.5" fill="#67e8f9" font-weight="700">同台 Mac · node 角色</text>
-    <text x="499" y="220" text-anchor="middle" font-size="10.5" fill="#b8c2d0">Photoshop · Blender</text>
-    <text x="499" y="238" text-anchor="middle" font-size="10.5" fill="#b8c2d0">Spine · Cocos</text>
-    <text x="499" y="263" text-anchor="middle" font-size="9.5" fill="#9fb3c8">需創意軟體環境</text>
-    <!-- 擴充 node -->
-    <rect x="674" y="122" width="286" height="166" rx="10" fill="#13132b" stroke="#5b6472" stroke-width="1.5" stroke-dasharray="5 4"/>
-    <text x="817" y="156" text-anchor="middle" font-size="22">➕</text>
-    <text x="817" y="184" text-anchor="middle" font-size="14" fill="#cfd8e3" font-weight="800">可水平擴充</text>
-    <text x="817" y="212" text-anchor="middle" font-size="10.5" fill="#9fb3c8">加一台節點</text>
-    <text x="817" y="230" text-anchor="middle" font-size="10.5" fill="#9fb3c8">＝ 加算力／新環境</text>
-  </svg>
-  </div>
-  <div class="a g3" style="gap:.7rem">
-    <div class="panel panel-o" style="padding:.75rem .9rem"><div class="panel-title" style="color:var(--orange);font-size:.94rem">⚡ 算力隔離</div><div class="panel-body" style="font-size:.78rem">機率快測動輒模擬數百萬次 spin，放獨立機器跑，不卡大腦服務其他人。</div></div>
-    <div class="panel panel-c" style="padding:.75rem .9rem"><div class="panel-title" style="color:var(--cyan);font-size:.94rem">🧩 環境隔離</div><div class="panel-body" style="font-size:.78rem">機率需 Windows 快測環境、美術需創意軟體環境 —— 各跑最適環境。</div></div>
-    <div class="panel panel-l" style="padding:.75rem .9rem"><div class="panel-title" style="color:var(--lime);font-size:.94rem">📈 水平擴充</div><div class="panel-body" style="font-size:.78rem">手腳機器跑重活、大腦持續服務；要更多產能，加一台節點即可。</div></div>
-  </div>
-</div>
-</section>
-
-<!-- 10 · 設計與程式：與 Agent 即時共編 -->
-<section class="slide" data-slide="11">
-<div class="inner" style="gap:.7rem">
-  <div><span class="a eyebrow" style="color:var(--cyan)">Co-Editing with Agents · 已支援 / 前瞻</span><h2 class="a">與 Agent 即時共編（已建置、為未來預備）</h2></div>
-  <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">已<strong class="accent-l">自架、可用</strong>的「與 Agent 共編」能力：員工自然語言交辦，<strong class="accent-l">Agent 做到一段給連結</strong>，點開即時看／接手共編（設計 Penpot・Open Design，程式 VS Code）。<strong class="accent-a">本次福星高照 6 職能尚未實際採用</strong>，是為<strong class="accent-o">日後專案複雜度提高、共編需求變大</strong>時預先備好的基礎建設。</p>
-  <div class="a" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.35rem .6rem;align-items:center">
-    <div style="font-weight:800;font-size:.84rem;color:var(--cyan)">🎨 設計共編 · Penpot<br><span style="font-size:.68rem;color:var(--dim);font-weight:400">美術 Agent</span></div>
-    <div style="font-weight:800;font-size:.84rem;color:var(--blue)">💻 程式共編 · VS Code<br><span style="font-size:.68rem;color:var(--dim);font-weight:400">Client Agent</span></div>
-    <div style="font-weight:800;font-size:.84rem;color:var(--lime)">🖥️ 網頁/介面共編 · Open Design<br><span style="font-size:.68rem;color:var(--dim);font-weight:400">企劃 Agent</span></div>
-    <a class="shot" href="assets/penpot-telegram.png" target="_blank"><img src="assets/penpot-telegram.png" alt="美術 Agent 對話給 Penpot 共編連結" style="width:100%;height:138px;object-fit:contain;background:#05070b;display:block"></a>
-    <a class="shot" href="assets/ide-telegram.png" target="_blank"><img src="assets/ide-telegram.png" alt="Client Agent 對話給 IDE 連結" style="width:100%;height:138px;object-fit:contain;background:#05070b;display:block"></a>
-    <a class="shot" href="assets/od-telegram.png" target="_blank"><img src="assets/od-telegram.png" alt="企劃 Agent 對話給 Open Design 共編連結" style="width:100%;height:138px;object-fit:contain;background:#05070b;display:block"></a>
-    <a class="shot" href="assets/penpot-canvas.png" target="_blank"><img src="assets/penpot-canvas.png" alt="Penpot 向量共編畫布（老虎機美術元件）" style="width:100%;height:138px;object-fit:contain;background:#05070b;display:block"></a>
-    <a class="shot" href="assets/ide-diff.png" target="_blank"><img src="assets/ide-diff.png" alt="VS Code 看 diff／共改" style="width:100%;height:138px;object-fit:contain;background:#05070b;display:block"></a>
-    <a class="shot" href="assets/od-workspace.png" target="_blank"><img src="assets/od-workspace.png" alt="Open Design 工作區（遊戲大廳設計）" style="width:100%;height:138px;object-fit:contain;background:#05070b;display:block"></a>
-  </div>
-  <div class="a" style="font-size:.78rem;color:var(--dim);text-align:center"><strong class="accent-l">Agent 做到一段 → 對話給連結（上排）→ 員工點開即時看、接手共編（下排）</strong>。</div>
 </div>
 </section>
 
@@ -969,12 +578,6 @@ function buildPptx(){
    ['工具層 Tooling','MCP：Cocos/Spine/Penpot ｜ 與 Agent 即時共編：Penpot 向量美術·Open Design 網頁/儀表板·VS Code 程式碼/看diff(Agent給IDE連結) ｜ CLI：生圖/音效 ｜ 瀏覽器自動化','fbbf24'],
    ['治理層 Governance','權限分級 · 資安/操作日誌 · 📊 使用治理儀表板 · 💓 健康監控儀表板','fb7185'],
   ].forEach((L,i)=>{const y=1.55+i*0.92;s.addShape(P.ShapeType.rect,{x:.5,y,w:12.3,h:.8,fill:{color:'0c0c1a'},line:{color:L[2],width:1}});s.addText(L[0],{x:.65,y,w:2.7,h:.8,fontSize:11,bold:true,color:L[2],fontFace:F,valign:'middle'});s.addText(L[1],{x:3.4,y,w:9.2,h:.8,fontSize:10.5,color:'e8e8f0',fontFace:F,valign:'middle'});});
-  s=P.addSlide();head(s,'MULTI-CHANNEL ACCESS','多通道接入：在慣用的地方找 Agent','fb923c');
-  s.addText('同仁不必換工具——Telegram / Discord / 自架 Open WebUI 都能用自然語言找對應 Agent，不同通道各有擅長場景。',{x:.6,y:1.6,w:12.1,fontSize:13,italic:true,color:'4ade80',fontFace:F});
-  try{s.addImage({path:'assets/ch-discord.png',x:.5,y:2.55,w:4.1,h:3.25});}catch(e){}
-  try{s.addImage({path:'assets/ch-telegram.png',x:4.85,y:2.55,w:3.05,h:3.25});}catch(e){}
-  try{s.addImage({path:'assets/ch-webui.png',x:8.1,y:2.85,w:4.8,h:2.6});}catch(e){}
-  s.addText('💬 Discord：多人×多 Agent 議題討論　｜　✈️ Telegram：排程提醒／系統訊息分析　｜　🌐 Open WebUI（自架）：瀏覽器對話入口',{x:.5,y:6.05,w:12.3,fontSize:11,color:'e8e8f0',fontFace:F,align:'center'});
   s=P.addSlide();head(s,'MODEL ORCHESTRATION','模型協作：每個任務，配最適合的模型','22d3ee');
   s.addText('🧠 推理與決策（雲端 LLM ·「想」）\n  GPT-5.5 主腦（備援 Kiro Opus 4.6）· Claude Opus 4.8 程式規劃/開發 · Gemini 3.1 Pro 輔助發想',{x:.6,y:1.7,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('📚 記憶與檢索（本地 vLLM ·「記」）\n  Qwen3-Embedding 8B 向量化（文字→可比對向量）→ Qwen3-Reranker 8B 重排挑最相關 → 回傳入庫時存好的分層摘要；Qwen3.6 負責入庫智能擷取',{x:.6,y:2.9,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:22});
@@ -993,70 +596,13 @@ function buildPptx(){
   s=P.addSlide();head(s,'TECHNICAL HIGHLIGHTS','技術實作亮點','b07aff');
   s.addText('🧠 記憶+學習迴路　⚡ Skill 淬鍊上線　🛠 AI 工具鏈（MCP/CLI/API/瀏覽器）\n🔒 多用戶×權限隔離（per-user 權限/Git，一個 Agent 服務多人）　🧠 跨機台知識複用　🚀 可擴展設計',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s.addText('💰 近乎零邊際成本：整套跑在固定月訂閱（約 US$300：Codex ~$200＋Claude／Opus 4.8 ~$100，與個人共用）＋本地自架模型（零 API 費）——多跑一台機台成本幾乎不變、非按用量燒錢。',{x:.6,y:4.6,w:12,fontSize:13,bold:true,color:'4ade80',fontFace:F,lineSpacing:24});
-  s=P.addSlide();head(s,'HARNESS ENGINEERING','每個 Agent 都是「工程化」的，不只是一段 prompt','b07aff');
-  s.addText('每個職能 Agent 背後是一整套結構化、可維護、持續演進的工程結構（harness）：規範檔/協議/技能/知識庫，不是一句 prompt。是「Agent 工程」。',{x:.6,y:1.65,w:12.1,fontSize:14,italic:true,color:'bd8bff',fontFace:F});
-  s.addText('📋 AGENTS.md 規則檔：每 Agent 約 300 行 SOP（.md），共用規範自動套用、持續維護\n📐 系統協議 docs/system：把「怎樣算做完」寫成能自動檢查的規則（開工讀必讀檔、用最新模組、交付前自檢、圖沒過關不准交）\n🧩 Skills 技能模組：SOP 包成可執行技能（美術 Agent 約 19 個：Cocos 驗證/QC/Spine 匯出）\n🔧 TOOLS.md 工具路由：預配專屬工具鏈（MCP/CLI/API/瀏覽器），開箱即用\n🧠 知識庫＋記憶：各職能獨立 knowledge ＋ 學習記憶（對話即更新）\n✅ 自驗證 Gate＋權限：交付前自我檢查；per-user Git 權限隔離',{x:.6,y:2.4,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:24});
-  s=P.addSlide();head(s,'KNOWLEDGE · STORE & RETRIEVE','記憶：知識怎麼存、新問題怎麼讀','fb923c');
-  s.addText('📥 萃取（存）：既有遊戲 Code／規格書／競品／影片 → 轉 Markdown（轉檔＋AI 視覺描述）→ 並行兩條：① 存進語意記憶庫（切段落＋粗／中／細三層摘要＋轉成向量 → 語意檢索）② Graphify 程式碼依賴圖（Client／Server，建置期萃骨架）→ 各 Agent 知識庫',{x:.6,y:1.55,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:20});
-  s.addText('📤 取得（讀）：新問題／對話進來 → 自動找最相關記憶（語意比對＋關鍵字）→ Reranker 重排挑前幾名 → 補進 AI 上下文一起回答（有依據、不亂編）',{x:.6,y:2.5,w:12.1,fontSize:12,bold:true,color:'60a5fa',fontFace:F,lineSpacing:20});
-  s.addText('實證量級：87 份遊戲規格 ｜ 188 篇競品分析 ｜ 11 款機率數學（3387 張 PAR sheet）｜ ~13 份遊戲/模組依賴圖譜（client 7＋server 6）',{x:.6,y:3.5,w:12.1,fontSize:12,bold:true,color:'4ade80',fontFace:F,lineSpacing:20});
-  s=P.addSlide();head(s,'AGENT SETUP','Agent 怎麼建起來','22d3ee');
-  s.addText('🛠 Agent 建置：建 workspace（AGENTS.md／TOOLS.md／knowledge／skills）→ 註冊＋記憶 scope → 通道／Bot → 灌知識（存進語意記憶庫）→ 工具鏈設定＋共用規範套用 → 上線',{x:.6,y:1.75,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
-  s.addText('上線後持續學：對話即更新 —— 自動把有價值的對話萃取入該 Agent 記憶庫（各 Agent 記憶獨立、互不干擾）。',{x:.6,y:3.0,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:24});
-  s=P.addSlide();head(s,'AGENT · 虎機企劃','🎰 虎機企劃 Agent','4ade80');
-  s.addText('角色：把模糊需求整理成可交付企劃 —— 規格書、競品拆解、需求定義、Excel 轉檔。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'4ade80',fontFace:F});
-  s.addText('🧩 設計(md)：薄契約＋V1.5 規格 SOP 硬鎖 ｜ 數值紅線（不猜 RTP、未給標待補、競品圖須真實截圖）｜ 交付前 9 道 gate（含 AI 視覺評分＋HTTP 200）全 PASS 才結案 ｜ 知識庫 295 份（含 87 規格＋188 競品＋其他）',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('🔧 串接工具×方式：向量記憶庫[記憶] ｜ spec 9-gate 驗證器（含 codex 視覺）[CLI] ｜ xlsx_to_md／競品 fetch[CLI] ｜ mmdc／生圖 CLI[CLI] ｜ nodriver 競品網頁(VPN/繞反爬)／ocb 公司文件(M365)[瀏覽器] ｜ web_search[web] ｜ Redmine[外掛]',{x:.6,y:3.75,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('💡 亮點：9 道 spec 交付 gate（含 AI 視覺檢查）—— Agent 無法「假裝完成」。',{x:.6,y:5.1,w:12.1,fontSize:12,bold:true,color:'4ade80',fontFace:F});
-  s=P.addSlide();head(s,'AGENT · 虎機美術','🎨 虎機美術 Agent','22d3ee');
-  s.addText('角色：Slot 美術全鏈 —— 生圖／修圖、Spine 2D 動畫、3D、Cocos 匯入驗證、競品 QC。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'22d3ee',fontFace:F});
-  s.addText('🧩 設計(md)：「Cocos Creator 是最終真相」｜ 三段式交付驗證（結構→視覺→Cocos 引擎內），任一段 FAIL 即停、不背景自動重做 ｜ 知識庫 21 份＋19 個 Skills',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('🔧 串接工具×方式：cocos-art[MCP] ｜ Blender[MCP] ｜ Photoshop AppleScript/ExtendScript[CLI] ｜ Spine 4.2[CLI] ｜ AI 生圖 ChatGPT 網頁＋GPT Image API[CLI] ｜ Freepik／Magnific(art-chrome)[瀏覽器] ｜ Kling 動效[瀏覽器] ｜ Penpot／Open Design[外掛]',{x:.6,y:3.75,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('💡 亮點：生圖→去背→Spine→Cocos 引擎內自檢的閉環，過不了就停、不假裝 PASS。',{x:.6,y:5.1,w:12.1,fontSize:12,bold:true,color:'22d3ee',fontFace:F});
-  s=P.addSlide();head(s,'AGENT · 虎機音效','🎵 虎機音效 Agent','fb7185');
-  s.addText('角色：博弈音效／配樂／人聲 AI 製作 —— 規格表批次生成→命名→轉檔→入 Cocos。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'fb7185',fontFace:F});
-  s.addText('🧩 設計(md)：只做音效；生成前 prompt 必具體化（省 credits）｜ 流程零 SOP（規格表→先 2-3 個 demo→批次）｜ 紅線：不暴露 API key／不自動填 Suno 帳密／大量生成先報預估 ｜ 領域 know-how 內嵌規範檔',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('🔧 串接工具×方式：ElevenLabs[CLI 包 API] ｜ Suno[瀏覽器] ｜ mlx_whisper 本機 STT[CLI] ｜ ffmpeg 轉檔[CLI] ｜ excel_to_graphify[CLI] ｜ 音檔複製進 Cocos assets[CLI／檔案複製] ｜ web_search[web]／記憶[記憶]',{x:.6,y:3.75,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('💡 亮點：一張 Excel 規格表→端到端跑成命名正確、可直接進 Cocos 的整批音檔（API 批次＋瀏覽器配樂雙引擎）。',{x:.6,y:5.1,w:12.1,fontSize:12,bold:true,color:'fb7185',fontFace:F});
-  s=P.addSlide();head(s,'AGENT · 虎機 CLIENT','💻 虎機 Client Agent','b07aff');
-  s.addText('角色：Cocos Creator／TypeScript —— 共用模組擴充新 slot、整合美術／Spine／音效／多國語言。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'b07aff',fontFace:F});
-  s.addText('🧩 設計(md)：共用模組「絕對禁改」(只在 Game/ 擴充) ｜ 多 Cocos 版本對齊(G59=3.8.6／G79=2.4.13)，不跨版本貼 code ｜ 節點接線用 @property(禁 find) ｜ 知識庫 28 份：7 款 codebase 用 Graphify 萃成 3 種玩法骨架',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('🔧 串接工具×方式：cocos（客戶端引擎）[MCP] ｜ cocos-build 批次 build[CLI] ｜ Spine 匯出[CLI]／資產掛 Prefab 用 cocos[MCP] ｜ git 個人 GitHub 帳號[外掛] ｜ BigQuery 埋點除錯[CLI] ｜ mmdc/codex vision[CLI] ｜ ocb[瀏覽器]／Redmine[外掛]',{x:.6,y:3.75,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('💡 亮點：7 款現役 slot 用 Graphify＋Claude/Codex 交叉驗證萃成可複用玩法骨架；共用模組絕對禁改。',{x:.6,y:5.1,w:12.1,fontSize:12,bold:true,color:'b07aff',fontFace:F});
-  s=P.addSlide();head(s,'AGENT · 虎機 SERVER','🖥️ 虎機 Server Agent','60a5fa');
-  s.addText('角色：Python —— Spin 邏輯、機率整合、Protocol 設計、單元測試。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'60a5fa',fontFace:F});
-  s.addText('🧩 設計(md)：SlotCommon 共用框架「禁修改」(只在 Game/Slot/{GameId}/ 擴充) ｜ 新遊戲固定產出 6 個核心 class ｜ 3 道人工 Gate(規劃→寫碼→Codex review→FastTest RTP 收斂，逐 Gate 等核准) ｜ 知識庫 22 份、6 款遊戲＋Graphify 圖',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('🔧 串接工具×方式：Python・FastTest／TestClient[CLI] ｜ Docker 本機 build[CLI](K8S/CI 為知識) ｜ git 個人 GitHub 帳號[外掛]・gh api 唯讀[CLI] ｜ mmdc／codex vision[CLI] ｜ 向量記憶庫[記憶] ｜ ocb[瀏覽器]／Redmine[外掛]',{x:.6,y:3.75,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('💡 亮點：三重鎖 —— SlotCommon 禁改＋3 道人工 Gate(規劃／寫碼／RTP 收斂)＋自我驗證；每 Gate 等人工核准才續。',{x:.6,y:5.1,w:12.1,fontSize:12,bold:true,color:'60a5fa',fontFace:F});
-  s=P.addSlide();head(s,'AGENT · 虎機機率','🎲 虎機機率 Agent','fb923c');
-  s.addText('角色：機率／數學實驗室 —— PAR sheet、RTP／命中率／波動度、Monte Carlo 模擬驗證。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'fb923c',fontFace:F});
-  s.addText('🧩 設計(md)：零幻覺(參數只能來自已驗證來源，禁業界常見推論) ｜ 數值紅線(模擬vs理論偏差>2%→人工審核停手；FG 觸發率0%→pipeline 失敗) ｜ 與品檢 Agent 分工「理論 vs 實測」、刻意移除 BigQuery ｜ 知識庫 15 份、11 款遊戲數學(3387 PAR)',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('🔧 串接工具×方式：Python Monte Carlo・Go 快測 quicktest[CLI] ｜ ACP claude寫/codex審/gemini驗[多代理] ｜ 瀏覽器自動快測[瀏覽器] ｜ excel_to_graphify[CLI] ｜ 圖表 Chart.js→截圖[CLI] ｜ git 個人 GitHub 帳號[外掛]',{x:.6,y:3.75,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('💡 亮點：純靠 Monte Carlo＋ACP 多代理(claude寫/codex審/gemini驗)做 PAR pipeline；理論與實測分工，杜絕「猜參數」。',{x:.6,y:5.1,w:12.1,fontSize:12,bold:true,color:'fb923c',fontFace:F});
-  s=P.addSlide();head(s,'PLATFORM CONTROL · AGENT OPS','🛠️ 管平台的 Agent','b07aff');
-  s.addText('不是職能產品 Agent，而是管理整個平台的治理 Agent —— 唯一服務平台機主，握有最高權限。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'b07aff',fontFace:F});
-  s.addText('🎛 治理範圍：可觀測性(各 Agent／使用者用量・成本・成功率・活躍：/agent /user /overview /週報) ｜ Skill 審核核准(LOW/MEDIUM/HIGH 風險把關) ｜ 異常與健康告警(0 使用・error 突增・記憶庫異常) ｜ 成員與權限(Telegram 授權清冊＋Discord 頻道權限，同步 Notion 帳冊)',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('🔧 串接工具×方式：activity-collector 每5分匯總[CLI] ｜ skill-pipeline 審核狀態機+稽核[CLI] ｜ tg-users TG 授權[CLI] ｜ discord-channel-perm[CLI] ｜ Notion CLI 權限清冊[CLI] ｜ launchctl 重啟服務[CLI] ｜ 向量記憶庫[記憶]',{x:.6,y:3.85,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('💡 亮點：平台的「治理控制塔」—— 觀測全 Agent 用量、審核 Skill 上線、下放權限；三層信任鎖死單一機主，改任何狀態先預覽再核准、全程稽核。',{x:.6,y:5.2,w:12.1,fontSize:12,bold:true,color:'b07aff',fontFace:F});
-  s=P.addSlide();head(s,'MULTI-NODE ARCHITECTURE','多節點架構：大腦一台、手腳多台','22d3ee');
-  s.addText('Gateway「大腦」負責編排與服務；吃重或需特定環境的執行，外派到「執行節點」（機率＝獨立 Windows 機、美術＝同機隔離角色）—— 算力隔離、平行不卡主腦、可水平擴充。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'4ade80',fontFace:F,lineSpacing:20});
-  s.addText('🧠 大腦 · Gateway（一台 Mac）：多 Agent 路由・編排・記憶・多數 Agent 就地執行',{x:.6,y:2.7,w:12.1,fontSize:13,bold:true,color:'b07aff',fontFace:F});
-  s.addText('▼ 吃重／需特定環境的執行 → 派到節點 (node)',{x:.6,y:3.25,w:12.1,fontSize:11,color:'fb923c',fontFace:F});
-  s.addText('🎲 機率執行節點（獨立 Windows 機）：Go 快測／Monte Carlo／瀏覽器自動快測　　🎨 美術執行節點（與 Gateway 同台 Mac 的 node 角色）：Photoshop／Blender／Spine／Cocos 創意環境　　➕ 可水平擴充：加節點加算力',{x:.6,y:3.7,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('為什麼多節點：⚡ 算力隔離（快測模擬數百萬次 spin 不卡大腦）｜ 🧩 環境隔離（機率需 Windows、美術需創意軟體）｜ 📈 水平擴充（手腳跑重活、大腦持續服務，加機器加產能）',{x:.6,y:4.95,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s=P.addSlide();head(s,'CO-EDITING WITH AGENTS · 已支援/前瞻','與 Agent 即時共編（已建置、為未來預備）','22d3ee');
-  s.addText('已自架可用：員工自然語言交辦，Agent 做到一段給連結，點開即時看/接手共編(Penpot/Open Design 設計、VS Code 程式)。本次福星高照 6 職能尚未實際採用，是為日後專案複雜度與共編需求變大時預先備好。',{x:.6,y:1.55,w:12.1,fontSize:12,italic:true,color:'4ade80',fontFace:F,lineSpacing:20});
-  try{s.addImage({path:'assets/penpot-canvas.png',x:.5,y:2.7,w:6.1,h:3.4});}catch(e){}
-  try{s.addImage({path:'assets/ide-diff.png',x:6.95,y:2.85,w:5.9,h:3.2});}catch(e){}
-  s.addText('🎨 設計共編：Penpot 向量共編畫布（美術 Agent 給連結）　　💻 程式共編：VS Code(:9100) 看 diff（Client Agent 給連結）',{x:.5,y:6.15,w:12.3,fontSize:11.5,bold:true,color:'e8e8f0',fontFace:F,align:'center'});
-  s.addText('Agent 做到一段 → 對話給連結 → 員工點開即時看／接手共編。同模式也支援 Open Design（網頁/儀表板）、Open WebUI（對話入口）。',{x:.5,y:6.55,w:12.3,fontSize:10.5,color:'a0a0b0',fontFace:F,align:'center'});
   s=P.addSlide();head(s,'HOW WE DELIVERED','交付歷程：三階段如何落地','4ade80');
   s.addText('① 知識收集 ✓　② 基礎建設 ✓（6 Agent + 權限/資安/監控）　③ 實戰開發 ✓（Demo）\n時程：4/9–5/8 規劃期｜5/8 藍圖｜5/9–6/30 開發期｜6/30 最終成果',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'RESULTS BY FUNCTION','各職能實戰成果','fb923c');
   s.addText(FUNCS.map(f=>f.emoji+' '+f.name+'：'+f.caps).join('\n')+'\n（各職能成果頁詳見線上報告連結）',{x:.6,y:1.8,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
   s=P.addSlide();head(s,"WHAT'S NEXT",'未來展望','fb923c');
   s.addText('本次競賽：試開發福星高照續作、驗證製程\n短期：套用到第二台、實測加速幅度；新增 PM 主 Agent（判斷產品成功性、調度各職能 Agent 開發）；將已試行的品檢 Agent 深化為自動化測試\n長期：套用到捕魚機 / 平台活動',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
-  P.writeFile({fileName:'虎機AI開發競賽_最終成果報告.pptx'});
+  P.writeFile({fileName:'虎機AI開發競賽_現場簡報版.pptx'});
 }
 </script>
 </body>
