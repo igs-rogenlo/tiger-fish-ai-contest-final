@@ -151,7 +151,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 </head>
 <body>
 <div id="progress" style="width:0"></div>
-<div class="topbar"><a class="btn" href="pitch.html" style="text-decoration:none;color:var(--orange);border-color:rgba(251,146,60,.4)">⚡ 2分鐘簡報版</a><a class="btn" href="index.html" style="text-decoration:none;color:var(--cyan);border-color:rgba(34,211,238,.4)">📖 完整版（全 25 頁）</a><button class="btn" id="pptxBtn">📥 匯出 PPTX</button><button class="btn" onclick="window.print()">🖨 列印 / PDF</button></div>
+<div class="topbar"><a class="btn" href="pitch.html" style="text-decoration:none;color:var(--orange);border-color:rgba(251,146,60,.4)">⚡ 2分鐘簡報版</a><a class="btn" href="index.html" style="text-decoration:none;color:var(--cyan);border-color:rgba(34,211,238,.4)">📖 完整版</a><button class="btn" id="pptxBtn">📥 匯出 PPTX</button><button class="btn" onclick="window.print()">🖨 列印 / PDF</button></div>
 <div class="deck">
 
 <!-- 0 · COVER -->
@@ -419,7 +419,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
       </a>
     </div>
   </div>
-  <div class="a panel panel-l" style="padding:.7rem .95rem;border:1px solid rgba(74,222,128,.3)"><div style="font-size:.88rem"><strong class="accent-l">&#128200; 真的在用，不是 demo</strong> —— 這套 AI Agent 平台<strong>近 30 天 55 位、近 7 天 36 位同仁實際使用</strong>（治理儀表板統計，以數據類 Agent 為大宗）。本次 6 個老虎機 Agent 就<strong>建在這套已被全公司使用、驗證過的平台</strong>上。</div></div>
+  <div class="a panel panel-l" style="padding:.7rem .95rem;border:1px solid rgba(74,222,128,.3)"><div style="font-size:.88rem"><strong class="accent-l">&#128200; 真的在用，不是 demo</strong> —— 這套 AI Agent 平台已是<strong>商用研四部門</strong>的日常工具：<strong>近 30 天 55 位、近 7 天 36 位同仁實際使用</strong>（治理儀表板統計，數據類 Agent 為大宗）。本次 6 個老虎機 Agent 就<strong>建在這套部門已驗證、日常在用的平台</strong>上。</div></div>
   <div class="a panel panel-c" style="padding:.75rem .95rem">
     <div class="panel-body" style="font-size:.85rem;line-height:1.65">&#128172; <strong class="accent-c">不只看得到，還能「問」</strong>：使用治理儀表板內建 <strong>AI 對話查詢</strong>（見左圖右下角），用自然語言即可問 <strong class="accent-c">Agent 效能與成本</strong>、<strong class="accent-l">使用者行為</strong>、<strong class="accent-a">系統整體統計</strong> —— 例：「福星高照這週哪個 Agent 消耗最多 Token？」「列出 6 個 Agent 的工具呼叫排名」</div>
   </div>
@@ -466,6 +466,34 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
   <div><span class="a eyebrow" style="color:var(--orange)">Results by Function</span><h2 class="a">各職能實戰成果</h2></div>
   <p class="a lead" style="max-width:none;font-size:.95rem">6 職能各自的能力與實際產出，由<strong class="accent-o">各職能負責人</strong>提供連結 —— <strong class="accent-l">各職能實測：AI 製程已縮短開發時間</strong>，Before/After 見各連結。</p>
   <div class="a fidx" id="fidx"></div>
+</div>
+</section>
+
+<!-- 9c · 已知限制與對策 -->
+<section class="slide" data-slide="13b">
+<div class="inner" style="gap:.7rem">
+  <div><span class="a eyebrow" style="color:var(--rose)">Limitations &amp; Mitigations</span><h2 class="a">已知限制與對策</h2></div>
+  <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">不誇大、誠實揭露 —— 這套框架現階段的限制，以及我們怎麼控管：</p>
+  <div class="a" style="display:grid;grid-template-columns:1fr 1.6rem 1fr;gap:.5rem;align-items:stretch;font-size:.86rem;line-height:1.4">
+    <div style="font-weight:800;color:var(--rose);font-size:.82rem">&#9888;&#65039; 限制</div><div></div><div style="font-weight:800;color:var(--lime);font-size:.82rem">&#9989; 對策</div>
+
+    <div class="panel panel-r" style="padding:.6rem .85rem">AI 生圖有隨機性，<strong>美術一致性／風格穩定度</strong>仍需人工把關</div>
+    <div style="display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.2rem;font-weight:800">&rarr;</div>
+    <div class="panel panel-l" style="padding:.6rem .85rem">三段式自檢（結構→視覺→引擎內）＋<strong>人工審核</strong>，過不了不交付</div>
+
+    <div class="panel panel-r" style="padding:.6rem .85rem"><strong>人工審核仍是流程瓶頸</strong> —— AI 跑得快，但每關要人看</div>
+    <div style="display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.2rem;font-weight:800">&rarr;</div>
+    <div class="panel panel-l" style="padding:.6rem .85rem">短期導入<strong>品檢 Agent（自動化測試）</strong>分擔人工審核負荷</div>
+
+    <div class="panel panel-r" style="padding:.6rem .85rem"><strong>整台複製的加速幅度</strong>尚待量化（各職能已實測縮短時間，整機 1→N 進行中）</div>
+    <div style="display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.2rem;font-weight:800">&rarr;</div>
+    <div class="panel panel-l" style="padding:.6rem .85rem">第二台機台<strong>實測複製加速幅度</strong>，把推論變數字</div>
+
+    <div class="panel panel-r" style="padding:.6rem .85rem">雲端模型有<strong>資料邊界</strong>考量</div>
+    <div style="display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.2rem;font-weight:800">&rarr;</div>
+    <div class="panel panel-l" style="padding:.6rem .85rem">機敏資料（如禮品序號）一律走<strong>本地自架模型</strong>，不外送雲端</div>
+  </div>
+  <div class="a" style="font-size:.78rem;color:var(--dim);text-align:center">敢攤限制 = 對系統了解夠深、控得住 —— 這些都是<strong class="accent-l">設計時就預留的把關點</strong>，不是事後補救。</div>
 </div>
 </section>
 
@@ -588,7 +616,7 @@ function buildPptx(){
   s.addText('🎰 福星高照 Demo 實機畫面（主場景/轉動/免費遊戲/得獎）→ assets/demo-fuxing.png',{x:.6,y:6.9,w:8,fontSize:10,color:DIM,fontFace:F});
   s.addText('這是成果本體：由 6 職能 Agent 協作產出的可運行老虎機 —— 規格/美術/音效/程式/機率全跑過 AI 製程＋人工審核。\n\n✅ 不是 demo 殼：底層 Client/Server/機率直接採用 RD4 的 Macross API 共用架構，是可直接產品化的版本。',{x:8.8,y:1.9,w:4,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:24});
   s=P.addSlide();head(s,'EVIDENCE · 2/2','實證②：6 Agent 製程留痕，可治理','22d3ee');
-  s.addText('📈 真的在用，不是 demo：AI Agent 平台近 30 天 55 位、近 7 天 36 位同仁實際使用（數據類 Agent 為大宗）—— 6 個老虎機 Agent 建在這套已被全公司使用的平台上。',{x:.5,y:1.28,w:12.3,fontSize:11,bold:true,color:'4ade80',fontFace:F,lineSpacing:16});
+  s.addText('📈 真的在用，不是 demo：AI Agent 平台是商用研四部門的日常工具，近 30 天 55 位、近 7 天 36 位同仁實際使用（數據類 Agent 為大宗）—— 6 個老虎機 Agent 就建在這套部門已驗證的平台上。',{x:.5,y:1.28,w:12.3,fontSize:11,bold:true,color:'4ade80',fontFace:F,lineSpacing:16});
   try{s.addImage({path:'assets/dash-health.png',x:6.8,y:1.7,w:6,h:4.2});}catch(e){}
   s.addText('📊 使用治理儀表板（:3081）：看每個 Agent 做了什麼、花多少 → assets/dash-audit.png',{x:.5,y:6.05,w:6.2,fontSize:10,color:DIM,fontFace:F});
   s.addText('💓 健康監控儀表板（:3080）：看系統健不健康、即時告警 → assets/dash-health.png',{x:6.8,y:6.05,w:6.2,fontSize:10,color:DIM,fontFace:F});
@@ -600,6 +628,10 @@ function buildPptx(){
   s.addText('① 知識收集 ✓　② 基礎建設 ✓（6 Agent + 權限/資安/監控）　③ 實戰開發 ✓（Demo）\n時程：4/9–5/8 規劃期｜5/8 藍圖｜5/9–6/30 開發期｜6/30 最終成果',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'RESULTS BY FUNCTION','各職能實戰成果','fb923c');
   s.addText(FUNCS.map(f=>f.emoji+' '+f.name+'：'+f.caps).join('\n')+'\n（各職能成果頁詳見線上報告連結）',{x:.6,y:1.8,w:12,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
+  s=P.addSlide();head(s,'LIMITATIONS & MITIGATIONS','已知限制與對策','fb7185');
+  s.addText('不誇大、誠實揭露現階段限制與控管：',{x:.6,y:1.5,w:12,fontSize:13,italic:true,color:'fb7185',fontFace:F});
+  s.addText('⚠️ 美術一致性需人工把關（AI 生圖有隨機性） → ✅ 三段式自檢＋人工審核，過不了不交付\n⚠️ 人工審核仍是瓶頸（每關要人看） → ✅ 短期導入品檢 Agent 自動化測試分擔\n⚠️ 整台複製加速幅度尚待量化（各職能已實測縮短時間） → ✅ 第二台機台實測、把推論變數字\n⚠️ 雲端模型有資料邊界 → ✅ 機敏資料一律走本地自架模型、不外送',{x:.6,y:2.4,w:12.1,fontSize:13.5,color:'e8e8f0',fontFace:F,lineSpacing:32});
+  s.addText('敢攤限制＝對系統了解夠深、控得住；這些都是設計時就預留的把關點。',{x:.6,y:5.7,w:12,fontSize:11,color:DIM,fontFace:F,align:'center'});
   s=P.addSlide();head(s,"WHAT'S NEXT",'未來展望','fb923c');
   s.addText('本次競賽：試開發福星高照續作、驗證製程\n短期：套用到第二台、實測加速幅度；新增 PM 主 Agent（判斷產品成功性、調度各職能 Agent 開發）；將已試行的品檢 Agent 深化為自動化測試\n長期：套用到捕魚機 / 平台活動',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   P.writeFile({fileName:'虎機AI開發競賽_現場簡報版.pptx'});
