@@ -470,7 +470,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="panel panel-c a" style="padding:.8rem"><div class="panel-title" style="color:var(--cyan);font-size:.95rem">&#129504; 相似類型自動複用</div><div class="panel-body" style="font-size:.8rem">做新機台時，AI 自動比對、挑出<strong>相似規格/類型</strong>的既有框架與 Code 直接複用，不從零開始。</div></div>
     <div class="panel panel-a a" style="padding:.8rem"><div class="panel-title" style="color:var(--amber);font-size:.95rem">&#128640; 可擴展設計</div><div class="panel-body" style="font-size:.8rem">新增 Agent 只需灌知識 + 設工具鏈，不動核心。</div></div>
   </div>
-  <div class="a panel panel-l" style="padding:.7rem .95rem;border:1px solid rgba(74,222,128,.3)"><div style="font-size:.88rem"><strong class="accent-l">&#128176; 成本低且固定（不隨用量增加）</strong> —— 整套工具＝<strong>固定月訂閱約 US$340</strong>（Codex $200・Claude／Opus 4.8 $100・Kiro 備援 $20・Gemini $20，多與個人／他組共用）＋ 本地自架模型（零 API 費）。<strong>非按 API 用量計費 → 多做一台機台，月成本幾乎不變</strong>。</div></div>
+  <div class="a panel panel-l" style="padding:.7rem .95rem;border:1px solid rgba(74,222,128,.3)"><div style="font-size:.88rem"><strong class="accent-l">&#128176; 成本低且固定（不隨用量增加）</strong> —— 整套工具＝<strong>固定月訂閱約 US$340</strong>（Codex $200・Claude／Opus 4.8 $100〔與 AI 組開發共用〕・Kiro 備援 $20・Gemini $20〔與 RD4 企劃組共用〕）＋ 本地自架模型（零 API 費）。<strong>非按 API 用量計費 → 多做一台機台，月成本幾乎不變</strong>。</div></div>
 </div>
 </section>
 
@@ -539,12 +539,12 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <!-- 10a1b · 記憶生命週期 -->
 <section class="slide" id="mem-lifecycle" data-slide="10a1b">
 <div class="inner" style="gap:.7rem">
-  <div><span class="a eyebrow" style="color:var(--lime)">Memory Lifecycle</span><h2 class="a">記憶會自己長大、強化、淡忘、接班</h2></div>
+  <div><span class="a eyebrow" style="color:var(--lime)">Memory Lifecycle</span><h2 class="a">記憶會自己強化、淡忘、整理</h2></div>
   <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">記憶不是「只存不刪」的倉庫 —— 它像人腦：<strong>常用的留強、不用的淡出、相似的合併、跨日接得上</strong>。這套生命週期讓記憶庫越用越精、不會膨脹成垃圾場。</p>
   <div class="a g3" style="gap:.7rem;align-items:stretch">
-    <div class="panel panel-l" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--lime);font-size:.96rem">⏳ 時間衰減</div><div class="panel-body" style="font-size:.8rem">每筆記憶隨時間淡出（Weibull 衰減）；重要度高的半衰期長、幾乎不忘。</div></div>
-    <div class="panel panel-c" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--cyan);font-size:.96rem">🔼 三層升降</div><div class="panel-body" style="font-size:.8rem">core／working／peripheral 三層；依使用情況在三層間升降，久沒用的逐步淘汰。</div></div>
-    <div class="panel panel-a" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--amber);font-size:.96rem">💪 存取強化</div><div class="panel-body" style="font-size:.8rem">被<strong>手動查詢</strong>命中就強化、半衰期延長（自動回憶不計，避免雜訊被誤強化）。</div></div>
+    <div class="panel panel-l" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--lime);font-size:.96rem">⏳ 時間衰減</div><div class="panel-body" style="font-size:.8rem">每筆記憶會隨時間慢慢變淡、不常用的逐漸淡出；越重要的忘得越慢、幾乎不忘。</div></div>
+    <div class="panel panel-c" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--cyan);font-size:.96rem">🔼 三層升降</div><div class="panel-body" style="font-size:.8rem">分「核心／常用／邊緣」三層：常被用到的往上升、很久沒用的往下降、最後淘汰。</div></div>
+    <div class="panel panel-a" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--amber);font-size:.96rem">💪 存取強化</div><div class="panel-body" style="font-size:.8rem">被<strong>手動查詢</strong>叫出來的會被加強、更不容易忘（自動帶出的不算，避免雜訊被誤強化）。</div></div>
   </div>
   <div class="a panel panel-p" style="padding:.7rem .95rem"><div style="font-size:.82rem"><strong class="accent-p">🧹 自動整理、不膨脹</strong> —— 記憶庫每 30 分鐘自動整理（合併儲存碎片、清理舊版本）控制體積、今天仍在跑；並具備相似舊記憶的語意合併能力。</div></div>
   <div class="a" style="font-size:.78rem;color:var(--dim);text-align:center">雲端模型負責「想」，這套記憶庫負責「記」 —— 像人腦一樣會<strong class="accent-l">強化、淡忘、整理</strong>，越用越精。</div>
@@ -1082,7 +1082,7 @@ function buildPptx(){
   s.addText('一個看 Agent 在做什麼、一個看系統健不健康 —— 治理層實際落地',{x:.5,y:6.7,w:12.3,fontSize:11,color:DIM,fontFace:F,align:'center'});
   s=P.addSlide();head(s,'TECHNICAL HIGHLIGHTS','技術實作亮點','b07aff');
   s.addText('🧠 記憶+學習迴路　⚡ Skill 淬鍊上線　🛠 AI 工具鏈（MCP/CLI/API/瀏覽器）\n🔒 多用戶×權限隔離（per-user 權限/Git，一個 Agent 服務多人）　🧠 跨機台知識複用　🚀 可擴展設計',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
-  s.addText('💰 成本低且固定：工具＝月訂閱約 US$340（Codex $200・Claude/Opus 4.8 $100・Kiro 備援 $20・Gemini $20，多為共用）＋本地自架（零 API 費）——非按用量計費，多做一台機台幾乎不加錢。',{x:.6,y:4.6,w:12,fontSize:13,bold:true,color:'4ade80',fontFace:F,lineSpacing:24});
+  s.addText('💰 成本低且固定：工具＝月訂閱約 US$340（Codex $200・Claude/Opus 4.8 $100〔與 AI 組開發共用〕・Kiro 備援 $20・Gemini $20〔與 RD4 企劃組共用〕）＋本地自架（零 API 費）——非按用量計費，多做一台機台幾乎不加錢。',{x:.6,y:4.6,w:12,fontSize:13,bold:true,color:'4ade80',fontFace:F,lineSpacing:24});
   s=P.addSlide();head(s,'HARNESS ENGINEERING','每個 Agent 都是「工程化」的，不只是一段 prompt','b07aff');
   s.addText('每個職能 Agent 背後是一整套結構化、可維護、持續演進的工程結構（harness）：規範檔/協議/技能/知識庫，不是一句 prompt。是「Agent 工程」。',{x:.6,y:1.65,w:12.1,fontSize:14,italic:true,color:'bd8bff',fontFace:F});
   s.addText('📋 AGENTS.md 規則檔：每 Agent 約 300 行 SOP（.md），共用規範自動套用、持續維護\n📐 系統協議 docs/system：把「怎樣算做完」寫成能自動檢查的規則（開工讀必讀檔、用最新模組、交付前自檢、圖沒過關不准交）\n🧩 Skills 技能模組：SOP 包成可執行技能（美術 Agent 約 19 個：Cocos 驗證/QC/Spine 匯出）\n🔧 TOOLS.md 工具路由：預配專屬工具鏈（MCP/CLI/API/瀏覽器），開箱即用\n🧠 知識庫＋記憶：各職能獨立 knowledge ＋ 學習記憶（對話即更新）\n✅ 自驗證 Gate＋權限：交付前自我檢查；per-user Git 權限隔離',{x:.6,y:2.4,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:24});
@@ -1092,7 +1092,7 @@ function buildPptx(){
   s.addText('實證量級：87 份遊戲規格 ｜ 188 篇競品分析 ｜ 11 款機率數學（3387 張 PAR sheet）｜ ~13 份遊戲/模組依賴圖譜（client 7＋server 6）',{x:.6,y:3.5,w:12.1,fontSize:12,bold:true,color:'4ade80',fontFace:F,lineSpacing:20});
   s=P.addSlide();head(s,'MEMORY LIFECYCLE','記憶會自己強化、淡忘、整理','4ade80');
   s.addText('記憶不是「只存不刪」的倉庫 —— 它像人腦：常用的留強、不用的淡出、相似的合併，讓記憶庫越用越精、不會膨脹成垃圾場。',{x:.6,y:1.6,w:12.1,fontSize:13,italic:true,color:'4ade80',fontFace:F,lineSpacing:22});
-  s.addText('⏳ 時間衰減：每筆記憶隨時間淡出（Weibull 衰減）；重要度高的半衰期長、幾乎不忘\n🔼 三層升降：core／working／peripheral；依使用情況在三層間升降，久沒用的逐步淘汰\n💪 存取強化：被手動查詢命中就強化、半衰期延長（自動回憶不計，避免雜訊被誤強化）\n🧹 自動整理不膨脹：每 30 分鐘自動整理資料庫（合併碎片、清舊版本）控制體積、今天仍在跑；並具備相似記憶語意合併能力',{x:.6,y:2.7,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
+  s.addText('⏳ 時間衰減：記憶會隨時間慢慢變淡、不常用的逐漸淡出；越重要的忘得越慢、幾乎不忘\n🔼 三層升降：分核心／常用／邊緣三層；常被用到的往上升、很久沒用的往下降淘汰\n💪 存取強化：被手動查詢叫出來的會被加強、更不容易忘（自動帶出的不算，避免雜訊被誤強化）\n🧹 自動整理不膨脹：每 30 分鐘自動整理資料庫（合併碎片、清舊版本）控制體積、今天仍在跑；並具備相似記憶語意合併能力',{x:.6,y:2.7,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
   s.addText('雲端模型負責「想」，這套記憶庫負責「記」 —— 像人腦一樣會強化、淡忘、整理，越用越精。',{x:.6,y:4.9,w:12.1,fontSize:12,bold:true,color:'4ade80',fontFace:F});
   s=P.addSlide();head(s,'AGENT SETUP','Agent 怎麼建起來','22d3ee');
   s.addText('🛠 Agent 建置：建 workspace（AGENTS.md／TOOLS.md／knowledge／skills）→ 註冊＋記憶 scope → 通道／Bot → 灌知識（存進語意記憶庫）→ 工具鏈設定＋共用規範套用 → 上線',{x:.6,y:1.75,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
