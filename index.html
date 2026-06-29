@@ -491,10 +491,10 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
       <span style="font-size:.64rem;color:var(--dim);font-weight:600;text-align:center;line-height:1.25">同一份<br>Markdown<br>分兩條 &rarr;</span>
       <span style="display:flex;flex-direction:column;gap:.3rem">
         <span class="node" style="padding:.3rem .55rem;font-size:.72rem;border-color:rgba(74,222,128,.45);text-align:left">① md-to-lancedb → <b class="accent-l">向量庫</b><br><span style="color:var(--dim);font-size:.6rem;font-weight:400">切 section · L0/L1/L2 三層 · Qwen 4096 維 → 語意檢索</span></span>
-        <span class="node" style="padding:.3rem .55rem;font-size:.72rem;border-color:rgba(176,122,255,.45);text-align:left">② Graphify → <b class="accent-p">依賴／知識圖譜</b><br><span style="color:var(--dim);font-size:.6rem;font-weight:400">程式碼／規格 → 關係圖 → 結構理解</span></span>
+        <span class="node" style="padding:.3rem .55rem;font-size:.72rem;border-color:rgba(176,122,255,.45);text-align:left">② Graphify → <b class="accent-p">程式碼依賴圖</b><br><span style="color:var(--dim);font-size:.6rem;font-weight:400">Client／Server codebase（建置期萃玩法骨架）</span></span>
       </span>
       <span class="arrow">&rarr;</span>
-      <span class="node" style="padding:.35rem .6rem;font-size:.75rem;border-color:rgba(74,222,128,.35)">各 Agent 知識庫<br><span style="color:var(--dim);font-size:.61rem;font-weight:400">向量庫 + 圖譜，scope 隔離</span></span>
+      <span class="node" style="padding:.35rem .6rem;font-size:.75rem;border-color:rgba(74,222,128,.35)">各 Agent 知識庫<br><span style="color:var(--dim);font-size:.61rem;font-weight:400">向量庫＋圖譜 · 各 Agent 獨立</span></span>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.55rem;font-size:.72rem">
       <span class="chip"><b class="accent-l">87</b>&nbsp;遊戲規格</span>
@@ -515,11 +515,11 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
       <span class="arrow">&rarr;</span>
       <span class="node" style="padding:.3rem .55rem;font-size:.74rem">灌知識<br><span style="color:var(--dim);font-size:.6rem;font-weight:400">md-to-lancedb</span></span>
       <span class="arrow">&rarr;</span>
-      <span class="node" style="padding:.3rem .55rem;font-size:.74rem">工具鏈 + snippet 注入</span>
+      <span class="node" style="padding:.3rem .55rem;font-size:.74rem">工具鏈設定 + 共用規範套用</span>
       <span class="arrow">&rarr;</span>
       <span class="node" style="padding:.3rem .55rem;font-size:.74rem;border-color:rgba(74,222,128,.4)">✓ 上線</span>
     </div>
-    <div style="font-size:.74rem;color:var(--dim);margin-top:.5rem">上線後持續學：<strong class="accent-l">對話即更新</strong> —— 自動把有價值的對話萃取入該 Agent 記憶庫（各 scope 嚴格隔離）。</div>
+    <div style="font-size:.74rem;color:var(--dim);margin-top:.5rem">上線後持續學：<strong class="accent-l">對話即更新</strong> —— 自動把有價值的對話萃取入該 Agent 記憶庫（各 Agent 記憶獨立、互不干擾）。</div>
   </div>
 </div>
 </section>
@@ -546,7 +546,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
         &bull; spec 9-gate 驗證器（內含 codex 視覺評分）<b class="accent-l">[CLI]</b><br>
         &bull; xlsx_to_md · 競品網頁 fetch — Excel／網頁→MD <b class="accent-l">[CLI]</b><br>
         &bull; mmdc · 生圖 CLI — 流程圖／架構圖 <b class="accent-l">[CLI]</b><br>
-        &bull; nodriver · ocb — 繞 CF／VPN、M365／SharePoint <b class="accent-o">[瀏覽器]</b><br>
+        &bull; nodriver-browse 競品網頁（VPN／繞反爬驗證）· ocb 公司文件（M365／SharePoint）<b class="accent-o">[瀏覽器]</b><br>
         &bull; web_search（SearXNG）— 競品／市場檢索 <b class="accent-b">[web]</b>；Redmine 工單 <b class="accent-r">[外掛]</b>
       </div>
     </div>
@@ -566,7 +566,6 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
       <div class="panel-body" style="font-size:.79rem;line-height:1.55">
         &bull; <strong>「Cocos Creator 是最終真相」</strong>：只看 Spine／Blender 預覽不算完成<br>
         &bull; <strong>三段式交付驗證</strong>（結構→視覺→Cocos 引擎內），任一段 FAIL 即停、不背景自動重做<br>
-        &bull; 交付確認硬規則：只有 message 回 success 才算「已傳」<br>
         &bull; <span style="color:var(--dim)">知識庫 <strong style="color:var(--txt)">21 份</strong> ＋ <strong style="color:var(--txt)">19 個 Skills</strong>（生圖／Cocos 驗證／Spine 匯出／美術 QC…）</span>
       </div>
     </div>
@@ -631,7 +630,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
       <div class="panel-body" style="font-size:.79rem;line-height:1.55">
         &bull; <strong>共用模組「絕對禁改」</strong>：5 個共用目錄永不動，只在 Game／ 子目錄擴充<br>
         &bull; <strong>多 Cocos 版本對齊</strong>（G59＝3.8.6／G79＝2.4.13），不跨版本貼 code<br>
-        &bull; 節點接線一律用 @property（禁 find／路徑搜尋）；交付前 Hermes 自檢＋人工檢核 Gate<br>
+        &bull; 節點接線一律用 @property（禁 find／路徑搜尋）；交付前自我檢查＋人工檢核 Gate<br>
         &bull; <span style="color:var(--dim)">知識庫 <strong style="color:var(--txt)">28 份</strong>：7 款現役 codebase 用 Graphify 抽依賴圖 → 萃成 3 種玩法骨架</span>
       </div>
     </div>
@@ -678,7 +677,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
       </div>
     </div>
   </div>
-  <div class="a panel panel-b" style="padding:.55rem .9rem"><div style="font-size:.8rem"><strong class="accent-b">💡 亮點：</strong>三重鎖 —— SlotCommon 禁改 ＋ 3 道人工 Gate（規劃／寫碼／RTP 收斂）＋ Hermes 自驗證；每 Gate 等人工核准才續。</div></div>
+  <div class="a panel panel-b" style="padding:.55rem .9rem"><div style="font-size:.8rem"><strong class="accent-b">💡 亮點：</strong>三重鎖 —— SlotCommon 禁改 ＋ 3 道人工 Gate（規劃／寫碼／RTP 收斂）＋ 自我驗證；每 Gate 等人工核准才續。</div></div>
 </div>
 </section>
 
@@ -974,18 +973,18 @@ function buildPptx(){
   s.addText('每個職能 Agent 背後是一整套結構化、可維護、持續演進的工程結構（harness）：規範檔/協議/技能/知識庫，不是一句 prompt。是「Agent 工程」。',{x:.6,y:1.65,w:12.1,fontSize:14,italic:true,color:'bd8bff',fontFace:F});
   s.addText('📋 AGENTS.md 規則檔：每 Agent 約 300 行 SOP（.md），snippet 自動注入、持續維護\n📐 系統協議 docs/system：把「怎樣算做完」寫成能自動檢查的規則（開工讀必讀檔、用最新模組、交付前自檢、圖沒過關不准交）\n🧩 Skills 技能模組：SOP 包成可執行技能（美術 Agent 約 18 個：Cocos 驗證/QC/Spine 匯出）\n🔧 TOOLS.md 工具路由：預配專屬工具鏈（MCP/CLI/API/瀏覽器），開箱即用\n🧠 知識庫＋記憶：各職能獨立 knowledge ＋ 學習記憶（對話即更新）\n✅ 自驗證 Gate＋權限：交付前自我檢查；per-user Git 權限隔離',{x:.6,y:2.4,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:24});
   s=P.addSlide();head(s,'KNOWLEDGE PIPELINE & AGENT BUILD','知識怎麼萃取、Agent 怎麼建起來','fb923c');
-  s.addText('📥 知識萃取：既有遊戲 Code／規格書／競品／影片 → 轉 Markdown（轉檔＋AI 視覺描述）→ Graphify 知識圖譜 → md-to-lancedb（切 section＋L0/L1/L2 三層摘要＋Qwen 4096 維向量）→ 各 Agent 獨立 scope',{x:.6,y:1.55,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:20});
+  s.addText('📥 知識萃取：既有遊戲 Code／規格書／競品／影片 → 轉 Markdown（轉檔＋AI 視覺描述）→ 並行兩條：① md-to-lancedb 向量庫（切 section＋L0/L1/L2 三層＋Qwen 4096 維 → 語意檢索）② Graphify 程式碼依賴圖（Client／Server，建置期萃骨架）→ 各 Agent 知識庫',{x:.6,y:1.55,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:20});
   s.addText('實證量級：87 份遊戲規格 ｜ 188 篇競品分析 ｜ 11 款機率數學（3387 張 PAR sheet）｜ ~13 份遊戲/模組依賴圖譜（client 7＋server 6）',{x:.6,y:2.95,w:12.1,fontSize:12,bold:true,color:'4ade80',fontFace:F,lineSpacing:20});
-  s.addText('🛠 Agent 建置：建 workspace（AGENTS.md／TOOLS.md／knowledge／skills）→ 註冊＋記憶 scope → 通道／Bot → 灌知識（md-to-lancedb）→ 工具鏈＋snippet 注入 → 上線',{x:.6,y:3.85,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:20});
-  s.addText('上線後持續學：對話即更新 —— 自動把有價值的對話萃取入該 Agent 記憶庫（各 scope 嚴格隔離）。',{x:.6,y:5.05,w:12.1,fontSize:11.5,color:'a0a0b0',fontFace:F});
+  s.addText('🛠 Agent 建置：建 workspace（AGENTS.md／TOOLS.md／knowledge／skills）→ 註冊＋記憶 scope → 通道／Bot → 灌知識（md-to-lancedb）→ 工具鏈設定＋共用規範套用 → 上線',{x:.6,y:3.85,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:20});
+  s.addText('上線後持續學：對話即更新 —— 自動把有價值的對話萃取入該 Agent 記憶庫（各 Agent 記憶獨立、互不干擾）。',{x:.6,y:5.05,w:12.1,fontSize:11.5,color:'a0a0b0',fontFace:F});
   s=P.addSlide();head(s,'AGENT · 企劃 / GAME DESIGN','🎰 企劃 Agent','4ade80');
   s.addText('角色：把模糊需求整理成可交付企劃 —— 規格書、競品拆解、需求定義、Excel 轉檔。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'4ade80',fontFace:F});
   s.addText('🧩 設計(md)：薄契約＋V1.5 規格 SOP 硬鎖 ｜ 數值紅線（不猜 RTP、未給標待補、競品圖須真實截圖）｜ 交付前 9 道 gate（含 AI 視覺評分＋HTTP 200）全 PASS 才結案 ｜ 知識庫 295 份（87 規格＋188 競品）',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('🔧 串接工具×方式：向量記憶庫[記憶] ｜ spec 9-gate 驗證器（含 codex 視覺）[CLI] ｜ xlsx_to_md／競品 fetch[CLI] ｜ mmdc／生圖 CLI[CLI] ｜ nodriver／ocb[瀏覽器] ｜ web_search[web] ｜ Redmine[外掛]',{x:.6,y:3.75,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
+  s.addText('🔧 串接工具×方式：向量記憶庫[記憶] ｜ spec 9-gate 驗證器（含 codex 視覺）[CLI] ｜ xlsx_to_md／競品 fetch[CLI] ｜ mmdc／生圖 CLI[CLI] ｜ nodriver 競品網頁(VPN/繞反爬)／ocb 公司文件(M365)[瀏覽器] ｜ web_search[web] ｜ Redmine[外掛]',{x:.6,y:3.75,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('💡 亮點：9 道 spec 交付 gate（含 AI 視覺檢查）—— Agent 無法「假裝完成」。',{x:.6,y:5.1,w:12.1,fontSize:12,bold:true,color:'4ade80',fontFace:F});
   s=P.addSlide();head(s,'AGENT · 美術 / ART','🎨 美術 Agent','22d3ee');
   s.addText('角色：Slot 美術全鏈 —— 生圖／修圖、Spine 2D 動畫、3D、Cocos 匯入驗證、競品 QC。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'22d3ee',fontFace:F});
-  s.addText('🧩 設計(md)：「Cocos Creator 是最終真相」｜ 三段式交付驗證（結構→視覺→Cocos 引擎內），任一段 FAIL 即停、不背景自動重做 ｜ 只有 message 回 success 才算「已傳」｜ 知識庫 21 份＋19 個 Skills',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
+  s.addText('🧩 設計(md)：「Cocos Creator 是最終真相」｜ 三段式交付驗證（結構→視覺→Cocos 引擎內），任一段 FAIL 即停、不背景自動重做 ｜ 知識庫 21 份＋19 個 Skills',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('🔧 串接工具×方式：cocos-art(:3002)[MCP] ｜ Blender(:9876)[MCP] ｜ Photoshop AppleScript/ExtendScript[CLI] ｜ Spine 4.2[CLI] ｜ AI 生圖 ChatGPT 網頁＋GPT Image API[CLI] ｜ Freepik／Magnific(art-chrome)[瀏覽器] ｜ Kling 動效[瀏覽器] ｜ Penpot／Open Design[外掛]',{x:.6,y:3.75,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('💡 亮點：生圖→去背→Spine→Cocos 引擎內自檢的閉環，過不了就停、不假裝 PASS。',{x:.6,y:5.1,w:12.1,fontSize:12,bold:true,color:'22d3ee',fontFace:F});
   s=P.addSlide();head(s,'AGENT · 音效 / AUDIO','🎵 音效 Agent','fb7185');
@@ -1002,7 +1001,7 @@ function buildPptx(){
   s.addText('角色：Python —— Spin 邏輯、機率整合、Protocol 設計、單元測試。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'60a5fa',fontFace:F});
   s.addText('🧩 設計(md)：SlotCommon 共用框架「禁修改」(只在 Game/Slot/{GameId}/ 擴充) ｜ 新遊戲固定產出 6 個核心 class ｜ 3 道人工 Gate(規劃→寫碼→Codex review→FastTest RTP 收斂，逐 Gate 等核准) ｜ 知識庫 22 份、6 款遊戲＋Graphify 圖',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('🔧 串接工具×方式：Python・FastTest／TestClient[CLI] ｜ Docker 本機 build[CLI](K8S/CI 為知識) ｜ git 個人 PAT(ugit)[外掛]・gh api 唯讀[CLI] ｜ mmdc／codex vision[CLI] ｜ 向量記憶庫[記憶] ｜ ocb[瀏覽器]／Redmine[外掛]',{x:.6,y:3.75,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
-  s.addText('💡 亮點：三重鎖 —— SlotCommon 禁改＋3 道人工 Gate(規劃／寫碼／RTP 收斂)＋Hermes 自驗證；每 Gate 等人工核准才續。',{x:.6,y:5.1,w:12.1,fontSize:12,bold:true,color:'60a5fa',fontFace:F});
+  s.addText('💡 亮點：三重鎖 —— SlotCommon 禁改＋3 道人工 Gate(規劃／寫碼／RTP 收斂)＋自我驗證；每 Gate 等人工核准才續。',{x:.6,y:5.1,w:12.1,fontSize:12,bold:true,color:'60a5fa',fontFace:F});
   s=P.addSlide();head(s,'AGENT · 機率 / PROBABILITY','🎲 機率 Agent — Probability Lab','fb923c');
   s.addText('角色：機率／數學實驗室 —— PAR sheet、RTP／命中率／波動度、Monte Carlo 模擬驗證。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'fb923c',fontFace:F});
   s.addText('🧩 設計(md)：零幻覺(參數只能來自已驗證來源，禁業界常見推論) ｜ 數值紅線(模擬vs理論偏差>2%→人工審核停手；FG 觸發率0%→pipeline 失敗) ｜ 與品檢 Agent 分工「理論 vs 實測」、刻意移除 BigQuery ｜ 知識庫 15 份、11 款遊戲數學(3387 PAR)',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
