@@ -183,7 +183,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="panel panel-c" style="padding:1rem;text-align:center"><div class="metric accent-c">6</div><div class="metric-label">職能 Agent 全數上線運作</div></div>
     <div class="panel panel-l" style="padding:1rem;text-align:center"><div class="metric accent-l">1</div><div class="metric-label">完整老虎機 Demo（福星高照）</div></div>
     <div class="panel panel-a" style="padding:1rem;text-align:center"><div class="metric accent-a">3 階段</div><div class="metric-label">知識收集→建置→實戰，製程跑通</div></div>
-    <div class="panel panel-o" style="padding:1rem;text-align:center"><div class="metric accent-o">越做越快</div><div class="metric-label">各職能實測已縮短開發時間，經驗延續下一款</div></div>
+    <div class="panel panel-o" style="padding:1rem;text-align:center"><div class="metric accent-o">越做越快</div><div class="metric-label">各職能實測已縮短部分開發時間；全製程化進行中</div></div>
   </div>
   <div class="a g3">
     <div class="panel panel-r" style="padding:1.1rem"><div class="panel-title" style="color:var(--rose);font-size:1.05rem">做了什麼</div><div class="panel-body" style="font-size:.9rem">為 6 個職能各建一個 AI Agent，以<strong>試開發福星高照續作</strong>為場景，跑通完整開發製程。</div></div>
@@ -255,7 +255,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="cmp-row">
       <div class="lbl">產能</div>
       <div class="them"><span class="ic" style="color:var(--dim)">▸</span>經驗多留在個人，跨案較難自動延續</div>
-      <div class="you"><span class="ic">✓</span><strong>各職能實測已縮短開發時間、越做越快</strong>（見各職能成果連結）</div>
+      <div class="you"><span class="ic">✓</span><strong>各職能實測已縮短部分開發時間</strong>（見連結）；朝<strong>全製程化</strong>邁進</div>
     </div>
   </div>
 </div>
@@ -464,7 +464,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <section class="slide" data-slide="13">
 <div class="inner">
   <div><span class="a eyebrow" style="color:var(--orange)">Results by Function</span><h2 class="a">各職能實戰成果</h2></div>
-  <p class="a lead" style="max-width:none;font-size:.95rem">6 職能各自的能力與實際產出，由<strong class="accent-o">各職能負責人</strong>提供連結 —— <strong class="accent-l">各職能實測：AI 製程已縮短開發時間</strong>，Before/After 見各連結。</p>
+  <p class="a lead" style="max-width:none;font-size:.92rem;line-height:1.5">6 職能各自的能力與實際產出，由<strong class="accent-o">各職能負責人</strong>提供連結 —— <strong class="accent-l">各職能實測：AI 在多個環節已縮短開發時間</strong>（Before/After 見各連結）。目前各環節仍需人工串接與審核、<strong>尚非全程自動化</strong>；「<strong class="accent-c">全製程化</strong>」是我們的下一步目標。</p>
   <div class="a fidx" id="fidx"></div>
 </div>
 </section>
@@ -592,12 +592,12 @@ function buildPptx(){
   s.addText('主題：試開發福星高照續作\n核心策略：AI 跑流程、人工審核把關',{x:.6,y:4,w:12,fontSize:15,color:DIM,fontFace:F,align:'center',lineSpacing:26});
   s=P.addSlide();head(s,'EXECUTIVE SUMMARY','一頁看懂這次競賽成果','22d3ee');
   s.addText('6 職能 Agent 全數上線 ｜ 1 台完整 Demo（福星高照）｜ 3 階段全完成 ｜ 框架讓下一款越做越快',{x:.6,y:1.8,w:12,fontSize:16,color:'e8e8f0',fontFace:F});
-  s.addText('做了什麼：為 6 職能各建一個 AI Agent，以試開發福星高照續作跑通製程。\n怎麼做：AI 跑流程、人工審核把關；串行改多職能平行 + 記憶/自動學習迴路。\n價值：會持續累積經驗、讓每款越做越快的製程框架（各職能實測已縮短開發時間）。',{x:.6,y:2.7,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s.addText('做了什麼：為 6 職能各建一個 AI Agent，以試開發福星高照續作跑通製程。\n怎麼做：AI 跑流程、人工審核把關；串行改多職能平行 + 記憶/自動學習迴路。\n價值：會持續累積經驗、讓每款越做越快的製程框架（各職能實測已縮短部分開發時間；全製程化進行中）。',{x:.6,y:2.7,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'PROBLEM & GOAL','為什麼做：痛點與目標','fb7185');
   s.addText('痛點：重複性高、知識散落、迭代效率低。\n目標：6 職能各建 Agent、完整知識庫、讓下一款越做越快的框架。\n核心策略：AI 跑流程、人工審核把關。',{x:.6,y:1.9,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'WHY NOT JUST A PERSONAL AGENT','和「自己電腦裝 AI Agent」差在哪','b07aff');
   s.addText('定位不同：個人 Agent 讓「一個人」做得更快、把機敏資料留在本機；我們的框架放大「整個組織」：越做越快、知識留存、集中治理。不是取代，是各守其位。',{x:.6,y:1.6,w:12.1,fontSize:13,italic:true,color:'4ade80',fontFace:F,lineSpacing:20});
-  s.addText('怎麼用：個人→要自己安裝/設定/串工具（技術門檻）｜框架→員工只用自然語言對話、拿專業糾正教育 Agent（零技術門檻）\n分工：個人→一個萬用助理什麼都做｜框架→6 職能各建專屬 Agent，覆蓋完整製程線\n知識：個人→留在單機、難組織級傳承｜框架→各職能獨立知識庫，留在組織、隨對話更新\n品質：個人→看個人功力、時好時壞｜框架→規範做進 Agent（AGENTS.md＋自我精進 skills＋self-check）＋人工審核\n治理：個人→缺乏集中治理/稽核｜框架→使用治理＋健康監控、權限隔離、成本/稽核可追溯\n複製：個人→換人/換專案重來(1→1)｜框架→為複製而設計 1→N（各職能實測已縮短開發時間，整台複製效益持續驗證）',{x:.6,y:2.4,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
+  s.addText('怎麼用：個人→要自己安裝/設定/串工具（技術門檻）｜框架→員工只用自然語言對話、拿專業糾正教育 Agent（零技術門檻）\n分工：個人→一個萬用助理什麼都做｜框架→6 職能各建專屬 Agent，覆蓋完整製程線\n知識：個人→留在單機、難組織級傳承｜框架→各職能獨立知識庫，留在組織、隨對話更新\n品質：個人→看個人功力、時好時壞｜框架→規範做進 Agent（AGENTS.md＋自我精進 skills＋self-check）＋人工審核\n治理：個人→缺乏集中治理/稽核｜框架→使用治理＋健康監控、權限隔離、成本/稽核可追溯\n複製：個人→換人/換專案重來(1→1)｜框架→為複製而設計 1→N（各職能實測已縮短部分開發時間；全程自動化與整台複製效益持續驗證）',{x:.6,y:2.4,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
   s=P.addSlide();head(s,'SYSTEM ARCHITECTURE','系統架構：完整技術架構','b07aff');
   [['接入層 Ingress','各職能人員 · 🌐 WebUI(Open WebUI) · Telegram/Discord Bot','fb923c'],
    ['編排層 Orchestration · OpenClaw','多 Agent 路由 Gateway · 6 職能 Agent · 👁 人工審核節點 · 排程/權限隔離 · ⚡ Skill 淬鍊上線','b07aff'],
