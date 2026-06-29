@@ -479,7 +479,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <!-- 10a · 知識萃取 × Agent 建置流程 -->
 <section class="slide" id="kb-pipeline" data-slide="10a">
 <div class="inner" style="gap:.7rem">
-  <div><span class="a eyebrow" style="color:var(--orange)">Knowledge Pipeline &amp; Agent Build</span><h2 class="a">知識怎麼萃取與取用、Agent 怎麼建起來</h2></div>
+  <div><span class="a eyebrow" style="color:var(--orange)">Knowledge · Store &amp; Retrieve</span><h2 class="a">記憶：知識怎麼存、新問題怎麼讀</h2></div>
 
   <div class="a panel panel-l" style="padding:.65rem .9rem">
     <div style="font-size:.85rem;font-weight:700;color:var(--lime);margin-bottom:.4rem">📥 知識萃取流程 <span style="color:var(--dim);font-weight:400;font-size:.74rem">— 把多款既有遊戲萃取成結構化知識</span></div>
@@ -517,6 +517,13 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     </div>
   </div>
 
+</div>
+</section>
+
+<!-- 10a2 · Agent 建置 -->
+<section class="slide" id="agent-build" data-slide="10a2">
+<div class="inner" style="gap:.8rem">
+  <div><span class="a eyebrow" style="color:var(--cyan)">Agent Setup</span><h2 class="a">Agent 怎麼建起來</h2></div>
   <div class="a panel panel-c" style="padding:.65rem .9rem">
     <div style="font-size:.85rem;font-weight:700;color:var(--cyan);margin-bottom:.4rem">🛠 Agent 建置流程 <span style="color:var(--dim);font-weight:400;font-size:.74rem">— 新增一個職能 Agent 的標準步驟</span></div>
     <div class="pipe" style="gap:.3rem">
@@ -985,12 +992,13 @@ function buildPptx(){
   s=P.addSlide();head(s,'HARNESS ENGINEERING','每個 Agent 都是「工程化」的，不只是一段 prompt','b07aff');
   s.addText('每個職能 Agent 背後是一整套結構化、可維護、持續演進的工程結構（harness）：規範檔/協議/技能/知識庫，不是一句 prompt。是「Agent 工程」。',{x:.6,y:1.65,w:12.1,fontSize:14,italic:true,color:'bd8bff',fontFace:F});
   s.addText('📋 AGENTS.md 規則檔：每 Agent 約 300 行 SOP（.md），snippet 自動注入、持續維護\n📐 系統協議 docs/system：把「怎樣算做完」寫成能自動檢查的規則（開工讀必讀檔、用最新模組、交付前自檢、圖沒過關不准交）\n🧩 Skills 技能模組：SOP 包成可執行技能（美術 Agent 約 18 個：Cocos 驗證/QC/Spine 匯出）\n🔧 TOOLS.md 工具路由：預配專屬工具鏈（MCP/CLI/API/瀏覽器），開箱即用\n🧠 知識庫＋記憶：各職能獨立 knowledge ＋ 學習記憶（對話即更新）\n✅ 自驗證 Gate＋權限：交付前自我檢查；per-user Git 權限隔離',{x:.6,y:2.4,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:24});
-  s=P.addSlide();head(s,'KNOWLEDGE PIPELINE & AGENT BUILD','知識怎麼萃取與取用、Agent 怎麼建起來','fb923c');
+  s=P.addSlide();head(s,'KNOWLEDGE · STORE & RETRIEVE','記憶：知識怎麼存、新問題怎麼讀','fb923c');
   s.addText('📥 萃取（存）：既有遊戲 Code／規格書／競品／影片 → 轉 Markdown（轉檔＋AI 視覺描述）→ 並行兩條：① md-to-lancedb 向量庫（切 section＋L0/L1/L2 三層＋Qwen 4096 維 → 語意檢索）② Graphify 程式碼依賴圖（Client／Server，建置期萃骨架）→ 各 Agent 知識庫',{x:.6,y:1.55,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:20});
   s.addText('📤 取得（讀）：新問題／對話進來 → 自動找最相關記憶（語意比對＋關鍵字）→ Reranker 重排挑前幾名 → 補進 AI 上下文一起回答（有依據、不亂編）',{x:.6,y:2.5,w:12.1,fontSize:12,bold:true,color:'60a5fa',fontFace:F,lineSpacing:20});
   s.addText('實證量級：87 份遊戲規格 ｜ 188 篇競品分析 ｜ 11 款機率數學（3387 張 PAR sheet）｜ ~13 份遊戲/模組依賴圖譜（client 7＋server 6）',{x:.6,y:3.5,w:12.1,fontSize:12,bold:true,color:'4ade80',fontFace:F,lineSpacing:20});
-  s.addText('🛠 Agent 建置：建 workspace（AGENTS.md／TOOLS.md／knowledge／skills）→ 註冊＋記憶 scope → 通道／Bot → 灌知識（md-to-lancedb）→ 工具鏈設定＋共用規範套用 → 上線',{x:.6,y:4.35,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:20});
-  s.addText('上線後持續學：對話即更新 —— 自動把有價值的對話萃取入該 Agent 記憶庫（各 Agent 記憶獨立、互不干擾）。',{x:.6,y:5.5,w:12.1,fontSize:11.5,color:'a0a0b0',fontFace:F});
+  s=P.addSlide();head(s,'AGENT SETUP','Agent 怎麼建起來','22d3ee');
+  s.addText('🛠 Agent 建置：建 workspace（AGENTS.md／TOOLS.md／knowledge／skills）→ 註冊＋記憶 scope → 通道／Bot → 灌知識（md-to-lancedb）→ 工具鏈設定＋共用規範套用 → 上線',{x:.6,y:1.75,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
+  s.addText('上線後持續學：對話即更新 —— 自動把有價值的對話萃取入該 Agent 記憶庫（各 Agent 記憶獨立、互不干擾）。',{x:.6,y:3.0,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:24});
   s=P.addSlide();head(s,'AGENT · 虎機企劃','🎰 虎機企劃 Agent','4ade80');
   s.addText('角色：把模糊需求整理成可交付企劃 —— 規格書、競品拆解、需求定義、Excel 轉檔。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'4ade80',fontFace:F});
   s.addText('🧩 設計(md)：薄契約＋V1.5 規格 SOP 硬鎖 ｜ 數值紅線（不猜 RTP、未給標待補、競品圖須真實截圖）｜ 交付前 9 道 gate（含 AI 視覺評分＋HTTP 200）全 PASS 才結案 ｜ 知識庫 295 份（87 規格＋188 競品）',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
