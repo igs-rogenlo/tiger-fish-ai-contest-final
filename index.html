@@ -455,6 +455,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="panel panel-c a" style="padding:.8rem"><div class="panel-title" style="color:var(--cyan);font-size:.95rem">&#129504; 相似類型自動複用</div><div class="panel-body" style="font-size:.8rem">做新機台時，AI 自動比對、挑出<strong>相似規格/類型</strong>的既有框架與 Code 直接複用，不從零開始。</div></div>
     <div class="panel panel-a a" style="padding:.8rem"><div class="panel-title" style="color:var(--amber);font-size:.95rem">&#128640; 可擴展設計</div><div class="panel-body" style="font-size:.8rem">新增 Agent 只需灌知識 + 設工具鏈，不動核心。</div></div>
   </div>
+  <div class="a panel panel-l" style="padding:.7rem .95rem;border:1px solid rgba(74,222,128,.3)"><div style="font-size:.88rem"><strong class="accent-l">&#128176; 近乎零邊際成本</strong> —— 整套 6-Agent 製程跑在<strong>固定月訂閱（約 US$300：Codex ~$200 ＋ Claude／Opus 4.8 ~$100，且與個人共用）＋ 本地自架模型（零 API 費）</strong>。多跑一台機台，成本幾乎不變 —— 不是按 API 用量計費的燒錢模式。</div></div>
 </div>
 </section>
 
@@ -990,6 +991,7 @@ function buildPptx(){
   s.addText('一個看 Agent 在做什麼、一個看系統健不健康 —— 治理層實際落地',{x:.5,y:6.7,w:12.3,fontSize:11,color:DIM,fontFace:F,align:'center'});
   s=P.addSlide();head(s,'TECHNICAL HIGHLIGHTS','技術實作亮點','b07aff');
   s.addText('🧠 記憶+學習迴路　⚡ Skill 淬鍊上線　🛠 AI 工具鏈（MCP/CLI/API/瀏覽器）\n🔒 多用戶×權限隔離（per-user 權限/Git，一個 Agent 服務多人）　🧠 跨機台知識複用　🚀 可擴展設計',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
+  s.addText('💰 近乎零邊際成本：整套跑在固定月訂閱（約 US$300：Codex ~$200＋Claude／Opus 4.8 ~$100，與個人共用）＋本地自架模型（零 API 費）——多跑一台機台成本幾乎不變、非按用量燒錢。',{x:.6,y:4.6,w:12,fontSize:13,bold:true,color:'4ade80',fontFace:F,lineSpacing:24});
   s=P.addSlide();head(s,'HARNESS ENGINEERING','每個 Agent 都是「工程化」的，不只是一段 prompt','b07aff');
   s.addText('每個職能 Agent 背後是一整套結構化、可維護、持續演進的工程結構（harness）：規範檔/協議/技能/知識庫，不是一句 prompt。是「Agent 工程」。',{x:.6,y:1.65,w:12.1,fontSize:14,italic:true,color:'bd8bff',fontFace:F});
   s.addText('📋 AGENTS.md 規則檔：每 Agent 約 300 行 SOP（.md），共用規範自動套用、持續維護\n📐 系統協議 docs/system：把「怎樣算做完」寫成能自動檢查的規則（開工讀必讀檔、用最新模組、交付前自檢、圖沒過關不准交）\n🧩 Skills 技能模組：SOP 包成可執行技能（美術 Agent 約 19 個：Cocos 驗證/QC/Spine 匯出）\n🔧 TOOLS.md 工具路由：預配專屬工具鏈（MCP/CLI/API/瀏覽器），開箱即用\n🧠 知識庫＋記憶：各職能獨立 knowledge ＋ 學習記憶（對話即更新）\n✅ 自驗證 Gate＋權限：交付前自我檢查；per-user Git 權限隔離',{x:.6,y:2.4,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:24});
