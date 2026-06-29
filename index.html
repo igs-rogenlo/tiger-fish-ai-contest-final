@@ -435,6 +435,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
       </a>
     </div>
   </div>
+  <div class="a panel panel-l" style="padding:.7rem .95rem;border:1px solid rgba(74,222,128,.3)"><div style="font-size:.88rem"><strong class="accent-l">&#128200; 真的在用，不是 demo</strong> —— 這套 AI Agent 平台<strong>近 30 天 63 位、近 7 天 46 位同仁實際使用</strong>（以數據類 Agent 為大宗：igaming-data／bq-research／dara-bq…）。本次 6 個老虎機 Agent 就<strong>建在這套已被全公司使用、驗證過的平台</strong>上。</div></div>
   <div class="a panel panel-c" style="padding:.75rem .95rem">
     <div class="panel-body" style="font-size:.85rem;line-height:1.65">&#128172; <strong class="accent-c">不只看得到，還能「問」</strong>：使用治理儀表板內建 <strong>AI 對話查詢</strong>（見左圖右下角），用自然語言即可問 <strong class="accent-c">Agent 效能與成本</strong>、<strong class="accent-l">使用者行為</strong>、<strong class="accent-a">系統整體統計</strong> —— 例：「福星高照這週哪個 Agent 消耗最多 Token？」「列出 6 個 Agent 的工具呼叫排名」</div>
   </div>
@@ -984,7 +985,7 @@ function buildPptx(){
   s.addText('🎰 福星高照 Demo 實機畫面（主場景/轉動/免費遊戲/得獎）→ assets/demo-fuxing.png',{x:.6,y:6.9,w:8,fontSize:10,color:DIM,fontFace:F});
   s.addText('這是成果本體：由 6 職能 Agent 協作產出的可運行老虎機 —— 規格/美術/音效/程式/機率全跑過 AI 製程＋人工審核。\n\n✅ 不是 demo 殼：底層 Client/Server/機率直接採用 RD4 的 Macross API 共用架構，是可直接產品化的版本。',{x:8.8,y:1.9,w:4,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:24});
   s=P.addSlide();head(s,'EVIDENCE · 2/2','實證②：6 Agent 製程留痕，可治理','22d3ee');
-  try{s.addImage({path:'assets/dash-audit.png',x:.5,y:1.7,w:6,h:4.2});}catch(e){}
+  s.addText('📈 真的在用，不是 demo：AI Agent 平台近 30 天 63 位、近 7 天 46 位同仁實際使用（數據類 Agent 為大宗）—— 6 個老虎機 Agent 建在這套已被全公司使用的平台上。',{x:.5,y:1.28,w:12.3,fontSize:11,bold:true,color:'4ade80',fontFace:F,lineSpacing:16});
   try{s.addImage({path:'assets/dash-health.png',x:6.8,y:1.7,w:6,h:4.2});}catch(e){}
   s.addText('📊 使用治理儀表板（:3081）：看每個 Agent 做了什麼、花多少 → assets/dash-audit.png',{x:.5,y:6.05,w:6.2,fontSize:10,color:DIM,fontFace:F});
   s.addText('💓 健康監控儀表板（:3080）：看系統健不健康、即時告警 → assets/dash-health.png',{x:6.8,y:6.05,w:6.2,fontSize:10,color:DIM,fontFace:F});
