@@ -644,7 +644,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <section class="slide" id="agent-audio" data-slide="10d">
 <div class="inner" style="gap:.65rem">
   <div><span class="a eyebrow" style="color:var(--rose)">Agent Deep-Dive · 3/6 音效</span><h2 class="a">🎵 虎機音效 Agent</h2></div>
-  <p class="a lead" style="font-size:.86rem;max-width:none">博弈音效／配樂／人聲 AI 製作 —— 規格表批次生成 → 命名 → 轉檔 → 入 Cocos。</p>
+  <p class="a lead" style="font-size:.86rem;max-width:none">遊戲音效／配樂／人聲 AI 製作 —— 規格表批次生成 → 命名 → 轉檔 → 入 Cocos。</p>
   <div class="a g2" style="align-items:stretch">
     <div class="panel panel-r" style="padding:.8rem .9rem">
       <div class="panel-title" style="color:var(--rose);font-size:.96rem">🧩 Agent 設計（md）</div>
@@ -849,7 +849,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <section class="slide" id="security" data-slide="10j">
 <div class="inner" style="gap:.7rem">
   <div><span class="a eyebrow" style="color:var(--rose)">Defense in Depth</span><h2 class="a">資安縱深：不只權限，還防「注入」與「冒充」</h2></div>
-  <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">博弈業最怕「被注入指令操控、或把惡意內容寫進長期記憶」。除了權限分級，我們對<strong>使用者排程的任務</strong>與<strong>自學內容</strong>做縱深防護：</p>
+  <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">多人共用的 AI 平台最怕「被注入指令操控、或把惡意內容寫進長期記憶」。除了權限分級，我們對<strong>使用者排程的任務</strong>與<strong>自學內容</strong>做縱深防護：</p>
   <div class="a g3" style="gap:.7rem;align-items:stretch">
     <div class="panel panel-r" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--rose);font-size:.96rem">🛡 攔下被偷塞的惡意指令</div><div class="panel-body" style="font-size:.8rem">排程任務先過注入偵測：<strong>本地 Qwen 先判，可疑或失效才再加判 Codex、取較嚴</strong>；兩者都失效就<strong>直接拒（fail-closed）</strong>。</div></div>
     <div class="panel panel-a" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--amber);font-size:.96rem">🔏 防偽造、防冒名</div><div class="panel-body" style="font-size:.8rem"><strong>HMAC 簽章</strong>（攻擊者就算寫檔也偽造不了）＋<strong>身份綁定</strong>（取可信來源、非訊息自稱）。</div></div>
@@ -1110,7 +1110,7 @@ function buildPptx(){
   s.addText('🔧 串接工具×方式：cocos-art[MCP] ｜ Blender[MCP] ｜ Photoshop AppleScript/ExtendScript[CLI] ｜ Spine 4.2[CLI] ｜ AI 生圖 ChatGPT 網頁＋GPT Image API[CLI] ｜ Freepik／Magnific(art-chrome)[瀏覽器] ｜ Kling 動效[瀏覽器] ｜ Penpot／Open Design[外掛]',{x:.6,y:3.75,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('💡 亮點：生圖→去背→Spine→Cocos 引擎內自檢的閉環，過不了就停、不假裝 PASS。',{x:.6,y:5.1,w:12.1,fontSize:12,bold:true,color:'22d3ee',fontFace:F});
   s=P.addSlide();head(s,'AGENT · 虎機音效','🎵 虎機音效 Agent','fb7185');
-  s.addText('角色：博弈音效／配樂／人聲 AI 製作 —— 規格表批次生成→命名→轉檔→入 Cocos。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'fb7185',fontFace:F});
+  s.addText('角色：遊戲音效／配樂／人聲 AI 製作 —— 規格表批次生成→命名→轉檔→入 Cocos。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'fb7185',fontFace:F});
   s.addText('🧩 設計(md)：只做音效；生成前 prompt 必具體化（省 credits）｜ 流程零 SOP（規格表→先 2-3 個 demo→批次）｜ 紅線：不暴露 API key／不自動填 Suno 帳密／大量生成先報預估 ｜ 領域 know-how 內嵌規範檔',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('🔧 串接工具×方式：ElevenLabs[CLI 包 API] ｜ Suno[瀏覽器] ｜ mlx_whisper 本機 STT[CLI] ｜ ffmpeg 轉檔[CLI] ｜ excel_to_graphify[CLI] ｜ 音檔複製進 Cocos assets[CLI／檔案複製] ｜ web_search[web]／記憶[記憶]',{x:.6,y:3.75,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('💡 亮點：一張 Excel 規格表→端到端跑成命名正確、可直接進 Cocos 的整批音檔（API 批次＋瀏覽器配樂雙引擎）。',{x:.6,y:5.1,w:12.1,fontSize:12,bold:true,color:'fb7185',fontFace:F});
@@ -1141,7 +1141,7 @@ function buildPptx(){
   s.addText('🎲 機率執行節點（獨立 Windows 機）：Go 快測／Monte Carlo／瀏覽器自動快測　　🎨 美術執行節點（與 Gateway 同台 Mac 的 node 角色）：Photoshop／Blender／Spine／Cocos 創意環境　　➕ 可水平擴充：加節點加算力',{x:.6,y:3.7,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('為什麼多節點：⚡ 算力隔離（快測模擬數百萬次 spin 不卡大腦）｜ 🧩 環境隔離（機率需 Windows、美術需創意軟體）｜ 📈 水平擴充（手腳跑重活、大腦持續服務，加機器加產能）',{x:.6,y:4.95,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s=P.addSlide();head(s,'DEFENSE IN DEPTH','資安縱深：不只權限，還防注入與冒充','fb7185');
-  s.addText('博弈業最怕「被注入指令操控、或把惡意內容寫進長期記憶」。除了權限分級，我們對使用者排程的任務與自學內容做縱深防護：',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'fb7185',fontFace:F,lineSpacing:20});
+  s.addText('多人共用的 AI 平台最怕「被注入指令操控、或把惡意內容寫進長期記憶」。除了權限分級，我們對使用者排程的任務與自學內容做縱深防護：',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'fb7185',fontFace:F,lineSpacing:20});
   s.addText('🛡 攔下被偷塞的惡意指令（防注入）：排程任務先過注入偵測，本地 Qwen 先判、可疑或失效才加判 Codex 取較嚴；兩者都失效就直接拒（fail-closed）\n🔏 防偽造、防冒名：HMAC 簽章（寫檔也偽造不了）＋身份綁定（取可信來源、非訊息自稱）\n🧹 寫進記憶前先篩毒：長期記憶寫入前做 secrets 遮罩（token／私鑰／路徑）、機敏資料不進長期庫（啟用中）；Skill 注入掃描＋風險分級框架已建置、隨自學管線啟用\n🚦 限定發送對象＋用量上限：群組投遞白名單、per-owner 配額、錯誤訊息淨化',{x:.6,y:2.55,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:24});
   s.addText('🎯 用真實攻擊手法自我演練（已建置並執行過、非持續自動）：用已發表攻擊當固定靶 —— PoisonedRAG · AgentPoison · MINJA · unicode 隱藏字元，確保 AI 自學的東西不會被下毒。',{x:.6,y:4.85,w:12.1,fontSize:12,bold:true,color:'b07aff',fontFace:F,lineSpacing:20});
   s=P.addSlide();head(s,'RELIABILITY','可靠性：主腦掛了、撞額度、服務掛了，怎麼辦','60a5fa');
