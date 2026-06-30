@@ -853,13 +853,13 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
   <div class="a g3" style="gap:.7rem;align-items:stretch">
     <div class="panel panel-r" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--rose);font-size:.96rem">🛡 攔下被偷塞的惡意指令</div><div class="panel-body" style="font-size:.8rem">排程任務先過注入偵測：<strong>本地 Qwen 先判，可疑或失效才再加判 Codex、取較嚴</strong>；兩者都失效就<strong>直接拒（fail-closed）</strong>。</div></div>
     <div class="panel panel-a" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--amber);font-size:.96rem">🔏 防偽造、防冒名</div><div class="panel-body" style="font-size:.8rem"><strong>HMAC 簽章</strong>（攻擊者就算寫檔也偽造不了）＋<strong>身份綁定</strong>（取可信來源、非訊息自稱）。</div></div>
-    <div class="panel panel-c" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--cyan);font-size:.96rem">🧹 寫進記憶／技能前先篩毒</div><div class="panel-body" style="font-size:.8rem">自動 Skill 走<strong>注入掃描＋風險分級</strong>（含 credential／shell 樣式）；長期記憶寫入前做 <strong>secrets 遮罩</strong>（token／私鑰／路徑）。</div></div>
+    <div class="panel panel-c" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--cyan);font-size:.96rem">🧹 寫進記憶前先篩毒</div><div class="panel-body" style="font-size:.8rem">長期記憶寫入前做 <strong>secrets 遮罩</strong>（token／私鑰／路徑），機敏資料不進長期庫（<strong class="accent-l">啟用中</strong>）。Skill 注入掃描＋風險分級框架已建置，隨自學管線啟用。</div></div>
   </div>
   <div class="a g2" style="gap:.7rem;align-items:stretch">
     <div class="panel panel-l" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--lime);font-size:.96rem">🚦 限定發送對象＋用量上限</div><div class="panel-body" style="font-size:.8rem">群組投遞白名單防外洩、per-owner 配額防濫用、錯誤訊息淨化防二次注入。</div></div>
     <div class="panel panel-p" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--purple);font-size:.96rem">🎯 用真實攻擊手法自我演練（已建置並執行過）</div><div class="panel-body" style="font-size:.8rem">用已發表攻擊當固定靶測自學內容：<strong>PoisonedRAG · AgentPoison · MINJA · unicode 隱藏字元</strong>，確保 AI 自學的東西不會被下毒。</div></div>
   </div>
-  <div class="a" style="font-size:.76rem;color:var(--dim);text-align:center">前四項<strong class="accent-l">啟用中</strong>；紅隊測試為<strong class="accent-a">已建置並執行過</strong>的驗證框架（非持續自動跑）。</div>
+  <div class="a" style="font-size:.76rem;color:var(--dim);text-align:center">防注入、防偽造冒名、發送白名單＋配額、記憶 secrets 遮罩：<strong class="accent-l">皆啟用中、即時把關</strong>；Skill 注入掃描與紅隊測試：<strong class="accent-a">已建置並驗證過</strong>（隨自學管線、目前人工把關、非自動跑）。</div>
 </div>
 </section>
 
@@ -1142,7 +1142,7 @@ function buildPptx(){
   s.addText('為什麼多節點：⚡ 算力隔離（快測模擬數百萬次 spin 不卡大腦）｜ 🧩 環境隔離（機率需 Windows、美術需創意軟體）｜ 📈 水平擴充（手腳跑重活、大腦持續服務，加機器加產能）',{x:.6,y:4.95,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s=P.addSlide();head(s,'DEFENSE IN DEPTH','資安縱深：不只權限，還防注入與冒充','fb7185');
   s.addText('博弈業最怕「被注入指令操控、或把惡意內容寫進長期記憶」。除了權限分級，我們對使用者排程的任務與自學內容做縱深防護：',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'fb7185',fontFace:F,lineSpacing:20});
-  s.addText('🛡 攔下被偷塞的惡意指令（防注入）：排程任務先過注入偵測，本地 Qwen 先判、可疑或失效才加判 Codex 取較嚴；兩者都失效就直接拒（fail-closed）\n🔏 防偽造、防冒名：HMAC 簽章（寫檔也偽造不了）＋身份綁定（取可信來源、非訊息自稱）\n🧹 寫進記憶／技能前先篩毒：自動 Skill 走注入掃描＋風險分級（含 credential／shell 樣式）；長期記憶寫入前做 secrets 遮罩（token／私鑰／路徑）\n🚦 限定發送對象＋用量上限：群組投遞白名單、per-owner 配額、錯誤訊息淨化',{x:.6,y:2.55,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:24});
+  s.addText('🛡 攔下被偷塞的惡意指令（防注入）：排程任務先過注入偵測，本地 Qwen 先判、可疑或失效才加判 Codex 取較嚴；兩者都失效就直接拒（fail-closed）\n🔏 防偽造、防冒名：HMAC 簽章（寫檔也偽造不了）＋身份綁定（取可信來源、非訊息自稱）\n🧹 寫進記憶前先篩毒：長期記憶寫入前做 secrets 遮罩（token／私鑰／路徑）、機敏資料不進長期庫（啟用中）；Skill 注入掃描＋風險分級框架已建置、隨自學管線啟用\n🚦 限定發送對象＋用量上限：群組投遞白名單、per-owner 配額、錯誤訊息淨化',{x:.6,y:2.55,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:24});
   s.addText('🎯 用真實攻擊手法自我演練（已建置並執行過、非持續自動）：用已發表攻擊當固定靶 —— PoisonedRAG · AgentPoison · MINJA · unicode 隱藏字元，確保 AI 自學的東西不會被下毒。',{x:.6,y:4.85,w:12.1,fontSize:12,bold:true,color:'b07aff',fontFace:F,lineSpacing:20});
   s=P.addSlide();head(s,'RELIABILITY','可靠性：主腦掛了、撞額度、服務掛了，怎麼辦','60a5fa');
   s.addText('不是靠人盯著 —— 設定即保證的高可用：自動偵測、自動切換、自動重啟，問題即時發現、不影響使用者。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'60a5fa',fontFace:F,lineSpacing:20});
