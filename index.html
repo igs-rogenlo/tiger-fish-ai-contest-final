@@ -378,7 +378,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
   <div class="a" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem .7rem;align-items:start">
     <div style="font-weight:800;font-size:.86rem;color:var(--purple)">💬 Discord<br><span style="font-size:.72rem;color:var(--dim);font-weight:400">多人 × 多 Agent 議題討論：拉同仁＋對應 Agent 開議題（如「上週營收降低10%追蹤」），或拉多個 Agent 一起討論。</span></div>
     <div style="font-weight:800;font-size:.86rem;color:var(--cyan)">✈️ Telegram<br><span style="font-size:.72rem;color:var(--dim);font-weight:400">排程提醒／系統訊息分析：叫 Agent 做排程提醒；群組自動收系統訊息、彙整提醒（活動提醒、大事件儀表板）。</span></div>
-    <div style="font-weight:800;font-size:.86rem;color:var(--lime)">🌐 Open WebUI（自架）<br><span style="font-size:.72rem;color:var(--dim);font-weight:400">內部自架、資料不外流：架在公司內網，<strong style="color:var(--lime)">機敏內容可安心對話</strong>；ChatGPT 式完整介面、免安裝，瀏覽器直接與各職能 Agent 對話、開議題。</span></div>
+    <div style="font-weight:800;font-size:.86rem;color:var(--lime)">🌐 Open WebUI（自架）<br><span style="font-size:.72rem;color:var(--dim);font-weight:400">內部自架、資料不外流：架在公司內網，<strong style="color:var(--lime)">介面與對話紀錄留在內網</strong>；ChatGPT 式完整介面、免安裝，瀏覽器直接與各職能 Agent 對話、開議題。</span></div>
     <a class="shot" href="assets/ch-discord.png" target="_blank"><img src="assets/ch-discord.png" alt="Discord 多人/多 Agent 議題討論" style="width:100%;height:168px;object-fit:contain;background:#05070b;display:block"></a>
     <a class="shot" href="assets/ch-telegram.png" target="_blank"><img src="assets/ch-telegram.png" alt="Telegram 排程提醒/系統訊息" style="width:100%;height:168px;object-fit:contain;background:#05070b;display:block"></a>
     <a class="shot" href="assets/ch-webui.png" target="_blank"><img src="assets/ch-webui.png" alt="Open WebUI 瀏覽器對話" style="width:100%;height:168px;object-fit:contain;background:#05070b;display:block"></a>
@@ -797,6 +797,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="panel panel-c" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--cyan);font-size:.96rem">🧹 寫進記憶前先篩毒</div><div class="panel-body" style="font-size:.8rem">長期記憶寫入前做 <strong>secrets 遮罩</strong>（token／私鑰／路徑），機敏資料不會被寫進長期記憶庫。</div></div>
   </div>
   <div class="a panel panel-l" style="padding:.7rem .95rem"><div style="font-size:.8rem"><strong class="accent-l">🚦 限定發送對象＋用量上限</strong> —— 排程任務若要把結果發到某 Telegram 群，群組須在核准名單、否則擋（防資料外送）；每人排程的數量與頻率有上限（防洗版灌爆）。</div></div>
+  <div class="a panel panel-b" style="padding:.7rem .95rem"><div style="font-size:.8rem"><strong class="accent-b">🔐 資料邊界（機敏分級）</strong> —— 機敏不只個資，<strong>遊戲數學／RTP、原始碼</strong>才是核心 IP。平台可指定資料走<strong>本地自架模型、零外送</strong>（已用於禮品卡個資）；一般開發採雲端 LLM（供應商具企業資料邊界）。<strong class="accent-l">擴大高機敏本地化、建立機敏分級政策為治理方向。</strong></div></div>
   <div class="a" style="font-size:.76rem;color:var(--dim);text-align:center">分類器、HMAC＋身份、發送白名單＋配額、記憶遮敏：<strong class="accent-l">使用時即時把關</strong>；新 Skill <strong class="accent-a">上線前人工審核</strong>。</div>
 </div>
 </section>
@@ -910,7 +911,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 
     <div class="panel panel-r" style="padding:.6rem .85rem">雲端模型有<strong>資料邊界</strong>考量</div>
     <div style="display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.2rem;font-weight:800">&rarr;</div>
-    <div class="panel panel-l" style="padding:.6rem .85rem">機敏資料（如禮品序號）一律走<strong>本地自架模型</strong>，不外送雲端</div>
+    <div class="panel panel-l" style="padding:.6rem .85rem">個資（如禮品序號）已走<strong>本地自架模型</strong>不外送；擴大高機敏（含遊戲數學）本地化為方向</div>
   </div>
   <div class="a" style="font-size:.78rem;color:var(--dim);text-align:center">誠實面對限制、<strong class="accent-l">持續進化</strong> —— 這正是框架會越來越強的原因。</div>
 </div>
@@ -1109,7 +1110,9 @@ function buildPptx(){
   s.addText('💡 亮點：平台的「治理控制塔」—— 觀測全 Agent 用量、審核 Skill 上線、下放權限；三層信任鎖死單一機主，改任何狀態先預覽再核准、全程稽核。',{x:.6,y:5.2,w:12.1,fontSize:12,bold:true,color:'b07aff',fontFace:F});
   s=P.addSlide();head(s,'DEFENSE IN DEPTH','資安縱深：不只權限，還防注入與冒充','fb7185');
   s.addText('多人共用的 AI 平台最怕「被注入指令操控、或把惡意內容寫進長期記憶」。除了權限分級，我們對使用者排程的任務與自學內容做縱深防護：',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'fb7185',fontFace:F,lineSpacing:20});
-  s.addText('🛡 攔下被偷塞的惡意指令（防注入）：排程任務先過注入偵測，本地 Qwen 先判、可疑或失效才加判 Codex 取較嚴；兩者都失效就直接拒（fail-closed）\n🔏 防偽造、防冒名：排程任務用密鑰蓋防偽封條（HMAC、像支票水印）被偷改就驗不過；身份只認平台給的真實 ID（像門禁刷卡）、冒名碰不到別人的排程\n🧹 寫進記憶前先遮敏：長期記憶寫入前做 secrets 遮罩（token／私鑰／路徑）、機敏資料不會進長期記憶庫；新 Skill 上線前經人工風險分級審核\n🚦 限定發送對象＋用量上限：排程要發到某 TG 群須在核准名單否則擋（防外送）；每人排程數量／頻率有上限（防洗版灌爆）',{x:.6,y:2.55,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:24});  s=P.addSlide();head(s,'RELIABILITY','可靠性：主腦掛了、撞額度、服務掛了，怎麼辦','60a5fa');
+  s.addText('🛡 攔下被偷塞的惡意指令（防注入）：排程任務先過注入偵測，本地 Qwen 先判、可疑或失效才加判 Codex 取較嚴；兩者都失效就直接拒（fail-closed）\n🔏 防偽造、防冒名：排程任務用密鑰蓋防偽封條（HMAC、像支票水印）被偷改就驗不過；身份只認平台給的真實 ID（像門禁刷卡）、冒名碰不到別人的排程\n🧹 寫進記憶前先遮敏：長期記憶寫入前做 secrets 遮罩（token／私鑰／路徑）、機敏資料不會進長期記憶庫；新 Skill 上線前經人工風險分級審核\n🚦 限定發送對象＋用量上限：排程要發到某 TG 群須在核准名單否則擋（防外送）；每人排程數量／頻率有上限（防洗版灌爆）',{x:.6,y:2.55,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:24});
+  s.addText('🔐 資料邊界（機敏分級）：機敏不只個資，遊戲數學／RTP、原始碼才是核心 IP；平台可指定資料走本地自架模型零外送（已用於禮品卡個資），一般開發採雲端 LLM（供應商具企業資料邊界）；擴大高機敏本地化、建立機敏分級政策為治理方向。',{x:.6,y:4.7,w:12.1,fontSize:11.5,bold:true,color:'60a5fa',fontFace:F,lineSpacing:18});
+  s=P.addSlide();head(s,'RELIABILITY','可靠性：主腦掛了、撞額度、服務掛了，怎麼辦','60a5fa');
   s.addText('不是靠人盯著 —— 設定即保證的高可用：自動偵測、自動切換、自動重啟，問題即時發現、不影響使用者。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'60a5fa',fontFace:F,lineSpacing:20});
   s.addText('🔄 主腦自動 fallback：GPT-5.5 掛掉 → 自動切備援 Kiro Opus 4.6（設定保證、非人工）\n🎫 多帳號自動輪替：撞額度（rate-limit／overload）→ 自動換下一個 OAuth 帳號；冷卻採 24h 滾動視窗、過後自動恢復\n💓 崩潰自動拉起：Gateway 由系統服務管理器（launchd）監看，崩潰自動拉起＋重啟節流（防 boot-loop）＋重啟交接狀態紀錄\n📟 額度監控告警：429 監控（已常駐排程、每小時）統計異常、超門檻 Telegram 告警，分辨「設計輪替 vs 真故障」',{x:.6,y:2.55,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
   s.addText('把實證②的「看得到」延伸成「看得到＋掛了自動撐住」——服務掛掉自動拉回、主腦／額度自動切換；程式 bug 則由人操作 Agent 追蹤、判斷修復。',{x:.6,y:4.95,w:12.1,fontSize:12,bold:true,color:'4ade80',fontFace:F});
@@ -1126,7 +1129,7 @@ function buildPptx(){
   s.addText('① 知識收集 ✓　② 基礎建設 ✓（6 Agent + 權限/資安/監控）　③ 實戰開發 ✓（Demo）\n時程：4/9–5/8 規劃期｜5/8 藍圖｜5/9–6/30 開發期｜6/30 最終成果',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
   s=P.addSlide();head(s,'LIMITATIONS & MITIGATIONS','已知限制與對策','fb7185');
   s.addText('不誇大、誠實揭露現階段限制與進化方向：',{x:.6,y:1.5,w:12,fontSize:13,italic:true,color:'fb7185',fontFace:F});
-  s.addText('⚠️ AI 生圖有隨機性、美術一致性待提升 → ✅ 導入 ComfyUI＋圖像特化模型提升可控性；交付前 Cocos 引擎內自檢＋人工把關\n⚠️ 加速幅度因規格類型/複雜度而異（本次各職能已實測列出大致幅度） → ✅ 持續在更多類型/複雜度驗證、並持續進化 Agent 能力與知識沉澱\n⚠️ 雲端模型有資料邊界 → ✅ 機敏資料一律走本地自架模型、不外送',{x:.6,y:2.5,w:12.1,fontSize:13.5,color:'e8e8f0',fontFace:F,lineSpacing:36});
+  s.addText('⚠️ AI 生圖有隨機性、美術一致性待提升 → ✅ 導入 ComfyUI＋圖像特化模型提升可控性；交付前 Cocos 引擎內自檢＋人工把關\n⚠️ 加速幅度因規格類型/複雜度而異（本次各職能已實測列出大致幅度） → ✅ 持續在更多類型/複雜度驗證、並持續進化 Agent 能力與知識沉澱\n⚠️ 雲端 LLM 有資料邊界（遊戲數學／原始碼／個資等機敏）→ ✅ 個資已本地化（禮品卡零外送）；擴大高機敏本地化＋機敏分級政策為方向',{x:.6,y:2.5,w:12.1,fontSize:13.5,color:'e8e8f0',fontFace:F,lineSpacing:36});
   s.addText('誠實面對限制、持續進化 —— 這正是框架會越來越強的原因。',{x:.6,y:5.6,w:12,fontSize:11,color:DIM,fontFace:F,align:'center'});
   s=P.addSlide();head(s,"WHAT'S NEXT",'未來展望','fb923c');
   s.addText('本次競賽：試開發福星高照續作、驗證製程\n短期：套用到第二台、實測加速幅度；新增 PM 主 Agent（判斷產品成功性、調度各職能 Agent 開發）；將已試行的品檢 Agent 深化為自動化測試\n長期：套用到捕魚機 / 平台活動',{x:.6,y:2,w:12,fontSize:15,color:'e8e8f0',fontFace:F,lineSpacing:30});
