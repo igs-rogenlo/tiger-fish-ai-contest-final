@@ -789,8 +789,8 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
 <!-- 10j · 資安縱深防禦 -->
 <section class="slide" id="security" data-slide="10j">
 <div class="inner" style="gap:.7rem">
-  <div><span class="a eyebrow" style="color:var(--rose)">Defense in Depth</span><h2 class="a">資安縱深：守住最危險的兩個面 —— 自動排程 × 記憶寫入</h2></div>
-  <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">我們是<strong>內部部署、沒有對外服務的攻擊面</strong>；真正的風險集中在兩處 —— ① 使用者排的<strong>自動排程任務</strong>被注入或冒充、② 惡意內容被寫進<strong>長期記憶</strong>。除了基本權限分級，我們對這兩面做縱深防護：</p>
+  <div><span class="a eyebrow" style="color:var(--rose)">Defense in Depth</span><h2 class="a">資安縱深：兩個關鍵風險面 —— 自動排程 × 記憶寫入</h2></div>
+  <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">本平台<strong>內部部署、沒有對外公開服務</strong>；在多人使用下，<strong>我們特別防護的兩個面</strong>是 —— ① 使用者排的<strong>自動排程任務</strong>被注入或冒充（之後會自動執行）、② 惡意內容被寫進<strong>長期記憶</strong>持續影響。除了基本權限分級，我們對這兩面做縱深防護：</p>
   <div class="a g3" style="gap:.7rem;align-items:stretch">
     <div class="panel panel-r" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--rose);font-size:.96rem">🛡 攔下被偷塞的惡意指令</div><div class="panel-body" style="font-size:.8rem">排程任務先過注入偵測：<strong>本地 Qwen 先判，可疑或失效才再加判 Codex、取較嚴</strong>；兩者都失效就<strong>直接拒（fail-closed）</strong>。</div></div>
     <div class="panel panel-a" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--amber);font-size:.96rem">🔏 防偽造、防冒名</div><div class="panel-body" style="font-size:.8rem"><strong>排程任務</strong>用密鑰蓋「防偽封條」（HMAC，像支票防偽水印），被偷改就驗不過；身份<strong>只認平台給的真實 ID</strong>（像門禁刷卡），冒名也碰不到別人的排程。</div></div>
@@ -1106,8 +1106,8 @@ function buildPptx(){
   s.addText('🎛 治理範圍：可觀測性(各 Agent／使用者用量・成本・成功率・活躍：/agent /user /overview /週報) ｜ Skill 審核核准(LOW/MEDIUM/HIGH 風險把關) ｜ 異常與健康告警(0 使用・error 突增・記憶庫異常) ｜ 成員與權限(Telegram 授權清冊＋Discord 頻道權限，同步 Notion 帳冊)',{x:.6,y:2.4,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('🔧 串接工具×方式：activity-collector 每5分匯總[CLI] ｜ skill-pipeline 審核狀態機+稽核[CLI] ｜ tg-users TG 授權[CLI] ｜ discord-channel-perm[CLI] ｜ Notion CLI 權限清冊[CLI] ｜ launchctl 重啟服務[CLI] ｜ 向量記憶庫[記憶]',{x:.6,y:3.85,w:12.1,fontSize:12,color:'e8e8f0',fontFace:F,lineSpacing:22});
   s.addText('💡 亮點：平台的「治理控制塔」—— 觀測全 Agent 用量、審核 Skill 上線、下放權限；三層信任鎖死單一機主，改任何狀態先預覽再核准、全程稽核。',{x:.6,y:5.2,w:12.1,fontSize:12,bold:true,color:'b07aff',fontFace:F});
-  s=P.addSlide();head(s,'DEFENSE IN DEPTH','資安縱深：守住最危險的兩面（自動排程×記憶寫入）','fb7185');
-  s.addText('內部部署、無對外服務攻擊面；真正風險在兩處——①使用者排的自動排程任務被注入/冒充、②惡意內容被寫進長期記憶。除權限分級外，我們對這兩面做縱深防護：',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'fb7185',fontFace:F,lineSpacing:20});
+  s=P.addSlide();head(s,'DEFENSE IN DEPTH','資安縱深：兩個關鍵風險面（自動排程×記憶寫入）','fb7185');
+  s.addText('本平台內部部署、無對外公開服務；多人使用下我們特別防護兩個面——①使用者排的自動排程任務被注入/冒充(之後自動執行)、②惡意內容被寫進長期記憶持續影響。除權限分級外，對這兩面做縱深防護：',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'fb7185',fontFace:F,lineSpacing:20});
   s.addText('🛡 攔下被偷塞的惡意指令（防注入）：排程任務先過注入偵測，本地 Qwen 先判、可疑或失效才加判 Codex 取較嚴；兩者都失效就直接拒（fail-closed）\n🔏 防偽造、防冒名：排程任務用密鑰蓋防偽封條（HMAC、像支票水印）被偷改就驗不過；身份只認平台給的真實 ID（像門禁刷卡）、冒名碰不到別人的排程\n🧹 寫進記憶前先遮敏：長期記憶寫入前做 secrets 遮罩（token／私鑰／路徑）、機敏資料不會進長期記憶庫；新 Skill 上線前經人工風險分級審核\n🚦 限定發送對象＋用量上限：排程要發到某 TG 群須在核准名單否則擋（防外送）；每人排程數量／頻率有上限（防洗版灌爆）',{x:.6,y:2.55,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:24});  s=P.addSlide();head(s,'RELIABILITY','可靠性：主腦掛了、撞額度、服務掛了，怎麼辦','60a5fa');
   s.addText('不是靠人盯著 —— 設定即保證的高可用：自動偵測、自動切換、自動重啟，問題即時發現、不影響使用者。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'60a5fa',fontFace:F,lineSpacing:20});
   s.addText('🔄 主腦自動 fallback：GPT-5.5 掛掉 → 自動切備援 Kiro Opus 4.6（設定保證、非人工）\n🎫 多帳號自動輪替：撞額度（rate-limit／overload）→ 自動換下一個 OAuth 帳號；冷卻採 24h 滾動視窗、過後自動恢復\n💓 崩潰自動拉起：Gateway 由系統服務管理器（launchd）監看，崩潰自動拉起＋重啟節流（防 boot-loop）＋重啟交接狀態紀錄\n📟 額度監控告警：429 監控（已常駐排程、每小時）統計異常、超門檻 Telegram 告警，分辨「設計輪替 vs 真故障」',{x:.6,y:2.55,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
