@@ -793,7 +793,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
   <p class="a lead" style="font-size:.9rem;max-width:none;line-height:1.5">多人共用的 AI 平台最怕「被注入指令操控、或把惡意內容寫進長期記憶」。除了權限分級，我們對<strong>使用者排程的任務</strong>與<strong>自學內容</strong>做縱深防護：</p>
   <div class="a g3" style="gap:.7rem;align-items:stretch">
     <div class="panel panel-r" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--rose);font-size:.96rem">🛡 攔下被偷塞的惡意指令</div><div class="panel-body" style="font-size:.8rem">排程任務先過注入偵測：<strong>本地 Qwen 先判，可疑或失效才再加判 Codex、取較嚴</strong>；兩者都失效就<strong>直接拒（fail-closed）</strong>。</div></div>
-    <div class="panel panel-a" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--amber);font-size:.96rem">🔏 防偽造、防冒名</div><div class="panel-body" style="font-size:.8rem"><strong>HMAC 簽章</strong>（攻擊者就算寫檔也偽造不了）＋<strong>身份綁定</strong>（取可信來源、非訊息自稱）。</div></div>
+    <div class="panel panel-a" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--amber);font-size:.96rem">🔏 防偽造、防冒名</div><div class="panel-body" style="font-size:.8rem"><strong>排程任務</strong>用密鑰蓋「防偽封條」（HMAC，像支票防偽水印），被偷改就驗不過；身份<strong>只認平台給的真實 ID</strong>（像門禁刷卡），冒名也碰不到別人的排程。</div></div>
     <div class="panel panel-c" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--cyan);font-size:.96rem">🧹 寫進記憶前先篩毒</div><div class="panel-body" style="font-size:.8rem">長期記憶寫入前做 <strong>secrets 遮罩</strong>（token／私鑰／路徑），機敏資料不會被寫進長期記憶庫。</div></div>
   </div>
   <div class="a g2" style="gap:.7rem;align-items:stretch">
@@ -814,7 +814,7 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="panel panel-l" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--lime);font-size:.96rem">💓 崩潰自動拉起</div><div class="panel-body" style="font-size:.8rem">Gateway 由系統服務管理器（launchd）監看：<strong>崩潰自動拉起</strong>＋重啟節流（防 boot-loop）＋重啟交接狀態紀錄。</div></div>
     <div class="panel panel-o" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--orange);font-size:.96rem">📟 額度監控告警</div><div class="panel-body" style="font-size:.8rem">429 監控（已常駐排程）統計異常、超門檻 Telegram 告警，分辨「設計輪替 vs 真故障」。</div></div>
   </div>
-  <div class="a" style="font-size:.78rem;color:var(--dim);text-align:center">把實證②的「<strong>看得到</strong>」延伸成「<strong class="accent-l">看得到＋掛了自動撐住</strong>」—— 服務掛掉自動拉回、主腦／額度出狀況自動切換；<strong>程式 bug 仍由人工修</strong>。</div>
+  <div class="a" style="font-size:.78rem;color:var(--dim);text-align:center">把實證②的「<strong>看得到</strong>」延伸成「<strong class="accent-l">看得到＋掛了自動撐住</strong>」—— 服務掛掉自動拉回、主腦／額度出狀況自動切換；<strong>程式 bug 則由人操作 Agent 追蹤、判斷與修復</strong>。</div>
 </div>
 </section>
 <!-- 10 · 設計與程式：與 Agent 即時共編 -->
@@ -1112,12 +1112,12 @@ function buildPptx(){
   s.addText('💡 亮點：平台的「治理控制塔」—— 觀測全 Agent 用量、審核 Skill 上線、下放權限；三層信任鎖死單一機主，改任何狀態先預覽再核准、全程稽核。',{x:.6,y:5.2,w:12.1,fontSize:12,bold:true,color:'b07aff',fontFace:F});
   s=P.addSlide();head(s,'DEFENSE IN DEPTH','資安縱深：不只權限，還防注入與冒充','fb7185');
   s.addText('多人共用的 AI 平台最怕「被注入指令操控、或把惡意內容寫進長期記憶」。除了權限分級，我們對使用者排程的任務與自學內容做縱深防護：',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'fb7185',fontFace:F,lineSpacing:20});
-  s.addText('🛡 攔下被偷塞的惡意指令（防注入）：排程任務先過注入偵測，本地 Qwen 先判、可疑或失效才加判 Codex 取較嚴；兩者都失效就直接拒（fail-closed）\n🔏 防偽造、防冒名：HMAC 簽章（寫檔也偽造不了）＋身份綁定（取可信來源、非訊息自稱）\n🧹 寫進記憶前先遮敏：長期記憶寫入前做 secrets 遮罩（token／私鑰／路徑）、機敏資料不會進長期記憶庫；新 Skill 上線前經人工風險分級審核\n🚦 限定發送對象＋用量上限：排程要發到某 TG 群須在核准名單否則擋（防外送）；每人排程數量／頻率有上限（防洗版灌爆）',{x:.6,y:2.55,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:24});
+  s.addText('🛡 攔下被偷塞的惡意指令（防注入）：排程任務先過注入偵測，本地 Qwen 先判、可疑或失效才加判 Codex 取較嚴；兩者都失效就直接拒（fail-closed）\n🔏 防偽造、防冒名：排程任務用密鑰蓋防偽封條（HMAC、像支票水印）被偷改就驗不過；身份只認平台給的真實 ID（像門禁刷卡）、冒名碰不到別人的排程\n🧹 寫進記憶前先遮敏：長期記憶寫入前做 secrets 遮罩（token／私鑰／路徑）、機敏資料不會進長期記憶庫；新 Skill 上線前經人工風險分級審核\n🚦 限定發送對象＋用量上限：排程要發到某 TG 群須在核准名單否則擋（防外送）；每人排程數量／頻率有上限（防洗版灌爆）',{x:.6,y:2.55,w:12.1,fontSize:12.5,color:'e8e8f0',fontFace:F,lineSpacing:24});
   s.addText('🎯 用真實攻擊手法自我演練（已建置並驗證過、非自動）：用已公開的 AI 攻擊手法當固定靶 —— 偽造知識毒害(PoisonedRAG)、植入記憶後門(AgentPoison)、聊天慢慢灌毒(MINJA)、隱形字元夾帶指令，確保自學內容不被下毒。',{x:.6,y:4.85,w:12.1,fontSize:12,bold:true,color:'b07aff',fontFace:F,lineSpacing:20});
   s=P.addSlide();head(s,'RELIABILITY','可靠性：主腦掛了、撞額度、服務掛了，怎麼辦','60a5fa');
   s.addText('不是靠人盯著 —— 設定即保證的高可用：自動偵測、自動切換、自動重啟，問題即時發現、不影響使用者。',{x:.6,y:1.55,w:12.1,fontSize:13,italic:true,color:'60a5fa',fontFace:F,lineSpacing:20});
   s.addText('🔄 主腦自動 fallback：GPT-5.5 掛掉 → 自動切備援 Kiro Opus 4.6（設定保證、非人工）\n🎫 多帳號自動輪替：撞額度（rate-limit／overload）→ 自動換下一個 OAuth 帳號；冷卻採 24h 滾動視窗、過後自動恢復\n💓 崩潰自動拉起：Gateway 由系統服務管理器（launchd）監看，崩潰自動拉起＋重啟節流（防 boot-loop）＋重啟交接狀態紀錄\n📟 額度監控告警：429 監控（已常駐排程、每小時）統計異常、超門檻 Telegram 告警，分辨「設計輪替 vs 真故障」',{x:.6,y:2.55,w:12.1,fontSize:13,color:'e8e8f0',fontFace:F,lineSpacing:26});
-  s.addText('把實證②的「看得到」延伸成「看得到＋掛了自動撐住」——服務掛掉自動拉回、主腦／額度自動切換；程式 bug 仍由人工修。',{x:.6,y:4.95,w:12.1,fontSize:12,bold:true,color:'4ade80',fontFace:F});
+  s.addText('把實證②的「看得到」延伸成「看得到＋掛了自動撐住」——服務掛掉自動拉回、主腦／額度自動切換；程式 bug 則由人操作 Agent 追蹤、判斷修復。',{x:.6,y:4.95,w:12.1,fontSize:12,bold:true,color:'4ade80',fontFace:F});
   s=P.addSlide();head(s,'CO-EDITING WITH AGENTS · 已支援/前瞻','與 Agent 即時共編（已建置、為未來預備）','22d3ee');
   s.addText('已自架可用：員工自然語言交辦，Agent 做到一段給連結，點開即時看/接手共編(Penpot/Open Design 設計、VS Code 程式)。本次福星高照 6 職能尚未實際採用，是為日後專案複雜度與共編需求變大時預先備好。',{x:.6,y:1.55,w:12.1,fontSize:12,italic:true,color:'4ade80',fontFace:F,lineSpacing:20});
   try{s.addImage({path:'assets/penpot-canvas.png',x:.5,y:2.7,w:6.1,h:3.4});}catch(e){}
