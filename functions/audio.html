@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>音效 — AI 音效自動生成工作流</title>
+<style>
+ :root{
+ --bg:#0d1117; --panel:#161b22; --panel2:#1c2430;
+ --ink:#e6edf3; --sub:#9fb0c3; --line:#2b3542;
+ --rose:#fb7185; --teal:#2dd4bf; --green:#4ade80; --amber:#f5c451; --magenta:#e879c8;
+ --purple:#b07aff; --orange:#fb923c;
+ }
+ *{box-sizing:border-box;margin:0;padding:0}
+ body{background:#05070b;color:var(--ink);
+ font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif;
+ display:flex;flex-direction:column;align-items:center;gap:26px;padding:30px 16px}
+ .slide{
+ width:1280px;height:720px;background:
+ radial-gradient(1100px 500px at 82% -12%,rgba(251,113,133,.16),transparent 60%),
+ radial-gradient(900px 480px at 0% 115%,rgba(232,121,200,.12),transparent 60%),
+ var(--bg);
+ border:1px solid var(--line);border-radius:16px;overflow:hidden;position:relative;
+ box-shadow:0 20px 60px rgba(0,0,0,.55);padding:40px 52px;display:flex;flex-direction:column}
+ .meta{position:absolute;top:40px;right:52px;text-align:right;color:var(--sub);font-size:13px;line-height:1.7;
+ border:1px solid var(--line);border-radius:10px;padding:8px 14px;background:rgba(22,27,34,.6)}
+ .meta b{color:var(--rose)}
+ .tag{display:inline-block;font-size:13px;letter-spacing:2px;color:var(--rose);
+ border:1px solid rgba(251,113,133,.4);border-radius:999px;padding:4px 14px;margin-bottom:12px}
+ h1{font-size:38px;line-height:1.15;font-weight:850;letter-spacing:.5px}
+ h1 .accent{background:linear-gradient(90deg,var(--rose),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent}
+ .sub{color:var(--sub);font-size:15px;margin-top:8px;line-height:1.6}
+ .sub b{color:var(--rose)}
+ .divider{height:1px;background:var(--line);margin:18px 0 0}
+
+ /* 5-step flow */
+ .flow{display:grid;grid-template-columns:1fr 30px 1fr 30px 1fr 30px 1fr 30px 1fr;align-items:stretch;margin-top:22px}
+ .step{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+ border-radius:14px;padding:16px 15px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+ .step::before{content:"";position:absolute;top:0;left:0;right:0;height:4px}
+ .step.s1::before{background:var(--purple)} .step.s2::before{background:var(--teal)}
+ .step.s3::before{background:var(--green)} .step.s4::before{background:var(--amber)}
+ .step.s5::before{background:var(--magenta)}
+ .step .n{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+ font-weight:850;font-size:14px;color:#0d1117}
+ .step.s1 .n{background:var(--purple)} .step.s2 .n{background:var(--teal)}
+ .step.s3 .n{background:var(--green)} .step.s4 .n{background:var(--amber)}
+ .step.s5 .n{background:var(--magenta)}
+ .step h3{font-size:18px;font-weight:800;line-height:1.2}
+ .step p{font-size:12.5px;color:var(--sub);line-height:1.5}
+ .arrow{display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--rose);opacity:.7}
+
+ /* feedback loop bar */
+ .loop{margin-top:18px;background:rgba(251,113,133,.08);border:1px solid rgba(251,113,133,.32);
+ border-radius:12px;padding:11px 20px;font-size:14px;line-height:1.5;display:flex;align-items:center;gap:14px}
+ .loop b{color:var(--rose);font-weight:800;white-space:nowrap}
+ .loop .ar{color:var(--rose);font-weight:800}
+ .loop span{color:var(--ink)}
+
+ /* 3 cards */
+ .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+ .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;border-left:4px solid var(--rose)}
+ .card.c1{border-left-color:var(--purple)} .card.c2{border-left-color:var(--orange)} .card.c3{border-left-color:var(--teal)}
+ .card h4{font-size:17px;font-weight:800;margin-bottom:11px}
+ .card.c1 h4{color:var(--purple)} .card.c2 h4{color:var(--orange)} .card.c3 h4{color:var(--teal)}
+ .card ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+ .card li{font-size:13.5px;line-height:1.45;padding-left:18px;position:relative;color:var(--ink)}
+ .card li::before{content:"•";position:absolute;left:3px;color:var(--rose);font-weight:800}
+ .card.c1 li::before{color:var(--purple)} .card.c2 li::before{color:var(--orange)} .card.c3 li::before{color:var(--teal)}
+
+ .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;
+ color:var(--sub);font-size:13px;border-top:1px solid var(--line);padding-top:12px}
+ .foot b{color:var(--rose)}
+ .foot .core{color:var(--ink)}
+ .foot .wm{font-family:"SF Mono",Menlo,Consolas,monospace;color:var(--sub);opacity:.8}
+
+ @media print{
+ body{background:#fff;padding:0;gap:0}
+ .slide{box-shadow:none;border-radius:0;page-break-after:always;width:100%;height:100vh}
+ @page{size:1280px 720px;margin:0}
+ }
+ @media(max-width:1320px){.slide{width:100%;height:auto;min-height:0}
+ .flow{grid-template-columns:1fr;gap:8px}.arrow{transform:rotate(90deg);height:18px}
+ .cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<section class="slide">
+ <div class="meta">AI 遊戲開發競賽 · 音效<br>Audio Studio Workflow<br><b>適用：Slot 音效 / BGM / UI / Win</b></div>
+ <span class="tag">AI 開發競賽 · 音效</span>
+ <h1>AI <span class="accent">音效自動生成</span>工作流</h1>
+ <div class="sub">規格書匯入 → 音效設計分析 → <b>Demo 確認</b> → 自動生成 → <b>人工審核調整</b>　·　核心節奏：先確認方向，再批次產出，最後用人工聽感把品質收斂。</div>
+ <div class="divider"></div>
+
+ <div class="flow">
+  <div class="step s1"><div class="n">1</div><h3>吃規格書</h3><p>讀取音樂音效規格表，整理場景、類型、檔名、Loop、強度與秒數。</p></div>
+  <div class="arrow">→</div>
+  <div class="step s2"><div class="n">2</div><h3>分析音效方向</h3><p>依 MG、FG、Bonus、Win、UI 分組，判斷整體音色、情緒與層級遞進。</p></div>
+  <div class="arrow">→</div>
+  <div class="step s3"><div class="n">3</div><h3>統計數量規格</h3><p>統計音樂、音效、人聲數量，補齊每條生成需求與完整 prompt。</p></div>
+  <div class="arrow">→</div>
+  <div class="step s4"><div class="n">4</div><h3>先做 Demo</h3><p>先產 2–3 個代表項目，確認主題感、音壓、亮度、節奏與尾韻。</p></div>
+  <div class="arrow">→</div>
+  <div class="step s5"><div class="n">5</div><h3>自動生成</h3><p>Suno 負責 BGM／編曲段落；ElevenLabs 負責 SFX、UI、Win、人聲。</p></div>
+ </div>
+
+ <div class="loop"><b>審核回饋迴圈</b><span class="ar">→</span><span>不合格項目回到 prompt、生成工具或後製調整；合格項目進入命名歸檔與交付。</span></div>
+
+ <div class="cards">
+  <div class="card c1"><h4>🎧 人工聽感審核</h4><ul>
+   <li>主題感、情緒、音色是否一致</li>
+   <li>秒數、Loop、尾韻是否適合遊戲節奏</li>
+   <li>Win 層級是否有明確遞進</li>
+  </ul></div>
+  <div class="card c2"><h4>🔁 調整與重生</h4><ul>
+   <li>重寫 prompt 或換生成工具</li>
+   <li>剪短、淡入淡出、音量整理</li>
+   <li>標記重生、微調、定稿</li>
+  </ul></div>
+  <div class="card c3"><h4>📦 命名歸檔與交付</h4><ul>
+   <li>依規格表檔名輸出正式版</li>
+   <li>歸檔到 SFX / Music / TTS</li>
+   <li>需要時匯入 Cocos 音效目錄</li>
+  </ul></div>
+ </div>
+
+ <div class="foot">
+  <span class="core"><b>核心節奏：</b>先確認方向，再批次產出，最後用人工聽感把品質收斂。</span>
+  <span class="wm">Audio Studio Workflow · Suno + ElevenLabs</span>
+ </div>
+</section>
+
+</body>
+</html>
