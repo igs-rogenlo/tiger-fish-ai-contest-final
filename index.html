@@ -811,7 +811,8 @@ h2{font-size:clamp(1.8rem,3.3vw,3rem);font-weight:900;line-height:1.2;letter-spa
     <div class="panel panel-l" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--lime);font-size:.96rem">💓 崩潰自動拉起</div><div class="panel-body" style="font-size:.8rem">Gateway 由系統服務管理器（launchd）監看：<strong>崩潰自動拉起</strong>＋重啟節流（防 boot-loop）＋重啟交接狀態紀錄。</div></div>
     <div class="panel panel-o" style="padding:.8rem .9rem"><div class="panel-title" style="color:var(--orange);font-size:.96rem">📟 額度監控告警</div><div class="panel-body" style="font-size:.8rem">429 監控（已常駐排程）統計異常、超門檻 Telegram 告警，分辨「設計輪替 vs 真故障」。</div></div>
   </div>
-  <div class="a" style="font-size:.78rem;color:var(--dim);text-align:center">把實證②的「<strong>看得到</strong>」延伸成「<strong class="accent-l">看得到＋掛了自動撐住</strong>」—— 服務掛掉自動拉回、主腦／額度出狀況自動切換；<strong>程式 bug 則由人操作 Agent 追蹤、判斷與修復</strong>。</div>
+  <div class="a panel panel-p" style="padding:.7rem .95rem"><div style="font-size:.8rem"><strong class="accent-p">💾 每日自動備份 · 可回復</strong> —— 每天自動備份<strong>知識庫（向量記憶）＋平台設定與 Agent 身份</strong>，上傳<strong>異地雲端</strong>（遠端留 7 份、本地 2 份）、備份前先淨化機敏；整台出事也能還原、不怕重來。</div></div>
+  <div class="a" style="font-size:.78rem;color:var(--dim);text-align:center">把實證②的「<strong>看得到</strong>」延伸成「<strong class="accent-l">看得到＋掛了自動撐住＋回得來</strong>」—— 服務掛掉自動拉回、主腦／額度出狀況自動切換、資料每日異地備份；<strong>程式 bug 則由人操作 Agent 追蹤、判斷與修復</strong>。</div>
 </div>
 </section>
 <!-- 10 · 設計與程式：與 Agent 即時共編 -->
